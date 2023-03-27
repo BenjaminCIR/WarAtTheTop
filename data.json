@@ -1,0 +1,42 @@
+[
+    {
+        "usagename":"Monkey D. Luffy",
+        "name":"Monkey D. Luffy - Gear 2",
+        "bounty":"300000",
+        "age":"17",
+        "size":"170",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Barbe Blanche",
+        "name":"Whitebeard - Four Emperors",
+        "bounty":"5000000",
+        "age":"70",
+        "size":"670",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Monkey D. Luffy",
+        "name":"Monkey D. Luffy - Gear Four: Snakeman",
+        "bounty":"300000",
+        "age":"17",
+        "size":"170",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Gol D. Roger",
+        "name":"Gol D. Roger - Clash of the Formidable Forces",
+        "bounty":"5000000",
+        "age":"70",
+        "size":"670",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    }
+]

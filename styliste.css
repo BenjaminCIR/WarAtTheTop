@@ -1,0 +1,41 @@
+.pic{
+    position: absolute;
+    width: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+}
+.card{
+    position: relative;
+    width:100%;
+}
+
+.bloque{
+    position: relative;
+    width:15%;
+    float:left;
+}
+
+.naming{
+    position: absolute;
+margin: 0;
+top: 55%;
+width: 100%;
+text-align: center;
+}
+.attaque{
+    position: absolute;
+margin: 0;
+top: 70%;
+width: fit-content;
+text-align: center;
+left: 16%;
+}
+.HP{
+    position: absolute;
+    margin: 0;
+    top: 64%;
+    width: fit-content;
+    text-align: center;
+    left: 16%;
+}
