@@ -185,11 +185,20 @@ function getDATA(){
 let ccom=0
 var charaT = getDATA()
 setTimeout(function(){
-    let intev = setInterval(function () {
-        if(ccom >= charaT.length) clearInterval(intev) 
-        make_card(charaT, ccom)
-        ccom+=1
-    }, 100);
+    for(var i=0;i< charaT.length;i++){
+        if(cards.includes(i.toString())){
+            make_card(charaT,i)
+        }
+    }
+    
 },1000)
 
 
+
+/*let intev = setInterval(function () {
+        if(ccom >= charaT.length) clearInterval(intev) 
+        if(cards.includes(ccom.toString())){
+            make_card(charaT, ccom)     
+        }
+        ccom+=1
+    }, 50);*/

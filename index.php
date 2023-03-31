@@ -9,10 +9,49 @@
 		</style>
 	</head>
 	<body>
-		<header>
-			
-		</header>
+		<?php
+		 	session_start(); 
 
+			if(isset($_POST['login']) &&  isset($_POST['password'])){
+				include "connexion.php";
+				$pseudo = $_POST['login'];
+				$password = $_POST['password'];
+				$req = "SELECT * FROM users WHERE pseudo = '$pseudo'";
+				$resp = mysqli_query($connexion,$req);	
+				$user = mysqli_fetch_assoc($resp);
+				if($user["password"] == $password){
+					$_SESSION['id'] = $user['id'];
+
+				}
+		
+
+				
+			}
+			
+
+			
+		?>
+
+		<header>
+			<form action="" method="post">
+				<input type="text" name="login" id="login" placeholder="Pseudo">
+				<input type="text" name="password" id="password" placeholder="Mot de Passe">
+				<input type="submit" value="Connexion">
+			</form>
+		</header>
+		<div id="tool">
+			<input value="1" id="idlieu" type="text">
+			<button id="phi+">PHI +</button>
+			<button   id="phi-">PHI -</button>
+			<button   id="theta+">THETA +</button>
+			<button id="theta-">THETA -</button>
+			<br>
+			<input placeholder="theta" id="thetaint" value="3.14" type="text">
+			<input placeholder="phi" id="phiint" value="3.14" type="text">
+			<button id="sett"> SET </button>
+			<button id="gett"> GET </button>
+			
+		</div>
 		<button id="back">BACK</button>
 		<div id="menu">
 			<button id="history"><span>HISTOIRE</span></button>

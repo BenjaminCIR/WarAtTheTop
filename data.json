@@ -38,5 +38,15 @@
         "fruit_id":"1",
         "second_fruit_id":"none",
         "job":"Pirate"
+    },
+    {
+        "usagename":"Luffy G4",
+        "name":"Monkey D. Luffy - Gear Four: Bounceman",
+        "bounty":"5000000",
+        "age":"70",
+        "size":"670",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
     }
 ]

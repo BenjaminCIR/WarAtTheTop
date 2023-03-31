@@ -2,7 +2,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.m
 var coef = 1
 var rotating = false;
 var roat = true;
-const inertie = -0.001
+const inertie = -0.000
 var naturalrotate = inertie
 var rayonsphere =   1.7
 const mouse3 = {
@@ -15,44 +15,146 @@ var Rtranslate = false
 var Rscaleing = false
 var growing = 0
 var raycaster = new THREE.Raycaster();
+var lieux = []
+var locates = []
 document.getElementById("back").style.display = "none"
 
 
 
-function onMouseHover( event ) {
+function SETT(){
+    let id = document.getElementById("idlieu").value
+    let phi = document.getElementById("phiint").value;
+    let theta = document.getElementById("thetaint").value;
+    let x =  rayonsphere* Math.cos(phi) * Math.sin(theta)
+    let y = rayonsphere * Math.sin(phi) * Math.sin(theta)
+    let z = rayonsphere * Math.cos(theta)
+    lieux[id].position.set(x,y,z)
+}
 
+function GETT(){
+    console.log("coucou ")
+    let id = document.getElementById("idlieu").value
+    fetch('./coord.json')
+    .then(response => response.json())
+    .then(json => {
+        const act = json
+        let thetaa = act[id].theta
+        let phii = act[id].phi
+        document.getElementById("phiint").value = phii
+        document.getElementById("thetaint").value = thetaa
+    })
+
+}
+
+function phiplus(){
+    document.getElementById("phiint").value =  Math.round((parseFloat(document.getElementById("phiint").value ) + 0.01 + Number.EPSILON) * 100) / 100; 
+    SETT()
+
+}
+function phimoins(){
+    document.getElementById("phiint").value = Math.round((parseFloat(document.getElementById("phiint").value ) - 0.01 + Number.EPSILON) * 100) / 100;
+    SETT()
+    
+}
+function thetaplus(){
+
+    document.getElementById("thetaint").value =    Math.round((parseFloat(document.getElementById("thetaint").value ) + 0.01 + Number.EPSILON) * 100) / 100;
+    SETT()
+    
+}
+function thetamoins(){
+    document.getElementById("thetaint").value =     Math.round((parseFloat(document.getElementById("thetaint").value ) - 0.01 + Number.EPSILON) * 100) / 100;
+    SETT()
+    
+}
+
+fetch('https://api.api-onepiece.com/locates')
+    .then(response => response.json())
+    .then(json => {
+            locates = json
+            console.log(locates)
+            var rayon  = 0.05
+            var pi = 3.14
+            var phi = pi/5
+            var theta = pi/2
+            let x =  rayonsphere* Math.cos(phi) * Math.sin(theta)
+            let y = rayonsphere * Math.sin(phi) * Math.sin(theta)
+            let z = rayonsphere
+            fetch('./coord.json')
+                .then(response => response.json())
+                .then(json => {
+                    const coord = json;
+                    for(var i=0; i<locates.length;i++){
+                        lieux.push(new THREE.Mesh(
+                            new THREE.SphereGeometry(rayon,20,20),
+                            new THREE.MeshBasicMaterial({color:0xff0000})
+                        ))
+                        sphere.add(lieux[i])
+                        if(i==1){
+                            console.log(coord)
+                        }
+                        x =  rayonsphere* Math.cos(coord[i].phi) * Math.sin(coord[i].theta)
+                        y = rayonsphere * Math.sin(coord[i].phi) * Math.sin(coord[i].theta)
+                        z = rayonsphere * Math.cos(coord[i].theta)
+                        lieux[i].position.set(x,y,z)
+                    }
+            })
+            
+            //console.log(lieux)
+    })
+
+function onMouseHover( event ) {
+    for(var i = 0; i< sphere.children.length;i++){
+        sphere.children[i].material = new THREE.MeshBasicMaterial({color:0xff0000})
+        /*if(intersects[0].object == mesh){
+            bol = true
+        }*/
+    }
     raycaster.setFromCamera( mouse3, camera );
     var intersects = raycaster.intersectObjects( sphere.children );
-    var bol = false
+    //var bol = false
     for(var i = 0; i< intersects.length;i++){
-        if(intersects[0].object == mesh){
+        //console.log(intersects[i].object.material)
+        intersects[i].object.material = new THREE.MeshBasicMaterial({color:0xfff000})
+        /*if(intersects[0].object == mesh){
             bol = true
-        }
+        }*/
     }
     
     
-    if (bol) {
+    /*if (bol) {
         mesh.material = new THREE.MeshBasicMaterial({color:0xfff000})
     }
     else{
         mesh.material = new THREE.MeshBasicMaterial({color:0xff0000})
-    }
+    }*/
 }
 
 function onMouseClick( event ) {
 
     raycaster.setFromCamera( mouse3, camera );
+    //var intersectsTMP = raycaster.intersectObjects( scene.children );
     var intersects = raycaster.intersectObjects( sphere.children );
-    var bol = false
-    for(var i = 0; i< intersects.length;i++){
-        if(intersects[0].object == mesh){
-            bol = true
+
+    /*for(var i = 0; i< intersects.length;i++){
+        if(intersects[i].object == mesh){
+            console.log(intersects[i].distance)
+            if(intersects[i].distance < intersectsTMP[i].distance){
+                bol = true;
+            }
+            else{
+                console.log("nickel gros")
+            }
         }
-    }
-    
-    
-    if (bol) {
+    }*/
+    if(intersects.length > 0){
+        let indx = lieux.indexOf(intersects[0].object)
+        console.log(locates[indx])
         let level = document.createElement("div")
+        let name = document.createElement("p")
+        name.innerText = locates[indx].french_name
+        name.classList.add("levelname")
+        level.appendChild(name)
         let back = document.createElement("button")
         back.innerText = "BACK"
         back.addEventListener("click", function(){
@@ -62,10 +164,14 @@ function onMouseClick( event ) {
         level.appendChild(back)
         document.body.appendChild(level)
     }
+    
+    
+
+  
 }
 
 function onMouseMove( event ) {
-    var offset = -0.00
+    var offset = 0.06
     var offset2 = 0.00
     mouse3.x = ( event.clientX / innerWidth ) * 2 - 1 + offset2;
     mouse3.y = - ( event.clientY / innerHeight ) * 2 + 1 + offset;
@@ -91,18 +197,11 @@ const sphere = new THREE.Mesh(
 sphere.position.x = 3
 scene.add(sphere)
 
-var rayon  = 0.1
-var mesh = new THREE.Mesh(
-    new THREE.SphereGeometry(rayon,20,20),
-    new THREE.MeshBasicMaterial({color:0xff0000})
-)
-scene.add(mesh)
-sphere.add(mesh)
-var pi = 3.14
-let x =  rayonsphere* Math.cos(pi/5)
-let y = rayonsphere * Math.sin(pi/5)
-let z = rayonsphere
-mesh.position.set(x,0,-y)
+
+
+
+//scene.add(mesh)
+
 
 camera.position.z = 9
 
@@ -112,7 +211,7 @@ function animate(){
     renderer.render(scene,camera)
     sphere.rotation.y += naturalrotate
     if(translate){
-        if(sphere.position.x <= -5){
+        if(sphere.position.x <= 0/*5*/){
             translate = false
         }
         sphere.position.x -= 0.15
@@ -216,3 +315,12 @@ addEventListener('mouseup',()=>{
 window.addEventListener( 'click', onMouseClick, false );
 window.addEventListener( 'mousemove', onMouseMove, false );
 window.addEventListener( 'mousemove', onMouseHover, false );
+
+
+
+document.getElementById("sett").addEventListener("click",SETT)
+document.getElementById("gett").addEventListener("click",GETT)
+document.getElementById("phi+").addEventListener("click",phiplus)
+document.getElementById("phi-").addEventListener("click",phimoins)
+document.getElementById("theta+").addEventListener("click",thetaplus)
+document.getElementById("theta-").addEventListener("click",thetamoins)

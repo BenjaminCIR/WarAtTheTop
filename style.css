@@ -1,4 +1,13 @@
-
+#tool{
+    position:absolute;
+    top:20%;
+}
+.levelname{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 #menu{
     position: absolute;
     left: 25%;
