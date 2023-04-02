@@ -11,7 +11,6 @@
 	<body>
 		<?php
 		 	session_start(); 
-
 			if(isset($_POST['login']) &&  isset($_POST['password'])){
 				include "connexion.php";
 				$pseudo = $_POST['login'];
@@ -39,6 +38,7 @@
 				<input type="submit" value="Connexion">
 			</form>
 		</header>
+		<!-- TOOL
 		<div id="tool">
 			<input value="1" id="idlieu" type="text">
 			<button id="phi+">PHI +</button>
@@ -51,10 +51,24 @@
 			<button id="sett"> SET </button>
 			<button id="gett"> GET </button>
 			
-		</div>
+		</div>-->
 		<button id="back">BACK</button>
+		<div id="tool">
+		<button id="test"> TEST </button>
+		</div>
 		<div id="menu">
 			<button id="history"><span>HISTOIRE</span></button>
+		</div>
+
+		<div id="niveaux">
+			<?php
+				for($i=0; $i < 131;$i++){
+					echo "<button class='buttonlvl' id='lieu".$i."'></button>";
+				}
+			
+			
+			
+			?>
 		</div>
 		<script type="module" src="app.js">
 			

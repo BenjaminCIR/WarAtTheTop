@@ -1,10 +1,10 @@
 [
     {
-        "usagename":"Monkey D. Luffy",
-        "name":"Monkey D. Luffy - Gear 2",
-        "bounty":"300000",
-        "age":"17",
-        "size":"170",
+        "usagename":"Gol D. Roger",
+        "name":"Gol D. Roger - Clash of the Formidable Forces",
+        "bounty":"7000000000",
+        "age":"50",
+        "size":"274",
         "fruit_id":"1",
         "second_fruit_id":"none",
         "job":"Pirate"
@@ -15,13 +15,143 @@
         "bounty":"5000000",
         "age":"70",
         "size":"670",
-        "fruit_id":"1",
+        "fruit_id":"35",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Yonko Kaido ",
+        "name":"Kaido - Imposing Emperor",
+        "bounty":"4611100000",
+        "age":"59",
+        "size":"710",
+        "fruit_id":"122",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Kaido Hybrid Form",
+        "name":"Kaido - Hell Made Manifest",
+        "bounty":"4611100000",
+        "age":"59",
+        "size":"710",
+        "fruit_id":"122",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Kaido Dragon Form",
+        "name":"Kaido - The Strongest Creature Alive",
+        "bounty":"4611100000",
+        "age":"59",
+        "size":"710",
+        "fruit_id":"122",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Yonko Shanks",
+        "name":"Red-Haired Shanks - Emperor",
+        "bounty":"4048900000",
+        "age":"37",
+        "size":"199",
+        "fruit_id":"null",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Shanks RED",
+        "name":"Red-Haired Shanks - Father Caring for His Daughter",
+        "bounty":"4048900000",
+        "age":"39",
+        "size":"199",
+        "fruit_id":"null",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Shanks Kid",
+        "name":"Shanks - Back-to-Back Pirate Apprentices",
+        "bounty":"0",
+        "age":"9",
+        "size":"140",
+        "fruit_id":"null",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Shanks Fushia",
+        "name":"Shanks - Pirate with a Straw Hat",
+        "bounty":"1040000000",
+        "age":"27",
+        "size":"199",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Kid Big Mom",
+        "name":"Charlotte Linlin - Devistation in the Land of Elbaf",
+        "bounty":"50000000",
+        "age":"5",
+        "size":"400",
+        "fruit_id":"60",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Big Mom Rocks Pirates",
+        "name":"Charlotte Linlin - Spring Tea Party",
+        "bounty":"500000000",
+        "age":"24",
+        "size":"810",
+        "fruit_id":"60",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Yonko Big Mom",
+        "name":"Big Mom - Emperor",
+        "bounty":"4388000000",
+        "age":"68",
+        "size":"810",
+        "fruit_id":"60",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Yonko Teach",
+        "name":"Blackbeard - Emperor",
+        "bounty":"3996000000",
+        "age":"40",
+        "size":"344",
+        "fruit_id":"85",
+        "second_fruit_id":"35",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Young Teach",
+        "name":"Marshall D. Teach - Young Pirate Rushing to Battle",
+        "bounty":"0",
+        "age":"14",
+        "size":"200",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Shichibukai Teach",
+        "name":"Marshall D. Teach Blackbeard Pirate Captain",
+        "bounty":"0",
+        "age":"38",
+        "size":"344",
+        "fruit_id":"85",
         "second_fruit_id":"none",
         "job":"Pirate"
     },
     {
         "usagename":"Monkey D. Luffy",
-        "name":"Monkey D. Luffy - Gear Four: Snakeman",
+        "name":"Monkey D. Luffy - Gear 2",
         "bounty":"300000",
         "age":"17",
         "size":"170",
@@ -30,23 +160,194 @@
         "job":"Pirate"
     },
     {
-        "usagename":"Gol D. Roger",
-        "name":"Gol D. Roger - Clash of the Formidable Forces",
-        "bounty":"5000000",
-        "age":"70",
-        "size":"670",
+        "usagename":"Luffy Snakeman",
+        "name":"Monkey D. Luffy - Gear Four: Snakeman",
+        "bounty":"300000",
+        "age":"17",
+        "size":"170",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+   {
+        "usagename":"Luffy Strong World",
+        "name":"Monkey D. Luffy - Merveille's Adventurer",
+        "bounty":"300000000",
+        "age":"17",
+        "size":"170",
         "fruit_id":"1",
         "second_fruit_id":"none",
         "job":"Pirate"
     },
     {
-        "usagename":"Luffy G4",
-        "name":"Monkey D. Luffy - Gear Four: Bounceman",
-        "bounty":"5000000",
-        "age":"70",
-        "size":"670",
+        "usagename":"Nightmare Luffy",
+        "name":"Nightmare Luffy - Warrior of Hope",
+        "bounty":"300000000",
+        "age":"17",
+        "size":"400",
         "fruit_id":"1",
         "second_fruit_id":"none",
         "job":"Pirate"
+    },
+    {
+        "usagename":"Luffy Stampede",
+        "name":"Monkey D. Luffy - Shouldering the Hopes of His Crew",
+        "bounty":"1500000000",
+        "age":"19",
+        "size":"172",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Luffy RED",
+        "name":"Monkey D. Luffy - Straw Hat Pirates Enjoying the FES",
+        "bounty":"3000000000",
+        "age":"19",
+        "size":"172",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Luffy Gear 3",
+        "name":"Monkey D. Luffy - Gear Third",
+        "bounty":"300000000",
+        "age":"17",
+        "size":"170",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Zoro Ashura 2",
+        "name":"Roronoa Zoro - Dead Man's Drawn Sword in Hell",
+        "bounty":"320000000",
+        "age":"21",
+        "size":"181",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Zoro Stampede",
+        "name":"Roronoa Zoro - ONE PIECE STAMPEDE",
+        "bounty":"320000000",
+        "age":"21",
+        "size":"181",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Zoro Shishi Sonson",
+        "name":"Roronoa Zoro - Lion's Song",
+        "bounty":"60000000",
+        "age":"19",
+        "size":"178",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Zoro Strong World",
+        "name":"Roronoa Zoro - Straw Hat Pirates' Attack",
+        "bounty":"120000000",
+        "age":"19",
+        "size":"178",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Zoro Ashura 1",
+        "name":"Roronoa Zoro - Ashura Ichibugin",
+        "bounty":"60000000",
+        "age":"19",
+        "size":"178",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Zoro East Blue",
+        "name":"Roronoa Zoro - East Blue Pirate",
+        "bounty":"0",
+        "age":"19",
+        "size":"178",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Sanji - Diable Jambe",
+        "name":"Sanji - Diable Jambe Flambe",
+        "bounty":"77000000",
+        "age":"19",
+        "size":"177",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Sanji - Strong World",
+        "name":"Sanji - Straw Hat Pirates' Attack",
+        "bounty":"77000000",
+        "age":"19",
+        "size":"177",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Vinsmoke Sanji",
+        "name":"Vinsmoke Sanji",
+        "bounty":"177000000",
+        "age":"21",
+        "size":"180",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Young Sanji",
+        "name":"Vinsmoke Sanji - Germa Resurrection Plan",
+        "bounty":"0",
+        "age":"8",
+        "size":"120",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Sanji Stampede",
+        "name":"Sanji - ONE PIECE STAMPEDE",
+        "bounty":"330000000",
+        "age":"21",
+        "size":"180",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"O-Soba Mask",
+        "name":"Soba Mask",
+        "bounty":"330000000",
+        "age":"21",
+        "size":"180",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Mr. Prince",
+        "name":"Mr. Prince - Mutton Shot",
+        "bounty":"0",
+        "age":"19",
+        "size":"177",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
     }
+
 ]

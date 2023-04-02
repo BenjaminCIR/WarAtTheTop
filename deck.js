@@ -186,9 +186,9 @@ let ccom=0
 var charaT = getDATA()
 setTimeout(function(){
     for(var i=0;i< charaT.length;i++){
-        if(cards.includes(i.toString())){
+        //if(cards.includes(i.toString())){
             make_card(charaT,i)
-        }
+        //}
     }
     
 },1000)
