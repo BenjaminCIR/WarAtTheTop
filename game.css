@@ -1,0 +1,164 @@
+body{
+    height: 100%;
+}
+
+.pic{
+    position: absolute;
+    width: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+}
+.card{
+    position: relative;
+    width:100%;
+}
+
+.bloque{
+    position: relative;
+    width:15%;
+    border: 0px solid red;
+    border-radius:20px;
+    margin:20px;
+    float:left;
+}
+
+.naming{
+    position: absolute;
+margin: 0;
+top: 55%;
+width: 100%;
+text-align: center;
+}
+.attaque{
+    position: absolute;
+margin: 0;
+top: 70%;
+width: fit-content;
+text-align: center;
+left: 16%;
+}
+.HP{
+    position: absolute;
+    margin: 0;
+    top: 64%;
+    width: fit-content;
+    text-align: center;
+    left: 16%;
+}
+
+#listee {
+    width: 39%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    height: 41%;
+    overflow:hidden;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+
+}
+
+.bloquel{
+    top:-250px;
+    position: relative;
+    width:32%;
+    float:left;
+}
+
+#newpick{
+    /*position: relative;*/
+    left: -40%;
+    width: 40%;
+    overflow: scroll;
+    height: 100%;
+    position: relative;
+}
+
+.bloque2{
+    position: relative;
+    width: 32%;
+    border: 0px solid red;
+    border-radius: 20px;
+    float: left;
+}
+
+.bloque3{
+    position: relative;
+    width: 26%;
+    border: 0px solid red;
+    border-radius: 20px;
+    margin: -33px;
+    float: left;
+    transform: scale(0.7);
+}
+
+.bloque4{
+    position: relative;
+    width: 26%;
+    border: 0px solid red;
+    border-radius: 20px;
+    float: left;
+    transform: scale(0.7);
+    margin: -33px 10px; 
+}
+
+.bloque5{
+    position: relative;
+    width: 26%;
+    border: 0px solid red;
+    border-radius: 20px;
+    margin: -33px 10px -33px -33px;
+    float: left;
+    transform: scale(0.7);
+    clear:left;
+}
+html {
+    height: 100%;
+}
+
+#fightlist{
+    position:absolute;
+    width:50%;
+    height:100%;
+    left:5%
+}
+#fightlistOP{
+    position:absolute;
+    width:50%;
+    height:100%;
+    right:5%
+}
+
+.bloque33{
+    position: relative;
+    width: 26%;
+    border: 0px solid red;
+    border-radius: 20px;
+    margin: -33px;
+    float: right;
+    transform: scale(0.7);
+}
+
+.bloque44{
+    position: relative;
+    width: 26%;
+    border: 0px solid red;
+    border-radius: 20px;
+    float: right;
+    transform: scale(0.7);
+    margin: -33px 10px; 
+}
+
+.bloque55{
+    position: relative;
+    width: 26%;
+    border: 0px solid red;
+    border-radius: 20px;
+    margin: -33px -33px -33px -10px;
+    float: right;
+    transform: scale(0.7);
+    clear:right;
+}

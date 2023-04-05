@@ -2,7 +2,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.m
 var coef = 1
 var rotating = false;
 var roat = true;
-const inertie = -0.000
+const inertie = -0.001
 var naturalrotate = inertie
 var rayonsphere =   1.7
 const mouse3 = {
@@ -132,6 +132,7 @@ fetch('https://api.api-onepiece.com/locates')
 
 
                                     tmp.addEventListener("mouseover", function(){
+                                        naturalrotate = 0
                                         for(var i=0; i< lieux.length;i++){
                                             try{
                                                 document.getElementById("lieu"+i).style.backgroundColor="#f0f0f0"
@@ -183,6 +184,7 @@ fetch('https://api.api-onepiece.com/locates')
                                     })
 
                                     tmp.addEventListener("mouseleave", function(){
+                                        naturalrotate = inertie
                                         let indx = parseInt(tmp.getAttribute("id").substring(4,tmp.getAttribute("id").length))
                                         lieux[indx].material = new THREE.MeshBasicMaterial({color:0xff0000})
                                         colo = true
@@ -243,6 +245,7 @@ function onMouseClick( event ) {
     if(lock == true){
         lock = false
         colo = true
+        naturalrotate = inertie
         try {
             lieux[selected].material = new THREE.MeshBasicMaterial({color:0xff0000})
         }catch{}
@@ -495,6 +498,7 @@ document.addEventListener('keydown', function(event) {
     }
     if (event.code == 'ArrowDown' || event.code == 'ArrowUp'){
         lock = true
+        naturalrotate = 0
         let heit = document.getElementById("lieu0").clientHeight
         for(var i=0; i< lieux.length;i++){
             try{
@@ -536,7 +540,7 @@ document.addEventListener('keydown', function(event) {
         document.getElementById("niveaux").scroll(0,-middleheit + heit*numerous)
         document.getElementById("lieu"+selected).style.backgroundColor="red"
         RtranslateLVL = true
-        if(locates[selected].sea_name == "East Blue" || locates[selected].sea_name == "South Blue" || locates[selected].sea_name == "Paradis" || locates[selected].sea_name == "Mer Blanche" || locates[selected].french_name == "Nakrowa"){
+        if((locates[selected].sea_name == "East Blue" || locates[selected].sea_name == "South Blue" || locates[selected].sea_name == "Paradis" || locates[selected].sea_name == "Mer Blanche" || locates[selected].french_name == "Nakrowa") && locates[selected].french_name != "Baltigo"){
             console.log("ptn")
             yLVL = - (1.86 + 1.58) + (lieux[selected].position.x + 1)
             xLVL = lieux[selected].position.y

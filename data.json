@@ -348,6 +348,201 @@
         "fruit_id":"0",
         "second_fruit_id":"none",
         "job":"Pirate"
+    },
+    {
+        "usagename":"Onami",
+        "name":"Onami - Alluring Ninja",
+        "bounty":"66000000",
+        "age":"20",
+        "size":"170",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Nami Stampede",
+        "name":"Nami - ONE PIECE STAMPEDE",
+        "bounty":"66000000",
+        "age":"20",
+        "size":"170",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Nami Enies Lobby",
+        "name":"Nami - Thunderbolt Tempo",
+        "bounty":"16000000",
+        "age":"18",
+        "size":"169",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Nami Alabasta",
+        "name":"Nami - Tornado Tempo",
+        "bounty":"0",
+        "age":"18",
+        "size":"169",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Nami Enies Lobby",
+        "name":"Nami - Tornado Tempo",
+        "bounty":"0",
+        "age":"18",
+        "size":"169",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Nami Strong World",
+        "name":"Nami and Billy the Thunder Bird",
+        "bounty":"16000000",
+        "age":"18",
+        "size":"169",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Jinbe- Neptune's Army Soldier",
+        "name":"Jinbe - Neptune's Army Soldier: Ryugu Kingdom",
+        "bounty":"0",
+        "age":"30",
+        "size":"301",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Jinbe- Impel Down",
+        "name":"Jinbe - Prisoner of Eternal Hell",
+        "bounty":"250000000",
+        "age":"44",
+        "size":"301",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Jinbe- Whole Cake",
+        "name":"Knight of the Sea Jinbe - Return of the Ritual Cup",
+        "bounty":"438000000",
+        "age":"46",
+        "size":"301",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Sogeking",
+        "name":"Sogeking",
+        "bounty":"30000000",
+        "age":"17",
+        "size":"174",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Usopp - Strong World",
+        "name":"Usopp - Straw Hat Pirates' Attack",
+        "bounty":"30000000",
+        "age":"17",
+        "size":"174",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Usoland",
+        "name":"Usoland",
+        "bounty":"30000000",
+        "age":"19",
+        "size":"176",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"God Usopp",
+        "name":"God Usopp",
+        "bounty":"200000000",
+        "age":"19",
+        "size":"176",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Usopp - Stampede",
+        "name":"Usopp - ONE PIECE STAMPEDE",
+        "bounty":"200000000",
+        "age":"19",
+        "size":"176",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Chopper - Strong World",
+        "name":"Chopper - Straw Hat Pirates' Attack",
+        "bounty":"50",
+        "age":"15",
+        "size":"250",
+        "fruit_id":"92",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Chopper - Monster Point",
+        "name":"Tony Tony Chopper - Post-Rampage",
+        "bounty":"50",
+        "age":"15",
+        "size":"600",
+        "fruit_id":"92",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Chopperemon",
+        "name":"Chopperemon - Ninja",
+        "bounty":"100",
+        "age":"17",
+        "size":"100",
+        "fruit_id":"92",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Chopper - Stampede",
+        "name":"Chopper - ONE PIECE STAMPEDE",
+        "bounty":"100",
+        "age":"17",
+        "size":"250",
+        "fruit_id":"92",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Chopper - Kung Fu Style",
+        "name":"Tony Tony Chopper - Kung Fu Style",
+        "bounty":"100",
+        "age":"17",
+        "size":"200",
+        "fruit_id":"92",
+        "second_fruit_id":"none",
+        "job":"Pirate"
     }
+
+
+
+
+
 
 ]

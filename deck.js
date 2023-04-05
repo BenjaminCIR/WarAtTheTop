@@ -39,8 +39,8 @@ function make_card(charaTT, identifiant){ // 9 10 11
     attaque.classList.add("attaque")
     HP.classList.add("HP")
     naming.innerText = (charaTT[identifiant]).name
-    attaque.innerText = (listeSTAT[newind])[9] 
-    HP.innerText = (listeSTAT[newind])[10]
+    attaque.innerText = charaTT[identifiant].id //(listeSTAT[newind])[9] 
+    HP.innerText = ""//(listeSTAT[newind])[10]
     bloc.append(image2)
     bloc.appendChild(image)
     bloc.appendChild(naming)

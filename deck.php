@@ -31,5 +31,6 @@
     ?>
     <script src="deck.js"></script>
     <div id="list"></div>
+    <button id="start"></button>
 </body>
 </html>
