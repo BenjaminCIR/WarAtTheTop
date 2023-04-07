@@ -39,8 +39,8 @@ function make_card(charaTT, identifiant){ // 9 10 11
     attaque.classList.add("attaque")
     HP.classList.add("HP")
     naming.innerText = (charaTT[identifiant]).name
-    attaque.innerText = (listeSTAT[newind])[9] 
-    HP.innerText = (listeSTAT[newind])[10]
+    attaque.innerText = charaTT[identifiant].id //(listeSTAT[newind])[9] 
+    HP.innerText = ""//(listeSTAT[newind])[10]
     bloc.append(image2)
     bloc.appendChild(image)
     bloc.appendChild(naming)
@@ -185,11 +185,20 @@ function getDATA(){
 let ccom=0
 var charaT = getDATA()
 setTimeout(function(){
-    let intev = setInterval(function () {
-        if(ccom >= charaT.length) clearInterval(intev) 
-        make_card(charaT, ccom)
-        ccom+=1
-    }, 100);
+    for(var i=0;i< charaT.length;i++){
+        //if(cards.includes(i.toString())){
+            make_card(charaT,i)
+        //}
+    }
+    
 },1000)
 
 
+
+/*let intev = setInterval(function () {
+        if(ccom >= charaT.length) clearInterval(intev) 
+        if(cards.includes(ccom.toString())){
+            make_card(charaT, ccom)     
+        }
+        ccom+=1
+    }, 50);*/
