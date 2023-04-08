@@ -104,7 +104,7 @@ fetch('https://api.api-onepiece.com/locates')
                             const coord = json;
                             for(var i=0; i< locates.length;i++){
                                 lieux.push(new THREE.Mesh(
-                                    new THREE.SphereGeometry(rayon,20,20),
+                                    new THREE.SphereGeometry(rayon,rayon,0.2,20),
                                     new THREE.MeshBasicMaterial({color:0xff0000})
                                 ))
                                 sphere.add(lieux[i])
@@ -113,6 +113,12 @@ fetch('https://api.api-onepiece.com/locates')
                                 let y = rayonsphere * Math.sin(coord[i].phi) * Math.sin(coord[i].theta)
                                 let z = rayonsphere * Math.cos(coord[i].theta)
                                 lieux[i].position.set(x,y,z)
+                                //lieux[i].rotation.z += (3.14)/2
+                                //lieux[i].rotation.y +=  lieux[i].position.z
+                                //console.log((5/(lieux[i].position.x)))
+                                //lieux[i].rotation.z += lieux[i].position.x
+                                
+                                
                             }
                             for(var i=0; i< lieux.length;i++){
                                 let name = "lieu" + i
@@ -295,6 +301,9 @@ function openpanel(isobj, indox){
     }
     let level = document.createElement("div")
     let name = document.createElement("p")
+    let access = document.createElement("a")
+    access.setAttribute("href","game.php?id="+indx)
+    access.innerText = "Go"
     name.innerText = locates[indx].french_name
     name.classList.add("levelname")
     level.appendChild(name)
@@ -305,6 +314,7 @@ function openpanel(isobj, indox){
     })
     level.classList.add("levelcard")
     level.appendChild(back)
+    level.appendChild(access)
     document.body.appendChild(level)
 
 }

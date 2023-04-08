@@ -11,6 +11,7 @@ var flip = 0
 var finalfighters =[]
 var countclicked2 = 0
 
+
 String.prototype.sansAccent = function(){
     var accent = [
         /[\300-\306]/g, /[\340-\346]/g, // A, a
@@ -30,11 +31,7 @@ String.prototype.sansAccent = function(){
      
     return str;
 }
-var tmp = anime({
-    targets: '.bloque',
-    borderWidth: [0, 5],
-    duration: 800
-});
+
 
 
 
@@ -47,49 +44,114 @@ function make_card(charaTT, identifiant,clickable){ // 9 10 11
     let centaine = parseInt(((charaTT[identifiant].id) - millier*1000)/100).toString().padEnd(3,'0')
     let bloc = document.createElement("div")
     bloc.setAttribute("data",identifiant)
-    bloc.classList.add("bloque")
     let naming = document.createElement("p")
     let image2 = document.createElement("img")
     let image = document.createElement("img")
     let attaque = document.createElement("p")
+    let vitesse = document.createElement("p")
     let HP = document.createElement("p")
-    image2.setAttribute("src","fut.png")
+    let crew = document.createElement("p")
+    let crewlogo = document.createElement("img")
+    let note = document.createElement("p")
+    crew.innerText = "PIRATE"
+    crewlogo.setAttribute("src","pirate.png")
+    console.log((charaTT[identifiant].name))
+    console.log(parseInt(charaTT[identifiant].crew_id))
+    if(parseInt(charaTT[identifiant].crew_id) >= 86){
+        crew.innerText = "CIVIL"
+        crewlogo.setAttribute("src","civil.png")
+    }
+    if(parseInt(charaTT[identifiant].crew_id) == 130){
+        crew.innerText = "REVOLUTIONNAIRE"
+        crewlogo.setAttribute("src","revo.png")
+    }
+    if(parseInt(charaTT[identifiant].crew_id) == 82 || parseInt(charaTT[identifiant].crew_id) == 90){
+        crew.innerText = "MARINE"
+        crewlogo.setAttribute("src","marine.png")
+    }
+
+    bloc.classList.add("bloque")
+    image2.setAttribute("src","fut2.png")
     image.setAttribute("src","https://optc-db.github.io//api/images/full/transparent/"+millier+"/"+centaine+"/"+newid+".png")
     image.classList.add("pic")
     image2.classList.add("card")
     naming.classList.add("naming")
     attaque.classList.add("attaque")
     HP.classList.add("HP")
+    crewlogo.classList.add("crewlogo")
+    vitesse.classList.add("vitesse")
+    crew.classList.add("crew")
+    note.classList.add("note")
     naming.innerText = (charaTT[identifiant]).name
     attaque.innerText = (listeSTAT[newind])[9] 
     HP.innerText = (listeSTAT[newind])[10]
+    let sizee = ((charaTT[identifiant]).size)
+    if(sizee == "") sizee = "175"
+    vitesse.innerText = parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))
+    let tmpp = (parseInt(0.01*((listeSTAT[newind])[9] )**2 + parseInt( (listeSTAT[newind])[10])**2  +parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))))/3
+    if(tmpp >= 5000 && tmpp <= 50000){
+        image2.setAttribute("src","fut3.png")
+        //bloc.style.color = "white"
+    }
+    if(tmpp >= 50000 && tmpp <= 100000){
+        image2.setAttribute("src","fut4.png")
+        bloc.style.color = "white"
+    }
+    if(tmpp >= 100000 && tmpp <= 200000){
+        image2.setAttribute("src","fut5.png")
+        bloc.style.color = "white"
+    }
+    if(tmpp >= 200000 && tmpp <= 300000){
+        image2.setAttribute("src","fut6.png")
+        bloc.style.color = "white"
+    }
+    if(tmpp > 300000){
+        naming.style.color = "#fec832"
+        image2.setAttribute("src","fut7.png")
+        anime({
+            targets:naming,
+            endDelay: 1000,
+            easing: 'easeInOutQuad',
+            direction: 'alternate',
+            loop: true,
+            color :"#f6363a"
+
+        })
+    }
+    note.innerText = parseInt(tmpp).toString()
     bloc.append(image2)
     bloc.appendChild(image)
     bloc.appendChild(naming)
     bloc.append(attaque)
     bloc.append(HP)
+    bloc.append(vitesse)
+    bloc.append(crew)
+    bloc.append(crewlogo)
+    //bloc.append(note)
     if(clickable){
         bloc.addEventListener("click",function(){
             if(clicked[identifiant] == false){
+                console.log("1")
                 countclicked+=1
                 anime({
                     targets: bloc,
-                    borderWidth: [0, 5],
-                    duration: 800,
-                    margin:"10px",
+                    borderColor: ['rgb(255, 255, 255)','#e3bc5c'],
+                    //easing:'easeInOutExpo',
+                    duration:600,
+                    borderRadius:[0,15]
                 });
                 clicked[identifiant] = true
             }
             else{
+                console.log("2")
                 countclicked -=1
                 anime({
-                    margin:"20px",
                     targets: bloc,
-                    borderWidth: [5, 0],
-                    duration: 200,
-                    easing: 'linear'
+                    borderColor: ['#e3bc5c','rgb(255, 255,255)'],
+                    //easing:'easeInOutExpo',
+                    duration:600,
+                    borderRadius:[15,0]
                 })
-                tmp.play()
                 clicked[identifiant] = false
             }
             if(countclicked == 15){
@@ -100,6 +162,7 @@ function make_card(charaTT, identifiant,clickable){ // 9 10 11
             }
         })
     }
+
     return bloc
 }
 
@@ -167,7 +230,8 @@ function getDATA(){
                             size : (data[i]).size,
                             fruit : (data[i]).fruit_id,
                             fruit2 : (data[i]).second_fruit_id,
-                            job : (data[i]).job
+                            job : (data[i]).job,
+                            crew_id:(data[i]).crew_id
                         })
                         break;
                     }
@@ -238,9 +302,10 @@ function getDATA(){
 
 let ccom=0
 var charaT = getDATA()
+console.log(charaT)
 setTimeout(function(){
     for(var i=0;i< charaT.length;i++){
-        if(cards.includes(i.toString())){
+        if(cards.includes((charaT[i].id).toString())){
             let bloc = make_card(charaT,i,true)
             document.getElementById("list").appendChild(bloc)
             clicked[i] = false
@@ -438,8 +503,9 @@ function game(){
     anime({
         targets:newpick,
         translateX:620,
-        duration:1500,
-        delay:3*900
+        duration:700,
+        delay:3*900,
+        easing: 'easeInOutExpo'
     })
 
     
@@ -489,6 +555,13 @@ function startgame(){
         }
         document.getElementById("fightlist").appendChild(cart)
     }
+
+    anime({
+        targets:t,
+        translateX:[-500,0],
+        duration:700,
+        easing: 'easeInOutExpo'
+    })
     fetch('./game.json',{method:'GET'})
                 .then(res => res.json())
                 .then(json => {
@@ -496,23 +569,29 @@ function startgame(){
                     let opolvl = opponents[0]
                     console.log(opolvl)
                     console.log(opolvl[0])
-                    for(var i=0; i<opolvl.length;i++){
+                    for(var i=1; i<opolvl.length;i++){
                         let cart = make_card(charaT,opolvl[i],false)
-                        if(i == 0 || i == 4){
-                            if(i==4)cart.style.clear ="right"
+                        if(i == 1 || i == 5){
+                            if(i==5)cart.style.clear ="right"
                             cart.classList.add("bloque44")
                             cart.classList.remove("bloque")
                         }
-                        if(i == 1 || i == 3 || i == 5){
+                        if(i == 2 || i == 4 || i == 6){
                             cart.classList.add("bloque33")
                             cart.classList.remove("bloque")
                         }
-                        if(i == 2){
+                        if(i == 3){
                             cart.classList.add("bloque55")
                             cart.classList.remove("bloque")
                         }
                         document.getElementById("fightlistOP").appendChild(cart)
                     }
+                    anime({
+                        targets:t2,
+                        translateX:[500,0],
+                        duration:700,
+                        easing: 'easeInOutExpo'
+                    })
 
                     
     })
