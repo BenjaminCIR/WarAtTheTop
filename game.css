@@ -16,17 +16,36 @@ body{
 
 .bloque{
     position: relative;
-    width: 15%;
+    width: 21%;
     border: 5px double white;
-    /*background:linear-gradient(0deg,#d7b050,#999,#1b1b1b,#001f40,#2533ae,#f1eab4);*/
     border-radius: 20px;
     margin: 10px;
     float: left;
     padding: 2px;
 }
 
+#start, #startgame, #facile{
+    position:absolute;
+    right:0
+}
+
+#start{
+    top:0;
+}
+
+#facile{
+    top:50%;
+}
 
 
+#list{
+    position: relative;
+width: 70%;
+left: 0%;
+overflow: scroll;
+top: 5%;
+height: 100%;
+}
 .naming{
     position: absolute;
 margin: 0;

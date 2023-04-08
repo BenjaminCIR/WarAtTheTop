@@ -336,9 +336,7 @@ function game(){
 
     let tmp = 10
 
-    for(var i=0; i<tmp; i++){
-        erase_childs(document.getElementById("list"))
-    }
+    document.body.removeChild(document.getElementById("list"))
     
     var threerandom = []
     console.log(Math.floor(Math.random() * 16))
@@ -400,7 +398,7 @@ function game(){
     newpick.setAttribute("id","newpick")
     let compt=0;
     for(var g=0;g< charaT.length;g++){
-        if(cards.includes(g.toString()) && !(threerandom.includes(g))    ){
+        if(cards.includes(charaT[g].id.toString()) && !(threerandom.includes(g))    ){
             console.log("ok")
             let blocc = make_card(charaT,g,false)
             clicked2[g] = false
@@ -537,6 +535,8 @@ function startgame(){
             finalfighters.push(i)
         }
     }
+
+    console.log(finalfighters)
 
     for(var i=0; i<finalfighters.length;i++){
         let cart = make_card(charaT,finalfighters[i],false)
