@@ -7,9 +7,14 @@ var clicked = []
 var clicked2 = []
 var countclicked = 0
 var flip = 0
+var charaT = []
 
 var finalfighters =[]
 var countclicked2 = 0
+
+var isdeckclicked = -1
+
+var isattacking = -1
 
 
 String.prototype.sansAccent = function(){
@@ -37,7 +42,7 @@ String.prototype.sansAccent = function(){
 
 
 
-function make_card(charaTT, identifiant,clickable){ // 9 10 11
+function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
     let newind = (charaTT[identifiant]).id -1
     let newid = ((charaTT[identifiant]).id).toString().padStart(4,'0')
     let millier = parseInt((charaTT[identifiant].id) / 1000).toString()
@@ -88,7 +93,7 @@ function make_card(charaTT, identifiant,clickable){ // 9 10 11
     let sizee = ((charaTT[identifiant]).size)
     if(sizee == "") sizee = "175"
     vitesse.innerText = parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))
-    let tmpp = (parseInt(0.01*((listeSTAT[newind])[9] )**2 + parseInt( (listeSTAT[newind])[10])**2  +parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))))/3
+    let tmpp = (parseInt(0.01*((listeSTAT[newind])[9] )**2 + parseInt( (listeSTAT[newind])[10])**2  +parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))**(1)))/3
     if(tmpp >= 5000 && tmpp <= 50000){
         image2.setAttribute("src","fut3.png")
         //bloc.style.color = "white"
@@ -301,7 +306,9 @@ function getDATA(){
 }
 
 let ccom=0
-var charaT = getDATA()
+charaT = getDATA()
+
+
 console.log(charaT)
 setTimeout(function(){
     for(var i=0;i< charaT.length;i++){
@@ -310,6 +317,57 @@ setTimeout(function(){
             document.getElementById("list").appendChild(bloc)
             clicked[i] = false
         }
+    }
+
+    for(var y = 0; y < decks.length; y+=1){
+        let dek = document.querySelector(".cdeck[data=deck"+y+"]")  
+        dek.style.top = y*20 +"%"
+        dek.addEventListener("click",function(){
+            let idx = parseInt(dek.getAttribute("data").substring(4,dek.getAttribute("data").length))
+            if(isdeckclicked == -1 || isdeckclicked == idx){
+                console.log(dek.getAttribute("data"))
+                let dekjs = decks[idx].split(",")
+
+                for(var ko=0; ko< dekjs.length;ko++){
+                    let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjs[ko]))
+                    console.log(ix)
+                    document.querySelector(".bloque[data='"+ix+"']").click()
+                }
+                isdeckclicked = idx;
+            }
+            else{
+                let dekjsUC = decks[isdeckclicked].split(",")
+
+                for(var ko=0; ko< dekjsUC.length;ko++){
+                    let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjsUC[ko]))
+                    document.querySelector(".bloque[data='"+ix+"']").click()
+                }
+
+                let dekjs = decks[idx].split(",")
+
+                for(var ko=0; ko< dekjs.length;ko++){
+                    let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjs[ko]))
+                    document.querySelector(".bloque[data='"+ix+"']").click()
+                }
+                isdeckclicked = idx;
+
+            }
+        })
+        let dekjs = decks[y].split(",")
+    
+        for(var l = 1; l < dekjs.length; l++){
+            console.log(dekjs[l])
+            let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjs[l]))
+            console.log(ix)
+            let carto = make_card(charaT,ix,false,true)
+            carto.classList.remove("bloque")
+            carto.classList.add("bloquedeck")
+            carto.style.left = (l-1)*5+("%")
+            carto.style.border = "none" 
+            dek.appendChild(carto)
+        
+        }
+    
     }
     
 },1000)
@@ -325,6 +383,104 @@ function erase_childs(node){
  
 }
 
+
+function setTarget(e){
+    let cart = e.target.parentElement
+    let blank = cart.cloneNode(true)
+    blank.style.opacity = "0"
+    blank.setAttribute("id","blank")
+    isattacking = cart
+    console.log(cart)
+    for (var arr=[], i=document.getElementById("fightlist").children.length; i;) arr[--i] = document.getElementById("fightlist").children[i];
+    let pos = arr.indexOf(cart)
+    document.getElementById("fightlist").children[pos-1].after(blank)
+    cart.style.position ="absolute"
+    cart.style.left = (pos%2)*22+"%"
+    cart.style.top = parseInt(pos/2)*30 +"%"
+
+
+    anime({
+        targets:cart,
+        width : "30%",
+        zIndex: "2",
+        fontSize : "100%",
+        float: "none",
+        top:"50%",
+        left: "50%",
+        translateX: "-50%",
+        translateY:"-50%",
+        delay:100
+    })
+    
+    for(var card = 0; card < 6;card++){
+        if(document.getElementById("fightlist").children[card] != cart && document.getElementById("fightlist").children[card].getAttribute("id") != "blank"){
+            document.getElementById("fightlist").children[card].removeEventListener("click",setTarget)
+            anime({
+                targets:document.getElementById("fightlist").children[card],
+                opacity:0.3
+            })
+        }
+    }
+
+    for(var card = 0; card < 6;card++){
+        let targ = document.getElementById("fightlistOP").children[card]
+        targ.addEventListener("click",betarget)
+    }
+}
+
+
+function betarget(e){
+    let targ = e.target.parentElement
+    for (var arr=[], i=document.getElementById("fightlistOP").children.length; i;) arr[--i] = document.getElementById("fightlistOP").children[i];
+    let pos = arr.indexOf(targ)
+    console.log(pos)
+
+    anime({
+        targets:isattacking,
+        translateX:["-50%","260%"],
+        translateY:["-50%", (  -50 + (   ( parseInt(pos/2) - 1 )   *   70   ) +"%")],
+        direction: 'alternate',
+        loop:2,
+        duration:700,
+        easing:'easeInOutExpo'
+    })
+
+    setTimeout(function(){
+        isattacking.style.position = "relative"
+        document.getElementById("fightlist").removeChild(document.getElementById("blank"))
+        isattacking.style.left = (pos%2)*22+"%"
+        isattacking.style.top = parseInt(pos/2)*30 +"%"
+
+        anime({
+            targets:isattacking,
+            width : "26%",
+            zIndex: "0",
+            fontSize : "100%",
+            float: "left",
+            top:"0%",
+            left: "0%",
+            translateX:["-50%","0%"],
+            translateY:['-50%',"0%"],
+            scale:"0.7",
+            easing:"easeInOutExpo"
+        })
+
+        for(var card = 0; card < 6;card++){
+            if(document.getElementById("fightlist").children[card] != isattacking){
+                document.getElementById("fightlist").children[card].removeEventListener("click",setTarget)
+                anime({
+                    targets:document.getElementById("fightlist").children[card],
+                    opacity:1
+                })
+            }
+        }
+    },1400)
+    
+
+
+}
+
+
 function game(){
     document.body.style.overflow = "hidden"
     let cartees = []
@@ -337,6 +493,7 @@ function game(){
     let tmp = 10
 
     document.body.removeChild(document.getElementById("list"))
+    document.body.removeChild(document.getElementById("decks"))
     
     var threerandom = []
     console.log(Math.floor(Math.random() * 16))
@@ -520,6 +677,7 @@ document.getElementById("facile").addEventListener("click",function(){
 
 
 function startgame(){
+    let orderfight = []
     document.body.removeChild(document.getElementById("listee"))
     document.body.removeChild(document.getElementById("newpick"))
     console.log("ok")
@@ -537,9 +695,13 @@ function startgame(){
     }
 
     console.log(finalfighters)
-
+    let ofight = []
     for(var i=0; i<finalfighters.length;i++){
         let cart = make_card(charaT,finalfighters[i],false)
+        ofight.push({
+            id:finalfighters[i],
+            vit: parseInt(cart.children[5].innerHTML)
+        })
         if(i == 0 || i == 4){
             if(i==4)cart.style.clear ="left"
             cart.classList.add("bloque4")
@@ -554,6 +716,7 @@ function startgame(){
             cart.classList.remove("bloque")
         }
         document.getElementById("fightlist").appendChild(cart)
+        cart.addEventListener("click",setTarget)
     }
 
     anime({
@@ -562,6 +725,14 @@ function startgame(){
         duration:700,
         easing: 'easeInOutExpo'
     })
+
+    ofight.sort((a, b) => b.vit - a.vit)
+    console.log(ofight)
+
+
+ 
+    
+
     fetch('./game.json',{method:'GET'})
                 .then(res => res.json())
                 .then(json => {
@@ -569,8 +740,15 @@ function startgame(){
                     let opolvl = opponents[0]
                     console.log(opolvl)
                     console.log(opolvl[0])
+                    let ofight2 = []
                     for(var i=1; i<opolvl.length;i++){
                         let cart = make_card(charaT,opolvl[i],false)
+
+                        ofight2.push({
+                            id:opolvl[i],
+                            vit: parseInt(cart.children[5].innerHTML)
+                        })
+
                         if(i == 1 || i == 5){
                             if(i==5)cart.style.clear ="right"
                             cart.classList.add("bloque44")
@@ -593,9 +771,49 @@ function startgame(){
                         easing: 'easeInOutExpo'
                     })
 
+                    ofight2.sort((a, b) => b.vit - a.vit)
+                    
+                    let firstfight = -1
+
+                    if(ofight[0].vit > ofight2[0].vit){
+                        firstfight = 0
+                    }
+                    else firstfight = 1
+
+                    if(firstfight==0){
+                        for(let b = 0; b < 12;b++){
+                            if(b%2==0){
+                                orderfight.push(ofight[b/2].id)
+                            }
+                            else{
+                                orderfight.push(ofight2[(b-1)/2].id)
+                            }
+
+                
+                        }
+                    }
+                    else{
+                        for(let b = 0; b < 12;b++){
+                            if(b%2==0){
+                                orderfight.push(ofight2[b/2].id)
+                            }
+                            else{
+                                orderfight.push(ofight[(b-1)/2].id)
+                            }
+
+                
+                        } 
+                    }
+                    console.log(orderfight)
+
                     
     })
 }
+
+//console.log(charaT)
+
+
+
 document.getElementById("start").addEventListener("click",game)
 document.getElementById("startgame").addEventListener("click",startgame)
 /*let intev = setInterval(function () {

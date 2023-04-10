@@ -14,6 +14,29 @@ body{
     width:100%;
 }
 
+.bloquedeck{
+    position: absolute;
+    width: 21%;
+    border: 5px double white;
+    border-radius: 20px;
+    margin: 10px;
+    float: left;
+    padding: 2px;
+    z-index:0;
+    font-size: 50%;
+}
+
+.bloquedeck:hover{
+    z-index:2;
+}
+
+#decks{
+    float: right;
+    width: 30%;
+    top: 5%;
+    position: relative;
+    height: 100%;
+}
 .bloque{
     position: relative;
     width: 21%;
@@ -37,14 +60,22 @@ body{
     top:50%;
 }
 
+.cdeck{
+    position: relative;
+    height: fit-content;
+    width: 100%;  
+}
+
+
 
 #list{
     position: relative;
-width: 70%;
-left: 0%;
-overflow: scroll;
-top: 5%;
-height: 100%;
+    width: 70%;
+    left: 0%;
+    overflow: scroll;
+    top: 5%;
+    height: 100%;
+    float: left;
 }
 .naming{
     position: absolute;
@@ -135,6 +166,8 @@ left: 16%;
     float:left;
 }
 
+
+
 #newpick{
     /*position: relative;*/
     left: -40%;
@@ -158,10 +191,12 @@ left: 16%;
     border: 0px solid red;
     border-radius: 20px;
     float: left;
+    z-index:0;
 }
 
 .bloque3{
     position: relative;
+    z-index:0;
     width: 26%;
     border: 0px solid red;
     border-radius: 20px;
@@ -170,7 +205,11 @@ left: 16%;
     transform: scale(0.7);
 }
 
+
+
+
 .bloque4{
+    z-index:0;
     position: relative;
     width: 26%;
     border: 0px solid red;
@@ -181,6 +220,7 @@ left: 16%;
 }
 
 .bloque5{
+    z-index:0;
     position: relative;
     width: 26%;
     border: 0px solid red;
@@ -208,6 +248,7 @@ html {
 }
 
 .bloque33{
+    z-index:0;
     position: relative;
     width: 26%;
     border: 0px solid red;
@@ -218,6 +259,7 @@ html {
 }
 
 .bloque44{
+    z-index:0;
     position: relative;
     width: 26%;
     border: 0px solid red;
@@ -228,6 +270,7 @@ html {
 }
 
 .bloque55{
+    z-index:0;
     position: relative;
     width: 26%;
     border: 0px solid red;

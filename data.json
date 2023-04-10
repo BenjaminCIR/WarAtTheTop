@@ -163,7 +163,17 @@
         "usagename":"Luffy Snakeman",
         "name":"Monkey D. Luffy - Gear Four: Snakeman",
         "bounty":"300000",
-        "age":"17",
+        "age":"19",
+        "size":"170",
+        "fruit_id":"1",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Luffy Boundman",
+        "name":"Monkey D. Luffy - Gear Four: Bounceman",
+        "bounty":"300000",
+        "age":"19",
         "size":"170",
         "fruit_id":"1",
         "second_fruit_id":"none",

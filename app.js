@@ -337,6 +337,8 @@ const renderer = new THREE.WebGLRenderer({ alpha: true } )
 renderer.setSize(innerWidth,innerHeight)
 document.body.appendChild(renderer.domElement)
 
+
+
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(rayonsphere,50,50),
     new THREE.MeshBasicMaterial({
@@ -344,6 +346,7 @@ const sphere = new THREE.Mesh(
 }))
 sphere.position.x = 3
 sphere.rotation.y-= (1.86 + 1.58)
+sphere.castShadow = true;
 scene.add(sphere)
 
 
