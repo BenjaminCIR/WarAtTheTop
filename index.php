@@ -31,7 +31,7 @@
 			
 		?>
 
-		<header>
+		<header>		
 			<form action="" method="post">
 				<input type="text" name="login" id="login" placeholder="Pseudo">
 				<input type="text" name="password" id="password" placeholder="Mot de Passe">
