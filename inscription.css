@@ -2,7 +2,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 5;
     color: #fff;
-    background-image: url("mainback1.png");
+    background-image: url("./mainback1.png");
     background-position: center;
     background-size: contain;
 }

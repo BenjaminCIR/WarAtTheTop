@@ -14,6 +14,15 @@ body{
     width:100%;
 }
 
+.dead{
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 40%;
+    opacity:0;
+}
+
 .bloquedeck{
     position: absolute;
     width: 21%;
@@ -99,7 +108,7 @@ text-align: center;
 .attaque{
     position: absolute;
 margin: 0;
-top: 70%;
+top: 64%;
 width: fit-content;
 text-align: center;
 left: 16%;
@@ -107,7 +116,7 @@ left: 16%;
 .HP{
     position: absolute;
     margin: 0;
-    top: 64%;
+    top: 70%;
     width: fit-content;
     text-align: center;
     left: 16%;
@@ -146,8 +155,8 @@ left: 16%;
 
 
 #listee {
-    width: 39%;
-    left: 50%;
+    width: 49%;
+    left: 47%;
     top: 50%;
     transform: translate(-50%,-50%);
     position: absolute;
@@ -162,15 +171,16 @@ left: 16%;
 .bloquel{
     top:-250px;
     position: relative;
-    width:32%;
+    width:25%;
     float:left;
+    margin:20px
 }
 
 
 
 #newpick{
     /*position: relative;*/
-    left: -40%;
+    left: -47%;
     width: 40%;
     overflow: scroll;
     height: 100%;

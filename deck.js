@@ -66,7 +66,8 @@ function getDATA(){
     fetch('https://optc-db.github.io/common/data/units.js',{method:'GET'})
                 .then(res => res.text())
                 .then(text => {
-                    const stats = "listeSTAT" +  text.substring(13,text.length - 74467)
+                    let position = text.search("var calcGhostStartID")
+                    const stats = "listeSTAT" +  text.substring(13,position)
                     eval(stats)              
     })
 

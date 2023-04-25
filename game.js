@@ -1,8 +1,11 @@
 import anime from 'https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.es.js';
 
+
+
 var listeALIASES = []
 var listeSTAT = []
 
+var orderfight = []
 var clicked = []
 var clicked2 = []
 var countclicked = 0
@@ -15,6 +18,13 @@ var countclicked2 = 0
 var isdeckclicked = -1
 
 var isattacking = -1
+
+var fin = false
+var fintour = false
+var tour = 0
+
+var offset1 = 0
+var offset2 = 0
 
 
 String.prototype.sansAccent = function(){
@@ -88,8 +98,8 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
     crew.classList.add("crew")
     note.classList.add("note")
     naming.innerText = (charaTT[identifiant]).name
-    attaque.innerText = (listeSTAT[newind])[9] 
-    HP.innerText = (listeSTAT[newind])[10]
+    attaque.innerText = (listeSTAT[newind])[10] 
+    HP.innerText = (listeSTAT[newind])[9]
     let sizee = ((charaTT[identifiant]).size)
     if(sizee == "") sizee = "175"
     vitesse.innerText = parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))
@@ -188,8 +198,9 @@ function getDATA(){
     fetch('https://optc-db.github.io/common/data/units.js',{method:'GET'})
                 .then(res => res.text())
                 .then(text => {
-                    const stats = "listeSTAT" +  text.substring(13,text.length - 74467)
-                    eval(stats)              
+                    let position = text.search("var calcGhostStartID")
+                    const stats = "listeSTAT" +  text.substring(13,position)
+                    eval(stats)            
     })
 
     
@@ -305,7 +316,7 @@ function getDATA(){
     return (chara)
 }
 
-let ccom=0
+
 charaT = getDATA()
 
 
@@ -384,8 +395,196 @@ function erase_childs(node){
 }
 
 
+
+
+
+function setTargetOP(e){
+    let cart = e//.target.parentElement
+    let blank = cart.cloneNode(true)
+    blank.style.opacity = "0"
+    blank.setAttribute("id","blank")
+    isattacking = cart
+    console.log(cart)
+    for (var arr=[], i=document.getElementById("fightlistOP").children.length; i;) arr[--i] = document.getElementById("fightlistOP").children[i];
+    let pos = arr.indexOf(cart)
+    if(pos == 0){
+        document.getElementById("fightlistOP").prepend(blank)
+    }
+    else{
+        document.getElementById("fightlistOP").children[pos-1].after(blank)
+    }
+    console.log(pos)
+    cart.style.position ="absolute"
+    cart.style.right = (pos%2)*22+"%"
+    cart.style.top = parseInt(pos/2)*30 +"%"
+    cart.style.zIndex = "2"
+    
+    anime({
+        targets:cart,
+        width : "30%",
+        //zIndex: "2",
+        fontSize : "100%",
+        float: "none",
+        top:"50%",
+        right: "50%",
+        translateX: "50%",
+        translateY:"-50%",
+        scale:"1",
+        delay:100
+    })
+    
+    for(var card = 0; card <= 6;card++){
+        if(document.getElementById("fightlistOP").children[card] != cart && document.getElementById("fightlistOP").children[card].getAttribute("id") != "blank"){
+            document.getElementById("fightlistOP").children[card].removeEventListener("click",setTarget)
+            anime({
+                targets:document.getElementById("fightlistOP").children[card],
+                opacity:0.3
+            })
+        }
+    }
+
+    setTimeout(function(){
+        let targ = document.getElementById("fightlist").children[Math.floor(Math.random() * 6)]
+        while(targ.children[4].innerHTML == "0"){
+            targ = document.getElementById("fightlist").children[Math.floor(Math.random() * 6)]
+        }
+        betargetOP(targ)
+    },750)
+}
+
+
+function betargetOP(e){
+
+    
+    for(var card = 0; card < 6;card++){
+        let targ = document.getElementById("fightlist").children[card]
+        targ.removeEventListener("click",betargetOP)
+    }
+
+    
+
+
+    let targ = e
+    for (var arr=[], i=document.getElementById("fightlist").children.length; i;) arr[--i] = document.getElementById("fightlist").children[i];
+    let pos = arr.indexOf(targ)
+    console.log(pos)
+
+    for (var arr2=[], i=document.getElementById("fightlistOP").children.length; i;) arr2[--i] = document.getElementById("fightlistOP").children[i];
+    let posin = arr2.indexOf(isattacking) - 1
+
+    anime({
+        targets:isattacking,
+        translateX:["50%",-(260+ ((pos+1)%2)*60)+"%"],
+        translateY:["-50%", (  -50 + (   ( parseInt(pos/2) - 1 )   *   70   ) +"%")],
+        direction: 'alternate',
+        loop:2,
+        duration:700,
+        easing:'easeInOutExpo'
+    })
+
+    setTimeout(function(){
+        let tmp = parseInt(e.children[4].innerHTML)
+        console.log(isattacking.children[3])
+        console.log(tmp)
+        let col = e.style.color
+        if(col == "") col = 'rgb(0,0,0)'
+        else col = 'rgb(255,255,255)'
+        console.log(col)
+        let tmp2 = tmp-parseInt(isattacking.children[3].innerHTML)
+        if(tmp2 < 0){
+            tmp2 = 0
+            anime({
+                targets:e,
+                opacity:0.3,
+                duration:300
+            })
+            console.log(orderfight.findIndex((a) => a == parseInt(e.getAttribute("data"))))
+            orderfight[orderfight.findIndex((a) => a == parseInt(e.getAttribute("data")))] = -1
+            let deadaf = document.createElement("img")
+            deadaf.classList.add("dead")
+            deadaf.setAttribute("src","dead.png")
+            setTimeout(function(){
+                console.log(e)
+                e.appendChild(deadaf)
+                anime({
+                    targets:deadaf,
+                    easing: 'easeInOutSine',
+                    opacity:1,
+                    duration:300
+                })
+            },300)
+        } 
+        anime({
+            targets:e.children[4],
+            innerHTML:[tmp,tmp2],
+            easing: 'linear',
+            round: 1
+        }) 
+
+        anime({
+            targets:e.children[4],
+            color:[col,'rgb(255, 0, 0)'],
+            direction:'alternate',
+            loop:2,
+        })
+    },700)
+    
+    setTimeout(function(){
+        console.log(isattacking)
+        console.log(isattacking.style.top)
+        isattacking.style.position = "relative"
+        isattacking.style.right = "0%"
+        isattacking.style.top = "0%"
+
+
+        document.getElementById("fightlistOP").removeChild(document.getElementById("blank"))
+        fintour = true
+
+        
+    },2450)
+
+    setTimeout(function(){
+
+        let rit = 27
+        if(posin == 3) rit = 20
+
+        anime({
+            targets:isattacking,
+            width : "26%",
+            zIndex: "0",
+            fontSize : "100%",
+            float: "right",
+            top:parseInt(posin/2)*30 +"%",
+            right: (posin%2)*rit+"%",
+            translateX:["50%","0%"],
+            translateY:['-50%',"0%"],
+            scale:"0.7",
+            easing:"easeInOutExpo"
+        })
+
+       
+
+        for(var card = 0; card <= 6;card++){
+            if(document.getElementById("fightlistOP").children[card] != isattacking && document.getElementById("fightlistOP").children[card] !=  document.getElementById("blank") && document.getElementById("fightlistOP").children[card].childElementCount < 9){
+                
+                anime({
+                    targets:document.getElementById("fightlistOP").children[card],
+                    opacity:1
+                })
+            }
+        }
+    },1400)
+ 
+    
+
+
+}
+
+
+
+
 function setTarget(e){
-    let cart = e.target.parentElement
+    let cart = e//.target.parentElement
     let blank = cart.cloneNode(true)
     blank.style.opacity = "0"
     blank.setAttribute("id","blank")
@@ -393,26 +592,32 @@ function setTarget(e){
     console.log(cart)
     for (var arr=[], i=document.getElementById("fightlist").children.length; i;) arr[--i] = document.getElementById("fightlist").children[i];
     let pos = arr.indexOf(cart)
-    document.getElementById("fightlist").children[pos-1].after(blank)
+    if(pos == 0){
+        document.getElementById("fightlist").prepend(blank)
+    }
+    else{
+        document.getElementById("fightlist").children[pos-1].after(blank)
+    }
     cart.style.position ="absolute"
     cart.style.left = (pos%2)*22+"%"
     cart.style.top = parseInt(pos/2)*30 +"%"
-
+    cart.style.zIndex = "2"
 
     anime({
         targets:cart,
         width : "30%",
-        zIndex: "2",
+        //zIndex: "2",
         fontSize : "100%",
         float: "none",
         top:"50%",
         left: "50%",
         translateX: "-50%",
         translateY:"-50%",
+        scale:"1",
         delay:100
     })
     
-    for(var card = 0; card < 6;card++){
+    for(var card = 0; card <= 6;card++){
         if(document.getElementById("fightlist").children[card] != cart && document.getElementById("fightlist").children[card].getAttribute("id") != "blank"){
             document.getElementById("fightlist").children[card].removeEventListener("click",setTarget)
             anime({
@@ -424,20 +629,30 @@ function setTarget(e){
 
     for(var card = 0; card < 6;card++){
         let targ = document.getElementById("fightlistOP").children[card]
-        targ.addEventListener("click",betarget)
+        if(targ.children[4].innerHTML != "0")  targ.addEventListener("click",betarget)
     }
 }
 
 
 function betarget(e){
+
+    for(var card = 0; card < 6;card++){
+        let targ = document.getElementById("fightlistOP").children[card]
+        targ.removeEventListener("click",betarget)
+    }
+
+    
     let targ = e.target.parentElement
     for (var arr=[], i=document.getElementById("fightlistOP").children.length; i;) arr[--i] = document.getElementById("fightlistOP").children[i];
     let pos = arr.indexOf(targ)
     console.log(pos)
 
+    for (var arr2=[], i=document.getElementById("fightlist").children.length; i;) arr2[--i] = document.getElementById("fightlist").children[i];
+    let posin = arr2.indexOf(isattacking) - 1
+
     anime({
         targets:isattacking,
-        translateX:["-50%","260%"],
+        translateX:["-50%",(260+ ((pos+1)%2)*60)+"%"],
         translateY:["-50%", (  -50 + (   ( parseInt(pos/2) - 1 )   *   70   ) +"%")],
         direction: 'alternate',
         loop:2,
@@ -445,11 +660,78 @@ function betarget(e){
         easing:'easeInOutExpo'
     })
 
+
     setTimeout(function(){
+        let tmp = parseInt(targ.children[4].innerHTML)
+        let tmp2 = tmp-parseInt(isattacking.children[3].innerHTML)
+        if(tmp2 < 0) {
+            tmp2 = 0
+            anime({
+                targets:targ,
+                opacity:0.3,
+                duration:300
+            })
+            console.log(parseInt(targ.getAttribute("data")))
+            console.log(orderfight)
+            orderfight[orderfight.findIndex((a) => a == parseInt(targ.getAttribute("data")))] = -1
+            console.log(orderfight)
+            let deadaf = document.createElement("img")
+            deadaf.classList.add("dead")
+            deadaf.setAttribute("src","dead.png")
+            setTimeout(function(){
+
+                targ.appendChild(deadaf)
+                anime({
+                    targets:deadaf,
+                    easing: 'easeInOutSine',
+                    opacity:1,
+                    duration:300
+                })
+            },300)
+            
+        }
+        console.log(isattacking.children[3])
+        console.log(tmp)
+        let col = targ.style.color
+        if(col == "") col = 'rgb(0,0,0)'
+        else col = 'rgb(255,255,255)'
+        console.log(col)
+        anime({
+            targets:targ.children[4],
+            innerHTML:[tmp,tmp2],
+            easing: 'linear',
+            round: 1
+        }) 
+
+        anime({
+            targets:targ.children[4],
+            color:[col,'rgb(255, 0, 0)'],
+            direction:'alternate',
+            loop:2,
+        })
+    },700)
+
+
+    setTimeout(function(){
+        console.log(isattacking)
+        console.log(isattacking.style.top)
         isattacking.style.position = "relative"
+        isattacking.style.left = "0%"
+        isattacking.style.top = "0%"
+
+
         document.getElementById("fightlist").removeChild(document.getElementById("blank"))
-        isattacking.style.left = (pos%2)*22+"%"
-        isattacking.style.top = parseInt(pos/2)*30 +"%"
+        fintour = true
+
+        
+    },2450)
+
+    setTimeout(function(){
+
+      
+        let rit = 29
+        if(posin == 3) rit = 22
+        
 
         anime({
             targets:isattacking,
@@ -457,17 +739,19 @@ function betarget(e){
             zIndex: "0",
             fontSize : "100%",
             float: "left",
-            top:"0%",
-            left: "0%",
+            top:parseInt(posin/2)*30 +"%",
+            left: (posin%2)*rit+"%",
             translateX:["-50%","0%"],
             translateY:['-50%',"0%"],
             scale:"0.7",
             easing:"easeInOutExpo"
         })
 
-        for(var card = 0; card < 6;card++){
-            if(document.getElementById("fightlist").children[card] != isattacking){
-                document.getElementById("fightlist").children[card].removeEventListener("click",setTarget)
+       
+
+        for(var card = 0; card <= 6;card++){
+            if(document.getElementById("fightlist").children[card] != isattacking && document.getElementById("fightlist").children[card] !=  document.getElementById("blank") && document.getElementById("fightlist").children[card].childElementCount < 9){
+                document.getElementById("fightlist").children[card].addEventListener("click",setTarget)
                 anime({
                     targets:document.getElementById("fightlist").children[card],
                     opacity:1
@@ -475,7 +759,7 @@ function betarget(e){
             }
         }
     },1400)
-    
+ 
 
 
 }
@@ -593,12 +877,12 @@ function game(){
                     let tmp = make_card(charaT,newindx,false)
                     tmp.classList.remove("bloque")
                     tmp.classList.add("bloquel")
-                    tmp.style.transform = "translateY(-250px)"
+                    tmp.style.transform = "translateY(-320px)"
                     tmp.addEventListener("click",function(){
                         let dat = tmp.getAttribute("data")
                         anime({
                             targets:tmp,
-                            width:["32%","40%"],
+                            width:["25%","40%"],
                             easing: 'easeInOutSine',
                             duration:250,
                             opacity:0
@@ -631,7 +915,7 @@ function game(){
                     horizontal.appendChild(tmp)
                     anime({
                         targets:tmp,
-                        width:["40%","32%"],
+                        width:["40%","25%"],
                         easing: 'easeInOutSine',
                         duration:250
                     })
@@ -677,7 +961,6 @@ document.getElementById("facile").addEventListener("click",function(){
 
 
 function startgame(){
-    let orderfight = []
     document.body.removeChild(document.getElementById("listee"))
     document.body.removeChild(document.getElementById("newpick"))
     console.log("ok")
@@ -716,7 +999,7 @@ function startgame(){
             cart.classList.remove("bloque")
         }
         document.getElementById("fightlist").appendChild(cart)
-        cart.addEventListener("click",setTarget)
+        //cart.addEventListener("click",setTarget)
     }
 
     anime({
@@ -742,10 +1025,10 @@ function startgame(){
                     console.log(opolvl[0])
                     let ofight2 = []
                     for(var i=1; i<opolvl.length;i++){
-                        let cart = make_card(charaT,opolvl[i],false)
+                        let cart = make_card(charaT,charaT.findIndex((a) => a.id == opolvl[i]),false)
 
                         ofight2.push({
-                            id:opolvl[i],
+                            id:charaT.findIndex((a) => a.id == opolvl[i]),
                             vit: parseInt(cart.children[5].innerHTML)
                         })
 
@@ -804,7 +1087,132 @@ function startgame(){
                 
                         } 
                     }
+
                     console.log(orderfight)
+                    setTimeout(function(){
+                        if(firstfight == 0){
+                            offset1 = 0
+                            offset2 = 1
+                            document.getElementById("fightlistOP").style.zIndex = "1"
+                            document.getElementById("fightlist").style.zIndex = "2"
+                            setTarget(document.querySelector("#fightlist div[data='"+orderfight[offset1%12]+"']"))
+                            offset1+=2
+                            tour+=1
+                            fintour = false
+                            var tours = setInterval(function(){
+                                let fin = true
+                                let carts = document.getElementById("fightlist").children
+                                for(var cr = 0; cr< carts.length;cr++){
+                                    if(parseInt(carts[cr].children[4].innerHTML) > 0){
+                                        fin = false
+                                        break
+                                    }
+                                }
+                                if(fin == false){
+                                    fin = true 
+                                    let cartsOP = document.getElementById("fightlistOP").children
+                                    for(var cr = 0; cr< cartsOP.length;cr++){
+                                        if(parseInt(cartsOP[cr].children[4].innerHTML) > 0){
+                                            fin = false
+                                            break
+                                        }
+                                    }
+                                }
+                                if(fin == true) clearInterval(tours)
+                                if(fintour == true){
+                                    
+                                    if(tour%2 == 0){
+                                        while(orderfight[offset1%12] == -1){
+                                            offset1+=2
+                                        }
+                                        document.getElementById("fightlistOP").style.zIndex = "1"
+                                        document.getElementById("fightlist").style.zIndex = "2"
+                                        console.log(tour+offset1)
+                                        setTarget(document.querySelector("#fightlist div[data='"+orderfight[offset1%12]+"']"))    
+                                        offset1+=2                        
+                                    }
+                                    else{
+                                        while(orderfight[offset2%12] == -1){
+                                            offset2+=2
+                                        }
+                                        document.getElementById("fightlistOP").style.zIndex = "2"
+                                        document.getElementById("fightlist").style.zIndex = "1"
+                                        console.log(tour+offset1)
+                                        setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[offset1%12]+"']")) 
+                                        offset2+=2
+                                    }
+                                    tour+=1
+                                    fintour = false
+                                }
+                            },100)
+                        }
+                        else{
+                            offset1 = 1
+                            offset2 = 0
+                            document.getElementById("fightlistOP").style.zIndex = "2"
+                            document.getElementById("fightlist").style.zIndex = "1"
+                            setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[offset2%12]+"']"))
+                            tour+=1
+                            offset2+=2
+                            fintour = false
+                            
+                            var tours2 = setInterval(function(){
+                                let fin = true
+                                let carts = document.getElementById("fightlist").children
+                                for(var cr = 0; cr< carts.length;cr++){
+                                    if(parseInt(carts[cr].children[4].innerHTML) > 0){
+                                        fin = false
+                                        break
+                                    }
+                                }
+                                if(fin == false){
+                                    fin = true 
+                                    let cartsOP = document.getElementById("fightlistOP").children
+                                    for(var cr = 0; cr< cartsOP.length;cr++){
+                                        if(parseInt(cartsOP[cr].children[4].innerHTML) > 0){
+                                            fin = false
+                                            break
+                                        }
+                                    }
+                                }
+                            
+                                if(fin == true){
+                                    clearInterval(tours2)
+                                    console.log("fin")
+                                } 
+
+                                if(fintour == true){
+                                    
+                                    if(tour%2 == 0){
+                                        console.log(orderfight)
+                                        while(orderfight[offset2%12] == -1){
+                                            offset2+=2
+                                        }
+                                        document.getElementById("fightlistOP").style.zIndex = "2"
+                                        document.getElementById("fightlist").style.zIndex = "1"
+                                        setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[offset2%12]+"']"))
+                                        offset2+=2                            
+                                    }
+                                    else{
+                                        console.log(orderfight)
+                                        while(orderfight[offset1%12] == -1){
+                                            offset1+=2
+                                        }
+                                        document.getElementById("fightlistOP").style.zIndex = "1"
+                                        document.getElementById("fightlist").style.zIndex = "2"
+                                        setTarget(document.querySelector("#fightlist div[data='"+orderfight[offset1%12]+"']")) 
+                                        offset1+=2
+                                    }
+                                    tour+=1
+                                    fintour = false
+                                }
+                            },100)
+                        }
+                    },1000)
+                    
+                   
+
+
 
                     
     })
