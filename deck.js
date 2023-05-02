@@ -59,7 +59,9 @@ function getDATA(){
     fetch('https://optc-db.github.io/common/data/aliases.js',{method:'GET'})
                 .then(res => res.text())
                 .then(text => {
-                    const tableau = "listeALIASES" +  text.substring(30,text.length - 28049)
+                    console.log(text)
+                    let position = text.search("const calcGhostStartIDStart")
+                    const tableau = "listeALIASES" +  text.substring(30,position)
                     eval(tableau)
                     
     })
