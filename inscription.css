@@ -7,10 +7,6 @@ body {
     background-size: contain;
 }
 
-label {
-    color : #f70000;
-}
-
 .info p {
     text-align:center;
     color: #999;
@@ -32,12 +28,12 @@ h1 {
 }
   
 h2 {
-    font-size: 20px;
+    font-size: 120%;
     font-weight: 600;
 }
   
 h3 {
-    font-size: 17px;
+    font-size: 100%;
     font-weight: 600;
 }
   
@@ -52,7 +48,7 @@ a:hover {
   
 hr {
     position: relative;
-    margin-top: 27%;
+    margin-top: 13%;
     border: 1px solid #fff;
     border-radius: 50px;
     opacity: 0.15;
@@ -65,7 +61,7 @@ hr {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 900px;
+    height: 100%;
     background: #f2f2f2;
     z-index:-1;
 }
@@ -74,9 +70,9 @@ hr {
     display: block;
     position: relative;
     width: 530px;
-    height: 679px;
-    margin: auto;
-    margin-top: 150px; 
+    height: 640px;
+    margin: 35%;
+    margin-top: 2%; 
     box-shadow: 1px 5px 10px 1px #333;
     overflow:hidden;
 }
@@ -89,13 +85,13 @@ img.bg-img {
   
 .menu {
     position: relative;
-    padding: 15% 13% 0 13%;
+    padding: 13% 11% 1% 15%;
 }
   
 .menu h2 {
     display: inline;
-    margin: 20px;
-    padding-bottom: 3px;
+    margin: 9%;
+    padding-bottom: 1%;
     border-bottom: 3px solid #1161ee;
 }
 a:not(.active) {
@@ -138,20 +134,23 @@ a:not(.active) {
   
 label {
     display: block;
-    margin-top: 10px;
-    padding: 5px 10px;
-    font-size: 15px;
+    margin-top: 3%;
+    padding: 2% 3%;
+    font-size: 100%;
     font-weight: 600;
     color: #fff;
 }
 
-
+img {
+    width: 100%;
+    height: 100%;
+  }
 
 input {
     display: block;
     width: 93%;
     margin: auto;
-    padding: 13px;
+    padding: 2.5%;
     border: 0;
     border-radius: 20px;
     font-family: "Roboto",sans-serif;
@@ -163,8 +162,8 @@ input {
   
 input.submit {
     width: 100%;
-    padding: 10px;
-    font-size: 17px;
+    padding: 3%;
+    font-size: 100%;
     font-weight: 700;
     color: #fff;
     opacity: 1;
@@ -179,7 +178,7 @@ input.submit {
 }
   
 .check h3 {
-    padding: 15px;
+    padding: 6%;
 }
   
 .checkbox {
@@ -210,17 +209,17 @@ input.submit {
 }
 .enregistrer {
     position: absolute;
-    padding: 15% 13%;
-    width: 74%;
-    right:0px;
+    padding: 2% 24%;
+    width: 57%;
+    right:0%;
     transition: all 0.7s;
 }
 .active-section {
     position: absolute;
-    right:500px;
+    right:200%;
 }
 .remove-section {
     position: absolute;
-    left: 500px;
+    left: 200%;
 }
   

@@ -9,6 +9,7 @@
 	</head>
     <body>         
         <div class="content">
+        <img class="bg-img" src="mainback2.jpg" alt="">
             <div class="container">
                 <img class="bg-img" src="Onepiece2.jpg" alt="">
                     <div class="menu">
@@ -46,7 +47,7 @@
                             <label>Pseudonyme</label>
                             <input placeholder="" type="text">
                             
-                            <label>E-MAIL</label>
+                            <label>e-mail</label>
                             <input placeholder="" type="text">	
                             
                             <label>Mot de Passe</label>
