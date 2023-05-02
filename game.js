@@ -1020,7 +1020,7 @@ function startgame(){
                 .then(res => res.json())
                 .then(json => {
                     const opponents = json
-                    let opolvl = opponents[0]
+                    let opolvl = opponents[1]
                     console.log(opolvl)
                     console.log(opolvl[0])
                     let ofight2 = []
@@ -1137,8 +1137,8 @@ function startgame(){
                                         }
                                         document.getElementById("fightlistOP").style.zIndex = "2"
                                         document.getElementById("fightlist").style.zIndex = "1"
-                                        console.log(tour+offset1)
-                                        setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[offset1%12]+"']")) 
+                                        console.log(tour+offset2)
+                                        setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[offset2%12]+"']")) 
                                         offset2+=2
                                     }
                                     tour+=1
