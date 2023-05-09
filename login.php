@@ -11,15 +11,10 @@
     <?php
     session_start();
     
-    if(isset($_SESSION['id'])){
-        
+    if(isset($_SESSION['id']) && isset($_SESSION['username']) && isset($_SESSION['password'])){
         $usernameid = $_SESSION['id'];
         $user = $_SESSION['username'];
         $pass = $_SESSION['password'];
-        $requete= "SELECT pseudo,password FROM users WHERE pseudo='$usernameid'"; // on selectionne le mdp correspondant au pseudo indiqué
-        include "connexion.php";
-        $resultat = mysqli_query($connexion,$requete);
-        $row = mysqli_fetch_assoc($resultat);        
     }
     else session_destroy();
 
@@ -44,7 +39,7 @@
                     if( $passwordclient == $row['password']){ // si le mdp est correct on demarre la dessions et on met en variable $_SESSION l'id de l'utilisateur
                         session_start();
                         $_SESSION['id'] = $row['id'];
-                        $_SESSION['username'] = $row['username'];
+                        $_SESSION['username'] = $row['pseudo'];
                         $_SESSION['password'] = $row['password'];
                         setcookie('usernamepre', $usernameclient, time() +3600); // on met aussi en place un cookie contenant les login de l'utilisateur pendant 1h permettant de préremplir le formulaire de connexion avec le dernière utilisateur connécté
                         setcookie('mdppre', $passwordclient, time() +3600);
@@ -59,7 +54,7 @@
     }
     ?>
 
-    <body>         
+    <body>     
         <div class="content">
         <img class="bg-img" src="mainback2.jpg" alt="">
             <div class="container">
@@ -107,16 +102,34 @@
                     <form class="enregistrer active-section"  action="" method="POST">
                         <div class="contact-form">
                             <label>Pseudonyme</label>
-                            <input placeholder="" type="text">
+                            <input placeholder="" type="text" name="usernameinscr" required>
                             
                             <label>e-mail</label>
-                            <input placeholder="" type="text">	
+                            <input placeholder="" type="text" name="mail" required>	
                             
                             <label>Mot de Passe</label>
-                            <input placeholder="" type="password" >
+                            <input placeholder="" type="password" name="passwordinscr" required>
                             
                             <label>Confirmation du Mot de Passe</label>
-                            <input placeholder="" type="password">
+                            <input placeholder="" type="password" name="passwordverif" required>
+                            
+                            <?php
+                                if (isset($_GET['err'])) {
+                                    $err = $_GET['err'];
+                                    if ($err == 4) {
+                                        echo '<script>alert("Pseudo déjà pris");</script>';
+                                    }
+                                    if ($err == 5) {
+                                        echo '<script>alert("E-mail déjà prise");</script>';
+                                    }
+                                    if ($err == 6) {
+                                        echo '<script>alert("adresse e-mail est mauvaise");</script>';
+                                    }
+                                    if ($err == 3) {
+                                        echo '<script>alert("Mots de passe différents");</script>';
+                                    }
+                                }
+                            ?>
                             
                             <div class="check">
                                 <label>				
@@ -126,17 +139,70 @@
                                             <path class="path-moving" d="M24.192,3.813L11.818,16.188L1.5,6.021V2.451C1.5,2.009,1.646,1.5,2.3,1.5h18.4c0.442,0,0.8,0.358,0.8,0.801v18.398c0,0.442-0.357,0.801-0.8,0.801H2.3c-0.442,0-0.8-0.358-0.8-0.801V6"/>
                                         </svg>
                                 </label>
-                                <h3>Je suis d'accord</h3>
+                                <h3>Rester connecté</h3>
                             </div>
                             
-                            <input name="submit" class="submit" value="S'inscrire" type="submit">
+                            <input name="submitinscr" class="submit" value="S'inscrire" type="submit">
                         </div>
                     </form>
                     
                 </div>
 
-        </div>
-
-
+        </div>  
     </body> 
+    <?php
+        // script d'inscription
+        if(isset($_POST['submitinscr'])){
+            if(isset($_POST['usernameinscr']) && isset($_POST['mail']) && isset($_POST['passwordinscr']) && isset($_POST['passwordverif'])){
+                $usernameinscr = $_POST['usernameinscr'];
+                $mailinscr = $_POST['mail'];
+                $passwordinscr = $_POST['passwordinscr'];
+                $passwordverif = $_POST['passwordverif'];
+                $a = 0;
+
+                // verif si l'username n'est pas déjà pris
+                $requetepseudo = "SELECT * FROM users WHERE pseudo='$usernameinscr'";
+                $requetemail = "SELECT * FROM users WHERE email='$mailinscr'";
+                include "connexion.php";
+                $requete_resultat = mysqli_query($connexion,$requetepseudo);
+                $requete_resultat1 = mysqli_query($connexion,$requetemail);
+                mysqli_close($connexion);
+
+
+                if($usernameinscr != "" && $mailinscr != "" && $passwordinscr != "" && $passwordinscr != "" && $passwordverif != ""){
+
+                    if(mysqli_num_rows($requete_resultat)==1){
+                        echo"prou";
+                        header('Location:login.php?err=4&check=1');
+                        $a = 1; // si le pseudo est deja prit on renvoie l'erreur 4
+                    }
+                    else {
+                        if(mysqli_num_rows($requete_resultat1)==1){
+                            header('Location:login.php?err=5&check=1');
+                            $a = 1; // si l'e-mail est deja prit on renvoie l'erreur 5
+                        }
+                        else {
+                            $pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+                            if(!preg_match($pattern, $mailinscr)){
+                                header('Location:login.php?err=6&check=1');
+                                $a = 1; // si l'adresse e-mail est mauvaise, on renvoie l'erreur 6
+                            }
+
+                        }
+                    }
+                    
+                        
+                    if($passwordinscr == $passwordverif && $a == 0){// verification que les 2 mdp sont identiques
+                        $requete1= "INSERT INTO users VALUES(NULL, '$usernameinscr', '$passwordinscr',0,0,0,'$mailinscr',3,0,0,3,0,0,0)";// on met par defaut une photo de profil de base qu'on pourra modifier plus tard sur la page index.php
+                        include "connexion.php";
+                        $resultat1 = mysqli_query($connexion,$requete1);
+                        mysqli_close($connexion);
+                        header('Location:login.php');
+                    }
+                    elseif($a == 0) header('Location:login.php?err=3&check=1');// si ils ne le sont pas, on renvoit l'erreur 3 ainsi que la variage $_GET[check] servant a resté sur l'onglet inscription
+                }
+                
+            } 
+        }
+    ?>
 </html>
