@@ -8,36 +8,52 @@
 			body { margin: 0; }
 		</style>
 	</head>
-	<body>
-		<?php
-		 	session_start(); 
-			if(isset($_POST['login']) &&  isset($_POST['password'])){
-				include "connexion.php";
-				$pseudo = $_POST['login'];
-				$password = $_POST['password'];
-				$req = "SELECT * FROM users WHERE pseudo = '$pseudo'";
-				$resp = mysqli_query($connexion,$req);	
-				$user = mysqli_fetch_assoc($resp);
-				if($user["password"] == $password){
-					$_SESSION['id'] = $user['id'];
 
-				}
+	<?php
+		session_start();
+
+		if(empty($_SESSION['id'])) session_destroy();
+
+		if(isset($_POST['submit'])){
+			if(isset($_POST['username']) &&  isset($_POST['password'])){
 		
+				$usernameclient = $_POST['username'];
+				$passwordclient = $_POST['password'];
 
-				
+				if($usernameclient != "" && $passwordclient != ""){
+		
+					$requete= "SELECT id,password FROM users WHERE pseudo='$usernameclient'"; // on selectionne le mdp correspondant au pseudo indiqué
+					require "connexion.php";
+					$resultat = mysqli_query($connexion,$requete);
+					$row = mysqli_fetch_assoc($resultat);
+					if( empty($row['password'])) header('Location:login.php?err=1'); // si le mdp est vide cela signifie que l'utilisateur n'existe pas on renvoie l'erreur 1
+					else{
+						mysqli_close($connexion);
+						if( $passwordclient == $row['password']){ // si le mdp est correct on demarre la dessions et on met en variable $_SESSION l'id de l'utilisateur
+							session_start();
+							$_SESSION['id'] = $row['id'];
+							setcookie('usernamepre', $usernameclient, time() +3600); // on met aussi en place un cookie contenant les login de l'utilisateur pendant 1h permettant de préremplir le formulaire de connexion avec le dernière utilisateur connécté
+							setcookie('mdppre', $passwordclient, time() +3600);
+							header('Location:index.php');
+						}
+						else header('Location:login.php?err=2'); // si le mdp est incorrect on retourne l'erreur 2
+					}
+				}       		
 			}
-			
+		}
+	?>
 
-			
+
+	<body>
+
+		<?php
+			include "header.php";
 		?>
 
-		<header>
-			<form action="" method="post">
-				<input type="text" name="login" id="login" placeholder="Pseudo">
-				<input type="text" name="password" id="password" placeholder="Mot de Passe">
-				<input type="submit" value="Connexion">
-			</form>
-		</header>
+		<video autoplay loop muted id="background-video">
+    		<source src="https://giant.gfycat.com/FemaleWindyHornedviper.webm" type="video/webm">
+  		</video>
+
 		<!-- TOOL
 		<div id="tool">
 			<input value="1" id="idlieu" type="text">
@@ -52,27 +68,15 @@
 			<button id="gett"> GET </button>
 			
 		</div>-->
-		<button id="back">BACK</button>
-		<div id="tool">
-		<button id="test"> TEST </button>
-		</div>
+
 		<div id="menu">
-			<button id="history"><span>HISTOIRE</span></button>
+			<button id="history" <?php if(empty($_SESSION['id'])) echo 'style="display:none;"'?> ><span>HISTOIRE</span></button>
 		</div>
 
-		<div id="niveaux">
-			<?php
-				for($i=0; $i < 131;$i++){
-					echo "<button class='buttonlvl' id='lieu".$i."'></button>";
-				}
-			
-			
-			
-			?>
+		<div id="niveaux" class="listeNiv">
+
 		</div>
 		<script type="module" src="app.js">
-			
-
 			// Our Javascript will go here.
 		</script>
 	</body>

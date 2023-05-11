@@ -98,108 +98,117 @@ fetch('https://api.api-onepiece.com/locates')
                     for(var i=0;i<json.length;i++){
                         locates.push(json[i])
                     }
+                    console.log(locates)
                     fetch('./coord.json')
                         .then(response => response.json())
                         .then(json => {
                             const coord = json;
-                            for(var i=0; i< locates.length;i++){
-                                lieux.push(new THREE.Mesh(
-                                    new THREE.SphereGeometry(rayon,rayon,0.2,20),
-                                    new THREE.MeshBasicMaterial({color:0xff0000})
-                                ))
-                                sphere.add(lieux[i])
-                                //console.log(i)
-                                let x =  rayonsphere* Math.cos(coord[i].phi) * Math.sin(coord[i].theta)
-                                let y = rayonsphere * Math.sin(coord[i].phi) * Math.sin(coord[i].theta)
-                                let z = rayonsphere * Math.cos(coord[i].theta)
-                                lieux[i].position.set(x,y,z)
-                                //lieux[i].rotation.z += (3.14)/2
-                                //lieux[i].rotation.y +=  lieux[i].position.z
-                                //console.log((5/(lieux[i].position.x)))
-                                //lieux[i].rotation.z += lieux[i].position.x
-                                
-                                
-                            }
-                            for(var i=0; i< lieux.length;i++){
-                                let name = "lieu" + i
-                                let tmp = document.getElementById(name)
-                                if(coord[i].phi != null){
+                            fetch('./level.json')
+                            .then(response => response.json())
+                            .then(json => {
+                                const ordre = json;
+                                for(var i=0; i<ordre.length;i++){
+                                    let bouton = document.createElement("button");
+                                    bouton.classList.add("buttonlvl");
+                                    bouton.setAttribute("id", "lieu" + ordre[i]);
+                                    document.getElementById("niveaux").appendChild(bouton);
+                                }
+                                for(var i=0; i< locates.length;i++){
+                                    lieux.push(new THREE.Mesh(
+                                        new THREE.SphereGeometry(rayon,20,20),
+                                        new THREE.MeshBasicMaterial({color:0xff0000})
+                                    ))
+                                    sphere.add(lieux[i])
+                                    //console.log(i)
+                                    let x =  rayonsphere* Math.cos(coord[i].phi) * Math.sin(coord[i].theta)
+                                    let y = rayonsphere * Math.sin(coord[i].phi) * Math.sin(coord[i].theta)
+                                    let z = rayonsphere * Math.cos(coord[i].theta)
+                                    lieux[i].position.set(x,y,z)
+                                }
+                                for(var i=0; i< lieux.length;i++){
+                                    let name = "lieu" + ordre[i]
+                                    let tmp = document.getElementById(name)
+                                    if(coord[i].phi != null){
+                                        
+                                        //console.log(tmp)
+                                        tmp.innerText = (i + 1) + " - " + locates[ordre[i]-1].french_name
+
+
+
+                                        tmp.addEventListener("click", function(){
+                                            openpanel(false,tmp)
+                                        })
+
                                     
-                                    //console.log(tmp)
-                                    tmp.innerText = locates[i].french_name
 
 
-
-                                    tmp.addEventListener("click", function(){
-                                        openpanel(false,tmp)
-                                    })
-
-                                
-
-
-                                    tmp.addEventListener("mouseover", function(){
-                                        naturalrotate = 0
-                                        for(var i=0; i< lieux.length;i++){
-                                            try{
-                                                document.getElementById("lieu"+i).style.backgroundColor="#f0f0f0"
+                                        tmp.addEventListener("mouseover", function(){
+                                            naturalrotate = 0
+                                            for(var i=0; i< lieux.length;i++){
+                                                try{
+                                                    document.getElementById("lieu"+i).style.color="white"
+                                                    document.getElementById("lieu"+i).style.textShadow="none"
+                                                }
+                                                catch{
+                                    
+                                                }
                                             }
-                                            catch{
-                                
+                                            for(var i = 0; i< sphere.children.length;i++){
+                                                sphere.children[i].material = new THREE.MeshBasicMaterial({color:0xff0000})                                           
                                             }
-                                        }
-                                        for(var i = 0; i< sphere.children.length;i++){
-                                            sphere.children[i].material = new THREE.MeshBasicMaterial({color:0xff0000})                                           
-                                        }
-                                        //console.log(sphere.rotation)
-                                        let indx = parseInt(tmp.getAttribute("id").substring(4,tmp.getAttribute("id").length))
-                                        selected = indx
-                                        document.getElementById("lieu"+selected).style.backgroundColor="red"
-                                        //console.log(lieux[indx].position.y)
-                                        //console.log(lieux[indx].position.x)
-                                        //sphere.rotation.x = 0
-                                        //sphere.rotation.y = 0 - (1.86 + 1.58)
-                                        
-                                        RtranslateLVL = true
-                                        if(locates[indx].sea_name == "East Blue" || locates[indx].sea_name == "South Blue" || locates[indx].sea_name == "Paradis" || locates[indx].sea_name == "Mer Blanche" || locates[indx].french_name == "Nakrowa"){
-                                            //console.log("ptn")
-                                            yLVL = - (1.86 + 1.58) + (lieux[indx].position.x + 1)
-                                            xLVL = lieux[indx].position.y
-                                            if(sphere.rotation.y < yLVL) pomY = 1
-                                            else pomY = -1
-                                            if(sphere.rotation.x < xLVL) pomX = 1 
-                                            else pomX = -1
-                                            //sphere.rotation.y += (lieux[indx].position.x + 1)//(3.14 -theta + 0.5)
-                                            //sphere.rotation.x += lieux[indx].position.y//(phi)
-                                        }
-                                        else{
-                                            let offs = 2
-                                            if(locates[indx].sea_name == "Nouveau Monde") offs = 2.5
-                                            yLVL = - (1.86 + 1.58) -(lieux[indx].position.x + offs)
-                                            xLVL = lieux[indx].position.y
-                                            if(sphere.rotation.y < yLVL) pomY = 1
-                                            else pomY = -1
-                                            if(sphere.rotation.x < xLVL) pomX = 1 
-                                            else pomX = -1
-                                            //sphere.rotation.y += -(lieux[indx].position.x + offs)//(3.14 -theta + 0.5)
-                                            //sphere.rotation.x += lieux[indx].position.y//(phi)
-                                        }
-                                        //console.log(sphere.rotation)
-                                        colo = false
-                                        lieux[indx].material = new THREE.MeshBasicMaterial({color:0xfff000})
-                                        
-                                    })
+                                            //console.log(sphere.rotation)
+                                            let indx = parseInt(tmp.getAttribute("id").substring(4,tmp.getAttribute("id").length))
+                                            selected = indx
+                                            document.getElementById("lieu"+selected).style.color="rgb(2,126,251,1)"
+                                            document.getElementById("lieu"+selected).style.textShadow="0px 0px 7px rgb(2,126,251,1)"
+                                            //console.log(lieux[indx].position.y)
+                                            //console.log(lieux[indx].position.x)
+                                            //sphere.rotation.x = 0
+                                            //sphere.rotation.y = 0 - (1.86 + 1.58)
+                                            
+                                            RtranslateLVL = true
+                                            indx -=1
+                                            if(locates[indx].sea_name == "East Blue" || locates[indx].sea_name == "South Blue" || locates[indx].sea_name == "Paradis" || locates[indx].sea_name == "Mer Blanche" || locates[indx].french_name == "Nakrowa"){
+                                                //console.log("ptn")
+                                                yLVL = - (1.86 + 1.58) + (lieux[indx].position.x + 1)
+                                                xLVL = lieux[indx].position.y
+                                                if(sphere.rotation.y < yLVL) pomY = 1
+                                                else pomY = -1
+                                                if(sphere.rotation.x < xLVL) pomX = 1 
+                                                else pomX = -1
+                                                //sphere.rotation.y += (lieux[indx].position.x + 1)//(3.14 -theta + 0.5)
+                                                //sphere.rotation.x += lieux[indx].position.y//(phi)
+                                            }
+                                            else{
+                                                let offs = 2
+                                                if(locates[indx].sea_name == "Nouveau Monde") offs = 2.5
+                                                yLVL = - (1.86 + 1.58) -(lieux[indx].position.x + offs)
+                                                xLVL = lieux[indx].position.y
+                                                if(sphere.rotation.y < yLVL) pomY = 1
+                                                else pomY = -1
+                                                if(sphere.rotation.x < xLVL) pomX = 1 
+                                                else pomX = -1
+                                                //sphere.rotation.y += -(lieux[indx].position.x + offs)//(3.14 -theta + 0.5)
+                                                //sphere.rotation.x += lieux[indx].position.y//(phi)
+                                            }
+                                            //console.log(sphere.rotation)
+                                            colo = false
+                                            lieux[indx].material = new THREE.MeshBasicMaterial({color:0xfff000})
+                                            
+                                        })
 
-                                    tmp.addEventListener("mouseleave", function(){
-                                        naturalrotate = inertie
-                                        let indx = parseInt(tmp.getAttribute("id").substring(4,tmp.getAttribute("id").length))
-                                        lieux[indx].material = new THREE.MeshBasicMaterial({color:0xff0000})
-                                        colo = true
-                                    })
+                                        tmp.addEventListener("mouseleave", function(){
+                                            naturalrotate = inertie
+                                            let indx = parseInt(tmp.getAttribute("id").substring(4,tmp.getAttribute("id").length))
+                                            lieux[indx].material = new THREE.MeshBasicMaterial({color:0xff0000})
+                                            colo = true
+                                        })
+                                    }
+                                    else{
+                                        document.getElementById("niveaux").removeChild(tmp)
+                                    }
                                 }
-                                else{
-                                    document.getElementById("niveaux").removeChild(tmp)
-                                }
-                            }
+                            })
                     })
                 })
             
@@ -319,7 +328,7 @@ function openpanel(isobj, indox){
 
 }
 function onMouseMove( event ) {
-    var offset = 0.06
+    var offset = 0.17
     var offset2 = 0.00
     mouse3.x = ( event.clientX / innerWidth ) * 2 - 1 + offset2;
     mouse3.y = - ( event.clientY / innerHeight ) * 2 + 1 + offset;
@@ -337,8 +346,6 @@ const renderer = new THREE.WebGLRenderer({ alpha: true } )
 renderer.setSize(innerWidth,innerHeight)
 document.body.appendChild(renderer.domElement)
 
-
-
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(rayonsphere,50,50),
     new THREE.MeshBasicMaterial({
@@ -346,7 +353,6 @@ const sphere = new THREE.Mesh(
 }))
 sphere.position.x = 3
 sphere.rotation.y-= (1.86 + 1.58)
-sphere.castShadow = true;
 scene.add(sphere)
 
 
@@ -515,7 +521,8 @@ document.addEventListener('keydown', function(event) {
         let heit = document.getElementById("lieu0").clientHeight
         for(var i=0; i< lieux.length;i++){
             try{
-                document.getElementById("lieu"+i).style.backgroundColor="#f0f0f0"
+                document.getElementById("lieu"+i).style.color="white"
+                document.getElementById("lieu"+i).style.textShadow="none"
             }
             catch{
 
@@ -548,10 +555,26 @@ document.addEventListener('keydown', function(event) {
         for (var a=[], i=collection.length; i;){
             a[--i] = collection[i];
         }
-        let numerous = a.indexOf(document.getElementById("lieu"+selected))
-        let middleheit = heit*10 - (numerous/5)* 18
-        document.getElementById("niveaux").scroll(0,-middleheit + heit*numerous)
-        document.getElementById("lieu"+selected).style.backgroundColor="red"
+        // let numerous = a.indexOf(document.getElementById("lieu"+selected))
+        // let middleheit = heit*10 - (numerous/5)* 18
+        // document.getElementById("niveaux").scroll(0,-middleheit + heit*numerous)
+        if (event.code == 'ArrowDown'){
+            document.getElementById("niveaux").scrollBy(0,30)
+            event.preventDefault();
+        }
+        if (event.code == 'ArrowUp'){
+            document.getElementById("niveaux").scrollBy(0,-30)
+            event.preventDefault();
+        }
+        if (selected == 0){
+            document.getElementById("niveaux").scrollTo(0,0)
+        }
+        console.log(document.getElementById("niveaux").childElementCount)
+        if (selected == document.getElementById("niveaux").childElementCount){
+            document.getElementById("niveaux").scrollTo(0,document.getElementById("niveaux").scrollHeight)
+        }
+        document.getElementById("lieu"+selected).style.color="rgb(2,126,251,1)"
+        document.getElementById("lieu"+selected).style.textShadow="0px 0px 7px rgb(2,126,251,1)"
         RtranslateLVL = true
         if((locates[selected].sea_name == "East Blue" || locates[selected].sea_name == "South Blue" || locates[selected].sea_name == "Paradis" || locates[selected].sea_name == "Mer Blanche" || locates[selected].french_name == "Nakrowa") && locates[selected].french_name != "Baltigo"){
             console.log("ptn")
@@ -588,4 +611,39 @@ window.addEventListener( 'mousemove', onMouseHover, false );
 
 
 
-document.getElementById("test").addEventListener("click", test)
+
+
+// ------------------ Menu déroulant ----------------------
+const hamburger = document.getElementById("liste");
+const menu = document.getElementsByClassName("topnav_menu")[0];
+
+hamburger.addEventListener("click", () => {
+    hamburger.setAttribute("disabled", "");
+    menu.classList.toggle("top");
+    if(hamburger.hasAttribute("disabled")){
+        setTimeout(function(){
+            hamburger.removeAttribute("disabled");
+        },500);
+    }
+    if(menu.classList.contains("index")){
+        menu.classList.toggle("index");
+    }
+    else {
+        setTimeout(function(){
+            menu.classList.toggle("index");
+        },500);
+    }
+});
+
+
+const histoire = document.getElementById("history");
+const retour = document.getElementById("back");
+const niveaux = document.getElementsByClassName("listeNiv")[0];
+
+histoire.addEventListener("click", () => {
+    niveaux.classList.toggle("block");
+});
+
+retour.addEventListener("click", () => {
+    niveaux.classList.toggle("block");
+});
