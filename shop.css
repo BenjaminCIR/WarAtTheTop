@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url("img2.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-position: center;
+  filter: blur(5px);
+  transition: background-position 0.5s ease-out;
+}
+#img1{
+  height: 100%;
+  width: 86%;
+  border-radius: 24px;
+  margin: 3% 0% 3% 7%;
+  display: block;
+  box-shadow: 10px 5px 50px grey;
+}
+.container {
+  display: inline-block;
+  margin-right: 10px;
+}
+.container1  {
+  display: inline-block;
+}
+.block {
+  width: 150px;
+  height: 100px;
+  border-radius: 24px;
+  box-shadow: 10px 5px 50px grey;
+  margin: 30px 1px 60px 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff96;
+  cursor: pointer;
+}
+.block img {
+  width: 63%;
+  height: 85%;
+  object-fit: cover;
+}
+
+.block0 {
+  width: 150px;
+  height: 100px;
+  border-radius: 24px;
+  box-shadow: 10px 5px 50px grey;
+  margin: 30px 1px 60px 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff96;
+  cursor: pointer;
+}
+.block0 img {
+  width: 63%;
+  height: 85%;
+  object-fit: cover;
+}
+.left{
+  margin-left: 130px;
+}
+.card {
+  width: 1025px;
+  height: 380px;
+  border-radius: 24px;
+  box-shadow: 10px 5px 50px grey;
+  margin: 30px 1px 60px 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff96;
+  position: relative;
+}
+.cards img{
+  width: 63%;
+  height: 85%;
+  object-fit: cover;
+}
+.card h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px 0px 0px 20px;
+  font-family: 'Snell Roundhand', cursive;
+}
+.cont{
+  display: flex;
+  justify-content: space-between;
+}
+
+.coffre img{
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  overflow: hidden;
+  width: 40%;
+  height: 95%;
+  margin-left: 100px;
+}
+
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  transform: rotate(-90deg);
+}
+
+.scroll-to-top-button img {
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-to-top-button.active {
+  opacity: 1;
+}
+
+.petit-bouton {
+  background-color: #007bff;
+    color: #fff;
+    padding: 3px 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    right: -30%;
+    top: 6%;
+}
