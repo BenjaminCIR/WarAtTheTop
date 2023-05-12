@@ -11,6 +11,7 @@
     <?php
     session_start();
     
+
     if(isset($_SESSION['id']) && isset($_SESSION['username']) && isset($_SESSION['password'])){
         $usernameid = $_SESSION['id'];
         $user = $_SESSION['username'];
@@ -203,6 +204,12 @@
                 }
                 
             } 
+        }
+        if(isset($_GET["check"])){
+            echo"<script> setTimeout(function(){
+                document.getElementsByClassName('active')[0].click()
+            },500)
+            </script>";
         }
     ?>
 </html>

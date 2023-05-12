@@ -1,9 +1,22 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
+
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/GLTFLoader.js'
+
+var planeteclick = false
 var coef = 1
 var rotating = false;
+var socle
+var rotate = false
+var Rrotate = false
+var ordre
+var socletranslate = false
+var Rsocletranslate = false
+var soclerotate = false
+var Rsoclerotate = false
 var roat = true;
 const inertie = -0.001
 var naturalrotate = inertie
+var naturalrotateSOCLE = inertie
 var rayonsphere =   1.7
 const mouse3 = {
     x: undefined,
@@ -106,7 +119,7 @@ fetch('https://api.api-onepiece.com/locates')
                             fetch('./level.json')
                             .then(response => response.json())
                             .then(json => {
-                                const ordre = json;
+                                ordre = json;
                                 for(var i=0; i<ordre.length;i++){
                                     let bouton = document.createElement("button");
                                     bouton.classList.add("buttonlvl");
@@ -194,13 +207,24 @@ fetch('https://api.api-onepiece.com/locates')
                                             //console.log(sphere.rotation)
                                             colo = false
                                             lieux[indx].material = new THREE.MeshBasicMaterial({color:0xfff000})
+                                            var collection = document.getElementById("niveaux").childNodes
+                                            for (var a=[], i=collection.length; i;){
+                                                a[--i] = collection[i];
+                                            }
+                                            console.log(selected)
+                                            for(var i=1; i< a.length;i++){
+                                                if(a[i].getAttribute("id") == "lieu"+selected){
+                                                    selected = i
+                                                    break
+                                                }
+                                            }
                                             
                                         })
 
                                         tmp.addEventListener("mouseleave", function(){
                                             naturalrotate = inertie
-                                            let indx = parseInt(tmp.getAttribute("id").substring(4,tmp.getAttribute("id").length))
-                                            lieux[indx].material = new THREE.MeshBasicMaterial({color:0xff0000})
+                                            let sindx = parseInt(tmp.getAttribute("id").substring(4,tmp.getAttribute("id").length))    
+                                            lieux[sindx].material = new THREE.MeshBasicMaterial({color:0xff0000})
                                             colo = true
                                         })
                                     }
@@ -300,14 +324,19 @@ function onMouseClick( event ) {
 function openpanel(isobj, indox){
     //let indx = lieux.indexOf(obj)
     //console.log(locates[indx])
-    //console.log(indox)
+    
+   
+       
+
+    console.log(indox)
     var indx = -1
     if(isobj == true){
         indx = indox
     }
     else{
-        indx = parseInt(indox.getAttribute("id").substring(4,indox.getAttribute("id").length))
+        indx = parseInt(indox.getAttribute("id").substring(4,indox.getAttribute("id").length)) - 1
     }
+    console.log(indx)
     let level = document.createElement("div")
     let name = document.createElement("p")
     let access = document.createElement("a")
@@ -346,13 +375,32 @@ const renderer = new THREE.WebGLRenderer({ alpha: true } )
 renderer.setSize(innerWidth,innerHeight)
 document.body.appendChild(renderer.domElement)
 
+
+const gltf = new GLTFLoader();
+gltf.load('./circle.glb', (gltfScene) =>{
+    socle = gltfScene.scene
+    socle.rotation.y += 3.24
+    let sc = 1.6
+    socle.scale.set(sc,sc,sc)
+    socle.position.y -= 2.9
+    socle.position.x += 3.1
+    socle.position.z += 0.3   
+    
+    //console.log(gltfScene)
+    socle.children[0].material = new THREE.MeshBasicMaterial({map : new THREE.TextureLoader().load('text3.png') })
+    scene.add(socle)
+
+})
+
+
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(rayonsphere,50,50),
     new THREE.MeshBasicMaterial({
         map : new THREE.TextureLoader().load('mapV22.png')
 }))
 sphere.position.x = 3
-sphere.rotation.y-= (1.86 + 1.58)
+//sphere.rotation.y-= (1.86 + 1.58)
+sphere.rotation.z -= 0.8
 scene.add(sphere)
 
 
@@ -368,10 +416,70 @@ function animate(){
     requestAnimationFrame(animate)
     renderer.render(scene,camera)
     sphere.rotation.y += naturalrotate
+    if(planeteclick == false){
+        sphere.rotation.x += naturalrotate
+        sphere.rotation.z -= 0.0005
+    } 
+    //socle.rotation.y -= naturalrotateSOCLE
+
+    if(soclerotate){
+        console.log(socle.rotation.y)
+        if(socle.rotation.y >= 6){
+            soclerotate = false
+        }
+
+        socle.rotation.y += 0.1
+    }
+
+    if(Rsoclerotate){
+        console.log(socle.rotation.y)
+        if(socle.rotation.y <= -3){
+            Rsoclerotate = false
+        }
+
+        socle.rotation.y -= 0.1
+    }
+
+
+    if(socletranslate){
+
+        if(socle.position.x >= 10){
+            socletranslate = false
+        }
+
+        socle.position.x += 0.1
+    }
+
+    if(Rsocletranslate){
+
+        if(socle.position.x < 3.4){
+            Rsocletranslate = false
+        }
+
+        socle.position.x -= 0.1
+    }
+    if(rotate){
+        //console.log(sphere.rotation.z)
+        if(sphere.rotation.z >= 0){
+            rotate = false
+        }
+
+        sphere.rotation.z += 0.025
+    }
+
+    if(Rrotate){
+        //console.log(sphere.rotation.z )
+        if(sphere.rotation.z <= -0.8){
+            Rrotate = false
+        }
+
+        sphere.rotation.z -= 0.025
+    }
     if(translate){
         if(sphere.position.x <= -3){
             translate = false
         }
+
         sphere.position.x -= 0.15
     }
     if(scaleing){
@@ -451,15 +559,23 @@ const mouse2 = {
 }
 function select(){
     //console.log(sphere)
+    planeteclick = true
     scaleing = true
     translate = true
+    rotate = true
+    socletranslate = true
+    soclerotate = true
     document.getElementById("menu").style.display = "none"
     document.getElementById("back").style.display = "block"
 }
 
 function back(){
+    planeteclick = false
     Rscaleing = true
     Rtranslate = true
+    Rrotate = true
+    Rsocletranslate = true
+    Rsoclerotate = true
     document.getElementById("menu").style.display = "block"
     document.getElementById("back").style.display = "none"
 }
@@ -467,7 +583,7 @@ function back(){
 document.getElementById("back").addEventListener("click", back)
 document.getElementById("history").addEventListener("click", select)
 addEventListener('mousemove',()=>{
-    if(rotating){
+    if(rotating && planeteclick){
         mouse2.x = (event.clientX / innerWidth)*2 - 1
         mouse2.y = (event.clientY / innerHeight)*2 - 1
         if(sphere.rotation.x >= 6.5){
@@ -496,30 +612,35 @@ addEventListener('mousemove',()=>{
     }
 })
 addEventListener('mousedown',()=>{
-    naturalrotate = 0
-    rotating = true
-    mouse.x = (event.clientX / innerWidth)*2 - 1
-    mouse.y = (event.clientY / innerHeight)*2 - 1
+    if(planeteclick == true){
+        naturalrotate = 0
+        rotating = true
+        mouse.x = (event.clientX / innerWidth)*2 - 1
+        mouse.y = (event.clientY / innerHeight)*2 - 1
+    }
 
 
 })
 addEventListener('mouseup',()=>{
-    rotating = false
-    naturalrotate = inertie
+    if(planeteclick){
+        rotating = false
+        naturalrotate = inertie
+    }
 
 })
 
 document.addEventListener('keydown', function(event) {
+    console.log(ordre)
     if(event.code == 'Enter'){
         try{
-            document.getElementById("lieu"+selected).click()
+            document.getElementById("lieu"+ordre[selected]).click()
         }catch{}
     }
     if (event.code == 'ArrowDown' || event.code == 'ArrowUp'){
         lock = true
         naturalrotate = 0
-        let heit = document.getElementById("lieu0").clientHeight
-        for(var i=0; i< lieux.length;i++){
+        //let heit = document.getElementById("lieu0").clientHeight
+        for(var i=0; i<= lieux.length;i++){
             try{
                 document.getElementById("lieu"+i).style.color="white"
                 document.getElementById("lieu"+i).style.textShadow="none"
@@ -529,16 +650,26 @@ document.addEventListener('keydown', function(event) {
             }
         }
         
+        var collection = document.getElementById("niveaux").childNodes
+        for (var a=[], i=collection.length; i;){
+            a[--i] = collection[i];
+        }
+       
         let previous = selected
+     
+        
         if(event.code == 'ArrowDown'){
-            if(selected == lieux.length-1) selected = 0
+            console.log(selected)
+            console.log(ordre.length)
+            if(selected == document.getElementById("niveaux").childElementCount + 1) selected = 0
             else{
                 do selected+=1
                 while(lieux[selected].position.y == 0 && lieux[selected].position.x == 0)
             }
+            
         }
         else{
-            if(selected == 0) selected = lieux.length-1
+            if(selected == 0) selected = 90
             else{
                 do selected-=1
                 while(lieux[selected].position.y == 0 && lieux[selected].position.x == 0)
@@ -546,40 +677,39 @@ document.addEventListener('keydown', function(event) {
         }
         
             //console.log(lieux[selected-1])
-        if(previous >=0) lieux[previous].material = new THREE.MeshBasicMaterial({color:0xff0000})
+        if(previous >=0) lieux[ordre[previous]-1].material = new THREE.MeshBasicMaterial({color:0xff0000})
             //console.log(document.getElementById("lieu"+(selected-1)))
         
 
         
-        var collection = document.getElementById("niveaux").childNodes
-        for (var a=[], i=collection.length; i;){
-            a[--i] = collection[i];
-        }
+        
         // let numerous = a.indexOf(document.getElementById("lieu"+selected))
         // let middleheit = heit*10 - (numerous/5)* 18
         // document.getElementById("niveaux").scroll(0,-middleheit + heit*numerous)
         if (event.code == 'ArrowDown'){
-            document.getElementById("niveaux").scrollBy(0,30)
+            document.getElementById("niveaux").scrollBy(0,33.75)
             event.preventDefault();
         }
         if (event.code == 'ArrowUp'){
-            document.getElementById("niveaux").scrollBy(0,-30)
+            document.getElementById("niveaux").scrollBy(0,-33)
             event.preventDefault();
         }
         if (selected == 0){
             document.getElementById("niveaux").scrollTo(0,0)
         }
-        console.log(document.getElementById("niveaux").childElementCount)
-        if (selected == document.getElementById("niveaux").childElementCount){
+        console.log(selected)
+        if (selected == document.getElementById("niveaux").childElementCount + 1){
             document.getElementById("niveaux").scrollTo(0,document.getElementById("niveaux").scrollHeight)
         }
-        document.getElementById("lieu"+selected).style.color="rgb(2,126,251,1)"
-        document.getElementById("lieu"+selected).style.textShadow="0px 0px 7px rgb(2,126,251,1)"
+        console.log(ordre[selected])
+        document.getElementById("lieu"+ordre[selected]).style.color="rgb(2,126,251,1)"
+        document.getElementById("lieu"+ordre[selected]).style.textShadow="0px 0px 7px rgb(2,126,251,1)"
         RtranslateLVL = true
-        if((locates[selected].sea_name == "East Blue" || locates[selected].sea_name == "South Blue" || locates[selected].sea_name == "Paradis" || locates[selected].sea_name == "Mer Blanche" || locates[selected].french_name == "Nakrowa") && locates[selected].french_name != "Baltigo"){
+        let vatmp = ordre[selected] -1
+        if((locates[vatmp].sea_name == "East Blue" || locates[vatmp].sea_name == "South Blue" || locates[vatmp].sea_name == "Paradis" || locates[vatmp].sea_name == "Mer Blanche" || locates[vatmp].french_name == "Nakrowa") && locates[vatmp].french_name != "Baltigo"){
             console.log("ptn")
-            yLVL = - (1.86 + 1.58) + (lieux[selected].position.x + 1)
-            xLVL = lieux[selected].position.y
+            yLVL = - (1.86 + 1.58) + (lieux[vatmp].position.x + 1)
+            xLVL = lieux[vatmp].position.y
             if(sphere.rotation.y < yLVL) pomY = 1
             else pomY = -1
             if(sphere.rotation.x < xLVL) pomX = 1 
@@ -589,9 +719,9 @@ document.addEventListener('keydown', function(event) {
         }
         else{
             let offs = 2
-            if(locates[selected].sea_name == "Nouveau Monde") offs = 2.5
-            yLVL = - (1.86 + 1.58) -(lieux[selected].position.x + offs)
-            xLVL = lieux[selected].position.y
+            if(locates[vatmp].sea_name == "Nouveau Monde") offs = 2.5
+            yLVL = - (1.86 + 1.58) -(lieux[vatmp].position.x + offs)
+            xLVL = lieux[vatmp].position.y
             if(sphere.rotation.y < yLVL) pomY = 1
             else pomY = -1
             if(sphere.rotation.x < xLVL) pomX = 1 
@@ -601,7 +731,7 @@ document.addEventListener('keydown', function(event) {
         }
         //console.log(sphere.rotation)
         colo = false
-        lieux[selected].material = new THREE.MeshBasicMaterial({color:0xfff000})
+        lieux[vatmp].material = new THREE.MeshBasicMaterial({color:0xfff000})
 
     }
 });

@@ -163,17 +163,7 @@
         "usagename":"Luffy Snakeman",
         "name":"Monkey D. Luffy - Gear Four: Snakeman",
         "bounty":"300000",
-        "age":"19",
-        "size":"170",
-        "fruit_id":"1",
-        "second_fruit_id":"none",
-        "job":"Pirate"
-    },
-    {
-        "usagename":"Luffy Boundman",
-        "name":"Monkey D. Luffy - Gear Four: Bounceman",
-        "bounty":"300000",
-        "age":"19",
+        "age":"17",
         "size":"170",
         "fruit_id":"1",
         "second_fruit_id":"none",
@@ -181,7 +171,7 @@
     },
    {
         "usagename":"Luffy Strong World",
-        "name":"Monkey D. Luffy - Merveille's Adventurer",
+        "name":"Monkey D. Luffy - Straw Hat Pirates' Attack",
         "bounty":"300000000",
         "age":"17",
         "size":"170",
@@ -538,11 +528,265 @@
         "fruit_id":"92",
         "second_fruit_id":"none",
         "job":"Pirate"
+    },
+    {
+        "usagename":"Robin - Demonio",
+        "name":"Nico Robin - Demonio Protecting Her Friends",
+        "bounty":"930000000",
+        "age":"30",
+        "size":"188",
+        "fruit_id":"6",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Robin - Strong World",
+        "name":"Nico Robin - Straw Hat Pirates' Attack",
+        "bounty":"80000000",
+        "age":"28",
+        "size":"188",
+        "fruit_id":"6",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Robin - Stampede",
+        "name":"Nico Robin - ONE PIECE STAMPEDE",
+        "bounty":"130000000",
+        "age":"30",
+        "size":"188",
+        "fruit_id":"6",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Miss All Sunday",
+        "name":"Miss All Sunday - Baroque Works VP",
+        "bounty":"79000000",
+        "age":"28",
+        "size":"188",
+        "fruit_id":"6",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Young Robin",
+        "name":"Nico Robin Girl from Ohara",
+        "bounty":"79000000",
+        "age":"8",
+        "size":"110",
+        "fruit_id":"6",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Orobi",
+        "name":"Orobi",
+        "bounty":"130000000",
+        "age":"30",
+        "size":"188",
+        "fruit_id":"6",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Fraland",
+        "name":"Franky - Cyborg Built to Realize the Dreams of Every Man",
+        "bounty":"94000000",
+        "age":"36",
+        "size":"240",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"General Franky",
+        "name":"General Franky - Iron Pirate",
+        "bounty":"44000000",
+        "age":"36",
+        "size":"240",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Franosuke",
+        "name":"Franosuke - Carpenter",
+        "bounty":"94000000",
+        "age":"36",
+        "size":"240",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Franky - Stampede",
+        "name":"Franky - ONE PIECE STAMPEDE",
+        "bounty":"94000000",
+        "age":"36",
+        "size":"240",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Franky - Strong World",
+        "name":"Franky - Straw Hat Pirates' Attack",
+        "bounty":"94000000",
+        "age":"34",
+        "size":"225",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Brook - Strong World",
+        "name":"Brook - Straw Hat Pirates' Attack",
+        "bounty":"33000000",
+        "age":"88",
+        "size":"266",
+        "fruit_id":"21",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Brook - Stampede",
+        "name":"Brook - ONE PIECE STAMPEDE",
+        "bounty":"83000000",
+        "age":"90",
+        "size":"277",
+        "fruit_id":"21",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Bonekichi",
+        "name":"Bonekichi",
+        "bounty":"383000000",
+        "age":"90",
+        "size":"277",
+        "fruit_id":"21",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Brook Rumbar Pirates",
+        "name":"Brook Rumbar Pirates",
+        "bounty":"33000000",
+        "age":"38",
+        "size":"266",
+        "fruit_id":"21",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Soul King",
+        "name":"Soul King Brook - Soul's Special Live Performance",
+        "bounty":"83000000",
+        "age":"90",
+        "size":"277",
+        "fruit_id":"21",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Captain Buggy ",
+        "name":"Captain Buggy",
+        "bounty":"15000000",
+        "age":"37",
+        "size":"192",
+        "fruit_id":"22",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Shichibukai Buggy",
+        "name":"Buggy's Delivery",
+        "bounty":"15000000",
+        "age":"39",
+        "size":"192",
+        "fruit_id":"22",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":" Roger Pirates - Buggy",
+        "name":"Buggy - Roger Pirates",
+        "bounty":"0",
+        "age":"12",
+        "size":"140",
+        "fruit_id":"22",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Yonko Buggy",
+        "name":"Buggy the Genius Jester",
+        "bounty":"3189000000",
+        "age":"39",
+        "size":"192",
+        "fruit_id":"22",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Klahadore",
+        "name":"Klahadore - Butler",
+        "bounty":"16000000",
+        "age":"33",
+        "size":"207",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Young Arlong",
+        "name":"Arlong - Sun Pirates",
+        "bounty":"0",
+        "age":"15",
+        "size":"263",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Big Alvida",
+        "name":"Iron-Mace Alvida",
+        "bounty":"5000000",
+        "age":"25",
+        "size":"198",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Alvida",
+        "name":"Iron-Mace Alvida - Smooth-Smooth Fruit",
+        "bounty":"5000000",
+        "age":"25",
+        "size":"198",
+        "fruit_id":"3",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Buggy's Partner - Alvida",
+        "name":"Alvida - Elegantly Enjoying the Festival",
+        "bounty":"5000000",
+        "age":"27",
+        "size":"198",
+        "fruit_id":"3",
+        "second_fruit_id":"none",
+        "job":"Pirate"
+    },
+    {
+        "usagename":"Marine's Django",
+        "name":"Double Crosser Django",
+        "bounty":"0",
+        "age":"27",
+        "size":"207",
+        "fruit_id":"0",
+        "second_fruit_id":"none",
+        "job":"Lieutenant Commandant"
     }
-
-
-
-
-
-
 ]

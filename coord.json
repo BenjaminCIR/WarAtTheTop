@@ -92,8 +92,8 @@
         "phi":2.02
     },
     {
-        "theta": null,
-        "phi":null
+        "theta": 1,
+        "phi":0.51
     },
     {
         "theta": 1,
@@ -320,12 +320,12 @@
         "phi":0.15
     },
     {
-        "theta": null,
-        "phi":null
+        "theta": 5.31,
+        "phi":2.24
     },
     {
-        "theta": null,
-        "phi":null
+        "theta": 5.44,
+        "phi":-0.14
     },
     {
         "theta": 5.39,

@@ -8,8 +8,8 @@
             <div class="topnav_menu">
                 <ul>
                     <?php if(empty($_SESSION['id'])){ ?>
-                    <a href="login.php">Connexion</a>
-                    <a href="register.php">Inscription</a>
+                    <a href="login.php#connexion">Connexion</a>
+                    <a href="login.php?check=true">Inscription</a>
                     <?php } if(isset($_SESSION['id'])){ ?>
                     <a href="setup.php">Paramètres</a>
                     <a href="deconnexion.php">Déconnexion</a>
