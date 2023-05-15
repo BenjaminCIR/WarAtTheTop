@@ -40,6 +40,7 @@ var pomX = 0
 var pomY = 0
 
 var selected = -1
+var ordre
 
 var lock = false
 
@@ -218,7 +219,6 @@ fetch('https://api.api-onepiece.com/locates')
                                                     break
                                                 }
                                             }
-                                            
                                         })
 
                                         tmp.addEventListener("mouseleave", function(){
@@ -324,10 +324,6 @@ function onMouseClick( event ) {
 function openpanel(isobj, indox){
     //let indx = lieux.indexOf(obj)
     //console.log(locates[indx])
-    
-   
-       
-
     console.log(indox)
     var indx = -1
     if(isobj == true){
@@ -375,7 +371,6 @@ const renderer = new THREE.WebGLRenderer({ alpha: true } )
 renderer.setSize(innerWidth,innerHeight)
 document.body.appendChild(renderer.domElement)
 
-
 const gltf = new GLTFLoader();
 gltf.load('./circle.glb', (gltfScene) =>{
     socle = gltfScene.scene
@@ -391,7 +386,6 @@ gltf.load('./circle.glb', (gltfScene) =>{
     scene.add(socle)
 
 })
-
 
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(rayonsphere,50,50),
@@ -479,7 +473,6 @@ function animate(){
         if(sphere.position.x <= -3){
             translate = false
         }
-
         sphere.position.x -= 0.15
     }
     if(scaleing){
@@ -618,15 +611,12 @@ addEventListener('mousedown',()=>{
         mouse.x = (event.clientX / innerWidth)*2 - 1
         mouse.y = (event.clientY / innerHeight)*2 - 1
     }
-
-
 })
 addEventListener('mouseup',()=>{
     if(planeteclick){
         rotating = false
         naturalrotate = inertie
     }
-
 })
 
 document.addEventListener('keydown', function(event) {
@@ -654,10 +644,10 @@ document.addEventListener('keydown', function(event) {
         for (var a=[], i=collection.length; i;){
             a[--i] = collection[i];
         }
-       
+
         let previous = selected
-     
-        
+
+
         if(event.code == 'ArrowDown'){
             console.log(selected)
             console.log(ordre.length)
@@ -666,7 +656,6 @@ document.addEventListener('keydown', function(event) {
                 do selected+=1
                 while(lieux[selected].position.y == 0 && lieux[selected].position.x == 0)
             }
-            
         }
         else{
             if(selected == 0) selected = 90
@@ -677,12 +666,12 @@ document.addEventListener('keydown', function(event) {
         }
         
             //console.log(lieux[selected-1])
-        if(previous >=0) lieux[ordre[previous]-1].material = new THREE.MeshBasicMaterial({color:0xff0000})
+            if(previous >=0) lieux[ordre[previous]-1].material = new THREE.MeshBasicMaterial({color:0xff0000})
             //console.log(document.getElementById("lieu"+(selected-1)))
         
 
         
-        
+
         // let numerous = a.indexOf(document.getElementById("lieu"+selected))
         // let middleheit = heit*10 - (numerous/5)* 18
         // document.getElementById("niveaux").scroll(0,-middleheit + heit*numerous)
@@ -739,41 +728,3 @@ window.addEventListener( 'click', onMouseClick, false );
 window.addEventListener( 'mousemove', onMouseMove, false );
 window.addEventListener( 'mousemove', onMouseHover, false );
 
-
-
-
-
-// ------------------ Menu déroulant ----------------------
-const hamburger = document.getElementById("liste");
-const menu = document.getElementsByClassName("topnav_menu")[0];
-
-hamburger.addEventListener("click", () => {
-    hamburger.setAttribute("disabled", "");
-    menu.classList.toggle("top");
-    if(hamburger.hasAttribute("disabled")){
-        setTimeout(function(){
-            hamburger.removeAttribute("disabled");
-        },500);
-    }
-    if(menu.classList.contains("index")){
-        menu.classList.toggle("index");
-    }
-    else {
-        setTimeout(function(){
-            menu.classList.toggle("index");
-        },500);
-    }
-});
-
-
-const histoire = document.getElementById("history");
-const retour = document.getElementById("back");
-const niveaux = document.getElementsByClassName("listeNiv")[0];
-
-histoire.addEventListener("click", () => {
-    niveaux.classList.toggle("block");
-});
-
-retour.addEventListener("click", () => {
-    niveaux.classList.toggle("block");
-});
