@@ -1,0 +1,50 @@
+#barre{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25%;
+    width: 100%;
+    border-bottom: 1px solid white;
+}
+
+#barre a{
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 0px 10px;
+}
+
+#collect:after{
+    content: "";
+    position: absolute;
+    background-color: rgb(2,126,251,1);
+    height: 3px;
+    width: 0;
+    left: 8%;
+    bottom: -5px;
+    transition: transform 0.4s ease;
+    transform: scale(0, 1);
+    border-radius: 10px;
+}
+#collect:hover:after{
+    width: 85%;
+    transform: scale(1, 1);
+}
+
+.liens:after{
+    content: "";
+    position: absolute;
+    background-color: rgb(2,126,251,1);
+    height: 3px;
+    width: 0;
+    left: 7%;
+    bottom: -5px;
+    transition: transform 0.4s ease;
+    transform: scale(0, 1);
+    border-radius: 10px;
+}
+.liens:hover:after{
+    width: 85%;
+    transform: scale(1, 1);
+}

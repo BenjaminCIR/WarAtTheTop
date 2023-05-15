@@ -2,8 +2,6 @@
     <div id="root">
         <nav id="topnav" class="topnav">
             <button id="liste"><img id="hamburger" src="Hamburger_icon_B.png"></button>
-            
-            <button id="back" style="display: none;">HOME</button>
 
             <div class="topnav_menu">
                 <ul>
@@ -26,21 +24,20 @@
                     
                     <input name="submit" class="envoyer" type="submit" value="SE CONNECTER"></input>
                 </form>
-            <?php } ?>
+            <?php }
 
-            <?php 
-            if(isset($_SESSION['id'])) { 
-                if(isset($_GET['err'])) $err = $_GET['err'];
-                else $err=""; // on recupère les informations d'erreur si il y en a une
-                if(isset($_COOKIE['usernamepre'])) $usr = $_COOKIE['usernamepre']; // ainsi que les cookie de préremplissage si ils existent
-                else $usr="";
-                if(isset($_COOKIE['mdppre'])) $mdp = $_COOKIE['mdppre'];
-                else $mdp="";
-                
+            if(isset($_SESSION['id'])){
+                $ident = $_SESSION['id'];
+                $requetepseudo= "SELECT * FROM users WHERE id='$ident'";
+				require "connexion.php";
+				$resultatpseudo = mysqli_query($connexion,$requetepseudo);
+				$rowpseudo = mysqli_fetch_assoc($resultatpseudo);
+                $pseudonyme = $rowpseudo['pseudo'];
+
+                echo '<a href="profil.php" id="profil">'.$pseudonyme.'</a>';
+                echo '<a href="shop.php" id="shop">Boutique</a>';
+            }
             ?>
-                
-                <div class="infos"><?php echo $usr;?></div>
-            <?php } ?>
         </nav>
     </div>
 </header>
