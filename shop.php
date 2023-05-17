@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <title>Boutique</title>
     <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="header.css">
     <script src="shop.js"></script>
-
   </head>
   <body>
+
+  <?php
+  session_start();
+			include "header.php";
+	?>
+
     <div class="background"></div>
     <div class="content">
       <div id="blc1"> 
@@ -15,7 +21,6 @@
 			  <img class="nami" src="nami.gif" alt="";>
 			
 			  <?php
-        session_start();
         if(isset($_SESSION['id'])){
           require "connexion.php";
           $requete1 = "SELECT * FROM users WHERE id = $_SESSION[id]";
@@ -749,6 +754,7 @@
 	  mysqli_close($connexion);
 	}
   ?>
+  <script src="hamburger.js"></script>
 
   </body>
 </html>
