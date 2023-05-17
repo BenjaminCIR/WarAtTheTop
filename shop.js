@@ -46,3 +46,13 @@ document.getElementById('scrollToTopButton').addEventListener('click', function(
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+
+function toggleForm(formId) {
+  var form = document.getElementById(formId);
+  if (form.style.display === 'none') {
+      form.style.display = 'block';
+  } else {
+      form.style.display = 'none';
+  }
+}
