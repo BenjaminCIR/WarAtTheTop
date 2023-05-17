@@ -235,7 +235,7 @@ body {
   position: relative;
   width: 45%;
   height: auto;
-  right: 145px;
+  right: 105px;
   top: 24px;
   border-radius: 24px;
 }
@@ -281,10 +281,14 @@ body {
   right: -73px;
   top: 73px;
 }
+.pack p {
+  margin: 10px 10px 10px 10px;
+  font-size : 20px;
+}
 
 .stylepopup {
   position: fixed;
-  width: 840px;
+  width: 866px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
