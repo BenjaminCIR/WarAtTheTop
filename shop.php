@@ -10,176 +10,745 @@
   <body>
     <div class="background"></div>
     <div class="content">
-      <img id="img1" src="img1.jpg">
+      <div id="blc1"> 
+        <h1>Your shop</h1>
+			  <img class="nami" src="nami.gif" alt="";>
+			
+			  <?php
+        session_start();
+        if(isset($_SESSION['id'])){
+          require "connexion.php";
+          $requete1 = "SELECT * FROM users WHERE id = $_SESSION[id]";
+          $resultat1 = mysqli_query($connexion, $requete1);
+          if ( $resultat1 == FALSE ){
+            echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+            die();
+          }
+          else { 
+            $u = mysqli_fetch_assoc($resultat1);
+            echo '<h2 class="money">Your Money : '.$u['money'].'<img class="berry" src="berry.png" alt="Berry"></h2>';
+            echo '<h2 class="packs">Your Packs : </h2>';
+            echo '<div class="pack"><p>Number of North Blue packs : '.$u['pack_north_blue'].'<p>';
+            echo '<p>Number of South Blue packs : '.$u['pack_south_blue'].'</p>';
+            echo '<p>Number of East Blue packs : '.$u['pack_east_blue'].'</p>';
+            echo '<p>Number of West Blue packs : '.$u['pack_west_blue'].'</p>';
+            echo '<p>Number of Bronze packs : '.$u['pack_bronze'].'</p>';
+            echo '<p>Number of Silver packs : '.$u['pack_silver'].'</p>';
+            echo '<p>Number of Gold packs : '.$u['pack_gold'].'</p></div>';
+          }
+          mysqli_close($connexion);
+        }
+        ?>
+       
+      </div>
       <a href="#" id="scrollToTopButton" class="scroll-to-top-button">
         <img src="flèche.jpg" alt="Retour en haut de la page">
       </a>
 
       <div class="container">
         <div class="block">
-          <img src="pack1.jpg" alt="Image 1" onclick="scrollToBloc2()">
+          <img src="Pack\pack_north_blue.png" alt="Image 1" onclick="scrollToBloc2()">
         </div>
       </div>
 
       <div class="container">
         <div class="block">
-          <img src="pack1.jpg" alt="Image 2" onclick="scrollToBloc3()">
+          <img src="Pack\pack_south_blue.png" alt="Image 2" onclick="scrollToBloc3()">
         </div>
       </div>
 
       <div class="container">
         <div class="block">
-          <img src="pack1.jpg" alt="Image 3" onclick="scrollToBloc4()">
+          <img src="Pack\pack_east_blue.png" alt="Image 3" onclick="scrollToBloc4()">
         </div>
       </div>
 
       <div class="container">
         <div class="block">
-          <img src="pack1.jpg" alt="Image 4"onclick="scrollToBloc5()">
+          <img src="Pack\pack_west_blue.png" alt="Image 4"onclick="scrollToBloc5()">
         </div>
       </div>
 
       <div class="container1">
         <div class="left">
           <div class="block0">
-            <img src="pack1.jpg" alt="Image 1" onclick="scrollToBloc6()">
+            <img src="Pack\pack_bronze.png" alt="Image 1" onclick="scrollToBloc6()">
           </div>
         </div>
       </div>
 
       <div class="container1">
         <div class="block0">
-          <img src="pack1.jpg" alt="Image 1" onclick="scrollToBloc7()">
+          <img src="Pack\pack_silver.png" alt="Image 1" onclick="scrollToBloc7()">
         </div>
       </div>
 
       <div class="container1">
         <div class="block0">
-          <img src="pack1.jpg" alt="Image 1" onclick="scrollToBloc8()">
+          <img src="Pack\pack_gold.png" alt="Image 1" onclick="scrollToBloc8()">
         </div>
       </div>
-      
-      <div class="cards">
-        <div class="card"  id="bloc2">
-          <h1>North Blue</h1>
-          <div class="cont">
-            <div class="coffre">
-              <img class="left-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 1 Pack</button>
+
+      <?php
+        $i = 1;
+        $j = 1;
+        while ($i < 8) {
+            while ($j < 4) {
+                echo '
+                <form id="stylepopup'.$i.$j.'" class="stylepopup" name="form'.$i.$j.'" action="shop.php" method="get" style="display:none;">
+                    <p>Do you really want to purchase this pack(s)?</p>
+                    <button class="confirm" name="confirm'.$i.$j.'">Confirm</button>
+                    <button class="annuler" name="cancel'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Cancel</button>
+                </form>';
+                $j++;
+            }
+            $i++;
+            $j = 1; // Réinitialiser la valeur de $j pour chaque itération de $i
+        }
+        ?>
+
+        <div class="cards">
+            <div class="card" id="bloc2">
+                <h1>Pack North Blue</h1>
+                <div class="cont">
+                    <div class="coffre">
+                        <img src="Pack\pack_north_blue.png">
+                        <div class="petit-texte3">
+                            <p>900</p>
+                            <img class="berry3" src="berry.png">
+                        </div>
+                        <?php
+                        if ($u['money'] <= 900) {
+                            echo '<button class="petit-bouton1">Low money</button>';
+                        } else {
+                            $i = 1;
+                            $j = 1;
+                            echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                        }
+                        ?>
+                    </div>
+                    <div class="coffre">
+                        <img src="Pack\pack_north_blue.png">
+                        <img class="bonus1" src="fois2.png">
+                        <div class="petit-texte2">
+                            <p>1 800</p>
+                            <img class="berry2" src="berry.png">
+                        </div>
+                        <?php
+                        if ($u['money'] <= 900) {
+                            echo '<button class="petit-bouton1">Low money</button>';
+                        } else {
+                            $i = 1;
+                            $j = 2;
+                            echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                        }
+                        ?>
+                    </div>
+                    <div class="coffre">
+                        <img src="Pack\pack_north_blue.png">
+                        <img class="bonus2" src="fois3.png">
+                        <div class="petit-texte1">
+                            <p>2 700</p>
+                            <img class="berry1" src="berry.png">
+                        </div>
+                        <?php
+                        if ($u['money'] <= 900) {
+                            echo '<button class="petit-bouton1">Low money</button>';
+                        } else {
+                            $i = 1;
+                            $j = 3;
+                            echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
-            <div class="coffre">
-              <img class="center-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 2 Packs</button>
-            </div>
-            <div class="coffre">
-              <img class="right-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 3 Packs</button>
-            </div>
-          </div>
         </div>
         <div class="card" id="bloc3">
-          <h1>South Blue</h1>
+          <h1>Pack South Blue</h1>
           <div class="cont">
             <div class="coffre">
-              <img class="left-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 1 Pack</button>
-            </div>
+              <img src="Pack\pack_south_blue.png">
+              <div class="petit-texte3">
+                <p>900</p>
+                <img class="berry3" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=2; $j=1;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
             <div class="coffre">
-              <img class="center-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 2 Packs</button>
-            </div>
+              <img src="Pack\pack_south_blue.png">
+              <img class="bonus1" src="fois2.png">
+              <div class="petit-texte2">
+                <p>1 800</p>
+                <img class="berry2" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=2; $j=2;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
             <div class="coffre">
-              <img class="right-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 3 Packs</button>
-            </div>
+              <img src="Pack\pack_south_blue.png">
+              <img class="bonus2" src="fois3.png">
+              <div class="petit-texte1">
+                <p>2 700</p>
+                <img class="berry1" src="berry.png">
+              </div>                
+              <<?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=2; $j=3;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
           </div>
         </div>
         <div class="card" id="bloc4">
-          <h1>East Blue</h1>
+          <h1>Pack East Blue</h1>
           <div class="cont">
             <div class="coffre">
-              <img class="left-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 1 Pack</button>
-            </div>
+              <img src="Pack\pack_east_blue.png">
+              <div class="petit-texte3">
+                <p>900</p>
+                <img class="berry3" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=3; $j=1;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
             <div class="coffre">
-              <img class="center-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 2 Packs</button>
-            </div>
+              <img src="Pack\pack_east_blue.png">
+              <img class="bonus1" src="fois2.png">
+              <div class="petit-texte2">
+                <p>1 800</p>
+                <img class="berry2" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=3; $j=2;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
             <div class="coffre">
-              <img class="right-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 3 Packs</button>
-            </div>
+              <img src="Pack\pack_east_blue.png">
+              <img class="bonus2" src="fois3.png">
+              <div class="petit-texte1">
+                <p>2 700</p>
+                <img class="berry1" src="berry.png">
+              </div>                
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=3; $j=3;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
           </div>
         </div>
         <div class="card" id="bloc5">
-          <h1>West Blue</h1>
+          <h1>Pack West Blue</h1>
           <div class="cont">
             <div class="coffre">
-              <img class="left-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 1 Pack</button>
-            </div>
+              <img src="Pack\pack_west_blue.png">
+              <div class="petit-texte3">
+                <p>900</p>
+                <img class="berry3" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=4; $j=1;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
             <div class="coffre">
-              <img class="center-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 2 Packs</button>
-            </div>
+              <img src="Pack\pack_west_blue.png">
+              <img class="bonus1" src="fois2.png">
+              <div class="petit-texte2">
+                <p>1 800</p>
+                <img class="berry2" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=4; $j=2;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
             <div class="coffre">
-              <img class="right-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 3 Packs</button>
-            </div>
+              <img src="Pack\pack_west_blue.png">
+              <img class="bonus2" src="fois3.png">
+              <div class="petit-texte1">
+                <p>2 700</p>
+                <img class="berry1" src="berry.png">
+              </div>                
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=4; $j=3;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?></div>
           </div>
         </div>
         <div class="card" id="bloc6">
-          <h1>Pack Rare</h1>
+          <h1>Pack Bronze</h1>
           <div class="cont">
             <div class="coffre">
-              <img class="left-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 1 Pack</button>
-            </div>
+              <img src="Pack\pack_bronze.png">
+              <div class="petit-texte3">
+                <p>900</p>
+                <img class="berry3" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=5; $j=1;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?></div>
             <div class="coffre">
-              <img class="center-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 2 Packs</button>
-            </div>
+              <img src="Pack\pack_bronze.png">
+              <img class="bonus1" src="fois2.png">
+              <div class="petit-texte2">
+                <p>1 800</p>
+                <img class="berry2" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=5; $j=2;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>  
+              </div>
             <div class="coffre">
-              <img class="right-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 3 Packs</button>
-            </div>
+              <img src="Pack\pack_bronze.png">
+              <img class="bonus2" src="fois3.png">
+              <div class="petit-texte1">
+                <p>2 700</p>
+                <img class="berry1" src="berry.png">
+              </div>                
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=5; $j=3;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
           </div>
         </div>
         <div class="card" id="bloc7">
-          <h1>Pack Epique</h1>
+          <h1>Pack Silver</h1>
           <div class="cont">
             <div class="coffre">
-              <img class="left-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 1 Pack</button>
-            </div>
+              <img src="Pack\pack_silver.png">
+              <div class="petit-texte3">
+                <p>900</p>
+                <img class="berry3" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=6; $j=1;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
             <div class="coffre">
-              <img class="center-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 2 Packs</button>
-            </div>
+              <img src="Pack\pack_silver.png">
+              <img class="bonus1" src="fois2.png">
+              <div class="petit-texte2">
+                <p>1 800</p>
+                <img class="berry2" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=6; $j=2;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+               </div>
             <div class="coffre">
-              <img class="right-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 3 Packs</button>
+              <img src="Pack\pack_silver.png">
+              <img class="bonus2" src="fois3.png">
+              <div class="petit-texte1">
+                <p>2 700</p>
+                <img class="berry1" src="berry.png">
+              </div>                
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=6; $j=3;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
             </div>
           </div>
         </div>
         <div class="card" id="bloc8">
-          <h1>Pack Légendaire</h1>
+          <h1>Pack Silver</h1>
           <div class="cont">
             <div class="coffre">
-              <img class="left-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 1 Pack</button>
-            </div>
+              <img src="Pack\pack_gold.png">
+              <div class="petit-texte3">
+                <p>900</p>
+                <img class="berry3" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=7; $j=1;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+              </div>
             <div class="coffre">
-              <img class="center-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 2 Packs</button>
-            </div>
+              <img src="Pack\pack_gold.png">
+              <img class="bonus1" src="fois2.png">
+              <div class="petit-texte2">
+                <p>1 800</p>
+                <img class="berry2" src="berry.png">
+              </div>
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=7; $j=2;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
+               </div>
             <div class="coffre">
-              <img class="right-image" src="pack1.jpg">
-              <button class="petit-bouton">Acheter 3 Packs</button>
+              <img src="Pack\pack_gold.png">
+              <img class="bonus2" src="fois3.png">
+              <div class="petit-texte1">
+                <p>2 700</p>
+                <img class="berry1" src="berry.png">
+              </div>                
+              <?php
+                  if ($u['money'] <= 900) {
+                      echo '<button class="petit-bouton1">Low money</button>';
+                  } else {
+                      $i=7; $j=3;
+                      echo '<button class="petit-bouton" name="btn'.$i.$j.'" onclick="toggleForm(\'stylepopup'.$i.$j.'\')">Buy</button>';
+                  }
+              ?>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <?php	
+	if(isset($_GET["confirm11"]) || isset($_GET["confirm12"]) || isset($_GET["confirm13"])){
+		require "connexion.php";
+    $requete1 = "SELECT * FROM users WHERE id=$_SESSION[id]";
+    $resultat1 = mysqli_query($connexion, $requete1);       
+    if(isset($_GET["confirm11"])) $achat = 900;
+    if(isset($_GET["confirm12"])) $achat = 900*2;
+    if(isset($_GET["confirm13"])) $achat = 900*3;
+			
+		if( $resultat1 == FALSE){
+            echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+            die();
+        }
+    else { 
+      $UneLigne1 = mysqli_fetch_assoc($resultat1);				
+      if($UneLigne1['money'] >= $achat){
+        $UneLigne1['money'] = $UneLigne1['money'] - $achat;
+        $requete3 = "UPDATE users SET money = $UneLigne1[money] WHERE id=$_SESSION[id]";
+        $resultat3 = mysqli_query($connexion, $requete3);
+        if( $resultat3 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+        if($achat == 900) $U = 1 + $UneLigne1[pack_north_blue];
+        if($achat == 900*2) $U = 2 + $UneLigne1[pack_north_blue];
+        if($achat == 900*3) $U = 3 + $UneLigne1[pack_north_blue];
+        $requete4 = "UPDATE users SET pack_north_blue = '$U' WHERE id=$_SESSION[id]";
+        $resultat4 = mysqli_query($connexion, $requete4);
+        if( $resultat4 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+      }
+    }
+    header("Location:shop.php");
+	  mysqli_close($connexion);
+	}
+  ?>
+
+<?php	
+	if(isset($_GET["confirm21"]) || isset($_GET["confirm22"]) || isset($_GET["confirm23"])){
+		require "connexion.php";
+    $requete1 = "SELECT * FROM users WHERE id=$_SESSION[id]";
+    $resultat1 = mysqli_query($connexion, $requete1);       
+    if(isset($_GET["confirm21"])) $achat = 900;
+    if(isset($_GET["confirm22"])) $achat = 900*2;
+    if(isset($_GET["confirm23"])) $achat = 900*3;
+			
+		if( $resultat1 == FALSE){
+            echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+            die();
+        }
+    else { 
+      $UneLigne1 = mysqli_fetch_assoc($resultat1);				
+      if($UneLigne1['money'] >= $achat){
+        $UneLigne1['money'] = $UneLigne1['money'] - $achat;
+        $requete3 = "UPDATE users SET money = $UneLigne1[money] WHERE id=$_SESSION[id]";
+        $resultat3 = mysqli_query($connexion, $requete3);
+        if( $resultat3 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+        if($achat == 900) $U = 1 + $UneLigne1[pack_south_blue];
+        if($achat == 900*2) $U = 2 + $UneLigne1[pack_south_blue];
+        if($achat == 900*3) $U = 3 + $UneLigne1[pack_south_blue];
+        $requete4 = "UPDATE users SET pack_south_blue = '$U' WHERE id=$_SESSION[id]";
+        $resultat4 = mysqli_query($connexion, $requete4);
+        if( $resultat4 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+      }
+    }
+    header("Location:shop.php");
+	  mysqli_close($connexion);
+	}
+  ?>
+
+<?php	
+	if(isset($_GET["confirm31"]) || isset($_GET["confirm32"]) || isset($_GET["confirm33"])){
+		require "connexion.php";
+    $requete1 = "SELECT * FROM users WHERE id=$_SESSION[id]";
+    $resultat1 = mysqli_query($connexion, $requete1);       
+    if(isset($_GET["confirm31"])) $achat = 900;
+    if(isset($_GET["confirm32"])) $achat = 900*2;
+    if(isset($_GET["confirm33"])) $achat = 900*3;
+			
+		if( $resultat1 == FALSE){
+            echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+            die();
+        }
+    else { 
+      $UneLigne1 = mysqli_fetch_assoc($resultat1);				
+      if($UneLigne1['money'] >= $achat){
+        $UneLigne1['money'] = $UneLigne1['money'] - $achat;
+        $requete3 = "UPDATE users SET money = $UneLigne1[money] WHERE id=$_SESSION[id]";
+        $resultat3 = mysqli_query($connexion, $requete3);
+        if( $resultat3 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+        if($achat == 900) $U = 1 + $UneLigne1[pack_east_blue];
+        if($achat == 900*2) $U = 2 + $UneLigne1[pack_east_blue];
+        if($achat == 900*3) $U = 3 + $UneLigne1[pack_east_blue];
+        $requete4 = "UPDATE users SET pack_east_blue = '$U' WHERE id=$_SESSION[id]";
+        $resultat4 = mysqli_query($connexion, $requete4);
+        if( $resultat4 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+      }
+    }
+    header("Location:shop.php");
+	  mysqli_close($connexion);
+	}
+  ?>
+
+<?php	
+	if(isset($_GET["confirm41"]) || isset($_GET["confirm42"]) || isset($_GET["confirm43"])){
+		require "connexion.php";
+    $requete1 = "SELECT * FROM users WHERE id=$_SESSION[id]";
+    $resultat1 = mysqli_query($connexion, $requete1);       
+    if(isset($_GET["confirm41"])) $achat = 900;
+    if(isset($_GET["confirm42"])) $achat = 900*2;
+    if(isset($_GET["confirm43"])) $achat = 900*3;
+			
+		if( $resultat1 == FALSE){
+            echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+            die();
+        }
+    else { 
+      $UneLigne1 = mysqli_fetch_assoc($resultat1);				
+      if($UneLigne1['money'] >= $achat){
+        $UneLigne1['money'] = $UneLigne1['money'] - $achat;
+        $requete3 = "UPDATE users SET money = $UneLigne1[money] WHERE id=$_SESSION[id]";
+        $resultat3 = mysqli_query($connexion, $requete3);
+        if( $resultat3 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+        if($achat == 900) $U = 1 + $UneLigne1[pack_west_blue];
+        if($achat == 900*2) $U = 2 + $UneLigne1[pack_west_blue];
+        if($achat == 900*3) $U = 3 + $UneLigne1[pack_west_blue];
+        $requete4 = "UPDATE users SET pack_west_blue = '$U' WHERE id=$_SESSION[id]";
+        $resultat4 = mysqli_query($connexion, $requete4);
+        if( $resultat4 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+      }
+    }
+    header("Location:shop.php");
+	  mysqli_close($connexion);
+	}
+  ?>
+
+<?php	
+	if(isset($_GET["confirm51"]) || isset($_GET["confirm52"]) || isset($_GET["confirm53"])){
+		require "connexion.php";
+    $requete1 = "SELECT * FROM users WHERE id=$_SESSION[id]";
+    $resultat1 = mysqli_query($connexion, $requete1);       
+    if(isset($_GET["confirm51"])) $achat = 900;
+    if(isset($_GET["confirm52"])) $achat = 900*2;
+    if(isset($_GET["confirm53"])) $achat = 900*3;
+			
+		if( $resultat1 == FALSE){
+            echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+            die();
+        }
+    else { 
+      $UneLigne1 = mysqli_fetch_assoc($resultat1);				
+      if($UneLigne1['money'] >= $achat){
+        $UneLigne1['money'] = $UneLigne1['money'] - $achat;
+        $requete3 = "UPDATE users SET money = $UneLigne1[money] WHERE id=$_SESSION[id]";
+        $resultat3 = mysqli_query($connexion, $requete3);
+        if( $resultat3 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+        if($achat == 900) $U = 1 + $UneLigne1[pack_bronze];
+        if($achat == 900*2) $U = 2 + $UneLigne1[pack_bronze];
+        if($achat == 900*3) $U = 3 + $UneLigne1[pack_bronze];
+        $requete4 = "UPDATE users SET pack_bronze = '$U' WHERE id=$_SESSION[id]";
+        $resultat4 = mysqli_query($connexion, $requete4);
+        if( $resultat4 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+      }
+    }
+    header("Location:shop.php");
+	  mysqli_close($connexion);
+	}
+  ?>
+
+<?php	
+	if(isset($_GET["confirm61"]) || isset($_GET["confirm62"]) || isset($_GET["confirm63"])){
+		require "connexion.php";
+    $requete1 = "SELECT * FROM users WHERE id=$_SESSION[id]";
+    $resultat1 = mysqli_query($connexion, $requete1);       
+    if(isset($_GET["confirm61"])) $achat = 900;
+    if(isset($_GET["confirm62"])) $achat = 900*2;
+    if(isset($_GET["confirm63"])) $achat = 900*3;
+			
+		if( $resultat1 == FALSE){
+            echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+            die();
+        }
+    else { 
+      $UneLigne1 = mysqli_fetch_assoc($resultat1);				
+      if($UneLigne1['money'] >= $achat){
+        $UneLigne1['money'] = $UneLigne1['money'] - $achat;
+        $requete3 = "UPDATE users SET money = $UneLigne1[money] WHERE id=$_SESSION[id]";
+        $resultat3 = mysqli_query($connexion, $requete3);
+        if( $resultat3 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+        if($achat == 900) $U = 1 + $UneLigne1[pack_silver];
+        if($achat == 900*2) $U = 2 + $UneLigne1[pack_silver];
+        if($achat == 900*3) $U = 3 + $UneLigne1[pack_silver];
+        $requete4 = "UPDATE users SET pack_silver = '$U' WHERE id=$_SESSION[id]";
+        $resultat4 = mysqli_query($connexion, $requete4);
+        if( $resultat4 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+      }
+    }
+    header("Location:shop.php");
+	  mysqli_close($connexion);
+	}
+  ?>
+
+<?php	
+	if(isset($_GET["confirm71"]) || isset($_GET["confirm72"]) || isset($_GET["confirm73"])){
+		require "connexion.php";
+    $requete1 = "SELECT * FROM users WHERE id=$_SESSION[id]";
+    $resultat1 = mysqli_query($connexion, $requete1);       
+    if(isset($_GET["confirm71"])) $achat = 900;
+    if(isset($_GET["confirm72"])) $achat = 900*2;
+    if(isset($_GET["confirm73"])) $achat = 900*3;
+			
+		if( $resultat1 == FALSE){
+            echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+            die();
+        }
+    else { 
+      $UneLigne1 = mysqli_fetch_assoc($resultat1);				
+      if($UneLigne1['money'] >= $achat){
+        $UneLigne1['money'] = $UneLigne1['money'] - $achat;
+        $requete3 = "UPDATE users SET money = $UneLigne1[money] WHERE id=$_SESSION[id]";
+        $resultat3 = mysqli_query($connexion, $requete3);
+        if( $resultat3 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+        if($achat == 900) $U = 1 + $UneLigne1[pack_gold];
+        if($achat == 900*2) $U = 2 + $UneLigne1[pack_gold];
+        if($achat == 900*3) $U = 3 + $UneLigne1[pack_gold];
+        $requete4 = "UPDATE users SET pack_gold = '$U' WHERE id=$_SESSION[id]";
+        $resultat4 = mysqli_query($connexion, $requete4);
+        if( $resultat4 == FALSE){
+          echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
+          die();
+        }
+      }
+    }
+    header("Location:shop.php");
+	  mysqli_close($connexion);
+	}
+  ?>
+
   </body>
 </html>
