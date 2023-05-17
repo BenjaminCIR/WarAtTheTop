@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 09 mai 2023 à 15:24
+-- Généré le : mer. 17 mai 2023 à 11:26
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.1
 
@@ -36,22 +36,24 @@ CREATE TABLE `users` (
   `decks` text NOT NULL,
   `money` int(11) NOT NULL,
   `email` text NOT NULL,
-  `pack standard` int(11) NOT NULL,
-  `pack rare` int(11) NOT NULL,
-  `pack légendaire` int(11) NOT NULL,
-  `pack north blue` int(11) NOT NULL,
-  `pack south blue` int(11) NOT NULL,
-  `pack east blue` int(11) NOT NULL,
-  `pack west lue` int(11) NOT NULL
+  `pack_bronze` int(11) NOT NULL,
+  `pack_silver` int(11) NOT NULL,
+  `pack_gold` int(11) NOT NULL,
+  `pack_north_blue` int(11) NOT NULL,
+  `pack_south_blue` int(11) NOT NULL,
+  `pack_east_blue` int(11) NOT NULL,
+  `pack_west_blue` int(11) NOT NULL,
+  `progressionhistoire` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `pseudo`, `password`, `cards`, `decks`, `money`, `email`, `pack standard`, `pack rare`, `pack légendaire`, `pack north blue`, `pack south blue`, `pack east blue`, `pack west lue`) VALUES
-(1, 'EVAWDUNOS', 'admin', '3786,1413,3226,3609,2700,1707,3720,3812,2018,2381,2964,1267,2363,3672,3755,8,2661,2804,3275,3048,1593', '3786,1413,3226,3609,2700,1707,3720,3812,2018,2381,2964,1267,2363,3672,3755', 99999, '', 0, 0, 0, 0, 0, 0, 0),
-(2, 'rere', 'rere', '3786,1413,3226,3609,2700,1707,3720,3812,2018,2381,2964,1267,2363,3672,3755,8,2661,2804,3275,3048,1593', '3786,1413,3226,3609,2700,1707,3720,3812,2018,2381,2964,1267,2363,3672,3755', 99999, 'rem.degraeve@gmail.com', 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `users` (`id`, `pseudo`, `password`, `cards`, `decks`, `money`, `email`, `pack_bronze`, `pack_silver`, `pack_gold`, `pack_north_blue`, `pack_south_blue`, `pack_east_blue`, `pack_west_blue`, `progressionhistoire`) VALUES
+(1, 'EVAWDUNOS', 'admin', '3786,2909,3226,3609,2700,3695,3720,3812,2018,2381,2964,1267,2363,3672,3755,8,2661,2804,3275,3048,1593', '3786,2909,3226,3609,2700,3695,3720,3812,2018,2381,2964,1267,2363,3672,3755;', 99999, '', 0, 0, 0, 0, 0, 0, 0, 16),
+(2, 'rere', 'rere', '3786,2909,3226,3609,2700,3695,3720,3812,2018,2381,2964,1267,2363,3672,3755,8,2661,2804,3275,3048,1593', '3786,2909,3226,3609,2700,3695,3720,3812,2018,2381,2964,1267,2363,3672,3755', 99999, 'rem.degraeve@gmail.com', 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 'mordekaiser', 'caca', '0', '0', 0, 'prout@gmail.com', 3, 0, 0, 3, 0, 0, 0, 0);
 
 --
 -- Index pour les tables déchargées
@@ -71,7 +73,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
