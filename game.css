@@ -38,7 +38,9 @@ body{
 .bloquedeck:hover{
     z-index:2;
 }
-
+#forme{
+    position:absolute
+}
 #decks{
     float: right;
     width: 30%;
