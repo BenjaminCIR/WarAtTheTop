@@ -9,10 +9,10 @@
   </head>
   <body>
 
-  <?php
-  session_start();
-			include "header.php";
-	?>
+    <?php
+      session_start();
+      include "header.php";
+    ?>
 
     <div class="background"></div>
     <div class="content">
@@ -51,31 +51,31 @@
       </a>
 
       <div class="container">
-        <div class="block">
+        <div class="block2">
           <img src="Pack\pack_north_blue.png" alt="Image 1" onclick="scrollToBloc2()">
         </div>
       </div>
 
       <div class="container">
-        <div class="block">
+        <div class="block2">
           <img src="Pack\pack_south_blue.png" alt="Image 2" onclick="scrollToBloc3()">
         </div>
       </div>
 
       <div class="container">
-        <div class="block">
+        <div class="block2">
           <img src="Pack\pack_east_blue.png" alt="Image 3" onclick="scrollToBloc4()">
         </div>
       </div>
 
       <div class="container">
-        <div class="block">
+        <div class="block2">
           <img src="Pack\pack_west_blue.png" alt="Image 4"onclick="scrollToBloc5()">
         </div>
       </div>
 
       <div class="container1">
-        <div class="left">
+        <div class="left2">
           <div class="block0">
             <img src="Pack\pack_bronze.png" alt="Image 1" onclick="scrollToBloc6()">
           </div>
@@ -210,7 +210,7 @@
                 <p>2 700</p>
                 <img class="berry1" src="berry.png">
               </div>                
-              <<?php
+              <?php
                   if ($u['money'] <= 900) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
