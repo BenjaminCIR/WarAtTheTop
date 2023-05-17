@@ -500,9 +500,9 @@
           echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
           die();
         }
-        if($achat == 900) $U = 1 + $UneLigne1[pack_north_blue];
-        if($achat == 900*2) $U = 2 + $UneLigne1[pack_north_blue];
-        if($achat == 900*3) $U = 3 + $UneLigne1[pack_north_blue];
+        if($achat == 900) $U = 1 + $UneLigne1['pack_north_blue'];
+        if($achat == 900*2) $U = 2 + $UneLigne1['pack_north_blue'];
+        if($achat == 900*3) $U = 3 + $UneLigne1['pack_north_blue'];
         $requete4 = "UPDATE users SET pack_north_blue = '$U' WHERE id=$_SESSION[id]";
         $resultat4 = mysqli_query($connexion, $requete4);
         if( $resultat4 == FALSE){
@@ -539,9 +539,9 @@
           echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
           die();
         }
-        if($achat == 900) $U = 1 + $UneLigne1[pack_south_blue];
-        if($achat == 900*2) $U = 2 + $UneLigne1[pack_south_blue];
-        if($achat == 900*3) $U = 3 + $UneLigne1[pack_south_blue];
+        if($achat == 900) $U = 1 + $UneLigne1['pack_south_blue'];
+        if($achat == 900*2) $U = 2 + $UneLigne1['pack_south_blue'];
+        if($achat == 900*3) $U = 3 + $UneLigne1['pack_south_blue'];
         $requete4 = "UPDATE users SET pack_south_blue = '$U' WHERE id=$_SESSION[id]";
         $resultat4 = mysqli_query($connexion, $requete4);
         if( $resultat4 == FALSE){
@@ -578,9 +578,9 @@
           echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
           die();
         }
-        if($achat == 900) $U = 1 + $UneLigne1[pack_east_blue];
-        if($achat == 900*2) $U = 2 + $UneLigne1[pack_east_blue];
-        if($achat == 900*3) $U = 3 + $UneLigne1[pack_east_blue];
+        if($achat == 900) $U = 1 + $UneLigne1['pack_east_blue'];
+        if($achat == 900*2) $U = 2 + $UneLigne1['pack_east_blue'];
+        if($achat == 900*3) $U = 3 + $UneLigne1['pack_east_blue'];
         $requete4 = "UPDATE users SET pack_east_blue = '$U' WHERE id=$_SESSION[id]";
         $resultat4 = mysqli_query($connexion, $requete4);
         if( $resultat4 == FALSE){
@@ -617,9 +617,9 @@
           echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
           die();
         }
-        if($achat == 900) $U = 1 + $UneLigne1[pack_west_blue];
-        if($achat == 900*2) $U = 2 + $UneLigne1[pack_west_blue];
-        if($achat == 900*3) $U = 3 + $UneLigne1[pack_west_blue];
+        if($achat == 900) $U = 1 + $UneLigne1['pack_west_blue'];
+        if($achat == 900*2) $U = 2 + $UneLigne1['pack_west_blue'];
+        if($achat == 900*3) $U = 3 + $UneLigne1['pack_west_blue'];
         $requete4 = "UPDATE users SET pack_west_blue = '$U' WHERE id=$_SESSION[id]";
         $resultat4 = mysqli_query($connexion, $requete4);
         if( $resultat4 == FALSE){
@@ -656,9 +656,9 @@
           echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
           die();
         }
-        if($achat == 900) $U = 1 + $UneLigne1[pack_bronze];
-        if($achat == 900*2) $U = 2 + $UneLigne1[pack_bronze];
-        if($achat == 900*3) $U = 3 + $UneLigne1[pack_bronze];
+        if($achat == 900) $U = 1 + $UneLigne1['pack_bronze'];
+        if($achat == 900*2) $U = 2 + $UneLigne1['pack_bronze'];
+        if($achat == 900*3) $U = 3 + $UneLigne1['pack_bronze'];
         $requete4 = "UPDATE users SET pack_bronze = '$U' WHERE id=$_SESSION[id]";
         $resultat4 = mysqli_query($connexion, $requete4);
         if( $resultat4 == FALSE){
@@ -695,9 +695,9 @@
           echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
           die();
         }
-        if($achat == 900) $U = 1 + $UneLigne1[pack_silver];
-        if($achat == 900*2) $U = 2 + $UneLigne1[pack_silver];
-        if($achat == 900*3) $U = 3 + $UneLigne1[pack_silver];
+        if($achat == 900) $U = 1 + $UneLigne1['pack_silver'];
+        if($achat == 900*2) $U = 2 + $UneLigne1['pack_silver'];
+        if($achat == 900*3) $U = 3 + $UneLigne1['pack_silver'];
         $requete4 = "UPDATE users SET pack_silver = '$U' WHERE id=$_SESSION[id]";
         $resultat4 = mysqli_query($connexion, $requete4);
         if( $resultat4 == FALSE){
@@ -734,9 +734,9 @@
           echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>";
           die();
         }
-        if($achat == 900) $U = 1 + $UneLigne1[pack_gold];
-        if($achat == 900*2) $U = 2 + $UneLigne1[pack_gold];
-        if($achat == 900*3) $U = 3 + $UneLigne1[pack_gold];
+        if($achat == 900) $U = 1 + $UneLigne1['pack_gold'];
+        if($achat == 900*2) $U = 2 + $UneLigne1['pack_gold'];
+        if($achat == 900*3) $U = 3 + $UneLigne1['pack_gold'];
         $requete4 = "UPDATE users SET pack_gold = '$U' WHERE id=$_SESSION[id]";
         $resultat4 = mysqli_query($connexion, $requete4);
         if( $resultat4 == FALSE){
