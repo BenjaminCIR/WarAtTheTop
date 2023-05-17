@@ -20,7 +20,7 @@
                 <form class="connect" action="" method="POST">
 
                     <input name="username" class="texte" type="text" placeholder="Identifiant" required></input>
-                    <input name="password" class="texte" type="text" placeholder="Mot de Passe" required></input>
+                    <input name="password" class="texte" type="password" placeholder="Mot de Passe" required></input>
                     
                     <input name="submit" class="envoyer" type="submit" value="SE CONNECTER"></input>
                 </form>
