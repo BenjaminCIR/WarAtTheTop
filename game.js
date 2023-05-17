@@ -5,6 +5,8 @@ import anime from 'https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.es.js';
 var listeALIASES = []
 var listeSTAT = []
 
+var deadR = false
+var vainqueur = false 
 var positionclick = 0
 
 
@@ -14,6 +16,7 @@ fetch('https://optc-db.github.io/common/data/aliases.js',{method:'GET'})
                     let position = text.search("const calcGhostStartID")
                     const tableau = "listeALIASES" +  text.substring(30,position)
                     eval(tableau)
+                    console.log(listeALIASES)
                     
     })
 fetch('https://optc-db.github.io/common/data/units.js',{method:'GET'})
@@ -21,8 +24,10 @@ fetch('https://optc-db.github.io/common/data/units.js',{method:'GET'})
                 .then(text => {
                     let position = text.search("var calcGhostStartID")
                     const stats = "listeSTAT" +  text.substring(13,position)
-                    eval(stats)            
+                    eval(stats)         
     })
+
+
 
 var orderfight = []
 var clicked = []
@@ -42,8 +47,7 @@ var fin = false
 var fintour = false
 var tour = 0
 
-var offset1 = 0
-var offset2 = 0
+
 
 var links = []
 
@@ -147,29 +151,29 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
     crew.classList.add("crew")
     note.classList.add("note")
     naming.innerText = (charaTT[identifiant]).name
-    attaque.innerText = (listeSTAT[newind])[10] 
-    HP.innerText = (listeSTAT[newind])[9]
+    attaque.innerText = (listeSTAT[newind])[13] 
+    HP.innerText = (listeSTAT[newind])[12]
     let sizee = ((charaTT[identifiant]).size)
     if(sizee == "") sizee = "175"
     vitesse.innerText = parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))
-    let tmpp = (parseInt(0.01*((listeSTAT[newind])[9] )**2 + parseInt( (listeSTAT[newind])[10])**2  +parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))**(1)))/3
-    if(tmpp >= 5000 && tmpp <= 50000){
+    let tmpp = (parseInt(0.01*((listeSTAT[newind])[12] )**2 + parseInt( (listeSTAT[newind])[13])**2  +parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))**(1)))/3
+    if(tmpp >= 100000 && tmpp <= 300000){
         image2.setAttribute("src","fut3.png")
         //bloc.style.color = "white"
     }
-    if(tmpp >= 50000 && tmpp <= 100000){
+    if(tmpp >= 300000 && tmpp <= 500000){
         image2.setAttribute("src","fut4.png")
         bloc.style.color = "white"
     }
-    if(tmpp >= 100000 && tmpp <= 200000){
+    if(tmpp >= 500000 && tmpp <= 700000){
         image2.setAttribute("src","fut5.png")
         bloc.style.color = "white"
     }
-    if(tmpp >= 200000 && tmpp <= 300000){
+    if(tmpp >= 700000 && tmpp <= 900000){
         image2.setAttribute("src","fut6.png")
         bloc.style.color = "white"
     }
-    if(tmpp > 300000){
+    if(tmpp > 900000){
         naming.style.color = "#fec832"
         image2.setAttribute("src","fut7.png")
         anime({
@@ -241,6 +245,7 @@ fetch('./chara.json',{method:'GET'})
 
         console.log(charaT)
         setTimeout(function(){
+            
             for(var i=0;i< charaT.length;i++){
                 //if(cards.includes((charaT[i].id).toString())){
                     let bloc = make_card(charaT,i,true)
@@ -248,7 +253,7 @@ fetch('./chara.json',{method:'GET'})
                     clicked[i] = false
                 //}
             }
-
+            console.log(decks)  
             for(var y = 0; y < decks.length; y+=1){
                 let dek = document.querySelector(".cdeck[data=deck"+y+"]")  
                 dek.style.top = y*20 +"%"
@@ -256,6 +261,7 @@ fetch('./chara.json',{method:'GET'})
                     let idx = parseInt(dek.getAttribute("data").substring(4,dek.getAttribute("data").length))
                     if(isdeckclicked == -1 || isdeckclicked == idx){
                         //console.log(dek.getAttribute("data"))
+                       
                         let dekjs = decks[idx].split(",")
 
                         for(var ko=0; ko< dekjs.length;ko++){
@@ -416,6 +422,7 @@ fetch('./chara.json',{method:'GET'})
                 //console.log(col)
                 let tmp2 = tmp-parseInt(isattacking.children[3].innerHTML)
                 if(tmp2 < 0){
+                    deadR = true
                     tmp2 = 0
                     anime({
                         targets:e,
@@ -600,6 +607,7 @@ fetch('./chara.json',{method:'GET'})
                 let tmp = parseInt(targ.children[4].innerHTML)
                 let tmp2 = tmp-parseInt(isattacking.children[3].innerHTML)
                 if(tmp2 < 0) {
+                    deadR = true
                     tmp2 = 0
                     anime({
                         targets:targ,
@@ -1130,7 +1138,7 @@ fetch('./chara.json',{method:'GET'})
                 let nindex = ordappear[i]
                 let cart = make_card(charaT,finalfighters[nindex],false)
                 ofight.push({
-                    id:finalfighters[i],
+                    id:finalfighters[nindex],
                     vit: parseInt(cart.children[5].innerHTML)
                 })
                 if(i == 0 || i == 4){
@@ -1158,20 +1166,32 @@ fetch('./chara.json',{method:'GET'})
             })
 
             ofight.sort((a, b) => b.vit - a.vit)
-            //console.log(ofight)
+            console.log(ofight)
 
 
-        
+            console.log(nivo)
             
 
             fetch('./game.json',{method:'GET'})
                         .then(res => res.json())
                         .then(json => {
                             const opponents = json
-                            let opolvl = opponents[1]
-                            //console.log(opolvl)
-                            //console.log(opolvl[0])
-                            let links2 = [1,3,2,3,2,3,3]
+                            let opolvl = opponents.find( (element) => element[0] == nivo)
+                            
+                            //let opjolvl = opponents[0]
+                            console.log(opponents)
+                            console.log(opolvl)
+                         
+                            console.log(charaT.find((element) => element.id == opolvl[1]))
+                            let links2 = [
+                                getLink(charaT.find((element) => element.id == opolvl[1]),charaT.find((element) => element.id == opolvl[3])),
+                                getLink(charaT.find((element) => element.id == opolvl[3]),charaT.find((element) => element.id == opolvl[5])),
+                                getLink(charaT.find((element) => element.id == opolvl[4]),charaT.find((element) => element.id == opolvl[6])),
+                                getLink(charaT.find((element) => element.id == opolvl[5]),charaT.find((element) => element.id == opolvl[6])),
+                                getLink(charaT.find((element) => element.id == opolvl[2]),charaT.find((element) => element.id == opolvl[4])),
+                                getLink(charaT.find((element) => element.id == opolvl[3]),charaT.find((element) => element.id == opolvl[4])),
+                                getLink(charaT.find((element) => element.id == opolvl[1]),charaT.find((element) => element.id == opolvl[2]))
+                            ]
                             let ofight2 = []
                             let linksbloc2 = []
                             
@@ -1227,10 +1247,11 @@ fetch('./chara.json',{method:'GET'})
                                 firstfight = 0
                             }
                             else firstfight = 1
-
+                            console.log(ofight)
                             if(firstfight==0){
                                 for(let b = 0; b < 12;b++){
                                     if(b%2==0){
+                                        console.log(ofight[b/2])
                                         orderfight.push(ofight[b/2].id)
                                     }
                                     else{
@@ -1268,21 +1289,19 @@ fetch('./chara.json',{method:'GET'})
                                     linksbloc[i].style.backgroundColor = "red"
                                 }
                             }
-                            //console.log(orderfight)
+                            console.log(orderfight)
                             setTimeout(function(){
                                 if(firstfight == 0){
-                                    offset1 = 0
-                                    offset2 = 1
                                     document.getElementById("fightlistOP").style.zIndex = "1"
                                     document.getElementById("fightlist").style.zIndex = "2"
-                                    setTarget(document.querySelector("#fightlist div[data='"+orderfight[offset1%12]+"']"))
-                                    offset1+=2
+                                    setTarget(document.querySelector("#fightlist div[data='"+orderfight[tour%12]+"']"))
                                     tour+=1
                                     fintour = false
                                     var tours = setInterval(function(){
+                                        console.log(tour)
                                         let fin = true
                                         let carts = document.getElementById("fightlist").children
-                                        for(var cr = 0; cr< carts.length;cr++){
+                                        for(var cr = 0; cr< 6;cr++){
                                             if(parseInt(carts[cr].children[4].innerHTML) > 0){
                                                 fin = false
                                                 break
@@ -1291,55 +1310,64 @@ fetch('./chara.json',{method:'GET'})
                                         if(fin == false){
                                             fin = true 
                                             let cartsOP = document.getElementById("fightlistOP").children
-                                            for(var cr = 0; cr< cartsOP.length;cr++){
+                                            for(var cr = 0; cr< 6;cr++){
+                                                console.log(cr)
                                                 if(parseInt(cartsOP[cr].children[4].innerHTML) > 0){
                                                     fin = false
                                                     break
                                                 }
                                             }
+                                            if(fin == true) vainqueur = true
                                         }
-                                        if(fin == true) clearInterval(tours)
+                                        if(fin == true) {
+                                            clearInterval(tours)
+                                            if(vainqueur){
+                                                fingame()
+                                            }
+                                        }
                                         if(fintour == true){
-                                            
-                                            if(tour%2 == 0){
-                                                while(orderfight[offset1%12] == -1){
-                                                    offset1+=2
-                                                }
-                                                document.getElementById("fightlistOP").style.zIndex = "1"
-                                                document.getElementById("fightlist").style.zIndex = "2"
-                                                //console.log(tour+offset1)
-                                                setTarget(document.querySelector("#fightlist div[data='"+orderfight[offset1%12]+"']"))    
-                                                offset1+=2                        
+                                            if(orderfight[tour%12] == -1){
+                                                tour+=1
                                             }
                                             else{
-                                                while(orderfight[offset2%12] == -1){
-                                                    offset2+=2
+                                                if(tour%2 == 0){
+                                                    console.log(orderfight[tour%12])
+                                                    document.getElementById("fightlistOP").style.zIndex = "1"
+                                                    document.getElementById("fightlist").style.zIndex = "2"
+                                                    //console.log(tour+offset1)
+                                                    setTarget(document.querySelector("#fightlist div[data='"+orderfight[tour%12]+"']"))    
+                                                    
+                                                                        
                                                 }
-                                                document.getElementById("fightlistOP").style.zIndex = "2"
-                                                document.getElementById("fightlist").style.zIndex = "1"
-                                                //console.log(tour+offset2)
-                                                setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[offset2%12]+"']")) 
-                                                offset2+=2
+                                                else{
+                                                    
+                                                    document.getElementById("fightlistOP").style.zIndex = "2"
+                                                    document.getElementById("fightlist").style.zIndex = "1"
+                                                    //console.log(tour+offset2)
+                                                    setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[tour%12]+"']")) 
+                                                
+                                                }
+                                                
+                                                tour+=1
+                                                
+                                                fintour = false
                                             }
-                                            tour+=1
-                                            fintour = false
                                         }
                                     },100)
                                 }
                                 else{
-                                    offset1 = 1
-                                    offset2 = 0
+                      
                                     document.getElementById("fightlistOP").style.zIndex = "2"
                                     document.getElementById("fightlist").style.zIndex = "1"
-                                    setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[offset2%12]+"']"))
+                                    setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[tour%12]+"']"))
                                     tour+=1
-                                    offset2+=2
+                       
                                     fintour = false
                                     
                                     var tours2 = setInterval(function(){
                                         let fin = true
                                         let carts = document.getElementById("fightlist").children
-                                        for(var cr = 0; cr< carts.length;cr++){
+                                        for(var cr = 0; cr< 6;cr++){
                                             if(parseInt(carts[cr].children[4].innerHTML) > 0){
                                                 fin = false
                                                 break
@@ -1348,7 +1376,7 @@ fetch('./chara.json',{method:'GET'})
                                         if(fin == false){
                                             fin = true 
                                             let cartsOP = document.getElementById("fightlistOP").children
-                                            for(var cr = 0; cr< cartsOP.length;cr++){
+                                            for(var cr = 0; cr< 6   ;cr++){
                                                 if(parseInt(cartsOP[cr].children[4].innerHTML) > 0){
                                                     fin = false
                                                     break
@@ -1362,29 +1390,33 @@ fetch('./chara.json',{method:'GET'})
                                         } 
 
                                         if(fintour == true){
-                                            
-                                            if(tour%2 == 0){
-                                                //console.log(orderfight)
-                                                while(orderfight[offset2%12] == -1){
-                                                    offset2+=2
-                                                }
-                                                document.getElementById("fightlistOP").style.zIndex = "2"
-                                                document.getElementById("fightlist").style.zIndex = "1"
-                                                setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[offset2%12]+"']"))
-                                                offset2+=2                            
+                                            if(orderfight[tour%12] == -1){
+                                                tour+=1
                                             }
                                             else{
-                                                //console.log(orderfight)
-                                                while(orderfight[offset1%12] == -1){
-                                                    offset1+=2
+                                            //console.log(tour)
+                                                if(tour%2 == 0){
+                                                    //console.log(orderfight)
+                                                    
+                                                    document.getElementById("fightlistOP").style.zIndex = "2"
+                                                    document.getElementById("fightlist").style.zIndex = "1"
+                                                    setTargetOP(document.querySelector("#fightlistOP div[data='"+orderfight[tour%12]+"']"))
+                                                        
+                                                                    
                                                 }
-                                                document.getElementById("fightlistOP").style.zIndex = "1"
-                                                document.getElementById("fightlist").style.zIndex = "2"
-                                                setTarget(document.querySelector("#fightlist div[data='"+orderfight[offset1%12]+"']")) 
-                                                offset1+=2
+                                                else{
+                                                    //console.log(orderfight)
+                                                    
+                                                    document.getElementById("fightlistOP").style.zIndex = "1"
+                                                    document.getElementById("fightlist").style.zIndex = "2"
+                                                    setTarget(document.querySelector("#fightlist div[data='"+orderfight[tour%12]+"']")) 
+                                                
+                                                }
+                                                
+                                                tour+=1
+                                                
+                                                fintour = false
                                             }
-                                            tour+=1
-                                            fintour = false
                                         }
                                     },100)
                                 }
@@ -1414,3 +1446,28 @@ fetch('./chara.json',{method:'GET'})
         
     })
 
+
+
+function fingame(){
+ 
+    setTimeout(function(){
+        console.log("prout")
+        const body = document.body
+        for(var i=0; i< body.childElementCount; i++){
+            console.log(body.children[i])
+            if(body.children[i].getAttribute("id") != "forme") body.removeChild(body.children[i])
+        }  
+        //body.removeChild(document.getElementById("fightlistOP"))
+    
+
+        let btn = document.createElement("input")
+        btn.setAttribute("type","submit")
+        btn.setAttribute("value","submi")
+        btn.setAttribute("name","submi")
+
+        document.getElementById("forme").appendChild(btn)
+
+        
+    },3000)
+    
+}
