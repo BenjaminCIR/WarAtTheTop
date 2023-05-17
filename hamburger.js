@@ -19,16 +19,3 @@ hamburger.addEventListener("click", () => {
         },500);
     }
 });
-
-
-const histoire = document.getElementById("history");
-const retour = document.getElementById("back");
-const niveaux = document.getElementsByClassName("listeNiv")[0];
-
-histoire.addEventListener("click", () => {
-    niveaux.classList.toggle("block");
-});
-
-retour.addEventListener("click", () => {
-    niveaux.classList.toggle("block");
-});
