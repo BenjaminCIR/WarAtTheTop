@@ -233,3 +233,30 @@ input.submit:focus-visible {
     left: 200%;
 }
   
+
+.submite {
+    width: 77px;
+    height: 30px;
+    font-size: 100%;
+    font-weight: 700;
+    color: #fff;
+    background-color: #1161EE;
+    cursor: pointer;
+    outline-offset: 0px;
+    border-radius: 20px;
+    text-align: center;
+    position: absolute;
+    display: block;
+    top: 10px;
+    line-height: 0px;
+    margin: auto;
+    right: 20px;
+}
+
+.submite:active {
+    outline: 2px auto #4d90fe;
+}
+
+.submite:focus-visible {
+    outline: -webkit-focus-ring-color auto 1px;
+  }

@@ -27,3 +27,6 @@ function handlePasswordInput(passwordInput) {
 	const lastCharacter = passwordInput.value.charAt(passwordInput.value.length - 1);
 	passwordInput.value = passwordInput.value.slice(0, -1).replace(/./g, '*') + lastCharacter;
 }
+function redirection() {
+  window.location.href = "http://localhost/WarAtTheTop/index.php";  // Remplacez l'URL par celle que vous souhaitez
+}

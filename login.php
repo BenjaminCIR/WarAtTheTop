@@ -71,6 +71,7 @@
                     <div class="menu">
                         <a href="#connexion" class="btn-connexion"><h2>Connexion</h2></a>
                         <a href="#enregistrer" class="btn-enregistrer active"><h2>Inscription</h2></a>
+                        <button class="submite" onclick="redirection()">Retour</button>
                     </div>
                     <form class="connexion"  action="" method="POST">
                         <div class="contact-form">
