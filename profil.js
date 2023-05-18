@@ -86,29 +86,29 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
     crew.classList.add("crew")
     note.classList.add("note")
     naming.innerText = (charaTT[identifiant]).name
-    attaque.innerText = (listeSTAT[newind])[10] 
-    HP.innerText = (listeSTAT[newind])[9]
+    attaque.innerText = (listeSTAT[newind])[13] 
+    HP.innerText = (listeSTAT[newind])[12]
     let sizee = ((charaTT[identifiant]).size)
     if(sizee == "") sizee = "175"
     vitesse.innerText = parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))
-    let tmpp = (parseInt(0.01*((listeSTAT[newind])[9] )**2 + parseInt( (listeSTAT[newind])[10])**2  +parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))**(1)))/3
-    if(tmpp >= 5000 && tmpp <= 50000){
+    let tmpp = (parseInt(0.01*((listeSTAT[newind])[12] )**2 + parseInt( (listeSTAT[newind])[13])**2  +parseInt(10*((parseInt(attaque.innerText)**(2.5))/(parseInt(sizee.replace(" ",""))*parseInt(HP.innerText))))**(1)))/3
+    if(tmpp >= 100000 && tmpp <= 300000){
         image2.setAttribute("src","fut3.png")
         //bloc.style.color = "white"
     }
-    if(tmpp >= 50000 && tmpp <= 100000){
+    if(tmpp >= 300000 && tmpp <= 500000){
         image2.setAttribute("src","fut4.png")
         bloc.style.color = "white"
     }
-    if(tmpp >= 100000 && tmpp <= 200000){
+    if(tmpp >= 500000 && tmpp <= 700000){
         image2.setAttribute("src","fut5.png")
         bloc.style.color = "white"
     }
-    if(tmpp >= 200000 && tmpp <= 300000){
+    if(tmpp >= 700000 && tmpp <= 900000){
         image2.setAttribute("src","fut6.png")
         bloc.style.color = "white"
     }
-    if(tmpp > 300000){
+    if(tmpp > 900000){
         naming.style.color = "#fec832"
         image2.setAttribute("src","fut7.png")
         anime({
@@ -131,6 +131,40 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
     bloc.append(crew)
     bloc.append(crewlogo)
     //bloc.append(note)
+    if(clickable){
+        bloc.addEventListener("click",function(){
+            if(clicked[identifiant] == false){
+                console.log("1")
+                countclicked+=1
+                anime({
+                    targets: bloc,
+                    borderColor: ['rgb(255, 255, 255)','#e3bc5c'],
+                    //easing:'easeInOutExpo',
+                    duration:600,
+                    borderRadius:[0,15]
+                });
+                clicked[identifiant] = true
+            }
+            else{
+                console.log("2")
+                countclicked -=1
+                anime({
+                    targets: bloc,
+                    borderColor: ['#e3bc5c','rgb(255, 255,255)'],
+                    //easing:'easeInOutExpo',
+                    duration:600,
+                    borderRadius:[15,0]
+                })
+                clicked[identifiant] = false
+            }
+            if(countclicked == 15){
+                document.getElementById("start").removeAttribute("disabled")
+            }
+            else{
+                document.getElementById("start").setAttribute("disabled","")
+            }
+        })
+    }
 
     return bloc
 }
