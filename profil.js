@@ -1,5 +1,5 @@
 import anime from 'https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.es.js';
-
+var newscard
 
 var listeALIASES = []
 var listeSTAT = []
@@ -7,7 +7,12 @@ var charaT = []
 
 var tab =  []
 
+var nbpack = -1
+var vraipack = -1
 
+
+var actualpack = -1
+var srcim = -1
 
 
 const btncompte = document.getElementById("comp");
@@ -388,7 +393,6 @@ const ahaut = document.getElementById("ahaut");
 const abas = document.getElementById("abas");
 
 rhaut.addEventListener("click", function(){
-
     for(let j=0; j< tab.length; j++){
         if(tab[j].children[0].getAttribute("src") == "fut2.png"){
             collection.appendChild(tab[j])
@@ -480,3 +484,681 @@ ecrire.addEventListener("input", function(){
         }
     }
 })
+
+
+
+// packs
+
+var cardgain = []
+
+var nbclick = 0
+var prev = 0
+var nbclick2 = 0
+var prev2 = 0
+var nbclick3 = 0
+var prev3 = 70
+
+
+const lis = document.getElementById("packs")
+console.log(lis)
+const packsopening = []
+
+for(var i=0; i< lis.childElementCount; i++){
+    if(i%2 ==0) packsopening.push(lis.children[i])
+}
+
+for(let i=0; i< packsopening.length;i++){
+    if(!packsopening[i].style.filter.includes('grayscale(0.9)')){
+        packsopening[i].addEventListener("click", function(){
+            let type          
+            if(packsopening[i].getAttribute("src") == "Pack/pack_east_blue.png"){
+                actualpack = 0
+                vraipack = 0
+                nbpack = parseInt(lis.children[i*2 +1].innerHTML)
+                srcim = "Pack/pack_east_blue.png"
+            }
+            if(packsopening[i].getAttribute("src") == "Pack/pack_west_blue.png"){
+                actualpack = 2
+                vraipack = 1
+                nbpack = parseInt(lis.children[i*2 +1].innerHTML)
+                srcim = "Pack/pack_west_blue.png"
+            }
+            if(packsopening[i].getAttribute("src") == "Pack/pack_north_blue.png"){
+                actualpack = 3
+                vraipack = 2
+                nbpack = parseInt(lis.children[i*2 +1].innerHTML)
+                srcim = "Pack/pack_north_blue.png"
+            }
+            if(packsopening[i].getAttribute("src") == "Pack/pack_south_blue.png"){
+                actualpack = 1
+                vraipack = 3
+                nbpack = parseInt(lis.children[i*2 +1].innerHTML)
+                srcim = "Pack/pack_south_blue.png"
+            }
+            if(packsopening[i].getAttribute("src") == "Pack/pack_bronze.png"){
+                actualpack = 4 
+                vraipack = 4
+                nbpack = parseInt(lis.children[i*2 +1].innerHTML)
+                srcim = "Pack/pack_bronze.png"
+            }
+            if(packsopening[i].getAttribute("src") == "Pack/pack_silver.png"){
+                actualpack = 4
+                vraipack = 5
+                nbpack = parseInt(lis.children[i*2 +1].innerHTML)
+                srcim = "Pack/pack_silver.png"
+            }
+            if(packsopening[i].getAttribute("src") == "Pack/pack_gold.png"){
+                actualpack = 4
+                vraipack = 6
+                nbpack = parseInt(lis.children[i*2 +1].innerHTML)
+                srcim = "Pack/pack_gold.png"
+            }
+
+           
+            let popup = document.createElement("div")
+            popup.setAttribute("id",'popup')
+
+            let back = document.createElement("button")
+            back.innerHTML = "CANCEL"
+            back.setAttribute("id","cancel")
+
+            back.addEventListener("click",function(){
+                document.body.removeChild(popup)
+            })
+
+            let confirm = document.createElement("button")
+            confirm.innerHTML = "CONFIRM"
+            confirm.setAttribute("id","confirm")
+            confirm.addEventListener("click",function(){
+                lis.children[vraipack*2 +1].innerHTML = parseInt(lis.children[vraipack*2 +1].innerHTML) - 1
+                if( parseInt(lis.children[vraipack*2 +1].innerHTML) == 0){
+                    anime({
+                        targets:lis.children[vraipack*2],
+                        filter:"grayscale(0.9)"
+                    })
+                }
+                document.body.removeChild(popup)
+                openingpre(type)
+            })
+
+            let msg = document.createElement("p")
+            msg.innerHTML = "Souhaitez-vous vraiment ouvrir ce pack ?"
+            msg.setAttribute("id","msg")
+
+            popup.appendChild(confirm)
+            popup.appendChild(back)
+            popup.appendChild(msg)
+
+            document.body.appendChild(popup)
+
+        })
+    }        
+}
+
+
+
+function openingpre(){
+    console.log("ok")
+    let fond = document.createElement("div")
+    fond.setAttribute("id","fond")
+    document.body.appendChild(fond)
+
+    anime({
+        targets:fond,
+        background:["rgba(255, 255, 255, 0)","rgba(255, 255, 255, 0.6)"]
+    })
+
+    let wid = 136//0.25*(document.body.clientWidth) -  180
+    console.log(wid)
+    var canvas = document.createElement('canvas');
+    var input = document.createElement("input")
+    input.oninput = openingpack
+    //input.setAttribute("oninput","openingpack()")
+    input.setAttribute("type","range")
+    input.setAttribute("id","clik")
+    input.setAttribute("value","0")
+    canvas.setAttribute("id","canvas")
+    canvas.setAttribute("width","1000px")
+    canvas.setAttribute("height","500px")
+    document.body.appendChild(canvas)
+    document.body.appendChild(input)
+    anime({
+        targets:canvas,
+        opacity:[0,1],
+        scale:[1.2,1],
+        translateX:['-50%','-50%'],
+        duration:1000
+    })
+    anime({
+        targets:document.getElementById("clik"),
+        opacity:[0,1],
+        scale:[1.2,1],
+        translateX:['-50%','-50%'],
+        translateY:['-50%','-50%'],
+        rotate:'180deg',
+        duration:1000
+    })
+   
+    const ctx = canvas.getContext('2d');
+
+    
+        
+
+    
+    var image2 = new Image();
+    image2.src = srcim; 
+
+    var image3 = new Image();
+    image3.src = srcim; 
+    
+
+    image2.onload = function(){
+        ctx.drawImage(image2, 0, 80, 500, 60, wid,0, 500, 60);
+    }
+    
+    var image = new Image();
+    image.src = srcim; 
+    ctx.clearRect(wid, 60, 500, 10);
+    image.onload = function(){
+        ctx.drawImage(image, 0, 140, 500, 10, wid,60,500, 10);
+    }
+
+    
+   
+    image3.onload = function(){
+        ctx.drawImage(image3, 0, 150, 500, 2000,wid ,70, 500, 1750);
+    }
+
+}
+
+
+function openingpack(){
+   
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+
+
+    nbclick2=0
+    nbclick3=0
+
+    nbclick = parseInt(document.getElementById("clik").value)/10 
+    nbclick *= 7.7/(10)
+    let time1 = 200
+    let time2 = 300
+    if(nbclick == 7.7){
+        console.log("checkpoint0")
+        document.body.removeChild(document.getElementById("clik"))
+
+        let to = setInterval(function(){
+            //console.log("checkpoint3")
+            if(nbclick2 == 30){
+                console.log("checkpoint4")
+                clearInterval(to)
+                fetch('./chara.json',{method:'GET'})
+                    .then(res1 => res1.text())
+                    .then(text1 => {
+                        eval("charaT ="+text1)
+                        fetch('./pack.json',{method:'GET'})
+                            .then(res4 => res4.text())
+                            .then(text4 => {
+                                console.log("checkpoint1")
+                                var jisone
+                                const jizone = "jisone = " +text4
+                                eval(jizone)
+                                var pack = jisone[actualpack].list
+                                console.log(pack)
+                                console.log(charaT)
+                      
+                                let packd = []
+                                for(var i=0; i< pack.length;i++){
+                                    //console.log(charaT.findIndex((element) => element.id == pack[i]))
+                                    packd.push(make_card(charaT,charaT.findIndex((element) => element.id == pack[i])))
+                                }
+                                console.log(packd)
+                               
+                                console.log(cardgain)
+
+                                let ca = []
+                                var idchoisis = []
+                                for(let t=0; t< 5; t++){
+                                    if(t>0) ca.push(cardgain[t-1].getAttribute("data"))
+                                    var etoile
+                                    console.log(vraipack)
+                                
+                                    if(vraipack < 4 || vraipack == 5){
+                                        let etoileg =  Math.floor(Math.random() * 10001);
+                                     
+                                        
+                                        if(etoileg >= 0 && etoileg <= 4400){
+                                            etoile = 1
+                                        }
+
+                                        if(etoileg >= 4400 && etoileg <= 6900){
+                                            etoile = 2
+                                        }
+                                        if(etoileg >= 6900 && etoileg <= 8990){
+                                            etoile = 3
+                                        }
+                                        if(etoileg >= 8990 && etoileg <= 9890){
+                                            etoile = 4
+                                        }
+                                        if(etoileg >= 9890 && etoileg <= 9990){
+                                            etoile = 5
+                                        }
+
+                                        if(etoileg >= 9990 && etoileg <= 10000){
+                                            etoile = 6
+                                        }
+                                        
+
+                                    }
+                                    if(vraipack == 4){
+
+                                        let etoileg =  Math.floor(Math.random() * 10001);
+                                      
+                                        if(etoileg >= 0 && etoileg <= 6388){
+                                            etoile = 1
+                                        }
+
+                                        if(etoileg >= 6388 && etoileg <= 9388){
+                                            etoile = 2
+                                        }
+                                        if(etoileg >= 9388 && etoileg <= 9888){
+                                            etoile = 3
+                                        }
+                                        if(etoileg >= 9888 && etoileg <= 9988){
+                                            etoile = 4
+                                        }
+                                        if(etoileg >= 9989 && etoileg <= 9999){
+                                            etoile = 5
+                                        }
+
+                                        if(etoileg == 10000){
+                                            etoile = 6
+                                        }
+                                    }
+
+                                    if(vraipack == 6){
+                                        let etoileg =  Math.floor(Math.random() * 10001);
+                        
+                                        if(etoileg >= 0 && etoileg <= 1900){
+                                            etoile = 1
+                                        }
+
+                                        if(etoileg >= 1900 && etoileg <= 4900){
+                                            etoile = 2
+                                        }
+                                        if(etoileg >= 4900 && etoileg <= 7900){
+                                            etoile = 3
+                                        }
+                                        if(etoileg >= 7900 && etoileg <= 9400){
+                                            etoile = 4
+                                        }
+                                        if(etoileg >= 9400 && etoileg <= 9900){
+                                            etoile = 5
+                                        }
+
+                                        if(etoileg >= 9900  && etoileg <= 10000){
+                                            etoile = 6
+                                        }
+                                    }
+                              
+                                    let tmp = Math.floor(Math.random() * pack.length)
+                                    let numbtmp =  charaT.findIndex((element)=> element.id == pack[tmp])
+                                    cardgain[t] = (make_card(charaT,numbtmp))
+                                    idchoisis[t] = pack[tmp]
+                                    if(etoile == 1){
+                                        while(cardgain[t].children[0].getAttribute("src") != "fut2.png" || ca.find((element)=> element == cardgain[t].getAttribute("data")) != undefined){
+                                            let tmp = Math.floor(Math.random() * pack.length)
+                                            idchoisis[t] = pack[tmp]
+                                            let numbtmp =  charaT.findIndex((element)=> element.id == pack[tmp])
+                                            cardgain[t] = (make_card(charaT,numbtmp))
+                                        }
+                                    }
+                                    if(etoile == 2){
+                                        while(cardgain[t].children[0].getAttribute("src") != "fut3.png" || ca.find((element)=> element == cardgain[t].getAttribute("data")) != undefined){
+                                            let tmp = Math.floor(Math.random() * pack.length)
+                                            idchoisis[t] = pack[tmp]
+                                            let numbtmp =  charaT.findIndex((element)=> element.id == pack[tmp])
+                                            cardgain[t] = (make_card(charaT,numbtmp))
+                                        }
+                                    }
+                                    if(etoile == 3){
+                                        while(cardgain[t].children[0].getAttribute("src") != "fut4.png" || ca.find((element)=> element == cardgain[t].getAttribute("data")) != undefined){
+                                            let tmp = Math.floor(Math.random() * pack.length)
+                                            idchoisis[t] = pack[tmp]
+                                            let numbtmp =  charaT.findIndex((element)=> element.id == pack[tmp])
+                                            cardgain[t] = (make_card(charaT,numbtmp))
+                                        }
+                                    }
+                                    if(etoile == 4){
+                                        while(cardgain[t].children[0].getAttribute("src") != "fut5.png" || ca.find((element)=> element == cardgain[t].getAttribute("data")) != undefined){
+                                            let tmp = Math.floor(Math.random() * pack.length)
+                                            idchoisis[t] = pack[tmp]
+                                            let numbtmp =  charaT.findIndex((element)=> element.id == pack[tmp])
+                                            cardgain[t] = (make_card(charaT,numbtmp))
+                                        }
+                                    }
+                                    if(etoile == 5){
+                                        while(cardgain[t].children[0].getAttribute("src") != "fut6.png" || ca.find((element)=> element == cardgain[t].getAttribute("data")) != undefined){
+                                            let tmp = Math.floor(Math.random() * pack.length)
+                                            idchoisis[t] = pack[tmp]
+                                            let numbtmp =  charaT.findIndex((element)=> element.id == pack[tmp])
+                                            cardgain[t] = (make_card(charaT,numbtmp))
+                                        }
+                                    }
+                                    if(etoile == 6){
+                                        while(cardgain[t].children[0].getAttribute("src") != "fut7.png" || ca.find((element)=> element == cardgain[t].getAttribute("data")) != undefined){
+                                            let tmp = Math.floor(Math.random() * pack.length)
+                                            idchoisis[t] = pack[tmp]
+                                            let numbtmp =  charaT.findIndex((element)=> element.id == pack[tmp])
+                                            cardgain[t] = (make_card(charaT,numbtmp))
+                                        }
+                                    }
+
+
+                                    
+                                }
+                                console.log(idchoisis)
+                                let str = "ids="
+                                var money = 0
+                                var doublons = [false,false,false,false,false]
+                                for(let k = 0; k<5; k++){
+                                    //console.log(cards.find((element) => element == idchoisis[k]))
+                                    
+                                
+                                    if(cards.find((element) => element == idchoisis[k])==undefined){
+                                        console.log("ok")
+                                        str += idchoisis[k]+","
+                                    
+                                    }
+                                    else{
+                                        doublons[k] = true
+                                        if(cardgain[k].children[0].getAttribute("src")=="fut2.png") money+=100
+                                        if(cardgain[k].children[0].getAttribute("src")=="fut3.png") money+=200
+                                        if(cardgain[k].children[0].getAttribute("src")=="fut4.png") money+=400
+                                        if(cardgain[k].children[0].getAttribute("src")=="fut5.png") money+=600
+                                        if(cardgain[k].children[0].getAttribute("src")=="fut6.png") money+=1000
+                                        if(cardgain[k].children[0].getAttribute("src")=="fut7.png") money+=2000
+
+                                
+                                    }
+                                }
+
+                                console.log(str)
+                                let from = document.createElement("form")
+                                from.setAttribute("action","")
+                                from.setAttribute("method","POST")
+                                let hid = document.createElement("input")
+                                hid.setAttribute("type","hidden")
+                                hid.setAttribute("value",str)
+                                hid.setAttribute("name","newsid")
+                                let submitte = document.createElement("input")
+                                submitte.setAttribute("type","submit")
+                                from.appendChild(submitte)
+                                from.appendChild(hid)
+                                
+                                var data = str+"&userid="+ idsession+"&pack="+vraipack+"&nbpack="+nbpack+"&money="+money;
+                                console.log(data)
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        cards =xhttp.responseText.split(",")
+                                        console.log(cards)
+                                        tab = []
+                                        document.body.removeChild(document.getElementById("collection"))
+                                        collection = document.createElement("div")
+                                        collection.setAttribute("id","collection")
+                                        collection.classList.add("right")
+                                        document.body.appendChild(collection)
+                                        for(var i=0;i< charaT.length;i++){
+                                            
+                                            if(cards.includes((charaT[i].id).toString())){
+                                                let bloc = make_card(charaT,i,true)
+                                                tab.push(bloc)
+                                                document.getElementById("collection").appendChild(bloc)
+                                            }
+                                        }
+                                        console.log(tab)
+                                        rhaut.click()
+                                    }
+                                }   
+                                
+                                
+                                xhttp.open("POST", "updatecards.php", true);
+                                xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                                xhttp.send(data);
+
+                                for(var l =0; l< 5; l++){
+                                    cardgain[l].classList.remove("bloque")
+                                    cardgain[l].classList.add("bloque2")
+                                    
+                                }
+                                console.log(cardgain)
+                            
+                               
+                                
+                                let to2 = setInterval(function(){
+
+                                    nbclick3 += 5
+                                    if(nbclick3 > 70){
+                                        nbclick3 = 70
+                                        clearInterval(to2)
+                                        let list = document.createElement("div")
+                                        list.setAttribute("id","newitems")
+                                        document.body.appendChild(list)
+                                        console.log(doublons)
+                                        for(var i =0; i<5;i++){
+                                            let vari;
+                                            if(i==0) vari=2
+                                            if(i==1) vari=1
+                                            if(i==2) vari=3
+                                            if(i==3) vari=0
+                                            if(i==4) vari=4
+                                            
+
+                                            list.appendChild(cardgain[i])
+                                            if(doublons[i]){
+                                                console.log(cardgain[i].getAttribute("src"))
+                                                
+                                                
+                                                let tmp = document.createElement("img")
+                                                tmp.setAttribute("src","doublon.png")
+                                                tmp.classList.add("bloque3")
+                                                tmp.style.left = 1.5 + 18*vari +"%"
+                                                list.appendChild(tmp)
+                                                                                                
+                                            }
+
+                                        }
+                                        for(var l =0; l< 5; l++){
+                                            cardgain[l].style.opacity = '1';
+                                            cardgain[l].style.left = '46%';
+                                            cardgain[l].style.transform = 'translateX(-50%)';
+                                            cardgain[l].style.border = 'none';
+                                            cardgain[l].style.zIndex = '12';
+                                            cardgain[l].style.bottom = '8%';
+                                            cardgain[l].style.position = 'absolute';
+                                        }
+
+                                        anime({
+                                            targets:cardgain[0],
+                                            bottom:["0px","400px"]
+                                        })
+                                        setTimeout(function(){
+                                            cardgain[0].style.zIndex = 14
+                                            anime({
+                                                targets:cardgain[0],
+                                                bottom:["400px","0px"],
+                                                duration:2000
+                                            })
+                                            setTimeout(function(){
+                                                anime({
+                                                    targets:cardgain[1],
+                                                    bottom:["0px","400px"]
+                                                })
+                                                setTimeout(function(){
+                                                    cardgain[1].style.zIndex = 14
+                                                    anime({
+                                                        targets:cardgain[1],
+                                                        bottom:["400px","0px"],
+                                                        left:["46%","28%"],
+                                                        duration:2000
+                                                    })
+
+                                                    setTimeout(function(){
+                                                        anime({
+                                                            targets:cardgain[2],
+                                                            bottom:["0px","400px"]
+                                                        })
+                                                        setTimeout(function(){
+                                                            cardgain[2].style.zIndex = 14
+                                                            anime({
+                                                                targets:cardgain[2],
+                                                                bottom:["400px","0px"],
+                                                                left:["46%","64%"],
+                                                                duration:2000
+                                                            })
+                                                            setTimeout(function(){
+                                                                anime({
+                                                                    targets:cardgain[3],
+                                                                    bottom:["0px","400px"]
+                                                                })
+                                                                setTimeout(function(){
+                                                                    cardgain[1].style.zIndex = 14
+                                                                    anime({
+                                                                        targets:cardgain[3],
+                                                                        bottom:["400px","0px"],
+                                                                        left:["46%","10%"],
+                                                                        duration:2000
+                                                                    })
+
+                                                                    setTimeout(function(){
+                                                                        anime({
+                                                                            targets:cardgain[4],
+                                                                            bottom:["0px","400px"]
+                                                                        })
+                                                                        setTimeout(function(){
+                                                                            cardgain[1].style.zIndex = 14
+                                                                            anime({
+                                                                                targets:cardgain[4],
+                                                                                bottom:["400px","0px"],
+                                                                                left:["46%","82%"],
+                                                                                duration:2000
+                                                                            })
+                                                                            anime({
+                                                                                targets:document.getElementsByClassName("bloque3"),
+                                                                                opacity:[0,1],
+                                                                                delay:300
+                                                                            })
+                                                                            let btnback = document.createElement("button")
+                                                                            btnback.setAttribute("id","btnback")
+                                                                            btnback.innerHTML = "OK"
+                                                                            btnback.addEventListener("click",function(){
+                                                                                console.log(money)
+                                                                                if(money > 0){
+                                                                                    let moneyearn = document.createElement("p")
+                                                                                    moneyearn.setAttribute("id","moneyearn")
+                                                                                    moneyearn.innerHTML = "+" + money 
+                                                                                    document.body.appendChild(moneyearn)
+                                                                                    anime({
+                                                                                        targets:moneyearn,
+                                                                                        opacity:[0,1],
+                                                                                        direction: 'alternate',
+                                                                                        duration:500
+                                                                                    })
+                                                                                }
+                                                                                anime({
+                                                                                    targets:document.getElementsByClassName("bloque3"),
+                                                                                    opacity:[1,0]
+
+                                                                                })
+
+                                                                                anime({
+                                                                                    targets:document.getElementsByClassName("bloque2"),
+                                                                                    left:"46%",
+                                                                                    delay:200
+                                                                                })
+                                                                                let tmpcanvas = document.getElementById("canvas")
+                                                                                let tmpb2 = document.getElementsByClassName("bloque2")
+                                                                                setTimeout(function(){
+                                                                                    anime({
+                                                                                        targets:[tmpcanvas,tmpb2,fond],
+                                                                                        opacity:[1,0]
+                                                                                    })
+                                                                                },1000)
+                                                                                
+                                                                                setTimeout(function(){
+                                                                                    document.body.removeChild(document.getElementById("fond"))
+                                                                                    document.body.removeChild(document.getElementById("newitems"))
+                                                                                    document.body.removeChild(document.getElementById("canvas"))
+                                                                                    document.body.removeChild(document.getElementById("btnback"))
+                                                                                },1400)
+                                                                                
+                                                                            })
+                                                                            document.body.appendChild(btnback)
+                                                                        },time1)
+                                                                        
+                                                                    },time2)
+
+                                                                },time1)
+                                                                
+                                                            },time2)
+
+                                                        },time1)
+                                                        
+                                                    },time2)
+
+                                                },time1)
+                                                
+                                            },time2)
+                                        },time1)
+                                        
+                                    }
+                                    let wid = 0.25*(document.body.clientWidth) -  180
+                                    ctx.clearRect(wid, prev, 500, 1750);
+                                
+                                    var image3 = new Image();
+                                    image3.src = srcim; 
+
+                                    image3.onload = function(){
+                                        ctx.drawImage(image3, 0, 150, 500, 2000, wid,70-nbclick3, 500, 1750);
+                                    }
+                                
+                                    prev3 = nbclick3
+
+                                })
+                            })
+                            
+                    })
+            }
+            let wid = 0.25*(document.body.clientWidth) -  180
+            nbclick2+=1
+            ctx.clearRect(wid, 0-prev2, 500, 60);
+            var image2 = new Image();
+            image2.src = srcim; 
+            //console.log(image2.style.opacity)
+            image2.onload = function(){
+                ctx.drawImage(image2, 0, 80, 500, 60, wid,0-nbclick2*2.5, 500, 60);
+            }
+            prev2 = nbclick2
+        })
+       
+
+    }
+    else{
+        console.log(nbclick)
+        var image = new Image();
+        image.src = srcim; 
+        let wid = 0.25*(document.body.clientWidth) -  180
+        ctx.clearRect(wid+prev, 60, 500, 10);
+        image.onload = function(){
+            ctx.drawImage(image, 0, 140, (500- 50*nbclick), 10, wid,60, (500- 50*nbclick), 10);
+        }
+        prev = (500- 50*nbclick)
+        console.log(image)
+    }
+
+
+}
