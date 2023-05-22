@@ -6,13 +6,22 @@ var listeSTAT = []
 var charaT = []
 
 var tab =  []
+var tabchoix =  []
 
 var nbpack = -1
 var vraipack = -1
 
-
+var clicked = []
+var countclicked = 0
 var actualpack = -1
 var srcim = -1
+
+
+var cartes = []
+var selected = []
+var deckactif = false
+
+var isdeckclicked = -1
 
 
 const btncompte = document.getElementById("comp");
@@ -27,6 +36,8 @@ const decks2 = document.getElementById("decks");
 const ordre2 = document.getElementById("ordre");
 const cherche = document.getElementById("cherche");
 const ecrire = document.getElementById("ecrire");
+
+var cchoix = document.createElement("div");
 
 
 
@@ -136,38 +147,89 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
     bloc.append(crew)
     bloc.append(crewlogo)
     //bloc.append(note)
-    if(clickable){
+    for (let i = 0; i < cards.length; i++){
+        clicked[identifiant] = false;
+    }
+    let clique = false
+    if(clickable && deckactif == true){
         bloc.addEventListener("click",function(){
-            if(clicked[identifiant] == false){
-                console.log("1")
+           
+ 
+            if(clicked[identifiant] == false && countclicked < 15){
                 countclicked+=1
-                anime({
-                    targets: bloc,
-                    borderColor: ['rgb(255, 255, 255)','#e3bc5c'],
-                    //easing:'easeInOutExpo',
-                    duration:600,
-                    borderRadius:[0,15]
-                });
+                
+                for (let i = 0; i <= cartes.length; i++) {
+                    if (typeof cartes[i] == "undefined") {
+                        cartes[i] = bloc.cloneNode(true);
+                        cartes[i].classList.remove("bloque")
+                        cartes[i].classList.add("bloquechoix")
+                        cartes[i].style.left = 10+i*4.5 +"%"
+                        cchoix.append(cartes[i]);
+                        break;
+                    }
+                }
+                console.log(cartes);
+
+
+                bloc.style.filter = 'grayscale(100%)'
+                bloc.style.opacity = '0.5'
                 clicked[identifiant] = true
+                clique = true
             }
-            else{
-                console.log("2")
+            if(clicked[identifiant] == true && clique == false){
                 countclicked -=1
-                anime({
-                    targets: bloc,
-                    borderColor: ['#e3bc5c','rgb(255, 255,255)'],
-                    //easing:'easeInOutExpo',
-                    duration:600,
-                    borderRadius:[15,0]
-                })
+
+                
+                for (let i = 0; i <= cartes.length; i++) {
+                    if(cartes[i].getAttribute("data") == identifiant) {
+                        cchoix.removeChild(cartes[i]);
+                        cartes.splice(i, 1);
+                        break;
+                    }
+                }
+                console.log(cartes);
+
+
+
+                bloc.style.filter = 'grayscale(0%)'
+                bloc.style.opacity = '1'
                 clicked[identifiant] = false
             }
+            console.log(identifiant)
+
+            if(clicked[identifiant] == true) {
+                selected.push(identifiant);
+            }
+            if(clicked[identifiant] == false) {
+                let index = selected.indexOf(identifiant);
+                if(index !== -1) {
+                    selected.splice(index, 1);
+                }
+            }
+            console.log(selected)
             if(countclicked == 15){
+                document.getElementById("validerdeck").removeAttribute("disabled")
+            }
+            else{
+                document.getElementById("validerdeck").setAttribute("disabled","")
+            }
+
+            /*if(countclicked == 15){
                 document.getElementById("start").removeAttribute("disabled")
             }
             else{
                 document.getElementById("start").setAttribute("disabled","")
-            }
+            }*/
+            clique = false
+
+
+
+
+
+
+
+
+
         })
     }
 
@@ -188,9 +250,15 @@ setTimeout(function(){
                     if(cards.includes((charaT[i].id).toString())){
                         let bloc = make_card(charaT,i,true)
                         tab.push(bloc)
+                        deckactif = true
+                        let bloc2 = make_card(charaT,i,true)
+                        tabchoix.push(bloc2)
+                        deckactif = false
                         document.getElementById("collection").appendChild(bloc)
                     }
                 }
+                
+               
             });
         })
 
@@ -339,49 +407,94 @@ setTimeout(function(){
 
     function fdecks() {
         document.body.overflow = "visible"
+
+        for (let i=1; i<=12; i++){
+            tabdeck[i] = document.getElementById("deck"+i);
+            console.log(decks)
+            if(tabdeck[i].getAttribute("data") == 'true'){
+                let thedek = decks[i-1].split(",");
+                let thedek2 = []
+                for(let kk=0; kk < thedek.length; kk++){
+                    thedek2.push(parseInt(thedek[kk]))
+            
+                }
+                console.log(thedek2)
+                let divdek = document.createElement("div")
+
+                for(let k=0; k<15;k++){
+                    let idd = charaT.findIndex((element) => element.id == thedek2[k])
+                    console.log(idd)    
+                    let car = make_card(charaT,idd)
+                    car.classList.remove("bloque")
+                    car.classList.add("bloquechoix2")
+                    car.style.left = 50*((i+1)%2) +4+ k*2 + "%"
+                    divdek.appendChild(car)
+
+                }
+
+
+                divdek.classList.add("divdek")
+                tabdeck[i].appendChild(divdek)
+            }
+        }
+
+
         setTimeout(function(){
             window.scrollTo(0,0)
         },1)
         setTimeout(function(){
             document.body.overflow = "hidden"
         },2)
+        deckactif = true;
         btncompte.addEventListener("click", function(){
             decks2.classList.remove("affiche");
             decks2.classList.add("right");
-            collection.classList.remove("left");
-            collection.classList.add("right");
-            ordre2.classList.remove("left");
-            ordre2.classList.add("right");
-            cherche.classList.remove("left");
-            cherche.classList.add("right");
-            packs.classList.remove("left");
-            packs.classList.add("right");
-            compte.classList.remove("left");
-            compte.classList.add("affiche");
+            setTimeout(function(){
+                collection.classList.remove("left");
+                collection.classList.add("right");
+                ordre2.classList.remove("left");
+                ordre2.classList.add("right");
+                cherche.classList.remove("left");
+                cherche.classList.add("right");
+                setTimeout(function(){
+                    packs.classList.remove("left");
+                    packs.classList.add("right");
+                    setTimeout(function(){
+                        compte.classList.remove("left");
+                        compte.classList.add("affiche");
+                    },125)
+                },125)
+            },125)
             fcompte();
         })
         btnpacks.addEventListener("click", function(){
             decks2.classList.remove("affiche");
             decks2.classList.add("right");
-            collection.classList.remove("left");
-            collection.classList.add("right");
-            ordre2.classList.remove("left");
-            ordre2.classList.add("right");
-            cherche.classList.remove("left");
-            cherche.classList.add("right");
-            packs.classList.remove("left");
-            packs.classList.add("affiche");
+            setTimeout(function(){
+                collection.classList.remove("left");
+                collection.classList.add("right");
+                ordre2.classList.remove("left");
+                ordre2.classList.add("right");
+                cherche.classList.remove("left");
+                cherche.classList.add("right");
+                setTimeout(function(){
+                    packs.classList.remove("left");
+                    packs.classList.add("affiche");
+                },125)
+            },125)
             fpacks();
         })
         btncollection.addEventListener("click", function(){
             decks2.classList.remove("affiche");
             decks2.classList.add("right");
-            collection.classList.remove("left");
-            collection.classList.add("affiche");
-            ordre2.classList.remove("left");
-            ordre2.classList.add("affiche2");
-            cherche.classList.remove("left");
-            cherche.classList.add("affiche3");
+            setTimeout(function(){
+                collection.classList.remove("left");
+                collection.classList.add("affiche");
+                ordre2.classList.remove("left");
+                ordre2.classList.add("affiche2");
+                cherche.classList.remove("left");
+                cherche.classList.add("affiche3");
+            },125)
             fcollection();
         })
     }
@@ -485,7 +598,293 @@ ecrire.addEventListener("input", function(){
     }
 })
 
+let tabdeck = [];
 
+
+
+
+
+for (let i=1; i<=12; i++){
+    tabdeck[i] = document.getElementById("deck"+i);
+    tabdeck[i].addEventListener("click", function(){
+        let creerdeck = document.createElement("div");
+        creerdeck.classList.add("creerdeck");
+        document.body.append(creerdeck);
+        cchoix.classList.add("cchoix");
+        creerdeck.append(cchoix);
+        let rechoix = document.createElement("div");
+        let orchoix = document.createElement("div");
+        orchoix.setAttribute("id", "orchoix");
+        rechoix.setAttribute("id", "rechoix");
+        let recherche = document.createElement("input");
+        recherche.setAttribute("type", "text");
+        recherche.setAttribute("id", "recherche");
+        recherche.setAttribute("placeholder", "Rechercher");
+        let valider = document.createElement("button");
+        valider.setAttribute("disabled","")
+        valider.innerHTML = "VALIDER";
+        valider.setAttribute("id","validerdeck");
+        valider.addEventListener("click",function(){
+            let newdeck = ""
+            let parentchild = document.getElementsByClassName("bloquechoix")
+            console.log(parentchild)
+            
+
+            for(let ctr = 0; ctr< parentchild.length; ctr+=1){
+                console.log("ok")
+                let trueid = charaT[parseInt(parentchild[ctr].getAttribute("data"))].id
+                console.log(trueid)
+                newdeck += trueid + ","
+            }
+
+            let truedeck = newdeck.substring(0,newdeck.length -1)
+            truedeck+=";"
+
+            var data2 = "userid="+ idsession+"&deck="+truedeck
+            
+            var xhttp2 = new XMLHttpRequest();
+            xhttp2.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    
+                }
+            }   
+            
+            
+            xhttp2.open("POST", "updatecards.php", true);
+            xhttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhttp2.send(data2);
+            
+
+        })
+        cchoix.appendChild(valider)
+        let rarhaut = document.createElement("button");
+        let rarbas = document.createElement("button");
+        let alphaut = document.createElement("button");
+        let alpbas = document.createElement("button");
+        rarhaut.setAttribute("id", "rarhaut");
+        rarbas.setAttribute("id", "rarbas");
+        alphaut.setAttribute("id", "alphaut");
+        alpbas.setAttribute("id", "alpbas");
+        let flehaut = document.createElement("img");
+        let flebas = document.createElement("img");
+        let flehaut2 = document.createElement("img");
+        let flebas2 = document.createElement("img");
+        flehaut.setAttribute("src", "flecheHaut.png");
+        flebas.setAttribute("src", "flecheBas.png");
+        flehaut2.setAttribute("src", "flecheHaut.png");
+        flebas2.setAttribute("src", "flecheBas.png");
+        rarhaut.innerHTML = "Rareté";
+        rarhaut.appendChild(flehaut);
+        rarbas.innerHTML = "Rareté";
+        rarbas.appendChild(flebas);
+        alphaut.innerHTML = "Alphabétique";
+        alphaut.appendChild(flehaut2);
+        alpbas.innerHTML = "Alphabétique";
+        alpbas.appendChild(flebas2);
+        cchoix.append(rechoix);
+        cchoix.append(orchoix);
+        rechoix.append(recherche)
+        orchoix.append(rarbas, rarhaut, alphaut, alpbas)
+        let cdeck = document.createElement("div");
+        cdeck.classList.add("cdeck");
+        creerdeck.append(cdeck);
+
+
+        rarhaut.addEventListener("click", function(){
+            creerdeck.removeChild(cdeck)
+            cdeck = document.createElement("div");
+            cdeck.classList.add("cdeck");
+            creerdeck.append(cdeck);
+
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut2.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut3.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut4.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut5.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut6.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut7.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+        });
+        rarbas.addEventListener("click", function(){
+            creerdeck.removeChild(cdeck)
+            cdeck = document.createElement("div");
+            cdeck.classList.add("cdeck");
+            creerdeck.append(cdeck);
+        
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut7.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut6.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut5.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut4.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut3.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+            for(let j=0; j< tabchoix.length; j++){
+                if(tabchoix[j].children[0].getAttribute("src") == "fut2.png"){
+                    cdeck.appendChild(tabchoix[j])
+                }
+            }
+        });
+        alphaut.addEventListener("click", function(){
+            creerdeck.removeChild(cdeck)
+            cdeck = document.createElement("div");
+            cdeck.classList.add("cdeck");
+            creerdeck.append(cdeck);
+            tabchoix.sort(function(a, b){
+                return a.children[2].innerHTML.localeCompare(b.children[2].innerHTML);
+            })
+            for(let j=0; j< tabchoix.length; j++){
+                cdeck.appendChild(tabchoix[j])
+            }
+        });
+        alpbas.addEventListener("click", function(){
+            creerdeck.removeChild(cdeck)
+            cdeck = document.createElement("div");
+            cdeck.classList.add("cdeck");
+            creerdeck.append(cdeck);
+            tabchoix.sort(function(a, b){
+                return b.children[2].innerHTML.localeCompare(a.children[2].innerHTML);
+            })
+            for(let j=0; j< tabchoix.length; j++){
+                cdeck.appendChild(tabchoix[j])
+            }
+        });
+
+        recherche.addEventListener("input", function(){
+            creerdeck.removeChild(cdeck)
+            cdeck = document.createElement("div");
+            cdeck.classList.add("cdeck");
+            creerdeck.append(cdeck);
+            for(let j=0; j<tabchoix.length; j++){
+                cdeck.appendChild(tabchoix[j])
+            }
+            for(let k=0; k< tabchoix.length; k++){
+                if(tabchoix[k].children[2].innerHTML.toLowerCase().search(recherche.value.toLowerCase()) == -1){
+                    cdeck.removeChild(tabchoix[k])
+                }
+            }
+        })
+
+        setTimeout(function(){
+            fetch('./chara.json',{method:'GET'})
+                .then(res1 => res1.text())
+                .then(text1 => {
+                    eval("charaT ="+text1)
+                    //console.log(text1[0])
+
+                    console.log(charaT)
+                    setTimeout(function(){
+                        for(var i=0;i< charaT.length;i++){
+
+                            if(cards.includes((charaT[i].id).toString())){
+                                let bloc = make_card(charaT,i,true)
+                                cdeck.appendChild(bloc)
+                            }
+                        }
+
+                        
+
+                       
+
+
+
+                        // console.log(decks)
+                        // for(var y = 0; y < decks.length; y+=1){
+                        //     let dek = document.querySelector(".cdeck[data=deck"+y+"]")
+                        //     dek.style.top = y*20 +"%"
+                        //     dek.addEventListener("click",function(){
+                        //         let idx = parseInt(dek.getAttribute("data").substring(4,dek.getAttribute("data").length))
+                        //         if(isdeckclicked == -1 || isdeckclicked == idx){
+                        //             //console.log(dek.getAttribute("data"))
+
+                        //             let dekjs = decks[idx].split(",")
+
+                        //             for(var ko=0; ko< dekjs.length;ko++){
+                        //                 let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjs[ko]))
+                        //                 //console.log(ix)
+                        //                 document.querySelector(".bloque[data='"+ix+"']").click()
+                        //             }
+                        //             isdeckclicked = idx;
+                        //         }
+                        //         else{
+                        //             let dekjsUC = decks[isdeckclicked].split(",")
+
+                        //             for(var ko=0; ko< dekjsUC.length;ko++){
+                        //                 let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjsUC[ko]))
+                        //                 document.querySelector(".bloque[data='"+ix+"']").click()
+                        //             }
+
+                        //             let dekjs = decks[idx].split(",")
+
+                        //             for(var ko=0; ko< dekjs.length;ko++){
+                        //                 let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjs[ko]))
+                        //                 document.querySelector(".bloque[data='"+ix+"']").click()
+                        //             }
+                        //             isdeckclicked = idx;
+
+                        //         }
+                        //     })
+                        //     let dekjs = decks[y].split(",")
+
+                        //     for(var l = 1; l < dekjs.length; l++){
+                        //         //console.log(dekjs[l])
+                        //         let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjs[l]))
+                        //         //console.log(ix)
+                        //         let carto = make_card(charaT,ix,false,true)
+                        //         carto.classList.remove("bloque")
+                        //         carto.classList.add("bloquedeck")
+                        //         carto.style.left = (l-1)*5+("%")
+                        //         carto.style.border = "none"
+                        //         dek.appendChild(carto)
+
+                        //     }
+
+                        // }
+
+                    },100)
+                })
+        },1000);
+    })
+}
 
 // packs
 
@@ -662,6 +1061,8 @@ function openingpre(){
     image.onload = function(){
         ctx.drawImage(image, 0, 140, 500, 10, wid,60,500, 10);
     }
+
+
 
     
    

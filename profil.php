@@ -93,7 +93,30 @@
             <?php echo "<p style = 'top:50%;left:".(19+20*$compt)."%'class='Ppaks'> $g </p>"; $compt+=1 ?>
         </div>
         <div id="collection" class="right"></div>
-        <div id="decks" class="right"></div>
+        <div id="decks" class="right">
+            <?php
+                for($j=1; $j <= 12; $j++){
+                    if(isset($decks[$j])){
+                        echo "<div id='deck".$j."' class='predef' data='true'><img class='plus2' src='plus.png' alt='add'></div>";
+                    }
+                    else echo "<div id='deck".$j."' class='predef'  data='false'><img class='plus' src='plus.png' alt='add'></div>";
+                }
+            ?>
+            <!--<div id="deck1" class="predef"><img class="plus" src="plus.png" alt="add">
+                
+            </div>
+            <div id="deck2" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck3" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck4" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck5" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck6" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck7" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck8" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck9" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck10" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck11" class="predef"><img class="plus" src="plus.png" alt="add"></div>
+            <div id="deck12" class="predef"><img class="plus" src="plus.png" alt="add"></div>-->
+        </div>
 
         <script src="hamburger.js"></script>
         <script type="module" src="profil.js"></script>
