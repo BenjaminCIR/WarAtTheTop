@@ -107,10 +107,12 @@ fetch('https://api.api-onepiece.com/locates')
     .then(response => response.json())
     .then(json => {
             locates = json
+            let maxid = locates[locates.length-1].id +1
             fetch('./dataloc.json')
                 .then(response => response.json())
                 .then(json => {
                     for(var i=0;i<json.length;i++){
+                        json[i].id = maxid+i
                         locates.push(json[i])
                     }
                     console.log(locates)
@@ -122,19 +124,24 @@ fetch('https://api.api-onepiece.com/locates')
                             .then(response => response.json())
                             .then(json => {
                                 ordre = json;
+                                console.log(ordre)
                                 for(var i=0; i<ordre.length;i++){
+                                    
                                     let bouton = document.createElement("button");
                                     bouton.classList.add("buttonlvl");
                                     bouton.setAttribute("id", "lieu" + ordre[i]);
+                                    console.log(bouton)
                                     document.getElementById("niveaux").appendChild(bouton);
+                                    console.log(bouton)
                                 }
                                 for(var i=0; i< locates.length;i++){
                                     let colori =  0x616161 
-                                    let indxx = (ordre.findIndex( (element) => element == i))
-                                    
-                                    if(indxx > 44) colori = 0x0070ff
+                                    let indxx = (ordre.findIndex( (element) => element == i+1))
+                                    if(indxx == -1) colori = 0xf0ffff
+                                    if(indxx > 49) colori = 0x0070ff
                                     else{
                                         if( indxx < progression){
+                                            if(indxx == -1) colori = 0xf0ffff
                                             colori = 0xff0000;
                                         } 
                                         if( indxx == progression) colori = 0xffffff
@@ -155,18 +162,22 @@ fetch('https://api.api-onepiece.com/locates')
                                     lieux[i].position.set(x,y,z)
                                 }
                                 lieux[1].material = new THREE.MeshBasicMaterial({color:0xffffff})
-                                for(var i=0; i< lieux.length;i++){
+                                for(var i=0; i< ordre.length;i++){
                                     let name = "lieu" + ordre[i]
                                     let tmp = document.getElementById(name)
-                                    if(coord[i].phi != null){
+                                    console.log("ok"+i)
+                                    console.log(ordre[i])
+                                    if(coord[ordre[i]-1].phi != null){
                                         
-                                        //console.log(tmp)
+                                
                                         tmp.innerText = (i + 1) + " - " + locates[ordre[i]-1].french_name
+                                    
 
 
 
                                         tmp.addEventListener("click", function(){
                                             openpanel(false,tmp)
+                                           
                                         })
 
                                     
@@ -183,14 +194,22 @@ fetch('https://api.api-onepiece.com/locates')
                                     
                                                 }
                                             }
-                                            let colori =  0x616161 
-                                            let indxx = (ordre.findIndex( (element) => element == i+1))
-                                            if(indxx > 44) colori = 0x0070ff
-                                            else{
-                                                if( indxx < progression){
-                                                    colori = 0xff0000;
-                                                } 
-                                                if( indxx == progression) colori = 0xffffff
+                                            for(var i = 0; i< locates.length;i++){
+                                                let colori =  0x616161 
+                                                let indxx = (ordre.findIndex( (element) => element == i+1))
+                                               
+                                                if(indxx > 49) colori = 0x0070ff
+                                                else{
+                                               
+                                                    if( indxx < progression){
+                                                        if(indxx == -1) colori = 0xf0ffff
+                                                        colori = 0xff0000;
+                                                    } 
+                                                    if( indxx == progression) colori = 0xffffff
+                                                }
+                                        
+                                               
+                                                sphere.children[i].material =  new THREE.MeshBasicMaterial({color:colori}) 
                                             }
         
                                             //console.log(sphere.rotation)
@@ -253,6 +272,7 @@ fetch('https://api.api-onepiece.com/locates')
                                         })
                                     }
                                     else{
+                                        console.log(tmp)
                                         document.getElementById("niveaux").removeChild(tmp)
                                     }
                                 }
@@ -288,20 +308,27 @@ function onMouseHover( event ) {
     */
 
     if(colo){
-        for(var i = 0; i< sphere.children.length;i++){
+        for(var i = 0; i< locates.length-1;i++){
             let colori =  0x616161 
             let indxx = (ordre.findIndex( (element) => element == i+1))
-
-            if(indxx > 44) colori = 0x0070ff
+            if(i==76) console.log(indxx)
+            if(indxx > 49) colori = 0x0070ff
             else{
+                if(i==76) console.log(indxx)
                 if( indxx < progression){
+                    if(indxx == -1) colori = 0xf0ffff
                     colori = 0xff0000;
                 } 
                 if( indxx == progression) colori = 0xffffff
             }
     
-           
+            if(i==76) {
+                console.log(colori)
+     
+            }
+
             sphere.children[i].material =  new THREE.MeshBasicMaterial({color:colori}) 
+      
         }
 
        
@@ -451,6 +478,7 @@ scene.add(sphere)
 camera.position.z = 9
 
 function animate(){
+    console.log(sphere.children[76])
     raycaster.setFromCamera( mouse3, camera );
     requestAnimationFrame(animate)
     renderer.render(scene,camera)

@@ -1,7 +1,68 @@
-body{
-    height: 100%;
+@font-face{
+    font-family: LilitaOne;
+    src: url("./LilitaOne-Regular.ttf");
 }
 
+*{
+    font-family: LilitaOne;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    background:url("arbre.jpg");
+    background-size:cover;
+    overflow: hidden;
+}
+
+#compteur, #dekpred,#overlay{
+    position: fixed;
+    z-index: 2;
+    top: 0px;
+    font-size: 200%;
+    width: 70%;
+    border-bottom: 2px solid red;
+}
+
+#opa{
+    position: absolute;
+width: 100%;
+height: 100%;
+background: rgba(255,255,255,0.6);
+}
+#overlay p{
+    float: left;
+    font-size: 70%;
+}
+
+#popu{
+    position: absolute;
+    left: 50%;
+    top: 23%;
+    transform: translate(-50%,-50%);
+    font-size: 282%;
+    font-style: italic;
+    width:50%
+}
+#overlay{
+    right: -50%;
+width: 50%;
+}
+#dekpred{
+    text-align: center;
+width: 30%;
+}
+
+#compteur p {
+float:left;
+}
+
+#compteur button{
+    float: right;
+font-size: 89%;
+}
 .pic{
     position: absolute;
     width: 83%;
@@ -12,6 +73,14 @@ body{
 .card{
     position: relative;
     width:100%;
+}
+
+#bouton{
+    position:absolute;
+    width:100px;
+    left:50%;
+    top:50%;
+    z-index:15
 }
 
 .dead{
@@ -51,20 +120,54 @@ body{
 .bloque{
     position: relative;
     width: 21%;
-    border: 5px double white;
+    border: 5px double transparent;
     border-radius: 20px;
     margin: 10px;
     float: left;
     padding: 2px;
+    top:3%
 }
 
+.newbloque{
+    position: relative;
+    width: 100%;    
+    float: left;
+    top:3%
+}
+
+#hdeck{
+    top: 3%;
+    position: relative;
+    float: left;
+    border-bottom: 4px solid black;
+    border-radius: 3px;
+}
+
+
+.bloquee{
+    position: relative;
+    width: 14%;
+    border-radius: 20px;
+    margin: 10px;
+    float: left;
+    padding: 2px;
+    background:grey;
+    font-size: 60%;
+}
+
+.bloqueee{
+    left:24%
+}
 #start, #startgame, #facile{
     position:absolute;
     right:0
 }
-
+#startgame{
+    font-size: 59%;
+}
 #start{
-    top:0;
+    position: static;
+    margin-left: 10px;
 }
 
 #facile{
@@ -84,9 +187,11 @@ body{
     width: 70%;
     left: 0%;
     overflow: scroll;
-    top: 5%;
+    top: 6%;
     height: 100%;
     float: left;
+    scrollbar-color: black transparent;
+    overflow-x: hidden;
 }
 .naming{
     position: absolute;
@@ -163,7 +268,7 @@ left: 16%;
     transform: translate(-50%,-50%);
     position: absolute;
     height: 41%;
-    /*overflow:hidden;*/
+    overflow:hidden;
     border-width: 5px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
@@ -389,8 +494,8 @@ left: 16%;
     /*position: relative;*/
     left: -47%;
     width: 40%;
+    top:50%;
     overflow: scroll;
-    height: 100%;
     position: relative;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none; 
@@ -404,11 +509,12 @@ left: 16%;
 
 .bloque2{
     position: relative;
-    width: 32%;
+    width: 24%;
     border: 0px solid red;
     border-radius: 20px;
     float: left;
     z-index:1;
+    font-size: 62%;
 }
 
 .bloque3{

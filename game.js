@@ -209,25 +209,73 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
                     borderRadius:[0,15]
                 });
                 clicked[identifiant] = true
+                let newbloc = bloc.cloneNode(true)
+                newbloc.addEventListener("click",function(){
+                    bloc.click()
+
+                })
+                newbloc.classList.remove("bloque")
+                newbloc.classList.add("newbloque")
+                let comptf = 0
+                let firstempty = document.getElementById("hdeck").children[0]
+                while(firstempty.children[0].classList.contains("card") == false){
+                    comptf+=1
+                    firstempty = document.getElementById("hdeck").children[comptf]
+                }
+                firstempty.removeChild(firstempty.children[0])
+                firstempty.appendChild(newbloc)
+                // document.getElementById("hdeck").children[countclicked-1].removeChild(document.getElementById("hdeck").children[countclicked-1].children[0])
+                // document.getElementById("hdeck").children[countclicked-1].appendChild(newbloc)
             }
             else{
                 console.log("2")
                 countclicked -=1
                 anime({
                     targets: bloc,
-                    borderColor: ['#e3bc5c','rgb(255, 255,255)'],
+                    borderColor: ['#e3bc5c','rgb(255, 255,255,0)'],
                     //easing:'easeInOutExpo',
                     duration:600,
                     borderRadius:[15,0]
                 })
                 clicked[identifiant] = false
+                let newbloc = document.createElement("img")
+                newbloc.setAttribute("src","futskull.png")
+                newbloc.style.opacity=0.3
+                newbloc.classList.add("card")
+               
+                let par = bloc.getAttribute("data")
+
+                let rem = document.querySelector(".newbloque[data='"+par+"']")
+                console.log(rem)
+                var parent = rem.parentNode
+                parent.removeChild(rem)
+                parent.appendChild(newbloc)
+                // document.getElementById("hdeck").children[countclicked].removeChild(document.getElementById("hdeck").children[countclicked].children[0])
+                // document.getElementById("hdeck").children[countclicked].appendChild(newbloc)
             }
             if(countclicked == 15){
+                let doc = document.getElementsByClassName("bloque")
+                for(let u=0; u < doc.childElementCount;u+=1){
+                    doc.children[u].style.pointer_events = 'none';
+                }
                 document.getElementById("start").removeAttribute("disabled")
             }
             else{
+                let doc = document.getElementsByClassName("bloque")
+                for(let u=0; u < doc.childElementCount;u+=1){
+                    doc.children[u].style.pointer_events = 'all';
+                }
+                //document.getElementsByClassName("bloque").style.pointer_events = 'all';
                 document.getElementById("start").setAttribute("disabled","")
             }
+            anime({
+                targets: document.getElementById("compteur").children[0],
+                innerHTML:"Cartes sélectionnées : "+countclicked +"/15",
+                round:5,
+                easing: 'linear',
+                duration:400
+            })
+           
         })
     }
 
@@ -235,7 +283,19 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
 }
 
 
+function cleardeck(){
 
+    let li = document.getElementById("list")
+
+    for(let i=0; i< li.childElementCount;i++){
+        if(li.children[i].style.borderColor == "rgb(227, 188, 92)"){
+            li.children[i].click()
+        }
+    }
+
+}
+
+document.getElementById("clear").addEventListener("click",cleardeck)
 
 fetch('./chara.json',{method:'GET'})
     .then(res1 => res1.text())
@@ -247,17 +307,18 @@ fetch('./chara.json',{method:'GET'})
         setTimeout(function(){
             
             for(var i=0;i< charaT.length;i++){
-                //if(cards.includes((charaT[i].id).toString())){
+                if(cards.includes((charaT[i].id).toString())){
                     let bloc = make_card(charaT,i,true)
                     document.getElementById("list").appendChild(bloc)
                     clicked[i] = false
-                //}
+                }
             }
             console.log(decks)  
             for(var y = 0; y < decks.length; y+=1){
                 let dek = document.querySelector(".cdeck[data=deck"+y+"]")  
                 dek.style.top = y*20 +"%"
                 dek.addEventListener("click",function(){
+                    cleardeck()
                     let idx = parseInt(dek.getAttribute("data").substring(4,dek.getAttribute("data").length))
                     if(isdeckclicked == -1 || isdeckclicked == idx){
                         //console.log(dek.getAttribute("data"))
@@ -272,12 +333,14 @@ fetch('./chara.json',{method:'GET'})
                         isdeckclicked = idx;
                     }
                     else{
-                        let dekjsUC = decks[isdeckclicked].split(",")
+                        /*let dekjsUC = decks[isdeckclicked].split(",")
 
                         for(var ko=0; ko< dekjsUC.length;ko++){
                             let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjsUC[ko]))
                             document.querySelector(".bloque[data='"+ix+"']").click()
-                        }
+                        }*/
+
+                        
 
                         let dekjs = decks[idx].split(",")
 
@@ -292,9 +355,10 @@ fetch('./chara.json',{method:'GET'})
                 let dekjs = decks[y].split(",")
             
                 for(var l = 1; l < dekjs.length; l++){
+                    console.log(l)
                     //console.log(dekjs[l])
                     let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjs[l]))
-                    //console.log(ix)
+                    console.log(ix)
                     let carto = make_card(charaT,ix,false,true)
                     carto.classList.remove("bloque")
                     carto.classList.add("bloquedeck")
@@ -713,6 +777,29 @@ fetch('./chara.json',{method:'GET'})
 
 
         function game(){
+
+            let pop = document.createElement("p")
+
+            pop.innerHTML = "3 Cartes sont tirées au hasard..."
+
+            pop.setAttribute("id","popu")
+
+            anime({
+                targets:pop,
+                left:['-27%',"50%"],
+                duration:2000
+            })
+
+        
+            setTimeout(function(){
+                anime({
+                    targets:pop,
+                    left:['52%',"140%"],
+                    duration:2000
+                })
+            },2000)
+            
+            document.body.appendChild(pop)
             document.body.style.overflow = "hidden"
             let cartees = []
             for(var i=0; i<clicked.length;i++){
@@ -747,6 +834,27 @@ fetch('./chara.json',{method:'GET'})
             //console.log(threerandom)
 
             //console.log(cartees)
+
+            let overlay = document.createElement("div")
+            overlay.setAttribute("id","overlay")
+
+            let lancer = document.createElement("button")
+            lancer.setAttribute("id","startgame")
+            lancer.setAttribute("disabled","")
+            lancer.addEventListener("click",startgame)
+            lancer.innerHTML = "LANCER"
+
+            let ph = document.createElement("p")
+            ph.innerHTML = "Ajoutez 3 cartes pour constituer une équipe !"
+            overlay.appendChild(lancer)
+            overlay.appendChild(ph)
+            document.body.appendChild(overlay)
+
+            anime({
+                targets:overlay,
+                right:0,
+                delay:2100
+            })
             
             let horizontal = document.createElement("div")
             horizontal.setAttribute("id","listee")
@@ -766,6 +874,9 @@ fetch('./chara.json',{method:'GET'})
                     duration:1200
                 });
             }
+            setTimeout(function(){
+                horizontal.style.overflow = "visible"
+            },1400)
             links[0] = getLink(charaT[threerandom[0]],charaT[threerandom[1]])
             let link = document.createElement("div")
             link.setAttribute("id","linkbl")
@@ -815,7 +926,7 @@ fetch('./chara.json',{method:'GET'})
             //console.log(yy)
             anime({
                 targets:horizontal,
-                borderColor: ['rgb(0, 0, 0)','rgb(255, 255, 255)'],
+                borderColor: ['rgb(0, 0, 0)','rgba(255, 255, 255,0)'],
                 translateY:[yy,yy+180],
                 translateX:[xx,xx+320],
                 duration:600,
@@ -1049,7 +1160,7 @@ fetch('./chara.json',{method:'GET'})
                                 //console.log(document.querySelector(newtarget))
                                 anime({
                                     targets:newtarget,
-                                    width:["27%","32%"],
+                                    width:["21%","24%"],
                                     easing: 'easeInOutSine',
                                     duration:250,
                                     opacity:1
@@ -1079,7 +1190,7 @@ fetch('./chara.json',{method:'GET'})
                         
                         
                     })
-                    if(compt%3 == 0){
+                    if(compt%4 == 0){
                         blocc.style.clear ="left"
                     }
                     blocc.classList.remove("bloque")
@@ -1095,6 +1206,7 @@ fetch('./chara.json',{method:'GET'})
             anime({
                 targets:newpick,
                 translateX:620,
+                translateY:'-50%',
                 duration:700,
                 delay:3*900,
                 easing: 'easeInOutExpo'
@@ -1105,18 +1217,18 @@ fetch('./chara.json',{method:'GET'})
 
             
         }
-        document.getElementById("facile").addEventListener("click",function(){
-            let tmp = document.getElementsByClassName("bloque")
-            for(var i=0; i<15;i++){
-                tmp[i].click()
-            }
-        })
+   
 
 
         function startgame(){
+            anime({
+                targets:document.getElementById("opa"),
+                backgroundColor:["rgba(255,255,255,0.6)", "rgba(255,255,255,0)"]
+            })
             //console.log(links)
             document.body.removeChild(document.getElementById("listee"))
             document.body.removeChild(document.getElementById("newpick"))
+            document.body.removeChild(document.getElementById("overlay"))
             //console.log("ok")
             let t = document.createElement("div")
             t.setAttribute("id","fightlist")
@@ -1435,7 +1547,7 @@ fetch('./chara.json',{method:'GET'})
 
 
         document.getElementById("start").addEventListener("click",game)
-        document.getElementById("startgame").addEventListener("click",startgame)
+        //document.getElementById("startgame").addEventListener("click",startgame)
         /*let intev = setInterval(function () {
                 if(ccom >= charaT.length) clearInterval(intev) 
                 if(cards.includes(ccom.toString())){
@@ -1454,18 +1566,30 @@ function fingame(){
         console.log("prout")
         const body = document.body
         for(var i=0; i< body.childElementCount; i++){
-            console.log(body.children[i])
-            if(body.children[i].getAttribute("id") != "forme") body.removeChild(body.children[i])
+            body.removeChild(body.children[i])
         }  
         //body.removeChild(document.getElementById("fightlistOP"))
     
 
-        let btn = document.createElement("input")
-        btn.setAttribute("type","submit")
-        btn.setAttribute("value","submi")
-        btn.setAttribute("name","submi")
-
-        document.getElementById("forme").appendChild(btn)
+       
+        var data = "userid="+ idsession+"&actlvl="+ actlvl;
+        console.log(data)
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let btn = document.createElement("a")
+                btn.setAttribute("href","index.php")
+                btn.setAttribute("id","bouton")
+                btn.innerHTML = "ACCUEIL"
+                document.body.appendChild(btn)
+                
+            }
+        }   
+        
+        
+        xhttp.open("POST", "updatecards.php", true);
+        xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhttp.send(data);
 
         
     },3000)

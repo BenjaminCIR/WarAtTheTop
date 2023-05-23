@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="opa"></div>
     <?php   
        session_start();
        if(isset($_GET['id']) && isset($_GET['actlvl'])){
@@ -29,24 +30,7 @@
        else{
             header('Location:index.php');
        }
-        if(isset($_POST['submi'])){
-            $raquete = "SELECT progressionhistoire FROM users WHERE id = $_SESSION[id]";
-            include "connexion.php";
-            $qer = mysqli_query($connexion,$raquete);
-            $rep = mysqli_fetch_assoc($qer);
-            $num = $rep['progressionhistoire'];
-            $tmpr = $_GET['actlvl'];
-
-            
-            $num+=1;
-            if($tmpr == $num){
-                $requete = "UPDATE users SET progressionhistoire = '$num' WHERE id = $_SESSION[id]";
-                mysqli_query($connexion,$requete);
-                mysqli_close($connexion);
-            }
-            header('Location:game.php');
-           
-        }
+        
     
     
     ?>
@@ -54,7 +38,8 @@
 
     if(isset($_SESSION['id'])){
         $id = $_SESSION['id'];
-
+        echo"<script> var idsession = $_SESSION[id]
+                    var actlvl = $_GET[actlvl]; </script>";
         include "connexion.php";
         $req = "SELECT decks,cards FROM users WHERE id =$id";
         $resp = mysqli_query($connexion,$req);	
@@ -73,11 +58,30 @@
 
 
     ?>
-    <div id="list"></div>
-    <form id="forme" action="" method="POST">
+    <div id="list">
+        <div id="compteur">
+            <p>Cartes sélectionnées : 0/15</p>
+            <button disabled id="start"> START </button>
+            <button id="clear"> CLEAR </button>
+
+        </div>
+        <div id="hdeck">
+            <?php
+                for($i=0;$i<15;$i++){
+                    if($i >= 12)echo"<div class ='bloquee bloqueee'><img class='card' src='futskull.png' style='opacity:0.3'></div>";
+                    else echo"<div class ='bloquee'><img class='card' src='futskull.png' style='opacity:0.3'></div>";
+                }
+
+            ?>
+        </div>
+    </div>
+
         <!--<input type="submit" value="submi" name="submi">-->
     </form>
     <div id="decks">
+        <div id="dekpred">
+            Decks prédéfinis
+        </div>
         <?php
             for($i=0;$i<count($decks);$i++){
                 echo"<div class ='cdeck' data='deck".$i."'></div>";
@@ -85,9 +89,7 @@
 
         ?>
     </div>
-    <button disabled id="start"> START </button>
-    <button id="facile">TOUT COCHER</button>
-    <button disabled id="startgame"> LANCER </button>
+
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
     <script type="module" src="game.js"></script>
 </body>

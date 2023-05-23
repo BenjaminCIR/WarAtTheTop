@@ -2,8 +2,9 @@
     <div id="root">
         <nav id="topnav" class="topnav">
             <button id="liste"><img id="hamburger" src="Hamburger_icon_B.png"></button>
-
+            <a href="index.php"><img id="logo" src="logo2.png"></a>
             <div class="topnav_menu">
+              
                 <ul>
                     <?php if(empty($_SESSION['id'])){ ?>
                     <a href="login.php#connexion">Connexion</a>

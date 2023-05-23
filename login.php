@@ -195,7 +195,7 @@
                     
                         
                     if($passwordinscr == $passwordverif && $a == 0){// verification que les 2 mdp sont identiques
-                        $requete1= "INSERT INTO users VALUES(NULL, '$usernameinscr', '$passwordinscr',0,0,0,'$mailinscr',3,0,0,3,0,0,0)";// on met par defaut une photo de profil de base qu'on pourra modifier plus tard sur la page index.php
+                        $requete1= "INSERT INTO users VALUES(NULL, '$usernameinscr', '$passwordinscr',0,0,0,'$mailinscr',4,0,0,0,0,0,0,0)";// on met par defaut une photo de profil de base qu'on pourra modifier plus tard sur la page index.php
                         include "connexion.php";
                         $resultat1 = mysqli_query($connexion,$requete1);
                         mysqli_close($connexion);

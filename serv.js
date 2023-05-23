@@ -116,8 +116,14 @@ function getDATA(){
                                     //console.log(additionals)
                                     for(var j=0; j< additionals.length;j++){
                                         let name2 = (additionals[j]).name
-                                        let ppm = -1000
-                                        if(additionals[j].job != "Pirate"  && additionals[j].job != "Civil" && additionals[j].job != "Famille Royal" && additionals[j].job != "Gouvernement Mondial"){
+                                        let ppm = 82
+                                        if(additionals[j].job == "Pirate"){
+                                            ppm = -1000
+                                        }
+                                        if(additionals[j].job == "Civil"){
+                                            ppm = 87
+                                        }
+                                        if(additionals[j].job == "Famille Royal" || additionals[j].job == "Gouvernement Mondial"){
                                             ppm = 82
                                         }
                                         if(additionals[j].job == "Révolutionnaire"){

@@ -15,8 +15,8 @@
     border: none;
     cursor: pointer;
     transition: 0.3s;
-    left: 50%;
-    top: 50%;
+    left: 6%;
+    top: 1%;
 }
 
 #back:hover {
@@ -24,6 +24,13 @@
     background-color: rgb(2,126,251,1);
 }
 
+#logo{
+    position: absolute;
+    width: 26%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 50%;
+}
 #liste {
     cursor: pointer;
     margin-left: 20px;

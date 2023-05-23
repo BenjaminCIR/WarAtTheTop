@@ -1,6 +1,6 @@
 [
     {
-        "id":125,
+        "id":126,
         "french_name":"île du Sphinx",
         "roman_name":"Sufinkusu",
         "sea_name":"Nouveau Monde",
@@ -8,7 +8,7 @@
         "affiliation_name":""
     },
     {
-        "id":126,
+        "id":127,
         "french_name":"New Marinford",
         "roman_name":"Nyū Marinfōdo",
         "sea_name":"Nouveau Monde",
@@ -16,7 +16,7 @@
         "affiliation_name":"Marine"
     },
     {
-        "id":127,
+        "id":128,
         "french_name":"Royaume de Lulusia",
         "roman_name":"Rurushia Ōkoku",
         "sea_name":"Nouveau Monde",
@@ -24,7 +24,7 @@
         "affiliation_name":""
     },
     {
-        "id":128,
+        "id":129,
         "french_name":"Royaume du Germa",
         "roman_name":"Jeruma Daburu Shikkusu",
         "sea_name":"Nouveau Monde",
@@ -32,7 +32,7 @@
         "affiliation_name":"Germa 66"
     },
     {
-        "id":129,
+        "id":130,
         "french_name":"Edd War",
         "roman_name":"Eddo Wō",
         "sea_name":"Nouveau Monde",
@@ -40,7 +40,7 @@
         "affiliation_name":""
     },
     {
-        "id":130,
+        "id":131,
         "french_name":"Egghead",
         "roman_name":"Egguheddo",
         "sea_name":"Nouveau Monde",
