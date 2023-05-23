@@ -40,6 +40,26 @@
                     var cards = ".json_encode($tab)."
                 </script>";
             }
+
+            if(isset($_POST['send'])){
+                if(isset($_POST['mdp'])) $newmdp = $_POST['mdp'];
+                if(isset($_POST['pseudo'])) $newname = $_POST['pseudo'];
+
+                // verif si le pseudo existe deja ouv pas
+                $requetepseudo = "SELECT * FROM users WHERE pseudo='$newname'";
+                include "connexion.php";
+                $requete_resultat = mysqli_query($connexion,$requetepseudo);
+                $ex = mysqli_fetch_assoc($requete_resultat);
+                if(mysqli_num_rows($requete_resultat)==1  && $ex['id'] != $_SESSION['id'])header('Location:profil.php?err=4');
+                else{
+                    $requete="UPDATE users SET pseudo='$newname', password='$newmdp' WHERE id=$_SESSION[id]"; // si l'image n'est pas défini on  n'upadate pas l'image
+                        
+                    mysqli_query($connexion,$requete);
+                    mysqli_close($connexion);
+                    header('Location:profil.php');
+                }
+                
+            }
         ?>
 
         <div id="barre">
@@ -59,7 +79,26 @@
             <button id="abas">Alphabétique<img src="flecheBas.png"></button>
         </div>
 
-        <div id="compte" class="affiche"></div>
+        <div id="compte" class="affiche">
+            <?php 
+            
+                if(isset($_SESSION['id'])){
+                    $requete="SELECT * From users WHERE id=$_SESSION[id]";
+                    require "connexion.php";
+                    $resultat = mysqli_query($connexion,$requete);
+                    $row=mysqli_fetch_assoc($resultat);
+                }
+                echo " <form action='profil.php' method='post' id='modification'>
+
+                    <label>Pseudonyme</label>
+                    <input name='pseudo' type='text' value='$row[pseudo]'>
+                    <label>Mot de Passe</label>
+                    <input name='mdp' type='password' value='$row[password]'>
+
+                    <input type='submit' id='send' name='send' value='Update'>
+                </form>";
+            ?>
+        </div>
         <div id="packs" class="right">
             <?php $compt=0;
                 if($eb == 0) $geb=0.9;

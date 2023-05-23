@@ -100,8 +100,7 @@
 }
 
 #compte{
-    background-color:white;
-    opacity: 40%;
+    background-color:rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     width: 80%;
     height: 70%;
@@ -111,6 +110,65 @@
     transition: left 0.5s ease-in-out;
 }
 
+#modification {
+    position: absolute;
+    padding: 1% 13%;
+    width: 74%;
+    left:13%;
+    transition: all 0.7s;
+}
+
+#modification label {
+    display: block;
+    margin-top: 3%;
+    padding: 3% 3%;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    position: relative;
+    left: 3.5%;
+}
+
+#modification input[type="text" i], #modification input[type="password" i] {
+    display: block;
+    width: 93%;
+    padding: 2.5%;
+    border-radius: 20px;
+    font-family: "Roboto",sans-serif;
+    background: transparent;
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    background-color: rgba(50, 50, 50, 0.8);    
+    text-align: center;
+    position: relative;
+    left: 3.5%;
+}
+
+#modification input[type="text" i]:active, #modification input[type="password" i]:active {
+    outline: 2px auto #4d90fe;
+}
+
+#modification input[type="submit" i] {
+    width: 100%;
+    padding: 3%;
+    border-radius: 25px;
+    margin-top: 80px;
+    font-size: 100%;
+    font-weight: 700;
+    color: #fff;
+    opacity: 1;
+    background-color: #1161EE;
+    cursor: pointer;
+    outline-offset: 0px;
+}
+
+#modification input[type="submit" i]:active {
+    outline: 2px auto #4d90fe;
+}
+
+#modification input[type="submit" i]:focus-visible {
+    outline: -webkit-focus-ring-color auto 1px;
+}
 #packs{
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;

@@ -638,6 +638,7 @@ for (let i=1; i<=12; i++){
             }
 
             let truedeck = newdeck.substring(0,newdeck.length -1)
+            let truedeck2 = truedeck
             truedeck+=";"
 
             var data2 = "userid="+ idsession+"&deck="+truedeck
@@ -645,7 +646,51 @@ for (let i=1; i<=12; i++){
             var xhttp2 = new XMLHttpRequest();
             xhttp2.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    
+                    decks[decks.length - 1] = (truedeck2)
+
+                    let dive = document.getElementsByClassName("predef")
+                    dive[decks.length - 1].setAttribute("data","true")
+                    for (let i=1; i<=12; i++){
+                        if(dive[i-1].childElementCount == 2){
+                            dive[i-1].removeChild(dive[i-1].children[1])
+
+                        }
+                    }
+
+
+                    for (let i=1; i<=12; i++){
+                        tabdeck[i] = document.getElementById("deck"+i);
+                        console.log(decks[i])
+                        if(tabdeck[i].getAttribute("data") == 'true'){
+                            let thedek = decks[i-1].split(",");
+                            let thedek2 = []
+                            for(let kk=0; kk < thedek.length; kk++){
+                                thedek2.push(parseInt(thedek[kk]))
+                        
+                            }
+                            console.log(thedek2)
+                            let divdek = document.createElement("div")
+            
+                            for(let k=0; k<15;k++){
+                                let idd = charaT.findIndex((element) => element.id == thedek2[k])
+                                console.log(idd)    
+                                let car = make_card(charaT,idd)
+                                car.classList.remove("bloque")
+                                car.classList.add("bloquechoix2")
+                                car.style.left = 50*((i+1)%2) +4+ k*2 + "%"
+                                divdek.appendChild(car)
+            
+                            }
+            
+            
+                            divdek.classList.add("divdek")
+                            tabdeck[i].appendChild(divdek)
+                        }
+                    }
+
+
+                    document.body.removeChild(document.getElementsByClassName("creerdeck")[0])
+
                 }
             }   
             
