@@ -65,7 +65,8 @@ font-size: 89%;
 }
 .pic{
     position: absolute;
-    width: 83%;
+    width: 79%;
+    height: 48%;
     left: 50%;
     transform: translateX(-50%);
     top: 10%;
