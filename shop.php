@@ -33,7 +33,7 @@
             $u = mysqli_fetch_assoc($resultat1);
             echo '<h2 class="money">Ton Argent : '.$u['money'].'<img class="berry" src="berry.png" alt="Berry"></h2>';
             echo '<h2 class="packs">Tes Packs : </h2>';
-            echo '<div class="pack"><p>Nombre de packs Gold : '.$u['pack_north_blue'].'<p>';
+            echo '<div class="pack"><p>Nombre de packs : '.$u['pack_north_blue'].'<p>';
             echo '<p>Nombre de packs South Blue : '.$u['pack_south_blue'].'</p>';
             echo '<p>Nombre de packs East Blue : '.$u['pack_east_blue'].'</p>';
             echo '<p>Nombre de packs West Blue : '.$u['pack_west_blue'].'</p>';
