@@ -17,7 +17,7 @@
     <div class="background"></div>
     <div class="content">
       <div id="blc1"> 
-        <h1>Your shop</h1>
+        <h1>Ta Boutique</h1>
 			  <img class="nami" src="nami.gif" alt="";>
 			
 			  <?php
@@ -31,15 +31,15 @@
           }
           else { 
             $u = mysqli_fetch_assoc($resultat1);
-            echo '<h2 class="money">Your Money : '.$u['money'].'<img class="berry" src="berry.png" alt="Berry"></h2>';
-            echo '<h2 class="packs">Your Packs : </h2>';
-            echo '<div class="pack"><p>Number of North Blue packs : '.$u['pack_north_blue'].'<p>';
-            echo '<p>Number of South Blue packs : '.$u['pack_south_blue'].'</p>';
-            echo '<p>Number of East Blue packs : '.$u['pack_east_blue'].'</p>';
-            echo '<p>Number of West Blue packs : '.$u['pack_west_blue'].'</p>';
-            echo '<p>Number of Bronze packs : '.$u['pack_bronze'].'</p>';
-            echo '<p>Number of Silver packs : '.$u['pack_silver'].'</p>';
-            echo '<p>Number of Gold packs : '.$u['pack_gold'].'</p></div>';
+            echo '<h2 class="money">Ton Argent : '.$u['money'].'<img class="berry" src="berry.png" alt="Berry"></h2>';
+            echo '<h2 class="packs">Tes Packs : </h2>';
+            echo '<div class="pack"><p>Nombre de packs Gold : '.$u['pack_north_blue'].'<p>';
+            echo '<p>Nombre de packs South Blue : '.$u['pack_south_blue'].'</p>';
+            echo '<p>Nombre de packs East Blue : '.$u['pack_east_blue'].'</p>';
+            echo '<p>Nombre de packs West Blue : '.$u['pack_west_blue'].'</p>';
+            echo '<p>Nombre de packs Bronze : '.$u['pack_bronze'].'</p>';
+            echo '<p>Nombre de packs Silver : '.$u['pack_silver'].'</p>';
+            echo '<p>Nombre de packs Gold : '.$u['pack_gold'].'</p></div>';
           }
           mysqli_close($connexion);
         }
@@ -428,7 +428,7 @@
           </div>
         </div>
         <div class="card" id="bloc8">
-          <h1>Pack Silver</h1>
+          <h1>Pack Gold</h1>
           <div class="cont">
             <div class="coffre">
               <img src="Pack\pack_gold.png">
