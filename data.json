@@ -1,42 +1,3122 @@
 [
     {
-        "usagename":"Monkey D. Luffy",
-        "name":"Monkey D. Luffy - Gear 2",
-        "bounty":"300000",
-        "age":"17",
-        "size":"170",
-        "fruit_id":"1",
-        "second_fruit_id":"none",
-        "job":"Pirate"
+      "usagename": "Gol D. Roger",
+      "name": "Gol D. Roger - Clash of the Formidable Forces",
+      "bounty": "7000000000",
+      "age": "50",
+      "size": "274",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
     },
     {
-        "usagename":"Barbe Blanche",
-        "name":"Whitebeard - Four Emperors",
-        "bounty":"5000000",
-        "age":"70",
-        "size":"670",
-        "fruit_id":"1",
-        "second_fruit_id":"none",
-        "job":"Pirate"
+      "usagename": "Barbe Blanche",
+      "name": "Whitebeard - End of the Long Journey",
+      "bounty": "5000000",
+      "age": "70",
+      "size": "670",
+      "fruit_id": "35",
+      "second_fruit_id": "none",
+      "job": "Pirate"
     },
     {
-        "usagename":"Monkey D. Luffy",
-        "name":"Monkey D. Luffy - Gear Four: Snakeman",
-        "bounty":"300000",
-        "age":"17",
-        "size":"170",
-        "fruit_id":"1",
-        "second_fruit_id":"none",
-        "job":"Pirate"
+      "usagename": "Yonko Kaido ",
+      "name": "Kaido - Imposing Emperor",
+      "bounty": "4611100000",
+      "age": "59",
+      "size": "710",
+      "fruit_id": "122",
+      "second_fruit_id": "none",
+      "job": "Pirate"
     },
     {
-        "usagename":"Gol D. Roger",
-        "name":"Gol D. Roger - Clash of the Formidable Forces",
-        "bounty":"5000000",
-        "age":"70",
-        "size":"670",
-        "fruit_id":"1",
-        "second_fruit_id":"none",
-        "job":"Pirate"
+      "usagename": "Kaido Hybrid Form",
+      "name": "Kaido - Hell Made Manifest",
+      "bounty": "4611100000",
+      "age": "59",
+      "size": "710",
+      "fruit_id": "122",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Kaido Dragon Form",
+      "name": "Kaido - The Strongest Creature Alive",
+      "bounty": "4611100000",
+      "age": "59",
+      "size": "710",
+      "fruit_id": "122",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Yonko Shanks",
+      "name": "Red-Haired Shanks - Red-Hair Stopping the Menace",
+      "bounty": "4048900000",
+      "age": "37",
+      "size": "199",
+      "fruit_id": "null",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Shanks RED",
+      "name": "Red-Haired Shanks - Father Caring for His Daughter",
+      "bounty": "4048900000",
+      "age": "39",
+      "size": "199",
+      "fruit_id": "null",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Shanks Kid",
+      "name": "Shanks - Back-to-Back Pirate Apprentices",
+      "bounty": "0",
+      "age": "9",
+      "size": "140",
+      "fruit_id": "null",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Shanks Fushia",
+      "name": "Shanks - Pirate with a Straw Hat",
+      "bounty": "1040000000",
+      "age": "27",
+      "size": "199",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Kid Big Mom",
+      "name": "Charlotte Linlin - Devistation in the Land of Elbaf",
+      "bounty": "50000000",
+      "age": "5",
+      "size": "400",
+      "fruit_id": "60",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Big Mom Rocks Pirates",
+      "name": "Charlotte Linlin - Spring Tea Party",
+      "bounty": "500000000",
+      "age": "24",
+      "size": "810",
+      "fruit_id": "60",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Yonko Big Mom",
+      "name": "Big Mom - Emperor",
+      "bounty": "4388000000",
+      "age": "68",
+      "size": "810",
+      "fruit_id": "60",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Yonko Teach",
+      "name": "Blackbeard - Emperor",
+      "bounty": "3996000000",
+      "age": "40",
+      "size": "344",
+      "fruit_id": "85",
+      "second_fruit_id": "35",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Teach",
+      "name": "Marshall D. Teach - Young Pirate Rushing to Battle",
+      "bounty": "0",
+      "age": "14",
+      "size": "200",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Shichibukai Teach",
+      "name": "Marshall D. Teach Blackbeard Pirate Captain",
+      "bounty": "0",
+      "age": "38",
+      "size": "344",
+      "fruit_id": "85",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Luffy East Blue",
+      "name": "Monkey D. Luffy - Gum-Gum Pistol",
+      "bounty": "0",
+      "age": "17",
+      "size": "170",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": " Afro Luffy",
+      "name": "Monkey D. Luffy - Davy Back Fight: Afro",
+      "bounty": "0",
+      "age": "17",
+      "size": "170",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Luffy gear 2",
+      "name": "Monkey D. Luffy - Gear 2",
+      "bounty": "300000",
+      "age": "17",
+      "size": "170",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Luffy Snakeman",
+      "name": "Monkey D. Luffy - Gear Four: Snakeman",
+      "bounty": "300000",
+      "age": "17",
+      "size": "170",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Luffy Strong World",
+      "name": "Monkey D. Luffy - Straw Hat Pirates' Attack",
+      "bounty": "300000000",
+      "age": "17",
+      "size": "170",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Nightmare Luffy",
+      "name": "Nightmare Luffy - Warrior of Hope",
+      "bounty": "300000000",
+      "age": "17",
+      "size": "400",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Luffy Stampede",
+      "name": "Monkey D. Luffy - Shouldering the Hopes of His Crew",
+      "bounty": "1500000000",
+      "age": "19",
+      "size": "172",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Luffy RED",
+      "name": "Monkey D. Luffy - Straw Hat Pirates Enjoying the FES",
+      "bounty": "3000000000",
+      "age": "19",
+      "size": "172",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Luffy Gear 3",
+      "name": "Monkey D. Luffy - Gear Third",
+      "bounty": "300000000",
+      "age": "17",
+      "size": "170",
+      "fruit_id": "1",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Zoro Ashura 2",
+      "name": "Roronoa Zoro - Dead Man's Drawn Sword in Hell",
+      "bounty": "320000000",
+      "age": "21",
+      "size": "181",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Zoro Stampede",
+      "name": "Roronoa Zoro - ONE PIECE STAMPEDE",
+      "bounty": "320000000",
+      "age": "21",
+      "size": "181",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Zoro Shishi Sonson",
+      "name": "Roronoa Zoro - Lion's Song",
+      "bounty": "60000000",
+      "age": "19",
+      "size": "178",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Zoro Strong World",
+      "name": "Roronoa Zoro - Straw Hat Pirates' Attack",
+      "bounty": "120000000",
+      "age": "19",
+      "size": "178",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Zoro Ashura 1",
+      "name": "Roronoa Zoro - Ashura Ichibugin",
+      "bounty": "60000000",
+      "age": "19",
+      "size": "178",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Zoro East Blue",
+      "name": "Roronoa Zoro - East Blue Pirate",
+      "bounty": "0",
+      "age": "19",
+      "size": "178",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Sanji - Diable Jambe",
+      "name": "Sanji - Diable Jambe Flambe",
+      "bounty": "77000000",
+      "age": "19",
+      "size": "177",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Sanji - Strong World",
+      "name": "Sanji - Straw Hat Pirates' Attack",
+      "bounty": "77000000",
+      "age": "19",
+      "size": "177",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Vinsmoke Sanji",
+      "name": "Vinsmoke Sanji",
+      "bounty": "177000000",
+      "age": "21",
+      "size": "180",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Sanji",
+      "name": "Vinsmoke Sanji - Germa Resurrection Plan",
+      "bounty": "0",
+      "age": "8",
+      "size": "120",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Sanji Stampede",
+      "name": "Sanji - ONE PIECE STAMPEDE",
+      "bounty": "330000000",
+      "age": "21",
+      "size": "180",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "O-Soba Mask",
+      "name": "Soba Mask",
+      "bounty": "330000000",
+      "age": "21",
+      "size": "180",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Mr. Prince",
+      "name": "Mr. Prince - Mutton Shot",
+      "bounty": "0",
+      "age": "19",
+      "size": "177",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Onami",
+      "name": "Onami - Alluring Ninja",
+      "bounty": "66000000",
+      "age": "20",
+      "size": "170",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Nami Stampede",
+      "name": "Nami - ONE PIECE STAMPEDE",
+      "bounty": "66000000",
+      "age": "20",
+      "size": "170",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Nami Enies Lobby",
+      "name": "Nami - Thunderbolt Tempo",
+      "bounty": "16000000",
+      "age": "18",
+      "size": "169",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Nami Alabasta",
+      "name": "Nami - Tornado Tempo",
+      "bounty": "0",
+      "age": "18",
+      "size": "169",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Nami Strong World",
+      "name": "Nami and Billy the Thunder Bird",
+      "bounty": "16000000",
+      "age": "18",
+      "size": "169",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Jinbe- Neptune's Army Soldier",
+      "name": "Jinbe - Neptune's Army Soldier: Ryugu Kingdom",
+      "bounty": "0",
+      "age": "30",
+      "size": "301",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Jinbe- Impel Down",
+      "name": "Jinbe - Prisoner of Eternal Hell",
+      "bounty": "250000000",
+      "age": "44",
+      "size": "301",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Jinbe- Whole Cake",
+      "name": "Knight of the Sea Jinbe - Return of the Ritual Cup",
+      "bounty": "438000000",
+      "age": "46",
+      "size": "301",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Sogeking",
+      "name": "Sogeking",
+      "bounty": "30000000",
+      "age": "17",
+      "size": "174",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Usopp - Strong World",
+      "name": "Usopp - Straw Hat Pirates' Attack",
+      "bounty": "30000000",
+      "age": "17",
+      "size": "174",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Usoland",
+      "name": "Usoland",
+      "bounty": "30000000",
+      "age": "19",
+      "size": "176",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "God Usopp",
+      "name": "God Usopp",
+      "bounty": "200000000",
+      "age": "19",
+      "size": "176",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Usopp - Stampede",
+      "name": "Usopp - ONE PIECE STAMPEDE",
+      "bounty": "200000000",
+      "age": "19",
+      "size": "176",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Chopper - Strong World",
+      "name": "Chopper - Straw Hat Pirates' Attack",
+      "bounty": "50",
+      "age": "15",
+      "size": "250",
+      "fruit_id": "92",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Chopper - Monster Point",
+      "name": "Tony Tony Chopper - Post-Rampage",
+      "bounty": "50",
+      "age": "15",
+      "size": "600",
+      "fruit_id": "92",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Chopperemon",
+      "name": "Chopperemon - Ninja",
+      "bounty": "100",
+      "age": "17",
+      "size": "100",
+      "fruit_id": "92",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Chopper - Stampede",
+      "name": "Chopper - ONE PIECE STAMPEDE",
+      "bounty": "100",
+      "age": "17",
+      "size": "250",
+      "fruit_id": "92",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Chopper - Kung Fu Style",
+      "name": "Tony Tony Chopper - Kung Fu Style",
+      "bounty": "100",
+      "age": "17",
+      "size": "200",
+      "fruit_id": "92",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Robin - Demonio",
+      "name": "Nico Robin - Demonio Protecting Her Friends",
+      "bounty": "930000000",
+      "age": "30",
+      "size": "188",
+      "fruit_id": "6",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Robin - Strong World",
+      "name": "Nico Robin - Straw Hat Pirates' Attack",
+      "bounty": "80000000",
+      "age": "28",
+      "size": "188",
+      "fruit_id": "6",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Robin - Stampede",
+      "name": "Nico Robin - ONE PIECE STAMPEDE",
+      "bounty": "130000000",
+      "age": "30",
+      "size": "188",
+      "fruit_id": "6",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Miss All Sunday",
+      "name": "Miss All Sunday - Baroque Works VP",
+      "bounty": "79000000",
+      "age": "28",
+      "size": "188",
+      "fruit_id": "6",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Robin",
+      "name": "Nico Robin Girl from Ohara",
+      "bounty": "79000000",
+      "age": "8",
+      "size": "110",
+      "fruit_id": "6",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Orobi",
+      "name": "Orobi",
+      "bounty": "130000000",
+      "age": "30",
+      "size": "188",
+      "fruit_id": "6",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Fraland",
+      "name": "Franky - Cyborg Built to Realize the Dreams of Every Man",
+      "bounty": "94000000",
+      "age": "36",
+      "size": "240",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "General Franky",
+      "name": "General Franky - Iron Pirate",
+      "bounty": "44000000",
+      "age": "36",
+      "size": "240",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Franosuke",
+      "name": "Franosuke - Carpenter",
+      "bounty": "94000000",
+      "age": "36",
+      "size": "240",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Franky - Stampede",
+      "name": "Franky - ONE PIECE STAMPEDE",
+      "bounty": "94000000",
+      "age": "36",
+      "size": "240",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Franky - Strong World",
+      "name": "Franky - Straw Hat Pirates' Attack",
+      "bounty": "94000000",
+      "age": "34",
+      "size": "225",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Brook - Strong World",
+      "name": "Brook - Straw Hat Pirates' Attack",
+      "bounty": "33000000",
+      "age": "88",
+      "size": "266",
+      "fruit_id": "21",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Brook - Stampede",
+      "name": "Brook - ONE PIECE STAMPEDE",
+      "bounty": "83000000",
+      "age": "90",
+      "size": "277",
+      "fruit_id": "21",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Bonekichi",
+      "name": "Bonekichi",
+      "bounty": "383000000",
+      "age": "90",
+      "size": "277",
+      "fruit_id": "21",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Brook Rumbar Pirates",
+      "name": "Brook Rumbar Pirates",
+      "bounty": "33000000",
+      "age": "38",
+      "size": "266",
+      "fruit_id": "21",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Soul King",
+      "name": "Soul King Brook - Soul's Special Live Performance",
+      "bounty": "83000000",
+      "age": "90",
+      "size": "277",
+      "fruit_id": "21",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Captain Buggy ",
+      "name": "Captain Buggy",
+      "bounty": "15000000",
+      "age": "37",
+      "size": "192",
+      "fruit_id": "22",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Shichibukai Buggy",
+      "name": "Buggy's Delivery",
+      "bounty": "15000000",
+      "age": "39",
+      "size": "192",
+      "fruit_id": "22",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": " Roger Pirates - Buggy",
+      "name": "Buggy - Roger Pirates",
+      "bounty": "0",
+      "age": "12",
+      "size": "140",
+      "fruit_id": "22",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Yonko Buggy",
+      "name": "Buggy the Genius Jester",
+      "bounty": "3189000000",
+      "age": "39",
+      "size": "192",
+      "fruit_id": "22",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Klahadore",
+      "name": "Klahadore - Butler",
+      "bounty": "16000000",
+      "age": "33",
+      "size": "207",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Big Alvida",
+      "name": "Iron-Mace Alvida",
+      "bounty": "5000000",
+      "age": "25",
+      "size": "198",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Alvida",
+      "name": "Iron-Mace Alvida - Smooth-Smooth Fruit",
+      "bounty": "5000000",
+      "age": "25",
+      "size": "198",
+      "fruit_id": "3",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Buggy's Partner - Alvida",
+      "name": "Alvida - Elegantly Enjoying the Festival",
+      "bounty": "5000000",
+      "age": "27",
+      "size": "198",
+      "fruit_id": "3",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Marine's Django",
+      "name": "Double Crosser Django",
+      "bounty": "0",
+      "age": "27",
+      "size": "207",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Lieutenant Commandant"
+    },
+    {
+      "usagename": "Django",
+      "name": "One-Two Django",
+      "bounty": "9000000",
+      "age": "27",
+      "size": "207",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Capitaine Coby",
+      "name": "Coby - Young Man Rising Through the Ranks",
+      "bounty": "0",
+      "age": "18",
+      "size": "167",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Capitaine"
+    },
+    {
+      "usagename": "Training Coby",
+      "name": "Training Coby",
+      "bounty": "0",
+      "age": "16",
+      "size": "167",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "1ère Classe"
+    },
+    {
+      "usagename": "Sergeant Helmeppo",
+      "name": "Sergeant Helmeppo",
+      "bounty": "0",
+      "age": "20",
+      "size": "179",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Sergent"
+    },
+    {
+      "usagename": "Helmep - Member of SWORD",
+      "name": "Helmeppo - Stunning Swords Play",
+      "bounty": "0",
+      "age": "22",
+      "size": "179",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Commandant"
+    },
+    {
+      "usagename": "Red-Leg Zeff",
+      "name": "Red-Leg Zeff - Cook Pirates Captain",
+      "bounty": "0",
+      "age": "41",
+      "size": "189",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Arlong",
+      "name": "Arlong the Pirate",
+      "bounty": "0",
+      "age": "24",
+      "size": "263",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Smoker",
+      "name": "Smoker - Wild Lone Wolf",
+      "bounty": "0",
+      "age": "9",
+      "size": "120",
+      "fruit_id": "80",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Vice Admiral Smoker",
+      "name": "Smoker G-5 Vice Admiral",
+      "bounty": "0",
+      "age": "36",
+      "size": "209",
+      "fruit_id": "80",
+      "second_fruit_id": "none",
+      "job": "Vice Amiral"
+    },
+    {
+      "usagename": "The Smoker",
+      "name": "Smoker the White Hunter - Sailor with an Unwavering Sense of Justice",
+      "bounty": "0",
+      "age": "36",
+      "size": "209",
+      "fruit_id": "80",
+      "second_fruit_id": "none",
+      "job": "Vice Amiral"
+    },
+    {
+      "usagename": "Young Tashigi",
+      "name": "Tashigi - Kendo Daredevil",
+      "bounty": "0",
+      "age": "9",
+      "size": "120",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Captain Tashigi",
+      "name": "Tashigi - Furious Captain",
+      "bounty": "0",
+      "age": "23",
+      "size": "170",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Capitaine"
+    },
+    {
+      "usagename": "Roger Pirates - Crocus",
+      "name": "Crocus - Ship Doctor of the Roger Pirates",
+      "bounty": "0",
+      "age": "45",
+      "size": "203",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Laboon Rumbar Pirates",
+      "name": "Laboon Rumbar Pirates",
+      "bounty": "0",
+      "age": "1",
+      "size": "50",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Miss Wednesday",
+      "name": "Miss Wednesday",
+      "bounty": "0",
+      "age": "16",
+      "size": "169",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Vivi",
+      "name": "Princess Vivi",
+      "bounty": "0",
+      "age": "16",
+      "size": "169",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Mugiwara Pirates - Vivi",
+      "name": "Nefeltari Vivi - Port of Separation",
+      "bounty": "0",
+      "age": "16",
+      "size": "169",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "King Wapol",
+      "name": "Wapol - True Power of the Munch-Munch Fruit",
+      "bounty": "0",
+      "age": "29",
+      "size": "207",
+      "fruit_id": "8",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Igaram",
+      "name": "Mr. 8",
+      "bounty": "0",
+      "age": "48",
+      "size": "218",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Pell - Gardian of Alabasta",
+      "name": "Pell - The guardian falcon of Alabasta",
+      "bounty": "0",
+      "age": "33",
+      "size": "189",
+      "fruit_id": "93",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Chaka - Gardian of Alabasta",
+      "name": "Chaka - The guardian jackal of Alabasta",
+      "bounty": "0",
+      "age": "39",
+      "size": "213",
+      "fruit_id": "96",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Daz Bones",
+      "name": "Daz Bones, Convict - Mr. 1",
+      "bounty": "75000000",
+      "age": "29",
+      "size": "212",
+      "fruit_id": "11",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Mr.0",
+      "name": "Mr. 0 - Battles of the Great Era of Piracy: Utopia",
+      "bounty": "81000000",
+      "age": "44",
+      "size": "253",
+      "fruit_id": "81",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Prisoner Crocodile",
+      "name": "Sir Crocodile, the Strongest Prisoner - Mr. 0, Ex-Baroque Works Leader",
+      "bounty": "81000000",
+      "age": "44",
+      "size": "253",
+      "fruit_id": "81",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Morgan",
+      "name": "Axe-Hand Morgan",
+      "bounty": "0",
+      "age": "42",
+      "size": "285",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Capitaine"
+    },
+    {
+      "usagename": "Koshiro",
+      "name": "Koshiro - Young Swordsman's Master",
+      "bounty": "0",
+      "age": "49",
+      "size": "184",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Johnny",
+      "name": "Johnny",
+      "bounty": "0",
+      "age": "23",
+      "size": "186",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Gaimon",
+      "name": "Gaimon",
+      "bounty": "0",
+      "age": "43",
+      "size": "130",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Zeff",
+      "name": "Chef Zeff",
+      "bounty": "0",
+      "age": "65",
+      "size": "189",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Hawk Eyes Mihawk",
+      "name": "Hawk Eyes Mihawk - Black Blade: Night",
+      "bounty": "3590000000",
+      "age": "41",
+      "size": "198",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Don Krieg",
+      "name": "Don Krieg",
+      "bounty": "17000000",
+      "age": "42",
+      "size": "243",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Fullbody",
+      "name": "Iron Fist Fullbody",
+      "bounty": "0",
+      "age": "26",
+      "size": "183",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Lieutenant"
+    },
+    {
+      "usagename": "Bellamy the Hyena",
+      "name": "Bellamy the Hyena - Corrida Coliseum B-Block The Bullet",
+      "bounty": "195000000",
+      "age": "27",
+      "size": "240",
+      "fruit_id": "13",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Ganfor",
+      "name": "Ganfor",
+      "bounty": "0",
+      "age": "66",
+      "size": "180",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Dieu"
+    },
+    {
+      "usagename": "God Eneru",
+      "name": "Kami Eneru",
+      "bounty": "0",
+      "age": "37",
+      "size": "266",
+      "fruit_id": "83",
+      "second_fruit_id": "none",
+      "job": "Dieu"
+    },
+    {
+      "usagename": "Ohm",
+      "name": "Ohm",
+      "bounty": "0",
+      "age": "27",
+      "size": "189",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Admiral Kuzan",
+      "name": "Aokiji Navy HQ Admiral",
+      "bounty": "0",
+      "age": "47",
+      "size": "298",
+      "fruit_id": "89",
+      "second_fruit_id": "none",
+      "job": "Amiral"
+    },
+    {
+      "usagename": "Blackbeard's Pirate - Kuzan",
+      "name": "Kuzan - Surprising Former Navy Admiral",
+      "bounty": "0",
+      "age": "49",
+      "size": "298",
+      "fruit_id": "89",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Hina",
+      "name": "Hina - Graceful Honor Student",
+      "bounty": "0",
+      "age": "10",
+      "size": "120",
+      "fruit_id": "12",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Vice-Admiral Hina",
+      "name": "Hina - Observing Rear Admiral",
+      "bounty": "0",
+      "age": "34",
+      "size": "181",
+      "fruit_id": "12",
+      "second_fruit_id": "none",
+      "job": "Vice Amiral"
+    },
+    {
+      "usagename": "Blueno",
+      "name": "Blueno - Cipher Pol No. 9",
+      "bounty": "0",
+      "age": "30",
+      "size": "258",
+      "fruit_id": "16",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Fukuro",
+      "name": "Fukuro - Cipher Pol No. 9",
+      "bounty": "0",
+      "age": "29",
+      "size": "331",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Kumadori",
+      "name": "Kumadori - Cipher Pol No. 9",
+      "bounty": "0",
+      "age": "34",
+      "size": "318",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Icebarg",
+      "name": "Iceburg",
+      "bounty": "0",
+      "age": "38",
+      "size": "199",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "CP9 - Lucci",
+      "name": "Rob Lucci Cipher Pol No. 9",
+      "bounty": "0",
+      "age": "28",
+      "size": "212",
+      "fruit_id": "98",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "CP0 - Lucci",
+      "name": "Rob Lucci - CP-0 on Guard Duty",
+      "bounty": "0",
+      "age": "30",
+      "size": "212",
+      "fruit_id": "98",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "CP9 - Kaku",
+      "name": "Kaku - Cipher Pol No. 9",
+      "bounty": "0",
+      "age": "23",
+      "size": "193",
+      "fruit_id": "101",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "CP0 - Kaku",
+      "name": "Kaku - CP-0 on Guard Duty",
+      "bounty": "0",
+      "age": "25",
+      "size": "193",
+      "fruit_id": "101",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Kaku Giraff",
+      "name": "Kaku: Beastman - Ox-Ox Fruit - Model: Giraffe",
+      "bounty": "0",
+      "age": "23",
+      "size": "193",
+      "fruit_id": "101",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "CP9 - Kalifa",
+      "name": "Kalifa - CP9 Dark Justice",
+      "bounty": "0",
+      "age": "25",
+      "size": "185",
+      "fruit_id": "17",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Zambai",
+      "name": "Zambai",
+      "bounty": "0",
+      "age": "33",
+      "size": "237",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Kashii",
+      "name": "Kashii",
+      "bounty": "0",
+      "age": "154",
+      "size": "1700",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Garp",
+      "name": "Garp the Fist",
+      "bounty": "0",
+      "age": "76",
+      "size": "287",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Vice Amiral"
+    },
+    {
+      "usagename": "Hero of the Navy - Garp",
+      "name": "Monkey D. Garp - Drill Crushing Fist",
+      "bounty": "0",
+      "age": "76",
+      "size": "287",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Vice Amiral"
+    },
+    {
+      "usagename": "Cindry",
+      "name": "Victoria Cindry",
+      "bounty": "0",
+      "age": "24",
+      "size": "188",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Ghost Princess - Perona",
+      "name": "Perona - Ghost Princess at the Summer Festival",
+      "bounty": "0",
+      "age": "25",
+      "size": "160",
+      "fruit_id": "23",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Perona after timeskip",
+      "name": "Perona - Ghost Princess Enjoying the Summer Festival",
+      "bounty": "0",
+      "age": "25",
+      "size": "160",
+      "fruit_id": "23",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Moria after timeskip",
+      "name": "Gecko Moria - Invading Lord of Shadows",
+      "bounty": "320000000",
+      "age": "48",
+      "size": "692",
+      "fruit_id": "23",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Ryuma",
+      "name": "Ryuma",
+      "bounty": "0",
+      "age": "47",
+      "size": "179",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Lola",
+      "name": "Loveseeking Lola - Thriller Bark Bride",
+      "bounty": "24000000",
+      "age": "24",
+      "size": "215",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Taralan",
+      "name": "Taralan",
+      "bounty": "0",
+      "age": "43",
+      "size": "400",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Kumacy",
+      "name": "Kumacy",
+      "bounty": "0",
+      "age": "33",
+      "size": "250",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Tyrant Bartholomew Kuma",
+      "name": "Tyrant Bartholomew Kuma",
+      "bounty": "296000000",
+      "age": "45",
+      "size": "689",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Shichibukai"
+    },
+    {
+      "usagename": "Government Human Weapon",
+      "name": "Bartholomew Kuma - Warlord of the Sea",
+      "bounty": "296000000",
+      "age": "45",
+      "size": "689",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Shichibukai"
+    },
+    {
+      "usagename": "Cabaji",
+      "name": "Cabaji the Acrobat",
+      "bounty": "0",
+      "age": "32",
+      "size": "208",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Mohji",
+      "name": "Mohji & Richie",
+      "bounty": "0",
+      "age": "27",
+      "size": "197",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Meuh-Meuh",
+      "name": "Momoo",
+      "bounty": "0",
+      "age": "14",
+      "size": "36000",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Iron Mask Duval",
+      "name": "Iron Mask Duval",
+      "bounty": "0",
+      "age": "23",
+      "size": "470",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Duval",
+      "name": "Duval: Neo - Flying Fish Riders Leader",
+      "bounty": "0",
+      "age": "23",
+      "size": "470",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Duval after timeskip",
+      "name": "Duval: Neo - Rosy Life Riders Leader",
+      "bounty": "0",
+      "age": "23",
+      "size": "470",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Lip Doughty",
+      "name": "Lip \"Service\" Doughty",
+      "bounty": "88000000",
+      "age": "37",
+      "size": "170",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Camie",
+      "name": "Camie",
+      "bounty": "0",
+      "age": "16",
+      "size": "197",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Pappag",
+      "name": "Pappagu - The Criminal Brand President/Superstar Designer",
+      "bounty": "0",
+      "age": "33",
+      "size": "50",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Karoo",
+      "name": "Karoo",
+      "bounty": "0",
+      "age": "14",
+      "size": "150",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Roger's Pirate - Rayleigh",
+      "name": "Dark King Rayleigh - Evenly Matched Battle",
+      "bounty": "0",
+      "age": "51",
+      "size": "188",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Law",
+      "name": "Trafalgar Law Spider Miles Boy",
+      "bounty": "0",
+      "age": "10",
+      "size": "120",
+      "fruit_id": "27",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Trafalgar Law",
+      "name": "Trafalgar Law",
+      "bounty": "200000000",
+      "age": "24",
+      "size": "191",
+      "fruit_id": "27",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Shicibukai - Trafalgar Law",
+      "name": "Trafalgar Law - Wave of the New Era",
+      "bounty": "440000000",
+      "age": "26",
+      "size": "191",
+      "fruit_id": "27",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Trafalgar D. Water Law",
+      "name": "Trafalgar Law - People of the \"D\"",
+      "bounty": "3000000000",
+      "age": "26",
+      "size": "191",
+      "fruit_id": "27",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Drake Hybrid Form",
+      "name": "\"Red Flag\" X Drake - Former Drake Pirates",
+      "bounty": "222000000",
+      "age": "33",
+      "size": "233",
+      "fruit_id": "111",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Tobiroppo Drake",
+      "name": "X Drake - Steadfast Army of One",
+      "bounty": "222000000",
+      "age": "33",
+      "size": "233",
+      "fruit_id": "111",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Eustass Kid",
+      "name": "Eustass Kid",
+      "bounty": "315000000",
+      "age": "21",
+      "size": "205",
+      "fruit_id": "26",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Eustass Captain Kid",
+      "name": "Eustass \"Captain\" Kid -- Enraged by the Traitor",
+      "bounty": "3000000000",
+      "age": "23",
+      "size": "205",
+      "fruit_id": "26",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Basil Hawkins the Magician",
+      "name": "Basil Hawkins the Magician - Practitioner of Curses",
+      "bounty": "249000000",
+      "age": "29",
+      "size": "210",
+      "fruit_id": "29",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Capone Gang Bege",
+      "name": "Capone \"Gang\" Bege - Immovable Fortress",
+      "bounty": "350000000",
+      "age": "40",
+      "size": "2000",
+      "fruit_id": "28",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Mad Monk Urouge",
+      "name": "\"Mad Monk\" Urouge - Fallen Monk Calamity",
+      "bounty": "108000000",
+      "age": "45",
+      "size": "388",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Bonney",
+      "name": "Jewelry Bonney - Worst Generation in Hiding",
+      "bounty": "140000000",
+      "age": "22",
+      "size": "100",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Jewelry Bonney - Supernova ",
+      "name": "Jewelry Bonney - Supernova",
+      "bounty": "140000000",
+      "age": "22",
+      "size": "174",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Hitokiri Kamazo",
+      "name": "Hitokiri Kamazo",
+      "bounty": "200000000",
+      "age": "27",
+      "size": "195",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Massacre Soldier Killer",
+      "name": "Massacre Soldier Killer",
+      "bounty": "200000000",
+      "age": "27",
+      "size": "195",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Roar of the Sea - Scratchmen Apoo",
+      "name": "\"Roar of the Sea\" Scratchmen Apoo - Light-Shaking Sound",
+      "bounty": "350000000",
+      "age": "31",
+      "size": "256",
+      "fruit_id": "30",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Marine Science Unit Commander - Sentomaru",
+      "name": "Sentomaru the Axe Naval HQ Fleet Officer",
+      "bounty": "0",
+      "age": "34",
+      "size": "279",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Officier"
+    },
+    {
+      "usagename": "Man Of Light - Kizaru",
+      "name": "Borsalino - Navy HQ Powerhouse",
+      "bounty": "0",
+      "age": "56",
+      "size": "302",
+      "fruit_id": "86",
+      "second_fruit_id": "none",
+      "job": "Amiral"
+    },
+    {
+      "usagename": "Snake Princess - Boa Hancock",
+      "name": "Boa Hancock - Snake Princess",
+      "bounty": "1659000000",
+      "age": "31",
+      "size": "191",
+      "fruit_id": "31",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Boa Hancock",
+      "name": "Boa Hancock - Girl Warrior",
+      "bounty": "0",
+      "age": "7",
+      "size": "121",
+      "fruit_id": "31",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Slave Boa Hancock",
+      "name": "Boa Hancock - Runaway Slave",
+      "bounty": "0",
+      "age": "17",
+      "size": "151",
+      "fruit_id": "31",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Gloriosa",
+      "name": "Gloriosa",
+      "bounty": "0",
+      "age": "80",
+      "size": "131",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Marguerite",
+      "name": "Marguerite - Amazon Lily Archer",
+      "bounty": "0",
+      "age": "16",
+      "size": "178",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Vice Admiral Momonga",
+      "name": "Momonga - Marine Vice Admiral",
+      "bounty": "0",
+      "age": "16",
+      "size": "178",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Vice Amiral"
+    },
+    {
+      "usagename": "Mr 2",
+      "name": "Mr. 2 Bon Clay",
+      "bounty": "32000000",
+      "age": "30",
+      "size": "238",
+      "fruit_id": "9",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Bon Clay",
+      "name": "Escapee Bentham - Mr. 2 Bon Clay",
+      "bounty": "32000000",
+      "age": "30",
+      "size": "238",
+      "fruit_id": "9",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Mr 3",
+      "name": "Mr. 3",
+      "bounty": "24000000",
+      "age": "35",
+      "size": "179",
+      "fruit_id": "7",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Galdino",
+      "name": "Escaped Prisoner: Galdino",
+      "bounty": "24000000",
+      "age": "35",
+      "size": "179",
+      "fruit_id": "7",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Chief Warden Magellan",
+      "name": "Magellan - Judgment of Hell",
+      "bounty": "0",
+      "age": "45",
+      "size": "491",
+      "fruit_id": "32",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Sadie",
+      "name": "Sadie",
+      "bounty": "0",
+      "age": "21",
+      "size": "183",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Minotaur",
+      "name": "Minotaur",
+      "bounty": "0",
+      "age": "30",
+      "size": "300",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Minozebra",
+      "name": "Minozebra",
+      "bounty": "0",
+      "age": "30",
+      "size": "340",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Young Ace",
+      "name": "Portgas D. Ace - Mt. Corvo's Brothers 3",
+      "bounty": "0",
+      "age": "10",
+      "size": "150",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Portgas D. Ace - Spade Pirates",
+      "name": "Portgas D. Ace - Spade Pirates",
+      "bounty": "550000000",
+      "age": "17",
+      "size": "185",
+      "fruit_id": "82",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Douglas Bullet",
+      "name": "Douglas Bullet - Monster Losing Sight of His Goal",
+      "bounty": "100000000",
+      "age": "45",
+      "size": "250",
+      "fruit_id": "186",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Shiki the Golden Lion",
+      "name": "Shiki the Golden Lion - Sea Ruling Legend from the Sky",
+      "bounty": "100000000",
+      "age": "50",
+      "size": "200",
+      "fruit_id": "39",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Van Augur",
+      "name": "Van Ogre",
+      "bounty": "64000000",
+      "age": "25",
+      "size": "340",
+      "fruit_id": "39",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "San Juan Wolf",
+      "name": "San Juan Wolf",
+      "bounty": "0",
+      "age": "97",
+      "size": "18000",
+      "fruit_id": "202",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Inazuma - Revolutionary Army",
+      "name": "Inazuma - Revolutionary Army",
+      "bounty": "100000000",
+      "age": "27",
+      "size": "228",
+      "fruit_id": "202",
+      "second_fruit_id": "none",
+      "job": "Révolutionnaire"
+    },
+    {
+      "usagename": "Emporio Ivankov - Revolutionary Army",
+      "name": "Emporio Ivankov - Revolutionary Army",
+      "bounty": "100000000",
+      "age": "56",
+      "size": "449",
+      "fruit_id": "33",
+      "second_fruit_id": "none",
+      "job": "Révolutionnaire"
+    },
+    {
+      "usagename": "Marco the Phoenix",
+      "name": "Marco - Sky Soaring Phoenix",
+      "bounty": "1374000000",
+      "age": "45",
+      "size": "203",
+      "fruit_id": "206",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Diamond Jozu",
+      "name": "Diamond Jozu",
+      "bounty": "0",
+      "age": "40",
+      "size": "503",
+      "fruit_id": "36",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Flower Sword Vista",
+      "name": "Flower Sword Vista",
+      "bounty": "0",
+      "age": "45",
+      "size": "328",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Vista",
+      "name": "Vista - Clashing Young Pirate",
+      "bounty": "0",
+      "age": "22",
+      "size": "328",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Namule",
+      "name": "Namule",
+      "bounty": "0",
+      "age": "35",
+      "size": "200",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Speed Jil",
+      "name": "Speed Jil",
+      "bounty": "0",
+      "age": "35",
+      "size": "236",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Young Doflamingo",
+      "name": "Doflamingo - Ex-Celestial Dragon Boy",
+      "bounty": "0",
+      "age": "8",
+      "size": "136",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Doflamingo",
+      "name": "Donquixote Doflamingo - North Blue Darkness",
+      "bounty": "340000000",
+      "age": "25",
+      "size": "305",
+      "fruit_id": "14",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Donquixote Doflamingo",
+      "name": "Donquixote Doflamingo - Judgement of the Divine",
+      "bounty": "340000000",
+      "age": "25",
+      "size": "305",
+      "fruit_id": "14",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Vice Admiral - Tsuru",
+      "name": "Tsuru - Watchful Great Advisor",
+      "bounty": "0",
+      "age": "74",
+      "size": "204",
+      "fruit_id": "38",
+      "second_fruit_id": "none",
+      "job": "Vice Amiral"
+    },
+    {
+      "usagename": "Sengoku the Buddha",
+      "name": "\"Buddha\" Sengoku - Supreme Commander of the Navy",
+      "bounty": "0",
+      "age": "77",
+      "size": "278",
+      "fruit_id": "121",
+      "second_fruit_id": "none",
+      "job": "Amiral en chef"
+    },
+    {
+      "usagename": "Admiral Sengoku",
+      "name": "Sengoku - Navy HQ Admiral",
+      "bounty": "0",
+      "age": "55",
+      "size": "278",
+      "fruit_id": "121",
+      "second_fruit_id": "none",
+      "job": "Amiral"
+    },
+    {
+      "usagename": "Sengoku after timeskip",
+      "name": "Sengoku - Fatherly Buddha",
+      "bounty": "0",
+      "age": "79",
+      "size": "278",
+      "fruit_id": "121",
+      "second_fruit_id": "none",
+      "job": "Amiral"
+    },
+    {
+      "usagename": "Akainu Magma Man",
+      "name": "Akainu Magma Man",
+      "bounty": "0",
+      "age": "53",
+      "size": "306",
+      "fruit_id": "87",
+      "second_fruit_id": "none",
+      "job": "Amiral"
+    },
+    {
+      "usagename": "Fleet Admiral Sakazuki",
+      "name": "Fleet Admiral Sakazuki - Burning Enforcer of Justice",
+      "bounty": "0",
+      "age": "55",
+      "size": "306",
+      "fruit_id": "87",
+      "second_fruit_id": "none",
+      "job": "Amiral en Chef"
+    },
+    {
+      "usagename": "Demalo Black",
+      "name": "Demalo Black",
+      "bounty": "26000000",
+      "age": "36",
+      "size": "245",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Albion",
+      "name": "\"Gashed\" Albion",
+      "bounty": "92000000",
+      "age": "36",
+      "size": "215",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Surume",
+      "name": "Kraken - Surume",
+      "bounty": "0",
+      "age": "120",
+      "size": "1500",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Hammond",
+      "name": "Hammond",
+      "bounty": "0",
+      "age": "25",
+      "size": "250",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Ikaros",
+      "name": "Ikaros",
+      "bounty": "0",
+      "age": "30",
+      "size": "499",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Hyouzou",
+      "name": "Hyouzou",
+      "bounty": "0",
+      "age": "39",
+      "size": "327",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Wadatsumi",
+      "name": "Wadatsumi",
+      "bounty": "0",
+      "age": "25",
+      "size": "8000",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Baron Tamago",
+      "name": "Baron Tamago - Big Mom Pirates",
+      "bounty": "0",
+      "age": "46",
+      "size": "301",
+      "fruit_id": "105",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Fisher Tiger",
+      "name": "Fisher Tiger - Sun Pirates Captain",
+      "bounty": "230000000",
+      "age": "48",
+      "size": "520",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Sharley",
+      "name": "Madam Sharley",
+      "bounty": "0",
+      "age": "29",
+      "size": "520",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Megalo",
+      "name": "Megalo & Shirahoshi",
+      "bounty": "0",
+      "age": "17",
+      "size": "2500",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Dragon",
+      "name": "Dragon - Punk Hazard Inhabitant",
+      "bounty": "0",
+      "age": "25",
+      "size": "1000",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Banboo Demon Vergo",
+      "name": "Bamboo Demon Vergo - Top Donquixote Family Officer",
+      "bounty": "0",
+      "age": "41",
+      "size": "247",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Caesar Clown",
+      "name": "Master Caesar - Lord of Gas",
+      "bounty": "300000000",
+      "age": "55",
+      "size": "309",
+      "fruit_id": "89",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Gastino",
+      "name": "Gastino - Gangster",
+      "bounty": "300000000",
+      "age": "55",
+      "size": "309",
+      "fruit_id": "89",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Rock & Scotch",
+      "name": "Rock & Scotch",
+      "bounty": "40000000",
+      "age": "25",
+      "size": "4250",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Foxfire Kin'emon",
+      "name": "Foxfire Kin'emon",
+      "bounty": "0",
+      "age": "36",
+      "size": "295",
+      "fruit_id": "41",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Kozuki Momonosuke",
+      "name": "Kozuki Momonosuke",
+      "bounty": "0",
+      "age": "8",
+      "size": "110",
+      "fruit_id": "122",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Kozuki Momonosuke",
+      "name": "\"Dragon\" Momonosuke",
+      "bounty": "0",
+      "age": "8",
+      "size": "110",
+      "fruit_id": "122",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Dogura",
+      "name": "Dogura",
+      "bounty": "0",
+      "age": "46",
+      "size": "135",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Young Sabo",
+      "name": "Sabo - Mt. Corvo's Brothers 3",
+      "bounty": "0",
+      "age": "10",
+      "size": "125",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Sea Monster",
+      "name": "Local Sea Monster - Man-Eating Monster",
+      "bounty": "0",
+      "age": "37",
+      "size": "1000",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Ben Beckman",
+      "name": "Ben Beckman",
+      "bounty": "0",
+      "age": "48",
+      "size": "206",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Yassop",
+      "name": "Yasopp - Harbor Town Pirate",
+      "bounty": "0",
+      "age": "45",
+      "size": "183",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Lucky Roux",
+      "name": "Lucky Roux",
+      "bounty": "0",
+      "age": "33",
+      "size": "241",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Toy Soldier",
+      "name": "Toy Soldier",
+      "bounty": "0",
+      "age": "34",
+      "size": "100",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Young Rebecca",
+      "name": "Rebecca - Blood of the Surviving Royals",
+      "bounty": "0",
+      "age": "10",
+      "size": "120",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Abdullah and Jeet",
+      "name": "Abdullah and Jeet",
+      "bounty": "50000000",
+      "age": "43",
+      "size": "180",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Boo",
+      "name": "Boo - Happosui Army",
+      "bounty": "50000000",
+      "age": "37",
+      "size": "3000",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Don Chin Jao",
+      "name": "Don Chin Jao",
+      "bounty": "542000000",
+      "age": "78",
+      "size": "520",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Brownbeard",
+      "name": "Brownbeard - Alligator Centaur",
+      "bounty": "82060000",
+      "age": "43",
+      "size": "691",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Kanjuro",
+      "name": "Kanjuro",
+      "bounty": "0",
+      "age": "34",
+      "size": "347",
+      "fruit_id": "57",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Kuween",
+      "name": "Kuween",
+      "bounty": "0",
+      "age": "20",
+      "size": "220",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Lao G.",
+      "name": "Lao G.",
+      "bounty": "61000000",
+      "age": "70",
+      "size": "157",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Maynard",
+      "name": "Maynard Naval HQ Vice Admiral",
+      "bounty": "0",
+      "age": "40",
+      "size": "200",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Vice Amiral"
+    },
+    {
+      "usagename": "Sai",
+      "name": "Don Sai",
+      "bounty": "210000000",
+      "age": "28",
+      "size": "242",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Scarlet",
+      "name": "Scarlet",
+      "bounty": "0",
+      "age": "25",
+      "size": "180",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Senor Pink - North Blue Pirate",
+      "name": "Senor Pink - North Blue Pirate",
+      "bounty": "58000000",
+      "age": "46",
+      "size": "244",
+      "fruit_id": "53",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Spartan",
+      "name": "Spartan",
+      "bounty": "0",
+      "age": "40",
+      "size": "400",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Emperor of flame - Sabo",
+      "name": "Sabo - Declaring Battle Against the Gods",
+      "bounty": "0",
+      "age": "40",
+      "size": "400",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Révolutionnaire"
+    },
+    {
+      "usagename": "Inuarashi",
+      "name": "Dogstorm",
+      "bounty": "0",
+      "age": "40",
+      "size": "511",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Sulong Inuarashi",
+      "name": "Dogstorm - Flash in the Moonlit Night",
+      "bounty": "0",
+      "age": "40",
+      "size": "511",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Nekomamushi",
+      "name": "Cat Viper",
+      "bounty": "0",
+      "age": "40",
+      "size": "522",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Sulong Nekomamushi",
+      "name": "Cat Viper - Vicious Sulong in the Moonlight",
+      "bounty": "0",
+      "age": "40",
+      "size": "522",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Sulong Carrot",
+      "name": "Carrot - Wondrous White Sulong",
+      "bounty": "0",
+      "age": "24",
+      "size": "161",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Charlotte Katakuri",
+      "name": "Charlotte Katakuri",
+      "bounty": "1057000000",
+      "age": "48",
+      "size": "509",
+      "fruit_id": "69",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Sweet Commander - Katakuri",
+      "name": "Charlotte Katakuri - Full-Might Strike",
+      "bounty": "1057000000",
+      "age": "48",
+      "size": "509",
+      "fruit_id": "69",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "CP0 - Stussy",
+      "name": "Stussy - CP-AIGIS 0",
+      "bounty": "0",
+      "age": "28",
+      "size": "179",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Charlotte Chiffon",
+      "name": "Charlotte Chiffon - Bege's Wife",
+      "bounty": "0",
+      "age": "26",
+      "size": "215",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Charlotte Perospero",
+      "name": "Charlotte Perospero - Impeding Candy User",
+      "bounty": "700000000",
+      "age": "50",
+      "size": "333",
+      "fruit_id": "62",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Vinsmoke Ichiji",
+      "name": "Vinsmoke Ichiji - Germa 66 Crimson Flash",
+      "bounty": "0",
+      "age": "21",
+      "size": "186",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Vinsmoke Niji",
+      "name": "Vinsmoke Niji - Germa 66 Azure Spark",
+      "bounty": "0",
+      "age": "21",
+      "size": "185",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Vinsmoke Yonji",
+      "name": "Vinsmoke Yonji - Germa 66 Jade Arm",
+      "bounty": "0",
+      "age": "21",
+      "size": "194",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Vinsmoke Reiju",
+      "name": "Vinsmoke Reiju - Germa 66 Peach Poisonous Fang",
+      "bounty": "0",
+      "age": "21",
+      "size": "173",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Vinsmoke Judge",
+      "name": "Vinsmoke Judge - Germa 66 Generalissimo",
+      "bounty": "0",
+      "age": "56",
+      "size": "272",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Pound",
+      "name": "Pound - Father of Lola and Chiffon",
+      "bounty": "0",
+      "age": "48",
+      "size": "731",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Hakuba",
+      "name": "Hakuba - Slicing Winds of Rommel",
+      "bounty": "330000000",
+      "age": "26",
+      "size": "208",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Uta",
+      "name": "Uta - The Song for the End",
+      "bounty": "330000000",
+      "age": "21",
+      "size": "169",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Saint Charlos",
+      "name": "Saint Charlos",
+      "bounty": "0",
+      "age": "24",
+      "size": "287",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernemnt Mondial"
+    },
+    {
+      "usagename": "Otsuru",
+      "name": "Otsuru - Teahouse Owner",
+      "bounty": "0",
+      "age": "55",
+      "size": "191",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "King the Wildfire",
+      "name": "King the Wildfire - Soaring Pteranodon",
+      "bounty": "1390000000",
+      "age": "47",
+      "size": "613",
+      "fruit_id": "114",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Queen",
+      "name": "Queen the Plague - Super Heavyweight Class Brachiosaurus",
+      "bounty": "1320000000",
+      "age": "56",
+      "size": "612",
+      "fruit_id": "115",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Ulti",
+      "name": "Ulti - Rowdy Girl Fascinated by Fireworks",
+      "bounty": "400000000",
+      "age": "22",
+      "size": "173",
+      "fruit_id": "116",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Who's-Who",
+      "name": "Who's-Who - Assaulting Ancient Fangs",
+      "bounty": "546000000",
+      "age": "38",
+      "size": "336",
+      "fruit_id": "119",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Black Maria",
+      "name": "Black Maria - Inescapable Spider Silk",
+      "bounty": "480000000",
+      "age": "29",
+      "size": "820",
+      "fruit_id": "118",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Gaban",
+      "name": "Gaban",
+      "bounty": "0",
+      "age": "70",
+      "size": "200",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Sasaki",
+      "name": "Sasaki - Flying Dinosaur",
+      "bounty": "472000000",
+      "age": "34",
+      "size": "318",
+      "fruit_id": "117",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Kyoshiro",
+      "name": "Napping Kyoshiro",
+      "bounty": "0",
+      "age": "47",
+      "size": "306",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Hiyori",
+      "name": "Hiyori - Princess Enjoying Fireworks at Night",
+      "bounty": "0",
+      "age": "26",
+      "size": "170",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Denjiro",
+      "name": "Denjiro - With His Liege",
+      "bounty": "0",
+      "age": "27",
+      "size": "306",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Ashura Doji",
+      "name": "Ashura Doji - Samurai Challenging the Dragon",
+      "bounty": "0",
+      "age": "56",
+      "size": "544",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Kawamatsu",
+      "name": "Kawamatsu - Dragon Felling Kappa Style",
+      "bounty": "0",
+      "age": "41",
+      "size": "271",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Kozuki Oden",
+      "name": "Kozuki Oden - Samurai Challenging the Dragon",
+      "bounty": "0",
+      "age": "39",
+      "size": "382",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Toki",
+      "name": "Toki - Summer Festival With Her Loved Ones",
+      "bounty": "0",
+      "age": "36",
+      "size": "190",
+      "fruit_id": "77",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Shinobu",
+      "name": "Shinobu - Companion on the Path of Thorns",
+      "bounty": "0",
+      "age": "49",
+      "size": "180",
+      "fruit_id": "78",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Hyogoro",
+      "name": "Hyogoro the Flower",
+      "bounty": "0",
+      "age": "70",
+      "size": "200",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Orochi",
+      "name": "Orochi",
+      "bounty": "0",
+      "age": "54",
+      "size": "350",
+      "fruit_id": "124",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Genzo",
+      "name": "Mr. Genzo",
+      "bounty": "0",
+      "age": "48",
+      "size": "173",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Mr 5",
+      "name": "Mr. 5 - Nez-Palm Cannon",
+      "bounty": "10000000",
+      "age": "24",
+      "size": "197",
+      "fruit_id": "5",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Miss Goldenweek",
+      "name": "Miss Goldenweek",
+      "bounty": "29000000",
+      "age": "16",
+      "size": "145",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Dalton",
+      "name": "Dalton - Bison",
+      "bounty": "0",
+      "age": "33",
+      "size": "218",
+      "fruit_id": "91",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Hiluluk",
+      "name": "Dr. Hiriluk - Quack Doctor",
+      "bounty": "0",
+      "age": "68",
+      "size": "213",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Miss Valentine",
+      "name": "Miss Valentine",
+      "bounty": "7500000",
+      "age": "22",
+      "size": "177",
+      "fruit_id": "4",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Karasu",
+      "name": "Karasu - Captain of the Revolutionary Army Northern Forces",
+      "bounty": "400000000",
+      "age": "47",
+      "size": "265",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Révolutionnaire"
+    },
+    {
+      "usagename": "Norland",
+      "name": "Mont Blanc Noland - Lvneel Kingdom Explorer",
+      "bounty": "0",
+      "age": "39",
+      "size": "220",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Beastman Lucci",
+      "name": "Rob Lucci - Dark Justice-Upholding Weapon",
+      "bounty": "0",
+      "age": "28",
+      "size": "212",
+      "fruit_id": "98",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Beastman Jabura",
+      "name": "Jabra - CP9's Strongest",
+      "bounty": "0",
+      "age": "35",
+      "size": "212",
+      "fruit_id": "100",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Silvers Rayleigh",
+      "name": "Dark King Rayleigh",
+      "bounty": "0",
+      "age": "78",
+      "size": "188",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Heracles",
+      "name": "Heracles-un: Neo - Hero of the Forest",
+      "bounty": "0",
+      "age": "50",
+      "size": "214",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Weeble",
+      "name": "Edward Weevil - Pursued Former Seven Warlords of the Sea",
+      "bounty": "480000000",
+      "age": "35",
+      "size": "680",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Orochi",
+      "name": "Orochi - Assaulting Eight-Headed Snake",
+      "bounty": "0",
+      "age": "54",
+      "size": "350",
+      "fruit_id": "124",
+      "second_fruit_id": "none",
+      "job": "Famille Royale"
+    },
+    {
+      "usagename": "Saint Mjosgard",
+      "name": "Saint Mjosgard",
+      "bounty": "0",
+      "age": "70",
+      "size": "200",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Saint Shalria",
+      "name": "Saint Shalria",
+      "bounty": "0",
+      "age": "17",
+      "size": "178",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Saint Roswald",
+      "name": "Saint Roswald",
+      "bounty": "0",
+      "age": "55",
+      "size": "215",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Gouvernement Mondial"
+    },
+    {
+      "usagename": "Ben Beckman",
+      "name": "Ben Beckman - First Mate's Repose",
+      "bounty": "0",
+      "age": "50",
+      "size": "206",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Bellmere",
+      "name": "Bellmere",
+      "bounty": "0",
+      "age": "30",
+      "size": "186",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Jagiar D. Sauro",
+      "name": "Jaguar D. Saul Navy Vice Admiral",
+      "bounty": "0",
+      "age": "127",
+      "size": "1950",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Dolton",
+      "name": "Dalton - Raging Bison",
+      "bounty": "0",
+      "age": "35",
+      "size": "218",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Civil"
+    },
+    {
+      "usagename": "Donquixote Rocinante",
+      "name": "Donquixote Rocinante",
+      "bounty": "0",
+      "age": "26",
+      "size": "293",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Commandant"
+    },
+    {
+      "usagename": "Buffalo",
+      "name": "Buffalo - Donquixote Pirates Fighter",
+      "bounty": "0",
+      "age": "30",
+      "size": "696",
+      "fruit_id": "43",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Hody",
+      "name": "Hody Jones - Rampage",
+      "bounty": "0",
+      "age": "30",
+      "size": "331",
+      "fruit_id": "0",
+      "second_fruit_id": "none",
+      "job": "Pirate"
+    },
+    {
+      "usagename": "Jack the Drought",
+      "name": "Jack the Drought - Trampling Disaster",
+      "bounty": "1000000000",
+      "age": "28",
+      "size": "830",
+      "fruit_id": "112",
+      "second_fruit_id": "none",
+      "job": "Pirate"
     }
-]
+  ]

@@ -1,0 +1,155 @@
+/* --------------------- NAV BAR --------------------- */
+.topnav {
+    background-color: #000000;
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+#back {
+    position: absolute;
+    background: rgb(0,172,238);
+    background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+    width: 130px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    left: 6%;
+    top: 1%;
+}
+
+#back:hover {
+    transition: 0.3s;
+    background-color: rgb(2,126,251,1);
+}
+
+#logo{
+    position: absolute;
+    width: 26%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 50%;
+}
+#liste {
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 12px;
+    width: 4%;
+    background-color: #000000;
+    border: none;
+    transition: 0.3s;
+}
+
+#liste:hover {
+    background-color: rgb(2,126,251,1);
+}
+
+#hamburger {
+    width: 100%;
+}
+
+.topnav_menu {
+    z-index: -1;
+    display: block;
+    position: absolute;
+    background-color: #000000;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    top: -25px;
+    flex-direction: row;
+    text-align: center;
+    transition: top 0.5s ease-in-out;
+}
+
+.topnav_menu a {
+    display: block;
+    color: white;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.topnav_menu a:hover {
+    background-color: rgba(0,172,238,1);
+}
+
+.top {
+    top: 53px;
+}
+
+.index {
+    z-index: 0;
+}
+
+.connect {
+    position: relative;
+    display: block;
+    float: right;
+    margin-right: 2%;
+}
+
+.texte {
+    margin: 0px 10px;
+    outline: none;
+}
+
+.envoyer {
+    border: none;
+    background-color: #000000;
+    color: white;
+    padding: 19.5px 12px;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.envoyer:hover {
+    transition: 0.3s;
+    background-color: rgb(2,126,251,1);
+}
+
+#profil {
+    position: relative;
+    display: block;
+    float: right;
+    border: none;
+    font-size:medium;
+    background-color: #000000;
+    color: white;
+    min-width: 100px;
+    padding: 17.5px 12px;
+    margin-right: 2%;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+#profil:hover {
+    transition: 0.3s;
+    background-color: rgb(2,126,251,1);
+}
+
+#shop {
+    position: relative;
+    display: block;
+    float: right;
+    border: none;
+    font-size:medium;
+    background-color: #000000;
+    color: white;
+    min-width: 100px;
+    padding: 17.5px 12px;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+#shop:hover {
+    transition: 0.3s;
+    background-color: rgb(2,126,251,1);
+}

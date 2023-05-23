@@ -1,0 +1,94 @@
+#canvas{
+    position:absolute;
+    width:60%;
+    left:50%;
+    transform: translateX(-50%);
+    top:39%;
+    z-index:2
+}
+
+body{
+    overflow:hidden
+}
+
+.bloque{
+    opacity:0;
+    position: relative;
+    width: 17%;
+    border: 5px double white;
+    border-radius: 20px;
+    margin: 10px;
+    float: left;
+    padding: 2px;
+}
+
+
+.pic{
+    position: absolute;
+    width: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+}
+.card{
+    position: relative;
+    width:100%;
+}
+
+.naming{
+    position: absolute;
+    margin: 0;
+    top: 55%;
+    width: 100%;
+    text-align: center;
+    text-shadow: 1px 1px 3px black;
+
+}
+
+.attaque{
+    position: absolute;
+    margin: 0;
+    top: 64%;
+    width: fit-content;
+    text-align: center;
+    left: 16%;
+}
+.HP{
+    position: absolute;
+    margin: 0;
+    top: 70%;
+    width: fit-content;
+    text-align: center;
+    left: 16%;
+}
+
+.vitesse{
+    position: absolute;
+    margin: 0;
+    top: 64%;
+    width: fit-content;
+    text-align: center;
+    left: 68%;
+}
+
+.crew{
+    position: absolute;
+    margin: 0;
+    top: 78%;
+    width: fit-content;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0.7);
+    font-size: 115%;
+}
+
+.crewlogo{
+    position: absolute;
+    margin: 0;
+    top: 87%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9%;
+
+}
