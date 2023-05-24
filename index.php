@@ -61,8 +61,8 @@
 		?>
 
 
-		<!-- TOOL
-		<div id="tool">
+	
+		<!-- <div id="tool">
 			<input value="1" id="idlieu" type="text">
 			<button id="phi+">PHI +</button>
 			<button   id="phi-">PHI -</button>
@@ -74,9 +74,9 @@
 			<button id="sett"> SET </button>
 			<button id="gett"> GET </button>
 			
-		</div>-->
-		<div id="tool">
 		</div>
+		<div id="tool">
+		</div> -->
 
 		<div id="menu">
 			<button id="history" <?php if(empty($_SESSION['id'])) echo 'style="display:none;"'?> ><span>HISTOIRE</span></button>

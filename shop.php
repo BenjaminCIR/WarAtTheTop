@@ -119,11 +119,11 @@
                     <div class="coffre">
                         <img src="Pack\pack_north_blue.png">
                         <div class="petit-texte3">
-                            <p>900</p>
+                            <p>20 000</p>
                             <img class="berry3" src="berry.png">
                         </div>
                         <?php
-                        if ($u['money'] <= 900) {
+                        if ($u['money'] <= 20000) {
                             echo '<button class="petit-bouton1">Low money</button>';
                         } else {
                             $i = 1;
@@ -136,11 +136,11 @@
                         <img src="Pack\pack_north_blue.png">
                         <img class="bonus1" src="fois2.png">
                         <div class="petit-texte2">
-                            <p>1 800</p>
+                            <p>20 000</p>
                             <img class="berry2" src="berry.png">
                         </div>
                         <?php
-                        if ($u['money'] <= 900) {
+                        if ($u['money'] <= 20000) {
                             echo '<button class="petit-bouton1">Low money</button>';
                         } else {
                             $i = 1;
@@ -153,11 +153,11 @@
                         <img src="Pack\pack_north_blue.png">
                         <img class="bonus2" src="fois3.png">
                         <div class="petit-texte1">
-                            <p>2 700</p>
+                            <p>40 000</p>
                             <img class="berry1" src="berry.png">
                         </div>
                         <?php
-                        if ($u['money'] <= 900) {
+                        if ($u['money'] <= 40000) {
                             echo '<button class="petit-bouton1">Low money</button>';
                         } else {
                             $i = 1;
@@ -175,11 +175,11 @@
             <div class="coffre">
               <img src="Pack\pack_south_blue.png">
               <div class="petit-texte3">
-                <p>900</p>
+                <p>20 000</p>
                 <img class="berry3" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 20000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=2; $j=1;
@@ -191,11 +191,11 @@
               <img src="Pack\pack_south_blue.png">
               <img class="bonus1" src="fois2.png">
               <div class="petit-texte2">
-                <p>1 800</p>
+                <p>40 000</p>
                 <img class="berry2" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 40000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=2; $j=2;
@@ -207,11 +207,11 @@
               <img src="Pack\pack_south_blue.png">
               <img class="bonus2" src="fois3.png">
               <div class="petit-texte1">
-                <p>2 700</p>
+                <p>60 000</p>
                 <img class="berry1" src="berry.png">
               </div>                
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 60000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=2; $j=3;
@@ -227,11 +227,11 @@
             <div class="coffre">
               <img src="Pack\pack_east_blue.png">
               <div class="petit-texte3">
-                <p>900</p>
+                <p>20 000</p>
                 <img class="berry3" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 20000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=3; $j=1;
@@ -243,11 +243,11 @@
               <img src="Pack\pack_east_blue.png">
               <img class="bonus1" src="fois2.png">
               <div class="petit-texte2">
-                <p>1 800</p>
+                <p>40 000</p>
                 <img class="berry2" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 40000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=3; $j=2;
@@ -259,11 +259,11 @@
               <img src="Pack\pack_east_blue.png">
               <img class="bonus2" src="fois3.png">
               <div class="petit-texte1">
-                <p>2 700</p>
+                <p>60 000</p>
                 <img class="berry1" src="berry.png">
               </div>                
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 60000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=3; $j=3;
@@ -279,11 +279,11 @@
             <div class="coffre">
               <img src="Pack\pack_west_blue.png">
               <div class="petit-texte3">
-                <p>900</p>
+                <p>20 000</p>
                 <img class="berry3" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 20000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=4; $j=1;
@@ -295,11 +295,11 @@
               <img src="Pack\pack_west_blue.png">
               <img class="bonus1" src="fois2.png">
               <div class="petit-texte2">
-                <p>1 800</p>
+                <p>40 000</p>
                 <img class="berry2" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 40000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=4; $j=2;
@@ -311,11 +311,11 @@
               <img src="Pack\pack_west_blue.png">
               <img class="bonus2" src="fois3.png">
               <div class="petit-texte1">
-                <p>2 700</p>
+                <p>60 000</p>
                 <img class="berry1" src="berry.png">
               </div>                
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 60000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=4; $j=3;
@@ -330,11 +330,11 @@
             <div class="coffre">
               <img src="Pack\pack_bronze.png">
               <div class="petit-texte3">
-                <p>900</p>
+                <p>5 000</p>
                 <img class="berry3" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 5000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=5; $j=1;
@@ -345,11 +345,11 @@
               <img src="Pack\pack_bronze.png">
               <img class="bonus1" src="fois2.png">
               <div class="petit-texte2">
-                <p>1 800</p>
+                <p>10 000</p>
                 <img class="berry2" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 10000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=5; $j=2;
@@ -361,11 +361,11 @@
               <img src="Pack\pack_bronze.png">
               <img class="bonus2" src="fois3.png">
               <div class="petit-texte1">
-                <p>2 700</p>
+                <p>15000</p>
                 <img class="berry1" src="berry.png">
               </div>                
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 15000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=5; $j=3;
@@ -376,16 +376,16 @@
           </div>
         </div>
         <div class="card" id="bloc7">
-          <h1>Pack Silver</h1>
+          <h1>Pack Argent</h1>
           <div class="cont">
             <div class="coffre">
               <img src="Pack\pack_silver.png">
               <div class="petit-texte3">
-                <p>900</p>
+                <p>15 000</p>
                 <img class="berry3" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 15000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=6; $j=1;
@@ -397,11 +397,11 @@
               <img src="Pack\pack_silver.png">
               <img class="bonus1" src="fois2.png">
               <div class="petit-texte2">
-                <p>1 800</p>
+                <p>30 000</p>
                 <img class="berry2" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 30000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=6; $j=2;
@@ -413,11 +413,11 @@
               <img src="Pack\pack_silver.png">
               <img class="bonus2" src="fois3.png">
               <div class="petit-texte1">
-                <p>2 700</p>
+                <p>45 000</p>
                 <img class="berry1" src="berry.png">
               </div>                
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 45000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=6; $j=3;
@@ -428,16 +428,16 @@
           </div>
         </div>
         <div class="card" id="bloc8">
-          <h1>Pack Gold</h1>
+          <h1>Pack Or</h1>
           <div class="cont">
             <div class="coffre">
               <img src="Pack\pack_gold.png">
               <div class="petit-texte3">
-                <p>900</p>
+                <p>50 000</p>
                 <img class="berry3" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 50000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=7; $j=1;
@@ -449,11 +449,11 @@
               <img src="Pack\pack_gold.png">
               <img class="bonus1" src="fois2.png">
               <div class="petit-texte2">
-                <p>1 800</p>
+                <p>100 000</p>
                 <img class="berry2" src="berry.png">
               </div>
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 100000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=7; $j=2;
@@ -465,11 +465,11 @@
               <img src="Pack\pack_gold.png">
               <img class="bonus2" src="fois3.png">
               <div class="petit-texte1">
-                <p>2 700</p>
+                <p>150 000</p>
                 <img class="berry1" src="berry.png">
               </div>                
               <?php
-                  if ($u['money'] <= 900) {
+                  if ($u['money'] <= 150000) {
                       echo '<button class="petit-bouton1">Low money</button>';
                   } else {
                       $i=7; $j=3;

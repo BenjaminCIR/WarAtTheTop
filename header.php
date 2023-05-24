@@ -10,7 +10,7 @@
                     <a href="login.php#connexion">Connexion</a>
                     <a href="login.php?check=true">Inscription</a>
                     <?php } if(isset($_SESSION['id'])){ ?>
-                    <a href="setup.php">Paramètres</a>
+                    <a href="profil.php">Profil</a>
                     <a href="deconnexion.php">Déconnexion</a>
                     <?php } ?>
                 </ul>

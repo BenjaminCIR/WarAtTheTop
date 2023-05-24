@@ -44,62 +44,61 @@ var selected = -1
 var lock = false
 
 // TOOL DE PLACEMENT DE LIEUX
-/*function SETT(){
-    let id = document.getElementById("idlieu").value
-    let phi = document.getElementById("phiint").value;
-    let theta = document.getElementById("thetaint").value;
-    let x =  rayonsphere* Math.cos(phi) * Math.sin(theta)
-    let y = rayonsphere * Math.sin(phi) * Math.sin(theta)
-    let z = rayonsphere * Math.cos(theta)
-    lieux[id].position.set(x,y,z)
-}
+// function SETT(){
+//     let id = document.getElementById("idlieu").value
+//     let phi = document.getElementById("phiint").value;
+//     let theta = document.getElementById("thetaint").value;
+//     let x =  rayonsphere* Math.cos(phi) * Math.sin(theta)
+//     let y = rayonsphere * Math.sin(phi) * Math.sin(theta)
+//     let z = rayonsphere * Math.cos(theta)
+//     lieux[id].position.set(x,y,z)
+// }
 
-function GETT(){
-    console.log("coucou ")
-    let id = document.getElementById("idlieu").value
-    fetch('./coord.json')
-    .then(response => response.json())
-    .then(json => {
-        const act = json
-        let thetaa = act[id].theta
-        let phii = act[id].phi
-        document.getElementById("phiint").value = phii
-        document.getElementById("thetaint").value = thetaa
-    })
+// function GETT(){
+//     let id = document.getElementById("idlieu").value
+//     fetch('./coord.json')
+//     .then(response => response.json())
+//     .then(json => {
+//         const act = json
+//         let thetaa = act[id].theta
+//         let phii = act[id].phi
+//         document.getElementById("phiint").value = phii
+//         document.getElementById("thetaint").value = thetaa
+//     })
 
-}
+// }
 
-function phiplus(){
-    document.getElementById("phiint").value =  Math.round((parseFloat(document.getElementById("phiint").value ) + 0.01 + Number.EPSILON) * 100) / 100; 
-    SETT()
+// function phiplus(){
+//     document.getElementById("phiint").value =  Math.round((parseFloat(document.getElementById("phiint").value ) + 0.01 + Number.EPSILON) * 100) / 100; 
+//     SETT()
 
-}
-function phimoins(){
-    document.getElementById("phiint").value = Math.round((parseFloat(document.getElementById("phiint").value ) - 0.01 + Number.EPSILON) * 100) / 100;
-    SETT()
+// }
+// function phimoins(){
+//     document.getElementById("phiint").value = Math.round((parseFloat(document.getElementById("phiint").value ) - 0.01 + Number.EPSILON) * 100) / 100;
+//     SETT()
     
-}
-function thetaplus(){
+// }
+// function thetaplus(){
 
-    document.getElementById("thetaint").value =    Math.round((parseFloat(document.getElementById("thetaint").value ) + 0.01 + Number.EPSILON) * 100) / 100;
-    SETT()
+//     document.getElementById("thetaint").value =    Math.round((parseFloat(document.getElementById("thetaint").value ) + 0.01 + Number.EPSILON) * 100) / 100;
+//     SETT()
     
-}
-function thetamoins(){
-    document.getElementById("thetaint").value =     Math.round((parseFloat(document.getElementById("thetaint").value ) - 0.01 + Number.EPSILON) * 100) / 100;
-    SETT()
+// }
+// function thetamoins(){
+//     document.getElementById("thetaint").value =     Math.round((parseFloat(document.getElementById("thetaint").value ) - 0.01 + Number.EPSILON) * 100) / 100;
+//     SETT()
     
-}
+// }
 
 
-document.getElementById("sett").addEventListener("click",SETT)
-document.getElementById("gett").addEventListener("click",GETT)
-document.getElementById("phi+").addEventListener("click",phiplus)
-document.getElementById("phi-").addEventListener("click",phimoins)
-document.getElementById("theta+").addEventListener("click",thetaplus)
-document.getElementById("theta-").addEventListener("click",thetamoins)
+// document.getElementById("sett").addEventListener("click",SETT)
+// document.getElementById("gett").addEventListener("click",GETT)
+// document.getElementById("phi+").addEventListener("click",phiplus)
+// document.getElementById("phi-").addEventListener("click",phimoins)
+// document.getElementById("theta+").addEventListener("click",thetaplus)
+// document.getElementById("theta-").addEventListener("click",thetamoins)
 
-*/
+
 
 
 
@@ -115,7 +114,6 @@ fetch('https://api.api-onepiece.com/locates')
                         json[i].id = maxid+i
                         locates.push(json[i])
                     }
-                    console.log(locates)
                     fetch('./coord.json')
                         .then(response => response.json())
                         .then(json => {
@@ -124,21 +122,19 @@ fetch('https://api.api-onepiece.com/locates')
                             .then(response => response.json())
                             .then(json => {
                                 ordre = json;
-                                console.log(ordre)
+                            
                                 for(var i=0; i<ordre.length;i++){
                                     
                                     let bouton = document.createElement("button");
                                     bouton.classList.add("buttonlvl");
                                     bouton.setAttribute("id", "lieu" + ordre[i]);
-                                    console.log(bouton)
                                     document.getElementById("niveaux").appendChild(bouton);
-                                    console.log(bouton)
                                 }
                                 for(var i=0; i< locates.length;i++){
                                     let colori =  0x616161 
                                     let indxx = (ordre.findIndex( (element) => element == i+1))
                                     if(indxx == -1) colori = 0xf0ffff
-                                    if(indxx > 49) colori = 0x0070ff
+                                    if(indxx > 45) colori = 0x0070ff
                                     else{
                                         if( indxx < progression){
                                             if(indxx == -1) colori = 0xf0ffff
@@ -146,27 +142,26 @@ fetch('https://api.api-onepiece.com/locates')
                                         } 
                                         if( indxx == progression) colori = 0xffffff
                                     }
-
-                                    console.log(colori)
+                    
                                     lieux.push(new THREE.Mesh(
-                                        
                                         new THREE.SphereGeometry(rayon,20,20),
                                         new THREE.MeshBasicMaterial({color:colori})
                                     ))
-                                  
+                                
                                     sphere.add(lieux[i])
-                                    //console.log(i)
                                     let x =  rayonsphere* Math.cos(coord[i].phi) * Math.sin(coord[i].theta)
                                     let y = rayonsphere * Math.sin(coord[i].phi) * Math.sin(coord[i].theta)
                                     let z = rayonsphere * Math.cos(coord[i].theta)
-                                    lieux[i].position.set(x,y,z)
+                                    if(coord[i].theta == null) z = 0
+                                    
+                                    lieux[lieux.length -1].position.set(x,y,z)
+                                    
                                 }
-                                lieux[1].material = new THREE.MeshBasicMaterial({color:0xffffff})
+                                lieux[76].material = new THREE.MeshBasicMaterial({color:0x0070ff})
+                                lieux[75].material = new THREE.MeshBasicMaterial({color:0x0070ff})
                                 for(var i=0; i< ordre.length;i++){
                                     let name = "lieu" + ordre[i]
                                     let tmp = document.getElementById(name)
-                                    console.log("ok"+i)
-                                    console.log(ordre[i])
                                     if(coord[ordre[i]-1].phi != null){
                                         
                                 
@@ -198,7 +193,7 @@ fetch('https://api.api-onepiece.com/locates')
                                                 let colori =  0x616161 
                                                 let indxx = (ordre.findIndex( (element) => element == i+1))
                                                
-                                                if(indxx > 49) colori = 0x0070ff
+                                                if(indxx > 45) colori = 0x0070ff
                                                 else{
                                                
                                                     if( indxx < progression){
@@ -210,22 +205,18 @@ fetch('https://api.api-onepiece.com/locates')
                                         
                                                
                                                 sphere.children[i].material =  new THREE.MeshBasicMaterial({color:colori}) 
+                                                lieux[76].material = new THREE.MeshBasicMaterial({color:0x0070ff})
+                                                lieux[75].material = new THREE.MeshBasicMaterial({color:0x0070ff})
                                             }
         
-                                            //console.log(sphere.rotation)
                                             let indx = parseInt(tmp.getAttribute("id").substring(4,tmp.getAttribute("id").length))
                                             selected = indx
                                             document.getElementById("lieu"+selected).style.color="rgb(2,126,251,1)"
                                             document.getElementById("lieu"+selected).style.textShadow="0px 0px 7px rgb(2,126,251,1)"
-                                            //console.log(lieux[indx].position.y)
-                                            //console.log(lieux[indx].position.x)
-                                            //sphere.rotation.x = 0
-                                            //sphere.rotation.y = 0 - (1.86 + 1.58)
                                             
                                             RtranslateLVL = true
                                             indx -=1
                                             if(locates[indx].sea_name == "East Blue" || locates[indx].sea_name == "South Blue" || locates[indx].sea_name == "Paradis" || locates[indx].sea_name == "Mer Blanche" || locates[indx].french_name == "Nakrowa"){
-                                                //console.log("ptn")
                                                 yLVL = - (1.86 + 1.58) + (lieux[indx].position.x + 1)
                                                 xLVL = lieux[indx].position.y
                                                 if(sphere.rotation.y < yLVL) pomY = 1
@@ -247,14 +238,12 @@ fetch('https://api.api-onepiece.com/locates')
                                                 //sphere.rotation.y += -(lieux[indx].position.x + offs)//(3.14 -theta + 0.5)
                                                 //sphere.rotation.x += lieux[indx].position.y//(phi)
                                             }
-                                            //console.log(sphere.rotation)
                                             colo = false
                                             lieux[indx].material = new THREE.MeshBasicMaterial({color:0xfff000})
                                             var collection = document.getElementById("niveaux").childNodes
                                             for (var a=[], i=collection.length; i;){
                                                 a[--i] = collection[i];
                                             }
-                                            console.log(selected)
                                             for(var i=1; i< a.length;i++){
                                                 if(a[i].getAttribute("id") == "lieu"+selected){
                                                     selected = i
@@ -272,7 +261,6 @@ fetch('https://api.api-onepiece.com/locates')
                                         })
                                     }
                                     else{
-                                        console.log(tmp)
                                         document.getElementById("niveaux").removeChild(tmp)
                                     }
                                 }
@@ -281,7 +269,6 @@ fetch('https://api.api-onepiece.com/locates')
                 })
             
             
-            //console.log(lieux)
     })
 
 function onMouseHover( event ) {
@@ -308,13 +295,11 @@ function onMouseHover( event ) {
     */
 
     if(colo){
-        for(var i = 0; i< locates.length-1;i++){
+        for(var i = 0; i< sphere.children.length-1;i++){
             let colori =  0x616161 
             let indxx = (ordre.findIndex( (element) => element == i+1))
-            if(i==76) console.log(indxx)
-            if(indxx > 49) colori = 0x0070ff
+            if(indxx > 45) colori = 0x0070ff
             else{
-                if(i==76) console.log(indxx)
                 if( indxx < progression){
                     if(indxx == -1) colori = 0xf0ffff
                     colori = 0xff0000;
@@ -322,13 +307,11 @@ function onMouseHover( event ) {
                 if( indxx == progression) colori = 0xffffff
             }
     
-            if(i==76) {
-                console.log(colori)
-     
-            }
+
 
             sphere.children[i].material =  new THREE.MeshBasicMaterial({color:colori}) 
-      
+            lieux[76].material = new THREE.MeshBasicMaterial({color:0x0070ff})
+            lieux[75].material = new THREE.MeshBasicMaterial({color:0x0070ff})
         }
 
        
@@ -360,18 +343,15 @@ function onMouseClick( event ) {
 
     /*for(var i = 0; i< intersects.length;i++){
         if(intersects[i].object == mesh){
-            console.log(intersects[i].distance)
             if(intersects[i].distance < intersectsTMP[i].distance){
                 bol = true;
             }
             else{
-                console.log("nickel gros")
+
             }
         }
     }*/
     if(intersects.length > 0){
-        //console.log(intersects)
-        //console.log(intersectsTMP)
         if(intersects[0].distance < intersectsTMP[0].distance){
             
             openpanel(true,lieux.indexOf(intersects[0].object))
@@ -388,12 +368,10 @@ function onMouseClick( event ) {
 
 function openpanel(isobj, indox){
     //let indx = lieux.indexOf(obj)
-    //console.log(locates[indx])
-    
+
+
    
        
-
-    console.log(indox)
     var indx = -1
     if(isobj == true){
         indx = indox
@@ -401,11 +379,10 @@ function openpanel(isobj, indox){
     else{
         indx = parseInt(indox.getAttribute("id").substring(4,indox.getAttribute("id").length)) - 1
     }
-    console.log(indx)
     let level = document.createElement("div")
     let name = document.createElement("p")
     let access = document.createElement("a")
-    let tmp = document.getElementById("lieu"+(indx+1)).innerHTML.substring(0, document.getElementById("lieu"+(indx+1)).innerHTML.search("-"))
+    let tmp = document.getElementById("lieu"+(indx+1)).innerHTML.substring(0, document.getElementById("lieu"+(indx+1)).innerHTML.search("-")-1)
     access.setAttribute("href","game.php?id="+(indx+1)+"&actlvl="+tmp)
     access.innerText = "Go"
     name.innerText = locates[indx].french_name
@@ -413,6 +390,8 @@ function openpanel(isobj, indox){
     level.appendChild(name)
     let back = document.createElement("button")
     back.innerText = "BACK"
+    access.classList.add("btnstart")
+    back.classList.add("btnback")
     back.addEventListener("click", function(){
         document.body.removeChild(level)
     })
@@ -451,8 +430,7 @@ gltf.load('./circle.glb', (gltfScene) =>{
     socle.position.y -= 2.9
     socle.position.x += 3.1
     socle.position.z += 0.3   
-    
-    //console.log(gltfScene)
+
     socle.children[0].material = new THREE.MeshBasicMaterial({map : new THREE.TextureLoader().load('text3.png') })
     scene.add(socle)
 
@@ -478,7 +456,6 @@ scene.add(sphere)
 camera.position.z = 9
 
 function animate(){
-    console.log(sphere.children[76])
     raycaster.setFromCamera( mouse3, camera );
     requestAnimationFrame(animate)
     renderer.render(scene,camera)
@@ -490,7 +467,6 @@ function animate(){
     //socle.rotation.y -= naturalrotateSOCLE
 
     if(soclerotate){
-        console.log(socle.rotation.y)
         if(socle.rotation.y >= 6){
             soclerotate = false
         }
@@ -499,7 +475,6 @@ function animate(){
     }
 
     if(Rsoclerotate){
-        console.log(socle.rotation.y)
         if(socle.rotation.y <= -3){
             Rsoclerotate = false
         }
@@ -526,7 +501,6 @@ function animate(){
         socle.position.x -= 0.1
     }
     if(rotate){
-        //console.log(sphere.rotation.z)
         if(sphere.rotation.z >= 0){
             rotate = false
         }
@@ -535,7 +509,6 @@ function animate(){
     }
 
     if(Rrotate){
-        //console.log(sphere.rotation.z )
         if(sphere.rotation.z <= -0.8){
             Rrotate = false
         }
@@ -585,7 +558,6 @@ function animate(){
         else{
             if(pomX == 1){
                 if(sphere.rotation.x >= xLVL){
-                    //console.log("test")
                     pomX = 0
                 }
                 else sphere.rotation.x += detente
@@ -603,7 +575,6 @@ function animate(){
         else{
             if(pomY == 1){
                 if(sphere.rotation.y >= yLVL){
-                    //console.log("ok")
                     pomY = 0
                 }
                 else sphere.rotation.y += detente
@@ -625,7 +596,6 @@ const mouse2 = {
     y : undefined
 }
 function select(){
-    //console.log(sphere)
     planeteclick = true
     scaleing = true
     translate = true
@@ -697,7 +667,6 @@ addEventListener('mouseup',()=>{
 })
 
 document.addEventListener('keydown', function(event) {
-    console.log(ordre)
     if(event.code == 'Enter'){
         try{
             document.getElementById("lieu"+ordre[selected]).click()
@@ -726,8 +695,6 @@ document.addEventListener('keydown', function(event) {
      
         
         if(event.code == 'ArrowDown'){
-            console.log(selected)
-            console.log(ordre.length)
             if(selected == document.getElementById("niveaux").childElementCount + 1) selected = 0
             else{
                 do selected+=1
@@ -742,10 +709,9 @@ document.addEventListener('keydown', function(event) {
                 while(lieux[selected].position.y == 0 && lieux[selected].position.x == 0)
             }
         }
-        
-            //console.log(lieux[selected-1])
+
         if(previous >=0) lieux[ordre[previous]-1].material = new THREE.MeshBasicMaterial({color:0xff0000})
-            //console.log(document.getElementById("lieu"+(selected-1)))
+         
         
 
         
@@ -764,17 +730,14 @@ document.addEventListener('keydown', function(event) {
         if (selected == 0){
             document.getElementById("niveaux").scrollTo(0,0)
         }
-        console.log(selected)
         if (selected == document.getElementById("niveaux").childElementCount + 1){
             document.getElementById("niveaux").scrollTo(0,document.getElementById("niveaux").scrollHeight)
         }
-        console.log(ordre[selected])
         document.getElementById("lieu"+ordre[selected]).style.color="rgb(2,126,251,1)"
         document.getElementById("lieu"+ordre[selected]).style.textShadow="0px 0px 7px rgb(2,126,251,1)"
         RtranslateLVL = true
         let vatmp = ordre[selected] -1
         if((locates[vatmp].sea_name == "East Blue" || locates[vatmp].sea_name == "South Blue" || locates[vatmp].sea_name == "Paradis" || locates[vatmp].sea_name == "Mer Blanche" || locates[vatmp].french_name == "Nakrowa") && locates[vatmp].french_name != "Baltigo"){
-            console.log("ptn")
             yLVL = - (1.86 + 1.58) + (lieux[vatmp].position.x + 1)
             xLVL = lieux[vatmp].position.y
             if(sphere.rotation.y < yLVL) pomY = 1
@@ -796,7 +759,6 @@ document.addEventListener('keydown', function(event) {
             //sphere.rotation.y += -(lieux[indx].position.x + offs)//(3.14 -theta + 0.5)
             //sphere.rotation.x += lieux[indx].position.y//(phi)
         }
-        //console.log(sphere.rotation)
         colo = false
         lieux[vatmp].material = new THREE.MeshBasicMaterial({color:0xfff000})
 

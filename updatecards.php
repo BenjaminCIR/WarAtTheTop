@@ -47,23 +47,28 @@ if(isset($_POST['ids'])){
 }
 
 if(isset($_POST['actlvl']) && isset($_POST['userid'])){
-    $raquete = "SELECT progressionhistoire FROM users WHERE id = $_POST[userid]";
+    $raquete = "SELECT progressionhistoire,money FROM users WHERE id = $_POST[userid]";
     include "connexion.php";
     $qer = mysqli_query($connexion,$raquete);
     $rep = mysqli_fetch_assoc($qer);
     $num = $rep['progressionhistoire'];
+    $money = $rep['money'];
     $tmpr = $_POST['actlvl'];
     echo $tmpr;
     echo $num;
 
+    $money+= $_POST['moneywin'];
+
+    $requete = "UPDATE users SET money = '$money' WHERE id = $_POST[userid]";
     
     $num+=1;
     if($tmpr == $num){
-        $requete = "UPDATE users SET progressionhistoire = '$num' WHERE id = $_POST[userid]";
-        mysqli_query($connexion,$requete);
-        mysqli_close($connexion);
+        $requete = "UPDATE users SET progressionhistoire = '$num', money = '$money' WHERE id = $_POST[userid]";
+
     }
 
+    mysqli_query($connexion,$requete);
+    mysqli_close($connexion);
    
 }
 
@@ -72,13 +77,34 @@ if(isset($_POST["deck"]) && isset($_POST["userid"])){
     $id = $_POST["userid"];
 
     $raquete = "SELECT decks FROM users WHERE id = $id";
+
+
     include "connexion.php";
     $qer = mysqli_query($connexion,$raquete);
     $rep = mysqli_fetch_assoc($qer);
     $oldeck = $rep['decks'];
-    $newdeck = $oldeck.$deck;
 
-    $requete = "UPDATE users SET decks = '$newdeck' WHERE id = $id";
+    $newdeck1 = $oldeck.$deck;
+
+
+    if(isset($_POST['up'])){
+        $up = $_POST['up'];
+        $tmpdeck = explode(";",$oldeck);
+        print_r($tmpdeck);
+        echo $oldeck;
+        $newdeck = "";
+        echo $up;
+        $tmpdeck[$up-1] = $deck;
+        print_r($tmpdeck);
+        for($o = 0; $o < count($tmpdeck)-1; $o++){
+            $newdeck = $newdeck.$tmpdeck[$o].";";
+        }
+        $newdeck1 =  substr($newdeck,0,strlen($newdeck)-1);
+    }
+    echo"<br>";
+    echo $newdeck1;
+
+    $requete = "UPDATE users SET decks = '$newdeck1' WHERE id = $id";
     mysqli_query($connexion,$requete);
     mysqli_close($connexion);
 

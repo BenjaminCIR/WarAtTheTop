@@ -19,9 +19,9 @@
             $rep = mysqli_fetch_assoc($qer);
             $num = $rep['progressionhistoire'];
             mysqli_close($connexion);
-            if($tmp <= $num+1 ){
+            if($tmp <= $num+1 || $tmp > 45){
                 $tmp2 = $_GET['id'];
-                echo "<script> var nivo = $tmp2 </script>";
+                echo "<script> var nivo = $tmp2;</script>";
             }
             else{
                 header('Location:index.php');

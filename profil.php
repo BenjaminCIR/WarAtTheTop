@@ -73,10 +73,9 @@
         </div>
 
         <div id="ordre" class="right">
-            <button id="rhaut">Rareté<img src="flecheHaut.png"></button>
-            <button id="rbas">Rareté<img src="flecheBas.png"></button>
-            <button id="ahaut">Alphabétique<img src="flecheHaut.png"></button>
-            <button id="abas">Alphabétique<img src="flecheBas.png"></button>
+            <button id="rhaut">Rareté<img id="fleche1" src="flecheHaut.png"></button>
+            <button id="ahaut">Alphabétique<img id="fleche2" src="flecheHaut.png"></button>
+            <button id="faction">Tous</button>
         </div>
 
         <div id="compte" class="affiche">

@@ -163,12 +163,17 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
                         cartes[i] = bloc.cloneNode(true);
                         cartes[i].classList.remove("bloque")
                         cartes[i].classList.add("bloquechoix")
+                        let blocc = cartes[i]
+                        blocc.addEventListener("click",function(){
+                            let dt = blocc.getAttribute("data")
+                            let cor = document.querySelector(".cdeck .bloque[data='"+dt+"']")
+                            cor.click()
+                        })
                         cartes[i].style.left = 10+i*4.5 +"%"
                         cchoix.append(cartes[i]);
                         break;
                     }
                 }
-                console.log(cartes);
 
 
                 bloc.style.filter = 'grayscale(100%)'
@@ -182,12 +187,14 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
                 
                 for (let i = 0; i <= cartes.length; i++) {
                     if(cartes[i].getAttribute("data") == identifiant) {
+                        for (let j = i+1; j < cartes.length; j++) {
+                            cartes[j].style.left = 10+(j-1)*4.5 +"%"
+                        }
                         cchoix.removeChild(cartes[i]);
                         cartes.splice(i, 1);
                         break;
                     }
                 }
-                console.log(cartes);
 
 
 
@@ -195,7 +202,6 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
                 bloc.style.opacity = '1'
                 clicked[identifiant] = false
             }
-            console.log(identifiant)
 
             if(clicked[identifiant] == true) {
                 selected.push(identifiant);
@@ -206,7 +212,6 @@ function make_card(charaTT, identifiant,clickable,little=false){ // 9 10 11
                     selected.splice(index, 1);
                 }
             }
-            console.log(selected)
             if(countclicked == 15){
                 document.getElementById("validerdeck").removeAttribute("disabled")
             }
@@ -241,9 +246,7 @@ setTimeout(function(){
         .then(res1 => res1.text())
         .then(text1 => {
             eval("charaT ="+text1)
-            //console.log(text1[0])
 
-            console.log(charaT)
             setTimeout(function(){
                 for(var i=0;i< charaT.length;i++){
                     
@@ -410,7 +413,6 @@ setTimeout(function(){
 
         for (let i=1; i<=12; i++){
             tabdeck[i] = document.getElementById("deck"+i);
-            console.log(decks)
             if(tabdeck[i].getAttribute("data") == 'true'){
                 let thedek = decks[i-1].split(",");
                 let thedek2 = []
@@ -418,12 +420,10 @@ setTimeout(function(){
                     thedek2.push(parseInt(thedek[kk]))
             
                 }
-                console.log(thedek2)
                 let divdek = document.createElement("div")
 
                 for(let k=0; k<15;k++){
-                    let idd = charaT.findIndex((element) => element.id == thedek2[k])
-                    console.log(idd)    
+                    let idd = charaT.findIndex((element) => element.id == thedek2[k])  
                     let car = make_card(charaT,idd)
                     car.classList.remove("bloque")
                     car.classList.add("bloquechoix2")
@@ -441,10 +441,10 @@ setTimeout(function(){
 
         setTimeout(function(){
             window.scrollTo(0,0)
-        },1)
+        },10)
         setTimeout(function(){
             document.body.overflow = "hidden"
-        },2)
+        },40)
         deckactif = true;
         btncompte.addEventListener("click", function(){
             decks2.classList.remove("affiche");
@@ -501,99 +501,369 @@ setTimeout(function(){
 },1000);
 
 const rhaut = document.getElementById("rhaut");
-const rbas = document.getElementById("rbas");
 const ahaut = document.getElementById("ahaut");
-const abas = document.getElementById("abas");
+const faction = document.getElementById("faction");
+
+let countR = false;
+let fleche1 = document.getElementById("fleche1");
+let countA = false;
+let fleche2 = document.getElementById("fleche2");
+
+let btous = document.createTextNode("Tous")
+let bpirates = document.createTextNode("Pirates")
+let bmarines = document.createTextNode("Marines")
+let brevos = document.createTextNode("Révolutionnaires")
+let bcivils = document.createTextNode("Civils")
+
+let ipirates = document.createElement("img")
+ipirates.src = "pirate.png"
+ipirates.classList.add("ifactions")
+let imarines = document.createElement("img")
+imarines.src = "marine.png"
+imarines.classList.add("ifactions")
+let irevos = document.createElement("img")
+irevos.src = "revo.png"
+irevos.classList.add("ifactions")
+let icivils = document.createElement("img")
+icivils.src = "civil.png"
+icivils.classList.add("ifactions")
+
+
+let cliquef = 0
+let tfaction = ""
+
+function ffaction(){
+    anime({
+        targets:fleche1,
+        rotate:'0deg'
+    })
+    rhaut.style = 'none'
+    anime({
+        targets:fleche2,
+        rotate:'0deg'
+    })
+    ahaut.style = 'none'
+    countA = 0
+    countR = 0
+    if(faction.innerText == "Tous" && cliquef == 0) {
+        tfaction = "PIRATE"
+        faction.innerHTML = ""
+        faction.appendChild(bpirates)
+        faction.appendChild(ipirates)
+        
+        document.body.removeChild(collection);
+        collection = document.createElement("div");
+        collection.setAttribute("id", "collection");
+        collection.classList.add("affiche");
+        document.body.append(collection);
+
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[7].getAttribute("src") == "pirate.png"){
+                collection.appendChild(tab[j])
+            }
+        }
+        cliquef = 1;
+    }
+    if(faction.innerText == "Pirates" && cliquef == 0) {
+        tfaction = "MARINE"
+        faction.innerHTML = ""
+        faction.appendChild(bmarines)
+        faction.appendChild(imarines)
+        
+        document.body.removeChild(collection);
+        collection = document.createElement("div");
+        collection.setAttribute("id", "collection");
+        collection.classList.add("affiche");
+        document.body.append(collection);
+
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[7].getAttribute("src") == "marine.png"){
+                collection.appendChild(tab[j])
+            }
+        }
+        cliquef = 1;
+    }
+    if(faction.innerText == "Marines" && cliquef == 0) {
+        tfaction = "REVOLUTIONNAIRE"
+        faction.innerHTML = ""
+        faction.appendChild(brevos)
+        faction.appendChild(irevos)
+        faction.style.padding = "2px 0px"
+        
+        document.body.removeChild(collection);
+        collection = document.createElement("div");
+        collection.setAttribute("id", "collection");
+        collection.classList.add("affiche");
+        document.body.append(collection);
+
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[7].getAttribute("src") == "revo.png"){
+                collection.appendChild(tab[j])
+            }
+        }
+        cliquef = 1;
+    }
+    if(faction.innerText == "Révolutionnaires" && cliquef == 0) {
+        tfaction = "CIVIL"
+        faction.innerHTML = ""
+        faction.appendChild(bcivils)
+        faction.appendChild(icivils)
+        faction.style = "none"
+        
+        document.body.removeChild(collection);
+        collection = document.createElement("div");
+        collection.setAttribute("id", "collection");
+        collection.classList.add("affiche");
+        document.body.append(collection);
+
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[7].getAttribute("src") == "civil.png"){
+                collection.appendChild(tab[j])
+            }
+        }
+        cliquef = 1;
+    }
+    if(faction.innerText == "Civils" && cliquef == 0) {
+        tfaction = ""
+        faction.innerHTML = ""
+        faction.appendChild(btous)
+
+        document.body.removeChild(collection);
+        collection = document.createElement("div");
+        collection.setAttribute("id", "collection");
+        collection.classList.add("affiche");
+        document.body.append(collection);
+
+        for(let j=0; j< tab.length; j++){
+            collection.appendChild(tab[j])
+        }
+
+        cliquef = 1;
+    }
+    cliquef = 0;
+}
+
+faction.addEventListener("click", function () {
+    ffaction()
+});
 
 rhaut.addEventListener("click", function(){
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut2.png"){
-            collection.appendChild(tab[j])
+    countR = !countR
+    rhaut.style.backgroundColor = 'rgb(2,126,251,1)'
+    rhaut.style.borderRadius = '3px'
+    rhaut.style.outline = '0.2px solid #ffffff'
+    ahaut.style = 'none'
+    anime({
+        targets:fleche2,
+        rotate:'0deg'
+    })
+    countA = false
+    if(countR) {
+        anime({
+            targets:fleche1,
+            rotate:'0deg'
+        })
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut2.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
+        }
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut3.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
+        }
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut4.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
+        }
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut5.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
+        }
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut6.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
+        }
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut7.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
         }
     }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut3.png"){
-            collection.appendChild(tab[j])
+    if(!countR) {
+        anime({
+            targets:fleche1,
+            rotate:'180deg'
+        })
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut7.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
         }
-    }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut4.png"){
-            collection.appendChild(tab[j])
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut6.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
         }
-    }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut5.png"){
-            collection.appendChild(tab[j])
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut5.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
         }
-    }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut6.png"){
-            collection.appendChild(tab[j])
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut4.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
         }
-    }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut7.png"){
-            collection.appendChild(tab[j])
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut3.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
+        }
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[0].getAttribute("src") == "fut2.png"){
+                if(tab[j].children[6].innerHTML == tfaction){
+                    collection.appendChild(tab[j])
+                }
+                if(tfaction == ""){
+                    collection.appendChild(tab[j])
+                }
+            }
         }
     }
 });
-rbas.addEventListener("click", function(){
 
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut7.png"){
-            collection.appendChild(tab[j])
-        }
-    }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut6.png"){
-            collection.appendChild(tab[j])
-        }
-    }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut5.png"){
-            collection.appendChild(tab[j])
-        }
-    }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut4.png"){
-            collection.appendChild(tab[j])
-        }
-    }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut3.png"){
-            collection.appendChild(tab[j])
-        }
-    }
-    for(let j=0; j< tab.length; j++){
-        if(tab[j].children[0].getAttribute("src") == "fut2.png"){
-            collection.appendChild(tab[j])
-        }
-    }
-});
+
+
+
+
 ahaut.addEventListener("click", function(){
-    tab.sort(function(a, b){
-        return a.children[2].innerHTML.localeCompare(b.children[2].innerHTML);
+    countA = !countA
+    rhaut.style = 'none'
+    ahaut.style.backgroundColor = 'rgb(2,126,251,1)'
+    ahaut.style.borderRadius = '3px'
+    ahaut.style.outline = '0.2px solid #ffffff'
+    anime({
+        targets:fleche1,
+        rotate:'0deg'
     })
-    for(let j=0; j< tab.length; j++){
-        collection.appendChild(tab[j])
+    countR = false
+    if(countA) {
+        anime({
+            targets:fleche2,
+            rotate:'0deg'
+        })
+        tab.sort(function(a, b){
+            return a.children[2].innerHTML.localeCompare(b.children[2].innerHTML);
+        })
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[6].innerHTML == tfaction){
+                collection.appendChild(tab[j])
+            }
+            if(tfaction == ""){
+                collection.appendChild(tab[j])
+            }
+        }
+    }
+    if(!countA) {
+        anime({
+            targets:fleche2,
+            rotate:'180deg'
+        })
+        tab.sort(function(a, b){
+            return b.children[2].innerHTML.localeCompare(a.children[2].innerHTML);
+        })
+        for(let j=0; j< tab.length; j++){
+            if(tab[j].children[6].innerHTML == tfaction){
+                collection.appendChild(tab[j])
+            }
+            if(tfaction == ""){
+                collection.appendChild(tab[j])
+            }
+        }
     }
 });
-abas.addEventListener("click", function(){
-    tab.sort(function(a, b){
-        return b.children[2].innerHTML.localeCompare(a.children[2].innerHTML);
-    })
-    for(let j=0; j< tab.length; j++){
-        collection.appendChild(tab[j])
-    }
-});
+
+
 
 ecrire.addEventListener("input", function(){
     for(let i=0; i<tab.length; i++){
-        collection.appendChild(tab[i])
+        if(tab[i].children[6].innerHTML == tfaction){
+            collection.appendChild(tab[i])
+        }
+        if(tfaction == ""){
+            collection.appendChild(tab[i])
+        }
     }
     for(let j=0; j< tab.length; j++){
-        if(tab[j].children[2].innerHTML.toLowerCase().search(ecrire.value.toLowerCase()) == -1){
-            collection.removeChild(tab[j])
+        if(tab[j].children[6].innerHTML == tfaction){
+            if(tab[j].children[2].innerHTML.toLowerCase().search(ecrire.value.toLowerCase()) == -1){
+                collection.removeChild(tab[j])
+            }
+        }
+        if(tfaction == ""){
+            if(tab[j].children[2].innerHTML.toLowerCase().search(ecrire.value.toLowerCase()) == -1){
+                collection.removeChild(tab[j])
+            }
         }
     }
 })
@@ -624,16 +894,27 @@ for (let i=1; i<=12; i++){
         valider.setAttribute("disabled","")
         valider.innerHTML = "VALIDER";
         valider.setAttribute("id","validerdeck");
+
+       
+        if(tabdeck[i].childElementCount != 1){
+            let cards = tabdeck[i].children[1].children
+            setTimeout(function(){
+                for(let h =0; h< 15;h++){
+                    document.querySelector(".cdeck .bloque[data='"+cards[h].getAttribute("data")+"']").click()
+    
+                }
+            },2000)
+            
+        }
+
         valider.addEventListener("click",function(){
             let newdeck = ""
             let parentchild = document.getElementsByClassName("bloquechoix")
-            console.log(parentchild)
+
             
 
             for(let ctr = 0; ctr< parentchild.length; ctr+=1){
-                console.log("ok")
                 let trueid = charaT[parseInt(parentchild[ctr].getAttribute("data"))].id
-                console.log(trueid)
                 newdeck += trueid + ","
             }
 
@@ -642,14 +923,25 @@ for (let i=1; i<=12; i++){
             truedeck+=";"
 
             var data2 = "userid="+ idsession+"&deck="+truedeck
-            
+            if(tabdeck[i].childElementCount != 1){
+                data2 += "&up=" + parseInt(tabdeck[i].getAttribute("id").substring(4,tabdeck[i].getAttribute("id").length))
+            }
             var xhttp2 = new XMLHttpRequest();
             xhttp2.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    decks[decks.length - 1] = (truedeck2)
-
                     let dive = document.getElementsByClassName("predef")
-                    dive[decks.length - 1].setAttribute("data","true")
+                    if(tabdeck[i].childElementCount != 1){
+                        let nb = parseInt(tabdeck[i].getAttribute("id").substring(4,tabdeck[i].getAttribute("id").length))-1
+                        decks[nb] = (truedeck2)
+                        
+                        dive[nb].setAttribute("data","true")
+                    }
+                    else {
+                        decks[decks.length - 1] = (truedeck2)
+                        dive[decks.length - 1].setAttribute("data","true")
+                    }
+              
+ 
                     for (let i=1; i<=12; i++){
                         if(dive[i-1].childElementCount == 2){
                             dive[i-1].removeChild(dive[i-1].children[1])
@@ -660,7 +952,6 @@ for (let i=1; i<=12; i++){
 
                     for (let i=1; i<=12; i++){
                         tabdeck[i] = document.getElementById("deck"+i);
-                        console.log(decks[i])
                         if(tabdeck[i].getAttribute("data") == 'true'){
                             let thedek = decks[i-1].split(",");
                             let thedek2 = []
@@ -668,12 +959,10 @@ for (let i=1; i<=12; i++){
                                 thedek2.push(parseInt(thedek[kk]))
                         
                             }
-                            console.log(thedek2)
                             let divdek = document.createElement("div")
             
                             for(let k=0; k<15;k++){
-                                let idd = charaT.findIndex((element) => element.id == thedek2[k])
-                                console.log(idd)    
+                                let idd = charaT.findIndex((element) => element.id == thedek2[k])   
                                 let car = make_card(charaT,idd)
                                 car.classList.remove("bloque")
                                 car.classList.add("bloquechoix2")
@@ -703,37 +992,143 @@ for (let i=1; i<=12; i++){
         })
         cchoix.appendChild(valider)
         let rarhaut = document.createElement("button");
-        let rarbas = document.createElement("button");
         let alphaut = document.createElement("button");
-        let alpbas = document.createElement("button");
+        let fact = document.createElement("button");
         rarhaut.setAttribute("id", "rarhaut");
-        rarbas.setAttribute("id", "rarbas");
         alphaut.setAttribute("id", "alphaut");
-        alpbas.setAttribute("id", "alpbas");
-        let flehaut = document.createElement("img");
-        let flebas = document.createElement("img");
+        fact.setAttribute("id", "fact");
+        let flehaut1 = document.createElement("img");
         let flehaut2 = document.createElement("img");
-        let flebas2 = document.createElement("img");
-        flehaut.setAttribute("src", "flecheHaut.png");
-        flebas.setAttribute("src", "flecheBas.png");
+        flehaut1.setAttribute("src", "flecheHaut.png");
         flehaut2.setAttribute("src", "flecheHaut.png");
-        flebas2.setAttribute("src", "flecheBas.png");
         rarhaut.innerHTML = "Rareté";
-        rarhaut.appendChild(flehaut);
-        rarbas.innerHTML = "Rareté";
-        rarbas.appendChild(flebas);
+        rarhaut.appendChild(flehaut1);
         alphaut.innerHTML = "Alphabétique";
         alphaut.appendChild(flehaut2);
-        alpbas.innerHTML = "Alphabétique";
-        alpbas.appendChild(flebas2);
+        fact.innerHTML = "Tous";
         cchoix.append(rechoix);
         cchoix.append(orchoix);
         rechoix.append(recherche)
-        orchoix.append(rarbas, rarhaut, alphaut, alpbas)
+        orchoix.append(rarhaut, alphaut, fact)
         let cdeck = document.createElement("div");
         cdeck.classList.add("cdeck");
         creerdeck.append(cdeck);
 
+        let countRar = false;
+        let countAlp = false;
+
+        let cliquefac = 0
+        let texfaction = ""
+
+        function ffact(){
+            anime({
+                targets:flehaut1,
+                rotate:'0deg'
+            })
+            rarhaut.style = 'none'
+            anime({
+                targets:flehaut2,
+                rotate:'0deg'
+            })
+            alphaut.style = 'none'
+            countAlp = 0
+            countRar = 0
+            if(fact.innerText == "Tous" && cliquefac == 0) {
+                texfaction = "PIRATE"
+                fact.innerHTML = ""
+                fact.appendChild(bpirates)
+                fact.appendChild(ipirates)
+                
+                creerdeck.removeChild(cdeck)
+                cdeck = document.createElement("div");
+                cdeck.classList.add("cdeck");
+                creerdeck.append(cdeck);
+        
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[7].getAttribute("src") == "pirate.png"){
+                        cdeck.appendChild(tabchoix[j])
+                    }
+                }
+                cliquefac = 1;
+            }
+            if(fact.innerText == "Pirates" && cliquefac == 0) {
+                texfaction = "MARINE"
+                fact.innerHTML = ""
+                fact.appendChild(bmarines)
+                fact.appendChild(imarines)
+                
+                creerdeck.removeChild(cdeck)
+                cdeck = document.createElement("div");
+                cdeck.classList.add("cdeck");
+                creerdeck.append(cdeck);
+        
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[7].getAttribute("src") == "marine.png"){
+                        cdeck.appendChild(tabchoix[j])
+                    }
+                }
+                cliquefac = 1;
+            }
+            if(fact.innerText == "Marines" && cliquefac == 0) {
+                texfaction = "REVOLUTIONNAIRE"
+                fact.innerHTML = ""
+                fact.appendChild(brevos)
+                fact.appendChild(irevos)
+                fact.style.padding = "2px 0px"
+                
+                creerdeck.removeChild(cdeck)
+                cdeck = document.createElement("div");
+                cdeck.classList.add("cdeck");
+                creerdeck.append(cdeck);
+        
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[7].getAttribute("src") == "revo.png"){
+                        cdeck.appendChild(tabchoix[j])
+                    }
+                }
+                cliquefac = 1;
+            }
+            if(fact.innerText == "Révolutionnaires" && cliquefac == 0) {
+                texfaction = "CIVIL"
+                fact.innerHTML = ""
+                fact.appendChild(bcivils)
+                fact.appendChild(icivils)
+                fact.style = "none"
+                
+                creerdeck.removeChild(cdeck)
+                cdeck = document.createElement("div");
+                cdeck.classList.add("cdeck");
+                creerdeck.append(cdeck);
+        
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[7].getAttribute("src") == "civil.png"){
+                        cdeck.appendChild(tabchoix[j])
+                    }
+                }
+                cliquefac = 1;
+            }
+            if(fact.innerText == "Civils" && cliquefac == 0) {
+                texfaction = ""
+                fact.innerHTML = ""
+                fact.appendChild(btous)
+        
+                creerdeck.removeChild(cdeck)
+                cdeck = document.createElement("div");
+                cdeck.classList.add("cdeck");
+                creerdeck.append(cdeck);
+        
+                for(let j=0; j< tabchoix.length; j++){
+                    cdeck.appendChild(tab[j])
+                }
+        
+                cliquefac = 1;
+            }
+            cliquefac = 0;
+        }
+        
+        fact.addEventListener("click", function () {
+            ffact()
+        });
 
         rarhaut.addEventListener("click", function(){
             creerdeck.removeChild(cdeck)
@@ -741,96 +1136,201 @@ for (let i=1; i<=12; i++){
             cdeck.classList.add("cdeck");
             creerdeck.append(cdeck);
 
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut2.png"){
-                    cdeck.appendChild(tabchoix[j])
+            countRar = !countRar
+            rarhaut.style.backgroundColor = 'rgb(2,126,251,1)'
+            rarhaut.style.borderRadius = '3px'
+            rarhaut.style.outline = '0.2px solid #ffffff'
+            alphaut.style = 'none'
+            anime({
+                targets:flehaut2,
+                rotate:'0deg'
+            })
+            countAlp = false
+            if(countRar) {
+                anime({
+                    targets:flehaut1,
+                    rotate:'0deg'
+                })
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut2.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
+                }
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut3.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
+                }
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut4.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
+                }
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut5.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
+                }
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut6.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
+                }
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut7.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
                 }
             }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut3.png"){
-                    cdeck.appendChild(tabchoix[j])
+            if(!countRar) {
+                anime({
+                    targets:flehaut1,
+                    rotate:'180deg'
+                })
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut7.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
                 }
-            }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut4.png"){
-                    cdeck.appendChild(tabchoix[j])
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut6.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
                 }
-            }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut5.png"){
-                    cdeck.appendChild(tabchoix[j])
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut5.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
                 }
-            }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut6.png"){
-                    cdeck.appendChild(tabchoix[j])
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut4.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
                 }
-            }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut7.png"){
-                    cdeck.appendChild(tabchoix[j])
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut3.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
+                }
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[0].getAttribute("src") == "fut2.png"){
+                        if(tabchoix[j].children[6].innerHTML == texfaction){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                        if(texfaction == ""){
+                            cdeck.appendChild(tabchoix[j])
+                        }
+                    }
                 }
             }
         });
-        rarbas.addEventListener("click", function(){
-            creerdeck.removeChild(cdeck)
-            cdeck = document.createElement("div");
-            cdeck.classList.add("cdeck");
-            creerdeck.append(cdeck);
         
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut7.png"){
-                    cdeck.appendChild(tabchoix[j])
-                }
-            }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut6.png"){
-                    cdeck.appendChild(tabchoix[j])
-                }
-            }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut5.png"){
-                    cdeck.appendChild(tabchoix[j])
-                }
-            }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut4.png"){
-                    cdeck.appendChild(tabchoix[j])
-                }
-            }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut3.png"){
-                    cdeck.appendChild(tabchoix[j])
-                }
-            }
-            for(let j=0; j< tabchoix.length; j++){
-                if(tabchoix[j].children[0].getAttribute("src") == "fut2.png"){
-                    cdeck.appendChild(tabchoix[j])
-                }
-            }
-        });
+
+
         alphaut.addEventListener("click", function(){
             creerdeck.removeChild(cdeck)
             cdeck = document.createElement("div");
             cdeck.classList.add("cdeck");
             creerdeck.append(cdeck);
-            tabchoix.sort(function(a, b){
-                return a.children[2].innerHTML.localeCompare(b.children[2].innerHTML);
+
+            countAlp = !countAlp
+            rarhaut.style = 'none'
+            alphaut.style.backgroundColor = 'rgb(2,126,251,1)'
+            alphaut.style.borderRadius = '3px'
+            alphaut.style.outline = '0.2px solid #ffffff'
+            anime({
+                targets:flehaut1,
+                rotate:'0deg'
             })
-            for(let j=0; j< tabchoix.length; j++){
-                cdeck.appendChild(tabchoix[j])
+            countRar = false
+            if(countAlp) {
+                anime({
+                    targets:flehaut2,
+                    rotate:'0deg'
+                })
+                tabchoix.sort(function(a, b){
+                    return a.children[2].innerHTML.localeCompare(b.children[2].innerHTML);
+                })
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[6].innerHTML == texfaction){
+                        cdeck.appendChild(tabchoix[j])
+                    }
+                    if(texfaction == ""){
+                        cdeck.appendChild(tabchoix[j])
+                    }
+                }
             }
-        });
-        alpbas.addEventListener("click", function(){
-            creerdeck.removeChild(cdeck)
-            cdeck = document.createElement("div");
-            cdeck.classList.add("cdeck");
-            creerdeck.append(cdeck);
-            tabchoix.sort(function(a, b){
-                return b.children[2].innerHTML.localeCompare(a.children[2].innerHTML);
-            })
-            for(let j=0; j< tabchoix.length; j++){
-                cdeck.appendChild(tabchoix[j])
+            if(!countAlp) {
+                anime({
+                    targets:flehaut2,
+                    rotate:'180deg'
+                })
+                tabchoix.sort(function(a, b){
+                    return b.children[2].innerHTML.localeCompare(a.children[2].innerHTML);
+                })
+                for(let j=0; j< tabchoix.length; j++){
+                    if(tabchoix[j].children[6].innerHTML == texfaction){
+                        cdeck.appendChild(tabchoix[j])
+                    }
+                    if(texfaction == ""){
+                        cdeck.appendChild(tabchoix[j])
+                    }
+                }
             }
         });
 
@@ -839,24 +1339,35 @@ for (let i=1; i<=12; i++){
             cdeck = document.createElement("div");
             cdeck.classList.add("cdeck");
             creerdeck.append(cdeck);
+
+
             for(let j=0; j<tabchoix.length; j++){
-                cdeck.appendChild(tabchoix[j])
-            }
-            for(let k=0; k< tabchoix.length; k++){
-                if(tabchoix[k].children[2].innerHTML.toLowerCase().search(recherche.value.toLowerCase()) == -1){
-                    cdeck.removeChild(tabchoix[k])
+                if(tabchoix[j].children[6].innerHTML == texfaction){
+                    cdeck.appendChild(tabchoix[j])
+                }
+                if(texfaction == ""){
+                    cdeck.appendChild(tabchoix[j])
                 }
             }
-        })
+            for(let k=0; k< tabchoix.length; k++){
+                if(tabchoix[k].children[6].innerHTML == texfaction){
+                    if(tabchoix[k].children[2].innerHTML.toLowerCase().search(recherche.value.toLowerCase()) == -1){
+                        cdeck.removeChild(tabchoix[k])
+                    }
+                }
+                if(texfaction == ""){
+                    if(tabchoix[k].children[2].innerHTML.toLowerCase().search(recherche.value.toLowerCase()) == -1){
+                        cdeck.removeChild(tabchoix[k])
+                    }
+                }
+            }
+        });
 
         setTimeout(function(){
             fetch('./chara.json',{method:'GET'})
                 .then(res1 => res1.text())
                 .then(text1 => {
                     eval("charaT ="+text1)
-                    //console.log(text1[0])
-
-                    console.log(charaT)
                     setTimeout(function(){
                         for(var i=0;i< charaT.length;i++){
 
@@ -872,20 +1383,19 @@ for (let i=1; i<=12; i++){
 
 
 
-                        // console.log(decks)
                         // for(var y = 0; y < decks.length; y+=1){
                         //     let dek = document.querySelector(".cdeck[data=deck"+y+"]")
                         //     dek.style.top = y*20 +"%"
                         //     dek.addEventListener("click",function(){
                         //         let idx = parseInt(dek.getAttribute("data").substring(4,dek.getAttribute("data").length))
                         //         if(isdeckclicked == -1 || isdeckclicked == idx){
-                        //             //console.log(dek.getAttribute("data"))
+               
 
                         //             let dekjs = decks[idx].split(",")
 
                         //             for(var ko=0; ko< dekjs.length;ko++){
                         //                 let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjs[ko]))
-                        //                 //console.log(ix)
+                        //   
                         //                 document.querySelector(".bloque[data='"+ix+"']").click()
                         //             }
                         //             isdeckclicked = idx;
@@ -911,9 +1421,6 @@ for (let i=1; i<=12; i++){
                         //     let dekjs = decks[y].split(",")
 
                         //     for(var l = 1; l < dekjs.length; l++){
-                        //         //console.log(dekjs[l])
-                        //         let ix = charaT.findIndex(element => parseInt(element.id) === parseInt(dekjs[l]))
-                        //         //console.log(ix)
                         //         let carto = make_card(charaT,ix,false,true)
                         //         carto.classList.remove("bloque")
                         //         carto.classList.add("bloquedeck")
@@ -944,7 +1451,6 @@ var prev3 = 70
 
 
 const lis = document.getElementById("packs")
-console.log(lis)
 const packsopening = []
 
 for(var i=0; i< lis.childElementCount; i++){
@@ -1042,7 +1548,6 @@ for(let i=0; i< packsopening.length;i++){
 
 
 function openingpre(){
-    console.log("ok")
     let fond = document.createElement("div")
     fond.setAttribute("id","fond")
     document.body.appendChild(fond)
@@ -1053,7 +1558,7 @@ function openingpre(){
     })
 
     let wid = 136//0.25*(document.body.clientWidth) -  180
-    console.log(wid)
+
     var canvas = document.createElement('canvas');
     var input = document.createElement("input")
     input.oninput = openingpack
@@ -1133,13 +1638,10 @@ function openingpack(){
     let time1 = 200
     let time2 = 300
     if(nbclick == 7.7){
-        console.log("checkpoint0")
         document.body.removeChild(document.getElementById("clik"))
 
         let to = setInterval(function(){
-            //console.log("checkpoint3")
             if(nbclick2 == 30){
-                console.log("checkpoint4")
                 clearInterval(to)
                 fetch('./chara.json',{method:'GET'})
                     .then(res1 => res1.text())
@@ -1148,29 +1650,23 @@ function openingpack(){
                         fetch('./pack.json',{method:'GET'})
                             .then(res4 => res4.text())
                             .then(text4 => {
-                                console.log("checkpoint1")
                                 var jisone
                                 const jizone = "jisone = " +text4
                                 eval(jizone)
                                 var pack = jisone[actualpack].list
-                                console.log(pack)
-                                console.log(charaT)
+
                       
                                 let packd = []
                                 for(var i=0; i< pack.length;i++){
-                                    //console.log(charaT.findIndex((element) => element.id == pack[i]))
                                     packd.push(make_card(charaT,charaT.findIndex((element) => element.id == pack[i])))
                                 }
-                                console.log(packd)
-                               
-                                console.log(cardgain)
+
 
                                 let ca = []
                                 var idchoisis = []
                                 for(let t=0; t< 5; t++){
                                     if(t>0) ca.push(cardgain[t-1].getAttribute("data"))
                                     var etoile
-                                    console.log(vraipack)
                                 
                                     if(vraipack < 4 || vraipack == 5){
                                         let etoileg =  Math.floor(Math.random() * 10001);
@@ -1306,16 +1802,13 @@ function openingpack(){
 
                                     
                                 }
-                                console.log(idchoisis)
                                 let str = "ids="
                                 var money = 0
                                 var doublons = [false,false,false,false,false]
                                 for(let k = 0; k<5; k++){
-                                    //console.log(cards.find((element) => element == idchoisis[k]))
                                     
                                 
                                     if(cards.find((element) => element == idchoisis[k])==undefined){
-                                        console.log("ok")
                                         str += idchoisis[k]+","
                                     
                                     }
@@ -1332,7 +1825,6 @@ function openingpack(){
                                     }
                                 }
 
-                                console.log(str)
                                 let from = document.createElement("form")
                                 from.setAttribute("action","")
                                 from.setAttribute("method","POST")
@@ -1346,12 +1838,10 @@ function openingpack(){
                                 from.appendChild(hid)
                                 
                                 var data = str+"&userid="+ idsession+"&pack="+vraipack+"&nbpack="+nbpack+"&money="+money;
-                                console.log(data)
                                 var xhttp = new XMLHttpRequest();
                                 xhttp.onreadystatechange = function() {
                                     if (this.readyState == 4 && this.status == 200) {
                                         cards =xhttp.responseText.split(",")
-                                        console.log(cards)
                                         tab = []
                                         document.body.removeChild(document.getElementById("collection"))
                                         collection = document.createElement("div")
@@ -1366,7 +1856,6 @@ function openingpack(){
                                                 document.getElementById("collection").appendChild(bloc)
                                             }
                                         }
-                                        console.log(tab)
                                         rhaut.click()
                                     }
                                 }   
@@ -1381,7 +1870,6 @@ function openingpack(){
                                     cardgain[l].classList.add("bloque2")
                                     
                                 }
-                                console.log(cardgain)
                             
                                
                                 
@@ -1394,7 +1882,6 @@ function openingpack(){
                                         let list = document.createElement("div")
                                         list.setAttribute("id","newitems")
                                         document.body.appendChild(list)
-                                        console.log(doublons)
                                         for(var i =0; i<5;i++){
                                             let vari;
                                             if(i==0) vari=2
@@ -1406,7 +1893,7 @@ function openingpack(){
 
                                             list.appendChild(cardgain[i])
                                             if(doublons[i]){
-                                                console.log(cardgain[i].getAttribute("src"))
+
                                                 
                                                 
                                                 let tmp = document.createElement("img")
@@ -1502,7 +1989,7 @@ function openingpack(){
                                                                             btnback.setAttribute("id","btnback")
                                                                             btnback.innerHTML = "OK"
                                                                             btnback.addEventListener("click",function(){
-                                                                                console.log(money)
+                                            
                                                                                 if(money > 0){
                                                                                     let moneyearn = document.createElement("p")
                                                                                     moneyearn.setAttribute("id","moneyearn")
@@ -1584,7 +2071,6 @@ function openingpack(){
             ctx.clearRect(wid, 0-prev2, 500, 60);
             var image2 = new Image();
             image2.src = srcim; 
-            //console.log(image2.style.opacity)
             image2.onload = function(){
                 ctx.drawImage(image2, 0, 80, 500, 60, wid,0-nbclick2*2.5, 500, 60);
             }
@@ -1594,7 +2080,6 @@ function openingpack(){
 
     }
     else{
-        console.log(nbclick)
         var image = new Image();
         image.src = srcim; 
         let wid = 0.25*(document.body.clientWidth) -  180
@@ -1603,7 +2088,6 @@ function openingpack(){
             ctx.drawImage(image, 0, 140, (500- 50*nbclick), 10, wid,60, (500- 50*nbclick), 10);
         }
         prev = (500- 50*nbclick)
-        console.log(image)
     }
 
 
