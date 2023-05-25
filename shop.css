@@ -1,0 +1,364 @@
+@font-face{
+  font-family: LilitaOne;
+  src: url("./LilitaOne-Regular.ttf");
+}
+
+*{
+  font-family: LilitaOne;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}  
+a {
+  text-decoration: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background-image: url("img2.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-position: center;
+  filter: blur(5px);
+  transition: background-position 0.5s ease-out;
+}
+#blc1{
+  height: 416px;
+  width: 1090px;
+  border-radius: 24px;
+  margin: 3% 0% 3% 7%;
+  box-shadow: 10px 5px 50px grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff96;
+}
+.container {
+  display: inline-block;
+  margin-right: 10px;
+}
+.container1  {
+  display: inline-block;
+}
+.block2 {
+  width: 150px;
+  height: 225px;
+  border-radius: 24px;
+  box-shadow: 10px 5px 50px grey;
+  margin: 30px 1px 60px 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff96;
+  cursor: pointer;
+}
+.block2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.block0 {
+  width: 150px;
+  height: 225px;
+  border-radius: 24px;
+  box-shadow: 10px 5px 50px grey;
+  margin: 30px 1px 60px 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff96;
+  cursor: pointer;
+}
+.block0 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.left2{
+  margin-left: 130px;
+}
+.card {
+  width: 1025px;
+  height: 380px;
+  border-radius: 24px;
+  box-shadow: 10px 5px 50px grey;
+  margin: 30px 1px 60px 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff96;
+  position: relative;
+}
+.cards img{
+  width: 63%;
+  height: 85%;
+  object-fit: cover;
+}
+.card h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px 0px 0px 20px;
+}
+.cont{
+  display: flex;
+  justify-content: space-between;
+}
+
+.coffre img{
+  overflow: hidden;
+  width: 70%;
+  height: 95%;
+  margin-left: 30px;
+  margin-top: -10px;
+}
+
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  transform: rotate(-90deg);
+}
+
+.scroll-to-top-button img {
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-to-top-button.active {
+  opacity: 1;
+}
+
+.petit-bouton {
+  background-color: #007bff;
+  color: #fff;
+  padding: 3px 18px;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  right: -52%;
+  top: -9%;
+  width: 71px;
+  border-radius: 24px;
+}
+.petit-bouton:hover {
+  border: 2px solid #fff;
+}
+.petit-bouton:active {
+  transform: scale(0.95);
+}
+.petit-bouton1{
+  background-color: #007bff;
+  color: #fff;
+  padding: 3px 18px;
+  border-radius: 3px;
+  cursor: not-allowed;
+  position: relative;
+  right: -48%;
+  top: -9%;
+  width: 104px;
+  border-radius: 24px;
+}
+.coffre .bonus1 {
+  position: absolute;
+  top: 210px;
+  right: 600px;
+  width: 55px;
+  height: auto;
+}
+.coffre .bonus2 {
+  position: absolute;
+  top: 210px;
+  right: 255px;
+  width: 55px;
+  height: auto;
+}
+
+.petit-texte1{
+  position: absolute;
+  top: 292px;
+  right: 230px;
+  width: auto;
+  height: auto;
+}
+.coffre .berry1{
+  position: absolute;
+  width: 29px;
+  height: auto;
+  top: 4.5px;
+  right: -23px;
+}
+
+.petit-texte2{
+  position: absolute;
+  top: 292px;
+  right: 572px;
+  width: auto;
+  height: auto;
+}
+.coffre .berry2{
+  position: absolute;
+  width: 29px;
+  height: auto;
+  top: 4.5px;
+  right: -23px;
+}
+
+.petit-texte3{
+  position: absolute;
+  top: 292px;
+  right: 914px;
+  width: auto;
+  height: auto;
+}
+.coffre .berry3{
+  position: absolute;
+  width: 29px;
+  height: auto;
+  top: 4.5px;
+  right: -23px;
+}
+.nami {
+  position: relative;
+  width: 45%;
+  height: auto;
+  right: 105px;
+  top: 24px;
+  border-radius: 24px;
+}
+#blc1 h1{
+  top: 98px;
+  width: 400px;
+  position: absolute;
+  text-align: center;
+  padding-bottom: 10px;
+  max-width: 40%;
+  margin: 20px auto;
+}
+.money{
+  top: 195px;
+  right: 358px;
+  width: 232px;
+  position: absolute;
+  text-align: center;
+  padding-bottom: 10px;
+  max-width: 40%;
+  margin: 20px auto;
+}
+.packs{
+  top: 236px;
+  right: 400px;
+  width: 232px;
+  position: absolute;
+  text-align: center;
+  padding-bottom: 10px;
+  max-width: 40%;
+  margin: 20px auto;
+}
+.berry{
+  position: absolute;
+  width: 37px;
+  height: auto;
+  top: -5px;
+  right: -18px;
+}
+.pack {
+  text-align: center;
+  position: relative;
+  right: -73px;
+  top: 73px;
+}
+.pack p {
+  margin: 10px 10px 10px 10px;
+  font-size : 20px;
+}
+
+.stylepopup {
+  position: fixed;
+  width: 866px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  margin: 0;
+  padding: 100px 20px 120px;
+  border-radius: 30px;
+  background-color: white;
+  border: 1px solid var(--gris-fonce);
+}
+
+
+.stylepopup p{
+font-size: 20px;
+font-weight: bold;
+text-align: center;
+}
+
+.stylepopup button {
+margin: 100px 100px 0px;
+}
+
+.confirm {
+  background-color: black;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.1s, box-shadow 0.1s;
+  border-radius: 20px;
+  padding: 5px 80px;
+  margin-top: -5px;
+  border: 1px solid black;
+}
+
+.confirm:hover{
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+.confirm:active{
+  transform: scale(0.97);
+}
+
+.annuler {
+  background-color: red;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.1s, box-shadow 0.1s;
+  border-radius: 20px;
+  padding: 5px 80px;
+  margin-top: -5px;
+  border: 1px solid red;
+}
+
+.annuler:hover{
+  background-color: white;
+  border: 1px solid red;
+  color: red;
+}
+
+.annuler:active{
+  transform: scale(0.97);
+}

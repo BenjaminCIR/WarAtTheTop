@@ -1,0 +1,837 @@
+
+#backgroud{
+    width: 100%;
+}
+
+#cherche {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    position: absolute;
+    top: 7.5%;
+    transition: left 0.5s ease-in-out;
+}
+
+#ordre {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    position: absolute;
+    top: 20%;
+    transition: left 0.5s ease-in-out;
+}
+
+#ordre button {
+    display: block;
+    margin: 8px 0px;
+    padding: 2px 10px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#ordre button:hover {
+    background-color: rgb(2,126,251,1);
+    border-radius: 3px;
+}
+
+#ordre button img {
+    margin: 0px 0px -5px 5px;
+    width: 10px;
+}
+
+#barre{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+#barre a{
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 0px 10px;
+}
+
+#collect:after{
+    content: "";
+    position: absolute;
+    background-color: rgb(2,126,251,1);
+    height: 3px;
+    width: 0;
+    left: 8%;
+    bottom: -5px;
+    transition: transform 0.4s ease;
+    transform: scale(0, 1);
+    border-radius: 10px;
+}
+#collect:hover:after{
+    width: 85%;
+    transform: scale(1, 1);
+}
+
+.liens:after{
+    content: "";
+    position: absolute;
+    background-color: rgb(2,126,251,1);
+    height: 3px;
+    width: 0;
+    left: 7%;
+    bottom: -5px;
+    transition: transform 0.4s ease;
+    transform: scale(0, 1);
+    border-radius: 10px;
+}
+.liens:hover:after{
+    width: 85%;
+    transform: scale(1, 1);
+}
+
+#compte{
+    background-color:white;
+    opacity: 40%;
+    border-radius: 10px;
+    width: 80%;
+    height: 70%;
+    display: block;
+    position: absolute;
+    top: 20%;
+    transition: left 0.5s ease-in-out;
+}
+
+#packs{
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    width: 80%;
+    height: 70%;
+    display: block;
+    position: absolute;
+    top: 20%;
+    transition: left 0.5s ease-in-out;
+}
+
+
+.Ppaks{
+    float: left;
+    width: 20%;
+    position: absolute;
+    text-align: center;
+}
+
+#popup{
+    position:absolute;
+    width:50%;
+    height:50%;
+    border-radius: 10px;
+    transform:translate(-50%,-50%);
+    left:50%;
+    top:50%;
+    background:white
+
+
+}
+
+#fond{
+    position:absolute;
+    z-index:10;
+    width:100%;
+    height:100%;
+    top:0;
+}
+
+
+#canvas{
+    position:absolute;
+    width:60%;
+    left:50%;
+    transform: translateX(-50%);
+    top:39%;
+    z-index:13
+}
+
+#btnback{
+    position: absolute;
+    left: 48%;
+    top: 31%;
+    transform: translate(-50%,-50%);
+    z-index: 12;
+}
+
+body{
+    overflow:hidden
+}
+
+.bloque2{
+    opacity:0;
+    position: relative;
+    width: 17%;
+    border: 5px double white;
+    border-radius: 20px;
+    margin: 10px;
+    float: left;
+    padding: 2px;
+    z-index: 12;
+}
+
+#clik{
+    position: absolute;
+    z-index: 15;
+    top: 46.9%;
+    left: 47%;
+    transform: translate(-50%,-50%);
+    width: 22.5%;
+    opacity: 0;
+    -webkit-appearance: none;
+    background-color: transparent;
+}
+
+input[type="range"].custom-slider::-moz-range-progress {
+
+    height: 0;
+    background: transparent;
+
+}
+#clik::-moz-range-thumb {
+    width: 1.5em;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    height: 7.5em;
+    background: url("zip.png");
+
+}
+
+
+
+.pic{
+    position: absolute;
+    width: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+}
+.card{
+    position: relative;
+    width:100%;
+}
+
+.naming{
+    position: absolute;
+    margin: 0;
+    top: 55%;
+    width: 100%;
+    text-align: center;
+    text-shadow: 1px 1px 3px black;
+
+}
+
+.attaque{
+    position: absolute;
+    margin: 0;
+    top: 64%;
+    width: fit-content;
+    text-align: center;
+    left: 16%;
+}
+.HP{
+    position: absolute;
+    margin: 0;
+    top: 70%;
+    width: fit-content;
+    text-align: center;
+    left: 16%;
+}
+
+.vitesse{
+    position: absolute;
+    margin: 0;
+    top: 64%;
+    width: fit-content;
+    text-align: center;
+    left: 68%;
+}
+
+.crew{
+    position: absolute;
+    margin: 0;
+    top: 78%;
+    width: fit-content;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0.7);
+    font-size: 115%;
+}
+
+.crewlogo{
+    position: absolute;
+    margin: 0;
+    top: 87%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9%;
+
+}
+
+
+#confirm{
+    position:relative;
+    float:left;
+}
+
+#cancel{
+    position:relative;
+    float:left;
+}
+
+#msg{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align: center;
+}
+
+.paks{
+    float: left;
+    width: 20%;
+    left: 9.5%;
+    position: relative;
+}
+
+.bot{
+    left:19%
+}
+#collection{
+    background-color:rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    width: 80%;
+    height: 70%;
+    padding-left: 35px;
+    display: block;
+    position: absolute;
+    top: 20%;
+    transition: left 0.5s ease-in-out;
+    overflow:scroll;
+    overflow-x: scroll;
+    overflow-x: hidden;
+    scrollbar-color: #000 transparent;
+    scrollbar-width: thin;
+}
+
+#moneyearn{
+    position:absolute;
+    left:50%;
+    z-index:14;
+    top:50%;
+    transform: translate(-50%,-50%);
+    font-size:500%
+}
+
+.bloque3{
+    position: absolute;
+    top: 44%;
+    opacity: 0;
+    border: none;
+    z-index: 14;
+    width: 17%;
+    margin: 10px;
+    padding: 2px;
+}
+
+
+#collection .bloque {
+    position: relative;
+    width: 10%;
+    margin: 10px;
+    float: left;
+    padding: 2px;
+}
+
+#collection .bloque p {
+    
+    font-size: 10px;
+}
+
+#collection .card {
+    position: relative;
+    width:100%;
+}
+
+#collection .pic{
+    position: absolute;
+    width: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+}
+
+#collection .naming{
+    position: absolute;
+    margin: 0;
+    left: -0.75px;
+    top: 52%;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0.5px 0.5px 4px black;
+}
+
+#collection .note{
+    position: absolute;
+    margin: 0;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+
+#collection .attaque{
+    position: absolute;
+    margin: 0;
+    top: 62.3%;
+    width: fit-content;
+    text-align: center;
+    left: 14%;
+}
+#collection .HP{
+    position: absolute;
+    margin: 0;
+    top: 70%;
+    width: fit-content;
+    text-align: center;
+    left: 14%;
+}
+
+#collection .vitesse{
+    position: absolute;
+    margin: 0;
+    top: 62.3%;
+    width: fit-content;
+    text-align: center;
+    left: 68%;
+}
+
+#collection .crew{
+    position: absolute;
+    margin: 0;
+    top: 78%;
+    width: fit-content;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0.7);
+    font-size: 115%;
+}
+
+#collection .crewlogo{
+    position: absolute;
+    margin: 0;
+    top: 87%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9%;
+
+}
+
+#decks{
+    background-color:rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    width: 80%;
+    height: 70%;
+    display: block;
+    position: absolute;
+    top: 20%;
+    transition: left 0.5s ease-in-out;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: black transparent;
+    scrollbar-width: thin;
+}
+
+.predef {
+    margin: 3% 4%;
+    width: 42%;
+    height: 37%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    border: 3px solid white;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.divdek{
+    width: 100%;
+height: 100%;
+}
+
+.predef:hover {
+    cursor:pointer;
+    background-color: rgba(2,126,251, 0.30);
+}
+
+.predef:active img{
+    width: 14%;
+}
+
+.plus {
+    position: relative;
+    width: 15%;
+}
+
+.plus2{
+    position: relative;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%,-50%);
+    width: 15%;
+    z-index: 2;
+}
+
+.creerdeck {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(255,255,255, 0.60);
+}
+
+#rechoix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    position: absolute;
+    top: 14%;
+    left: 86%;
+}
+#orchoix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    position: absolute;
+    top: 6%;
+    transition: left 0.5s ease-in-out;
+}
+
+#orchoix button {
+    display: block;
+    margin: 8px 0px;
+    padding: 2px 10px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#orchoix button:hover {
+    background-color: rgb(2,126,251,1);
+    border-radius: 3px;
+}
+
+#orchoix button img {
+    margin: 0px 0px -5px 5px;
+    width: 10px;
+}
+
+.cchoix{
+    position: relative;
+    background-color: black;
+    height: 30%;
+    width: 100%;  
+}
+
+.cdeck{
+    position: relative;
+    height: 70%;
+    width: 100%;  
+    overflow-y: scroll;
+    padding-left: 40px;
+}
+
+.bloquedeck{
+    position: absolute;
+    width: 21%;
+    border: 5px double white;
+    border-radius: 20px;
+    margin: 10px;
+    float: left;
+    padding: 2px;
+    z-index:0;
+    font-size: 50%;
+}
+
+.bloquedeck:hover{
+    z-index:2;
+}
+
+
+
+
+.creerdeck .bloque {
+    position: relative;
+    width: 8%;
+    margin: 10px;
+    float: left;
+    padding: 2px;
+    cursor: pointer;
+}   
+
+.bloquechoix{
+    position: absolute;
+    width: 8%;
+    margin: 10px;
+    padding: 2px;
+    cursor: pointer;
+
+}
+
+
+.bloquechoix2{
+    position: absolute;
+    width: 9%;
+    font-size: 60%;
+    margin: 10px;
+    padding: 2px;
+    cursor: pointer;
+    opacity: 1;
+
+}
+
+
+#divdeck{
+
+}
+.bloquechoix:hover{
+    z-index:2;
+}
+
+.creerdeck .bloque p {
+    
+    font-size: 10px;
+}
+
+.creerdeck .bloquechoix p {
+    
+    font-size: 10px;
+}
+
+.creerdeck .card {
+    position: relative;
+    width:100%;
+}
+
+.creerdeck .pic{
+    position: absolute;
+    width: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+}
+
+.creerdeck .naming{
+    position: absolute;
+    margin: 0;
+    left: -0.75px;
+    top: 52%;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0.5px 0.5px 4px black;
+}
+
+.creerdeck .note{
+    position: absolute;
+    margin: 0;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+
+.creerdeck .attaque{
+    position: absolute;
+    margin: 0;
+    top: 62.3%;
+    width: fit-content;
+    text-align: center;
+    left: 14%;
+}
+.creerdeck .HP{
+    position: absolute;
+    margin: 0;
+    top: 70%;
+    width: fit-content;
+    text-align: center;
+    left: 14%;
+}
+
+.creerdeck .vitesse{
+    position: absolute;
+    margin: 0;
+    top: 62.3%;
+    width: fit-content;
+    text-align: center;
+    left: 68%;
+}
+
+.creerdeck .crew{
+    position: absolute;
+    margin: 0;
+    top: 78%;
+    width: fit-content;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0.7);
+    font-size: 115%;
+}
+
+.creerdeck .crewlogo{
+    position: absolute;
+    margin: 0;
+    top: 87%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9%;
+
+}
+
+#validerdeck{
+    position:absolute;
+    right:10%;
+    top:60%;
+}
+.right{
+    left: 200%;
+}
+
+.left{
+    left: -100%;
+}
+
+.affiche{
+    left: 10%;
+}
+
+.affiche2{
+    left: 0;
+}
+
+.affiche3{
+    left: 86%;
+}
+
+.bloque {
+    position: relative;
+    width: 10%;
+    margin: 10px;
+    float: left;
+    padding: 2px;
+}
+
+.bloque p {
+    
+    font-size: 10px;
+}
+
+.card {
+    position: relative;
+    width:100%;
+}
+
+.pic{
+    position: absolute;
+    width: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+}
+
+
+
+.naming{
+    position: absolute;
+    margin: 0;
+    left: -0.75px;
+    top: 52%;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0.5px 0.5px 4px black;
+}
+
+.note{
+    position: absolute;
+    margin: 0;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+
+.attaque{
+    position: absolute;
+    margin: 0;
+    top: 62.3%;
+    width: fit-content;
+    text-align: center;
+    left: 14%;
+}
+.HP{
+    position: absolute;
+    margin: 0;
+    top: 70%;
+    width: fit-content;
+    text-align: center;
+    left: 14%;
+}
+
+.vitesse{
+    position: absolute;
+    margin: 0;
+    top: 62.3%;
+    width: fit-content;
+    text-align: center;
+    left: 68%;
+}
+
+.crew{
+    position: absolute;
+    margin: 0;
+    top: 78%;
+    width: fit-content;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0.7);
+    font-size: 115%;
+}
+
+.crewlogo{
+    position: absolute;
+    margin: 0;
+    top: 87%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9%;
+
+}
